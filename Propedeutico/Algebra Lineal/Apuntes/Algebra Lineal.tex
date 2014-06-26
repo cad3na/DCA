@@ -1,0 +1,1693 @@
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{chemarrow}
+\usepackage{esvect}
+\usepackage{enumerate}
+
+\title{Álgebra Lineal}
+\author{Roberto Cadena Vega}
+
+\begin{document}
+\maketitle
+
+\newpage
+\section{Conjuntos}
+\section{Relaciones de Equivalencia}
+\section{Funciones}
+
+\newpage
+\section{Espacios Vectoriales}
+\begin{description}
+\item [Definición.] Un \emph{campo} o \emph{cuerpo} es un conjunto k con dos operaciones; adición $+: k \times k \to k$ y multiplicación $\cdot: k \times k' \to k$ tales que:
+
+\begin{enumerate}[i)]
+
+\item
+\begin{math}
+	(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma) \quad \forall \alpha, \beta, \gamma \in k
+\end{math}
+
+\item
+\begin{math}
+	\alpha + \beta = \beta + \alpha \quad \forall \alpha, \beta \in k
+\end{math}
+
+\item
+\begin{math}
+	\exists 0 \in k \mid \alpha + 0 = \alpha \quad \forall \alpha \in k
+\end{math}
+
+\item
+\begin{math}
+	\forall \alpha \in k, \exists \beta \in k \mid \alpha + \beta = 0, \therefore \beta = - \alpha
+\end{math}
+
+\item
+\begin{math}
+	(\alpha \cdot \beta) \cdot \gamma = \alpha \cdot (\beta \cdot \gamma) \quad \forall \alpha, \beta, \gamma \in k
+\end{math}
+
+\item
+\begin{math}
+	\alpha \cdot \beta = \beta \cdot \alpha \quad \forall \alpha, \beta \in k
+\end{math}
+
+\item
+\begin{math}
+	\exists 1 \in k \mid \alpha \cdot 1 = \alpha \quad \forall \alpha \in k
+\end{math}
+
+\item
+\begin{math}
+	\forall \alpha \in k, \alpha \ne 0, \exists \beta \in k \mid \alpha \cdot \beta = 1, \therefore \beta = \alpha^{-1}
+\end{math}
+
+\item
+\begin{math}
+	\alpha \cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma \quad \forall \alpha, \beta, \gamma \in k
+\end{math}
+
+\end{enumerate}
+
+\item [Definición.] Un espacio vectorial sobre el campo $k$ es un conjunto $V$ con una adición $+: V \times V \to V$ y multiplicación $\cdot: k \times V \to V$ tales que:
+
+\begin{enumerate}[i)]
+
+\item
+\begin{math}
+	(u + v) + w = u + (v + w) \quad \forall u, v, w \in V
+\end{math}
+
+\item
+\begin{math}
+	u + v = v + u \quad \forall u, v \in V
+\end{math}
+
+\item
+\begin{math}
+\exists 0 \in V \mid u + 0 = u \forall u \in V
+\end{math}
+
+\item
+\begin{math}
+	\forall u \in V, \exists v \in V \mid u + v = 0, \therefore v = -u
+\end{math}
+
+\item
+\begin{math}
+	(\alpha \cdot \beta) \cdot v = \alpha \cdot (\beta \cdot v) \quad \forall v \in V, \forall \alpha, \beta \in k
+\end{math}
+
+\item
+\begin{math}
+	(\alpha + \beta) \cdot v = \alpha \cdot v + \beta \cdot v \quad \forall v \in V, \forall \alpha, \beta \in k
+\end{math}
+
+\item
+\begin{math}
+	\alpha \cdot (u + v) = \alpha \cdot u + \alpha \cdot v \quad \forall u, v \in V, \forall \alpha \in k
+\end{math}
+
+\item
+\begin{math}
+	1 \cdot v = v \quad \forall v \in V
+\end{math}
+
+\end{enumerate}
+
+A los elementos de $V$ se les llama \emph{vectores} y a los elementos de $k$ escalares.
+
+\item [Proposición.] Sea $V$ un espacio vectorial sobre $k$, tenemos lo siguiente:
+
+\begin{enumerate}[i)]
+
+\item
+\begin{math}
+	u + v = u + w \Rightarrow v = w
+\end{math}
+
+\item
+\begin{math}
+	\alpha \cdot \vv{0} = \vv{0}
+\end{math}
+
+\item
+\begin{math}
+	0 \cdot v = \vv{0}
+\end{math}
+
+\item
+\begin{math}
+	\alpha \cdot v = \vv{0} \Rightarrow \alpha = 0 \quad o \quad v = \vv{0}
+\end{math}
+
+\item
+\begin{math}
+	-1 \cdot v = -v
+\end{math}
+
+\end{enumerate}
+\end{description}
+\subsection{Subespacios}
+
+\begin{description}
+\item [Definición.] Sea $V$ un espacio vectorial sobre un campo $k$. Un subespacio de $V$ es un subconjunto no vacío $W$ de $V$, es un espacio vectorial con la adición y multiplicación por escalares de $k$, heredadas de $V$, es decir, si $W$ es cerrado bajo la adición y multiplicación por escalares definidas originalmente en $V$.
+
+\item [Observación.] Para demostrar que un subconjunto $W$ de $V$ es un subespacio de $V$ basta probar que es no vacío, y que $w_1, w_2 \in W, \alpha, \beta \in k \Rightarrow \alpha w_1 + \beta w_2 \in W$
+
+\item [Observación.] La unión de subespacios no necesariamente es un subespacio.
+
+\item [Definición.] Sean $W_1$ y $W_2$ subespacios de $V$. Definimos la suma de subespacios:
+
+\begin{equation}
+W_1 + W_2 = \{ w_1 + w_2 \mid w_1 \in W_1, w_2 \in W_2\}
+\end{equation}
+
+\item [Proposición.] Si $W_1$ y $W_2$ son subespacios de $V$, entonces:
+
+\begin{enumerate}[i)]
+\item $W_1 \cap W_2$ es subespacio de $V$
+\item $W_1 + W_2$ es subespacio de $V$
+\end{enumerate}
+
+\item [Definición.] Sea $V$ un espacio vectorial y $W_1$, $W_2$ subespacios de $V$. Diremos que la suma de los subespacios es la suma directa y escribimos $W_1 \oplus W_2$ para denotar la suma $W_1 + W_2$ de $W_1$ y $W_2$ si $W_1 \cap W_2 = \{ 0 \}$.
+
+\item [Definición.] Sea $V$ un espacio vectorial y sea $s \subseteq V$. El subespacio de $V$ generado por $s$, denotado por $L(s)$ es el único subespacio de $V$ que contiene a $s$, esto es:
+
+\begin{equation}
+L(s) = \cap W
+\end{equation}
+
+\item [Definición.] Decimos que los vectores $v_1, v_2, \dots, v_n$ generan a $V$ o que $\{ v_1, v_2, \dots, v_n\}$ generan a $V$, si para cualquier $v \in V$ existen escalares $\alpha_1, \alpha_2, \dots, \alpha_n$ tales que:
+
+\begin{equation}
+v = \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_n v_n \quad \forall v \in V 
+\end{equation}
+
+\item [Definición.] Decimos que los vectores $v_1, v_2, \dots, v_n$ son linealmente independientes sobre k (li) o que $\{ v_1, v_2, \dots, v_n\}$ es linealmente independiente sobre k (li), si dados $\alpha_1, \alpha_2, \dots, \alpha_n$:
+
+\begin{equation}
+\alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_n v_n = 0 \Rightarrow \alpha_1 = \alpha_2 = \dots = \alpha_n = 0
+\end{equation}
+
+\item [Definición.] Decimos que los vectores $v_1, v_2, \dots, v_n$ son linealmente dependientes sobre k (ld) o que $\{ v_1, v_2, \dots, v_n\}$ es linealmente dependiente sobre k (ld) si existen escalares $\alpha_1, \alpha_2, \dots, \alpha_n \ne 0$ tales que:
+
+\begin{equation}
+\alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_n v_n = 0
+\end{equation}
+
+\item [Definición.] Sea $V$ un espacio vectorial. Un conjunto de vectores $\{ v_1, v_2, \dots, v_n \} \in V$ es una base de $V$, si es li y genera a $V$.
+
+\item [Proposición.] Supongamos que $\{ v_1, v_2, \dots, v_n \}$ genera a $V$ y $\{ w_1, w_2, \dots, w_m\}$ es li y $m \le n$.
+
+\item [Corolario.] Si $\{ v_1, v_2, \dots, v_n \}$ y $\{ w_1, w_2, \dots, w_n \}$, entonces $m = n$.
+
+\item [Corolario.] Sea $V$ un espacio vectorial que puede ser generado por un numero finito de vectores. Entonces:
+
+\begin{enumerate}[i)]
+\item De todo conjunto de generadores $\{ v_1, v_2, \dots, v_n \}$ se puede extraer una base.
+\item Todo conjunto li $\{ w_1, w_2, \dots, w_n \} \in V$ lo podemos completar a una base.
+\end{enumerate}
+
+\item [Definición.] Si el espacio vectorial $V$ puede ser generado por un numero finito de vectores, diremos que $V$ es de dimensión finita. Si $V$ es de dimensión finita, al numero de elementos de una base se le llama la dimensión de $V$ y se le denota $\dim{V}$, o bien $\dim_k{V}$.
+
+\item [Observación.] No todos los espacios vectoriales son de dimensión finita, por ejemplo $\mathbbm{R}$, no es de dimensión finita, sobre el campo $\mathbbm{Q}$.
+
+También se puede definir independencia lineal de un conjunto infinito, bases infinitas y espacios vectoriales de dimensión infinita.
+
+\item [Proposición.] Sea $\{ v_1, v_2, \dots, v_n \}$ una base de $V$. Si $v \in V$ entonces existen únicos $\alpha_1, \alpha_2, \dots, \alpha_n \in k$ tal que:
+
+\begin{equation}
+v = \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_n v_n
+\end{equation}
+
+\item [Definición.] Sean $V$ un espacio vectorial, $\{ v_1, v_2, \dots, v_n \}$ una base de $V$ y $v \in V$. Por la proposición, existen únicos $\alpha_1, \alpha_2, \dots, \alpha_n \in k$ tal que $v = \alpha_1 v_1 + \alpha_2 v_2 + \dots + \alpha_n v_n$. el vector coordenado de $v$ respecto a la base $\{ v_1, v_2, \dots, v_n \}$ es:
+
+\begin{equation}
+\left[ v \right] _{( v_i )} =
+\begin{pmatrix}
+\alpha_1 \\
+\alpha_2 \\
+\vdots \\
+\alpha_n
+\end{pmatrix}
+\end{equation}
+
+\item [Proposición.]
+
+\begin{math}
+\left.
+\begin{array}{r}
+V \text{ de dimensión finita} \\
+W \text{ es subespacio de } V \\
+\end{array}
+\right\}
+\begin{array}{l}
+W \text{ es de dimensión finita.} \\
+\dim{W} \le \dim{V}				  \\
+\end{array}
+\end{math}
+
+\begin{equation}
+V = W \Leftrightarrow \dim{V} = \dim{W}
+\end{equation}
+
+\item [Teorema.] Sea $V$ un espacio vectorial de dimensión finita y sean $W_1, W_2$ subespacios de $V$. Se tiene:
+
+\begin{equation}
+\dim{(W_1 + W_2)} = \dim{W_1} + \dim{W_2} - \dim{(W_1 \cap W_2)}
+\end{equation}
+
+\item [Corolario.] Si $V$ es de dimensión finita y $W_1, W_2$ son subespacios tales que $W_1 \cap W_2 = \{ 0 \}$, entonces:
+
+\begin{equation}
+\dim{(W_1 \oplus W_2)} = \dim{W_1} + \dim{W_2}
+\end{equation}
+\end{description}
+
+\subsection{Espacio Cociente}
+Sea $V$ un espacio vectorial sobre el campo $k$ y $W$ un subespacio de $V$. Definimos una relación en $V$.
+
+Para $u, v \in V$, decimos que están relacionados (o mas precisamente, que están relacionados modulo $W$) y escribimos $u \sim v$ si $u - v \in W$.
+
+Esta relación es una relación de equivalencia en $V$, en efecto:
+
+\begin{enumerate}[i)]
+\item Sea $v \in V$. Como $v - u = 0 \in W$, $v \sim u$.
+\item Supongamos $u \sim v$. Entonces $u - v \in W$. Luego $v - u = -(u - v) \in W$. Por tanto $v \sim u$.
+\item Supongamos $v_1 \sim v_2$ y $v_2 \sim v_3$. Entonces $v_1 - v_2 \in W$ y $v_2 - v_3 \in W$. Luego $v_1 - v_3 = v_1 - v_2 + v_2 - v_3 \in W$. Por tanto $v_1 \sim v_3$.
+\end{enumerate}
+
+Concluyamos que $\sim$ es una relación de equivalencia en $V$.
+
+Denotamos al conjunto cociente por $^V/_W$. Los elementos de $^V/_W$ son las dependencias de equivalencia de los elementos de $V$.
+
+Sea $v \in V$. Tenemos que:
+\begin{eqnarray}
+\left[ v \right] & = & \{ u \in V \mid u \sim v \}        \nonumber \\
+\left[ v \right] & = & \{ u \in V \mid u - v \in W \}     \nonumber \\
+\left[ v \right] & = & \{ u \in V \mid u - v = w \in W \} \nonumber \\
+\left[ v \right] & = & \{ u + w   \mid w \in W \}         \nonumber \\
+\left[ v \right] & = & u + W
+\end{eqnarray}
+
+Recordemos que estas clases forman una partición de $V$. Definimos en $^V/_W$ una suma y multiplicación por escalares $(\in k)$
+
+\begin{enumerate}[i)]
+\item
+\begin{math}
+(u + W) + (v + W) = (u + v) + W \quad \forall u, v \in V
+\end{math}
+\item
+\begin{math}
+\alpha (v + W) = \alpha v + W \quad \forall v \in V, \forall \alpha \in k
+\end{math}
+\end{enumerate}
+
+La suma y la multiplicación por escalares están bien definidas, esto es,  no dependen de los representantes.
+
+Con esta suma y multiplicación por escalares, $^V/_W$ es un espacio vectorial sobre $k$, llamado espacio cociente. Sus elementos son de la forma:
+
+\begin{equation}
+v + W \quad \forall v \in V
+\end{equation}
+
+El neutro aditivo es la clase de $0$:
+
+\begin{equation}
+0 + W
+\end{equation}
+
+El inverso aditivo de $v + W$ es:
+
+\begin{equation}
+-v + W
+\end{equation}
+
+\begin{description}
+\item [Proposición.] Sea $V$ espacio vectorial de dimensión finita sobre $k$ y  sea $W$ un subespacio de $V$. Tenemos:
+
+\begin{equation}
+\dim{V} = \dim{W} + \dim{^V/_W}
+\end{equation}
+
+\item [Ejemplo.] Sean $V = \mathbbm{R}^3$ y $W = \{ (y_1, y_2, 0) \mid y_1, y_2 \in \mathbbm{R} \}$. Tenemos:
+
+\begin{eqnarray}
+^V/_W & = & \{ (x_1, x_2, x_3) + W \mid x_1, x_2, x_3 \in \mathbbm{R} \} \nonumber \\
+^V/_W & = & \{ (0, 0, x_3) + W \mid x_3 \in \mathbbm{R} \} \nonumber
+\end{eqnarray}
+
+$(x_1, x_2, x_3) \sim (0, 0, x_3)$ porque $(x_1, x_2, x_3) - (0, 0, x_3) = (x_1, x_2, 0) \in W$
+
+Luego, una base para $^V/_W$ es $\{ (0, 0, 1) + W \}$, por lo tanto $\dim{^V/_W} = 1$
+\end{description}
+
+\newpage
+\section{Sistemas de Ecuaciones Lineales}
+Sea $k \in \{ \mathbbm{R}, \mathbbm{C} \}$
+
+\begin{description}
+\item [Definición.] Una ecuación lineal sobre $k$ es una expresión de la forma:
+
+\begin{equation}
+a_1 x_1 + a_2 x_2 + ... + a_n x_n = b
+\end{equation}
+
+donde $a_1, a_2, ..., a_n \in k$ y $x_1, x_2, ..., x_n$ son variables independientes.
+
+Una solución de la ecuación lineal es una $n$-ada $\left( \alpha_1, \alpha_2, ..., \alpha_n \right)$ de manera que:
+
+\begin{equation}
+a_1 \alpha_1 + a_2 \alpha_2 + ... + a_n \alpha_n = b
+\end{equation}
+
+\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item
+Consideramos la ecuación $2 x_1 - 3 x_2 + x_3 = 8$.
+Tenemos que $(4, 0, 0)$ y $(0, 0, 8)$ son soluciones de la ecuación.
+Si damos valores arbitrarios $x_2 = \alpha_2$ y $x_3 = \alpha_3$ y despejamos, tenemos que:
+
+\begin{math}
+x_1 = \frac{8 + 3 \alpha_2 - \alpha_3}{2}
+\end{math}
+
+Por lo que obtenemos:
+
+\begin{math}
+\left\{ \frac{8 + 3 \alpha_2 - \alpha_3}{2}, \alpha_2, \alpha_3 \mid \alpha_2, \alpha_3 \in k \right\}
+\end{math}
+
+Son todas las soluciones en $k^3$ de la ecuación.
+
+\item
+Para la ecuación $0 x_1 + 0 x_2 = 0$.
+Cualquier $(\alpha_1, \alpha_2) \in k^2$ es solución.
+Luego:
+
+\begin{math}
+\left\{ (\alpha_1, \alpha_2) \mid \alpha_1, \alpha_2 \in k \right\}
+\end{math}
+
+Son todas las soluciones en $k^2$ de la ecuación.
+
+\item
+La ecuación $0 x_1 + 0 x_2 = 1$ no tiene solución.
+
+\item
+La ecuación $5 x_1 = 6$ tiene una única solución $\frac{6}{5}$ en $k$.
+\end{enumerate}
+
+Consideremos un sistema de $m$ ecuaciones con $n$ incógnitas.
+
+\begin{eqnarray}
+a_{1,1} x_1 + a_{1,2} x_2 + \dots + a_{1,n} x_n & = & b_1 \nonumber \\
+a_{2,1} x_1 + a_{2,2} x_2 + \dots + a_{2,n} x_n & = & b_2 \nonumber \\
+\vdots                                          &   &     \nonumber \\
+a_{m,1} x_1 + a_{m,2} x_2 + \dots + a_{m,n} x_n & = & b_m
+\end{eqnarray}
+
+donde $a_{i,j}, b_i \in k $ para $i \in \{ 1, 2, ..., m\}$, $j \in \{ 1, 2, ..., n \}$ y $x_1, x_2, ..., x_n$ son variables independientes.
+
+El sistema se dice homogéneo si $b_1 = b_2 = ... = b_n = 0$.
+
+Una solución del sistema de ecuaciones lineales es una $n$-ada $(\alpha_1, \alpha_2, ..., \alpha_n)$ de manera que:
+
+\begin{eqnarray}
+a_{1,1} \alpha_1 + a_{1,2} \alpha_2 + \dots + a_{1,n} \alpha_n = b_1 \nonumber \\
+a_{2,1} \alpha_1 + a_{2,2} \alpha_2 + \dots + a_{2,n} \alpha_n = b_2 \nonumber \\
+\vdots                                                               \nonumber \\
+a_{m,1} \alpha_1 + a_{m,2} \alpha_2 + \dots + a_{m,n} \alpha_n = b_m
+\end{eqnarray}
+
+La solución o solución general del sistema consiste de todas las posibles soluciones en $k^n$.
+
+Si el sistema de ecuaciones es homogéneo tenemos dos posibilidades, que haya solamente la solución trivial, o bien, que haya mas soluciones.
+
+Si el sistema no es homogéneo tenemos dos posibilidades, que el sistema sea inconsistente, es decir que no tenga soluciones, o bien que sea consistente.
+
+En este ultimo caso hay dos posibilidades, que haya solamente una solución, o bien que haya mas.
+
+\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item
+Consideremos el sistema homogéneo:
+
+\begin{eqnarray}
+x + 2 y - 3 z = 0   \nonumber \\
+x + 3 y + z = 0     \nonumber \\
+2 x + 5 y - 4 z = 0 \nonumber \\
+2 x + 6 y + 2 z = 0 \nonumber
+\end{eqnarray}
+
+Vaciamos los coeficientes en una matriz y realizamos operaciones elementales.
+
+\begin{math}
+\begin{pmatrix}
+1 & 2 & -3 \\
+1 & 3 & 1  \\
+2 & 5 & -4 \\
+2 & 6 & 2
+\end{pmatrix}
+\underrightarrow{-R_1 + R_2 \to R_2}
+\begin{pmatrix}
+1 & 2 & -3 \\
+0 & 1 & 4  \\
+2 & 5 & -4 \\
+2 & 6 & 2
+\end{pmatrix}
+\underrightarrow{-2 R_1 + R_3 \to R_3}
+\begin{pmatrix}
+1 & 2 & -3 \\
+0 & 1 & 4  \\
+0 & 1 & 2  \\
+2 & 6 & 2
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+\underrightarrow{-2 R_1 + R_4 \to R_4}
+\begin{pmatrix}
+1 & 2 & -3 \\
+0 & 1 & 4  \\
+0 & 1 & 2  \\
+0 & 2 & 8
+\end{pmatrix}
+\underrightarrow{-2 R_2 + R_1 \to R_1}
+\begin{pmatrix}
+1 & 0 & -11 \\
+0 & 1 & 4   \\
+0 & 1 & 2   \\
+0 & 2 & 8
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+\underrightarrow{-R_2 + R_3 \to R_3}
+\begin{pmatrix}
+1 & 0 & -11 \\
+0 & 1 & 4   \\
+0 & 0 & -2  \\
+0 & 2 & 8
+\end{pmatrix}
+\underrightarrow{-2 R_2 + R_4 \to R_4}
+\begin{pmatrix}
+1 & 0 & -11 \\
+0 & 1 & 4   \\
+0 & 0 & -2  \\
+0 & 0 & 0
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+\underrightarrow{-^1/_2 R_3 \to R_3}
+\begin{pmatrix}
+1 & 0 & -11 \\
+0 & 1 & 4   \\
+0 & 0 & 1   \\
+0 & 0 & 0
+\end{pmatrix}
+\underrightarrow{11 R_3 + R_1 \to R_1}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 4 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+\underrightarrow{-4 R_3 + R_2 \to R_2}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{math}
+
+\begin{eqnarray}
+x = 0 \nonumber \\
+y = 0 \nonumber \\
+z = 0 \nonumber
+\end{eqnarray}
+
+El sistema original es equivalente al de arriba, por lo que la única solución es la trivial.
+
+\item
+Consideremos ahora el sistema no homogéneo:
+
+\begin{eqnarray}
+x + 2 y - 3 z = 4    \nonumber \\
+x + 3 y + z = 11     \nonumber \\
+2 x + 5 y - 4 z = 13 \nonumber \\
+2 x + 6 y + 2 z = 22 \nonumber
+\end{eqnarray}
+
+\begin{math}
+\left(
+\begin{array}{c c c|c}
+1 & 2 & -3 & 4  \\
+1 & 3 & 1  & 11 \\
+2 & 5 & -4 & 13 \\
+2 & 6 & 2  & 22
+\end{array}
+\right)
+\underrightarrow{-R_1 + R_2 \to R_2}
+\left(
+\begin{array}{c c c|c}
+1 & 2 & -3 & 4  \\
+0 & 1 & 4  & 7  \\
+2 & 5 & -4 & 13 \\
+2 & 6 & 2  & 22
+\end{array}
+\right)
+\underrightarrow{-2 R_1 + R_3 \to R_3}
+\end{math}
+
+\begin{math}
+\left(
+\begin{array}{c c c|c}
+1 & 2 & -3 & 4  \\
+0 & 1 & 4  & 7  \\
+0 & 1 & 2  & 5  \\
+2 & 6 & 2  & 22
+\end{array}
+\right)
+\underrightarrow{-2 R_1 + R_4 \to R_4}
+\left(
+\begin{array}{c c c|c}
+1 & 2 & -3 & 4  \\
+0 & 1 & 4  & 7  \\
+0 & 1 & 2  & 5  \\
+0 & 2 & 8  & 14
+\end{array}
+\right)
+\underrightarrow{-2 R_2 + R_1 \to R_1}
+\end{math}
+
+\begin{math}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & -11 & -10 \\
+0 & 1 & 4   & 7   \\
+0 & 1 & 2   & 5   \\
+0 & 2 & 8   & 14
+\end{array}
+\right)
+\underrightarrow{-R_2 + R_3 \to R_3}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & -11 & -10 \\
+0 & 1 & 4   & 7   \\
+0 & 0 & -2  & -2  \\
+0 & 2 & 8   & 14
+\end{array}
+\right)
+\underrightarrow{-2 R_2 + R_4 \to R_4}
+\end{math}
+
+\begin{math}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & -11 & -10 \\
+0 & 1 & 4   & 7   \\
+0 & 0 & -2  & -2  \\
+0 & 0 & 0   & 0
+\end{array}
+\right)
+\underrightarrow{-^1/_2 R_3 \to R_3}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & -11 & -10 \\
+0 & 1 & 4   & 7   \\
+0 & 0 & 1   & 1   \\
+0 & 0 & 0   & 0
+\end{array}
+\right)
+\underrightarrow{11 R_3 + R_1 \to R_1}
+\end{math}
+
+\begin{math}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & 0 & 1 \\
+0 & 1 & 4 & 7 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0
+\end{array}
+\right)
+\underrightarrow{-4 R_3 + R_2 \to R_2}
+\left(
+\begin{array}{c c c|c}
+1 & 0 & 0 & 1 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0
+\end{array}
+\right)
+\end{math}
+
+\begin{eqnarray}
+x = 1 \nonumber \\
+y = 3 \nonumber \\
+z = 1 \nonumber
+\end{eqnarray}
+
+El sistema original es equivalente al de arriba por lo que concluimos que la única solución al sistema es $(1, 3, 1)$.
+
+\item
+Se considera el siguiente sistema:
+
+\begin{eqnarray}
+x + y = 0 	   \nonumber \\
+2 x + 2 y = 1 \nonumber
+\end{eqnarray}
+
+\begin{math}
+\left(
+\begin{array}{c c|c}
+1 & 1 & 0 \\
+2 & 2 & 1 \\
+\end{array}
+\right)
+\underrightarrow{-2 R_1 + R_2 \to R_2}
+\left(
+\begin{array}{c c|c}
+1 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{array}
+\right)
+\end{math}
+
+\begin{eqnarray}
+x + y = 0      \nonumber \\
+0 x + 0 y  = 1 \nonumber
+\end{eqnarray}
+
+Se crea una contradicción $(0 = 1)$ por lo que el sistema es inconsistente (no tiene solución).
+
+\item
+Se toma el siguiente sistema homogéneo:
+
+\begin{eqnarray}
+x + y = 0 	   \nonumber \\
+2 x + 2 y = 0 \nonumber
+\end{eqnarray}
+
+\begin{math}
+\begin{pmatrix}
+1 & 1 \\
+2 & 2 \\
+\end{pmatrix}
+\underrightarrow{-2 R_1 + R_2 \to R_2}
+\begin{pmatrix}
+1 & 1 \\
+0 & 0 \\
+\end{pmatrix}
+\end{math}
+
+\begin{equation}
+x + y = 0 \nonumber
+\end{equation}
+
+Si damos cualquier valor $a$ a $x$ tenemos $x = a$ y $y = -a$; $\left\{ (a, -a) \mid a \in \mathbbm{R} \right\}$ nos proporciona todas las soluciones del sistema original.
+
+\item
+El siguiente sistema no homogéneo:
+
+\begin{eqnarray}
+x + y = 1      \nonumber \\
+2 x + 2 y  = 2 \nonumber
+\end{eqnarray}
+
+\begin{math}
+\left(
+\begin{array}{c c|c}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+\end{array}
+\right)
+\underrightarrow{-2 R_1 + R_2 \to R_2}
+\left(
+\begin{array}{c c|c}
+1 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{array}
+\right)
+\end{math}
+
+Si damos cualquier valor $b$ a $y$, tenemos $y = b$ y $x = 1 - b$. Así, $\left\{ (1 - b, b) \mid b \in \mathbbm{R} \right\}$ nos proporciona todas las soluciones del sistema original.
+\end{enumerate}
+
+\item [Teorema.] En un sistema de ecuaciones lineales homogéneas de $m$ ecuaciones con $n$ incógnitas, si $n > m$ entonces el sistema tiene una solución no trivial en $k$.
+
+\item [Ejemplo.] Sea $k = \mathbbm{R}$. En el sistema homogéneo:
+
+\begin{eqnarray}
+x - 3 y + 4 z - 2 w = 0 \nonumber \\
+0 + 2 y + 5 z +   w = 0 \nonumber \\
+0 +   y - 3 z +   0 = 0 \nonumber
+\end{eqnarray}
+
+Damos un valor arbitrario a $z$, digamos $z = a$ y obtenemos $y = 3 a $, $2 (3 a) + 5 a + w$, luego $w = -11 a$ y finalmente, $x = 3 (3 a) - 4 a + 2 (-11 a) = -17 a$.
+
+La solución general del sistema es:
+
+\begin{equation}
+\left\{ (-17 a, 3 a, a, -11 a) \mid a \in \mathbbm{R} \right\} \nonumber
+\end{equation}
+
+Una solución no trivial es $(-17, 3, 1, -11)$, y la solución trivial es $(0, 0, 0, 0)$
+\end{description}
+
+\newpage
+\section{Matrices}
+
+\begin{description}
+\item [Definición.] Sea $k \in \{ \mathbbm{R}, \mathbbm{C} \}$, sean $m, n \in \mathbbm{N}$. Una matriz $m \times n$ con entradas en $k$ es un arreglo rectangular con $m$ renglones (filas) y $n$ columnas de elementos de $k$.
+
+\begin{equation}
+A = 
+\begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots &       & \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn}
+\end{pmatrix}
+\end{equation}
+
+Escribimos también $A = (a_{ij})_{ij}$.
+
+Denotaremos por $\mathcal{M}_{m \times n}(k)$ al conjunto de matrices $m \times n$ con entradas en $k$.
+
+Podemos definir la suma de matrices y la multiplicación de un escalar por una matriz. Sean $A = (a_{ij})_{ij}$ y $B = (b_{ij})_{ij}$ $\in \mathcal{M}_{m \times n}(k)$ y $c \in k$.
+
+\begin{equation}
+A + B = (a_{ij} + b_{ij})_{ij}
+\end{equation}
+
+\begin{equation}
+c \cdot A = (c \cdot a_{ij})_{ij}
+\end{equation}
+
+\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item
+\begin{math}
+\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
++
+\begin{pmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_{11} + b_{11} & a_{12} + b_{12} \\
+a_{21} + b_{21} & a_{22} + b_{22}
+\end{pmatrix}
+\end{math}
+
+\item
+\begin{math}
+c \cdot
+\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
+=
+\begin{pmatrix}
+c \cdot a_{11} & c \cdot a_{12} \\
+c \cdot a_{21} & c \cdot a_{22}
+\end{pmatrix}
+\end{math}
+
+\item
+Sean $k = \mathbbm{C}$, 
+\begin{math}
+A = 
+\begin{pmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6
+\end{pmatrix}
+\end{math}
+ y 
+\begin{math}
+B = 
+\begin{pmatrix}
+i & 0 \\
+0 & i \\
+-5 & -6
+\end{pmatrix}
+\end{math}
+
+Tenemos:
+
+\begin{math}
+A + B = 
+\begin{pmatrix}
+1 + i & 2 \\
+3 & 4 + i \\
+5 & 6
+\end{pmatrix}
+\end{math}
+\begin{math}
+\sqrt{2} \cdot A = 
+\begin{pmatrix}
+\sqrt{2} & 2 \sqrt{2}   \\
+3 \sqrt{2} & 4 \sqrt{2} \\
+5 \sqrt{2} & 6 \sqrt{2}
+\end{pmatrix}
+\end{math}
+\end{enumerate}
+
+Con esta suma y multiplicación por escalares $\mathcal{M}_{m \times n}(k)$ es un espacio vectorial de dimensión $m \cdot n$. Se puede probar que es asociativa y conmutativa. 
+
+El neutro aditivo es la matriz $0 = 0_{m \times n} = (0)_{ij}$. El inverso aditivo de la matriz $A = (a_{ij})_{ij}$ es $-A = (-a_{ij})_{ij}$.
+
+Una base para $\mathcal{M}_{m \times n}(k)$ es: $\{E_{ij} \mid 1 \le i \le m, i \le j \le n\}$ donde todas las entradas son $0$, excepto por la $i$ que es $1$.
+
+\item [Ejemplo.] Una base para $\mathcal{M}_{3 \times 2}(k)$ es:
+
+\begin{math}
+\left\{ 
+\begin{pmatrix}
+1 & 0 \\
+0 & 0 \\
+0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 1 \\
+0 & 0 \\
+0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\
+1 & 0 \\
+0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\
+0 & 1 \\
+0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\
+0 & 0 \\
+1 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 \\
+0 & 0 \\
+0 & 1
+\end{pmatrix},
+\right\}
+\end{math}
+
+Si $A = (a_{ij})_{ij} \in \mathcal{M}_{m \times n}(k)$ y $B = (b_{jk})_{jk} \in \mathcal{M}_{n \times p}(k)$ podemos definir el producto de las matrices $A$ y $B$ como la matriz $m \times p$ $C = A B$ donde $C = (c_{ik})_{ik}$.
+
+\begin{equation}
+C_{ik} = \sum\limits_{j = 1}^n a_{ij} b_{jk}
+\end{equation}
+
+\item [Observación.] El orden del producto es importante.
+
+Cuando $A B$ esta definido, no necesariamente $B A$ esta definido. Para que $A B$ y $B A$ esten definidas es necesario y suficiente que $m = p$. Aun en este caso podria suceder que $A B$ y $B A$ no sean del mismo tamaño.
+
+Para que $A B$ y  $B A$ esten definidos y sean del mismo tamaño es necesario y suficiente que $m = n = p$. Aun asi, no necesariamente se tiene $A B = B A$.
+
+\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item
+Sean
+\begin{math}
+A =
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix}
+\end{math}
+ y 
+ \begin{math}
+B =
+\begin{pmatrix}
+-7 & 2 & 3
+\end{pmatrix}
+\end{math}.
+
+\begin{math}
+A B = 
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix}
+\begin{pmatrix}
+-7 & 2 & 3
+\end{pmatrix}
+=
+\begin{pmatrix}
+-7 & 2 & 3 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{math}, y $B A$ no puede definirse.
+
+\item
+Sean
+\begin{math}
+A =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 2 & 1
+\end{pmatrix}
+\end{math}
+ y 
+ \begin{math}
+B =
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+\end{math}.
+
+\begin{math}
+A B = 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 \\
+1 & 2
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+B A = 
+\begin{pmatrix}
+1 & 2 \\
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 2 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 4 & 2 \\
+0 & 2 & 1 \\
+1 & 0 & 0
+\end{pmatrix}
+\end{math}
+
+\item
+Sean
+\begin{math}
+A =
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+\end{math}
+ y 
+ \begin{math}
+B =
+\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+\end{math}.
+
+\begin{math}
+A B = 
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 0 \\
+0 & 0
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+B A = 
+\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+A B \ne B A
+\end{math}
+
+\item
+Sean
+\begin{math}
+A =
+\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}
+\end{math}
+ y 
+ \begin{math}
+B =
+\begin{pmatrix}
+3 & 0 \\
+0 & 4
+\end{pmatrix}
+\end{math}.
+
+\begin{math}
+A B = 
+\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+3 & 0 \\
+0 & 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 0 \\
+0 & 8
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+B A = 
+\begin{pmatrix}
+3 & 0 \\
+0 & 4
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 0 \\
+0 & 8
+\end{pmatrix}
+\end{math}
+
+\end{enumerate}
+
+\item [Proposición.] Sean $A$, $B$, $C$ matrices con entradas en $k$ y $c \in k$. Siempre que las operaciones se puedan realizar se tiene:
+
+\begin{enumerate}[i)]
+\item $ A (B C) = (A B) C $
+\item $ A (B + C) = A B + A C $
+\item $ (A + B) C  = A C + B C $
+\item $ c (A B) = (c A) B = A (c B) $
+\end{enumerate}
+
+Introducimos el simbolo $ \delta_{ij} $ llamado delta de Kronecker, deifinido por:
+
+\begin{equation}
+\delta_{ij} = \left\{
+\begin{array}{l}
+1 \text{ si } i = j \\
+0 \text{ si } i \ne j
+\end{array}
+\right.
+\end{equation}
+
+La matriz identidad $ I_n \in \mathcal{M}_{n \times n}(k)$ es:
+
+\begin{equation}
+I_n = (\delta_{ij})_{ij} =
+\begin{pmatrix}
+1 & 0 & \dots & 0 \\
+0 & 1 & \dots & 0 \\
+\vdots & \vdots &   & \vdots \\
+0 & 0 & \dots & 1
+\end{pmatrix}
+\end{equation}
+
+\item [Proposición.] Si $ A \in \mathcal{M}_{m \times n}(k)$ y $B \in \mathcal{M}_{n \times p}(k)$. Entonces $A I_n = A$ y $I_n B = B$.
+
+\item [Definición.] Una matriz $A \in \mathcal{M}_{n \times n}(k)$ es invertible si existe una matriz $B \in \mathcal{M}_{n \times n}(k)$ tal que:
+
+\begin{equation}
+A B = B A = I_n
+\end{equation}
+
+\item [Observación.] Si tal matriz existe, es única. Se llama la inversa de $A$ y se denota por $A^{-1}$
+
+\begin{math}
+A B = B A = I_n
+\end{math}
+
+\begin{math}
+A C = C A = I_n
+\end{math}
+
+\begin{math}
+B = B I_n = B (A C) = (B A) C = I_n C = C
+\end{math}
+
+\item [Observación.] Si $A$ es una matriz cuadrada $n \times n$, basta con que $A B = I_n$ (o con que $B A = I_n$) para alguna matriz $B$ para que $A$ sea invertible y su inversa sea $B$.
+
+\item [Proposición.] Si $A$ es una matriz cuadrada ($A \in \mathcal{M}_{n \times n}(k)$) y es invertible, entonces $A^{-1}$ tambien es invertible y es:
+
+\begin{equation}
+(A^{-1})^{-1} = A
+\end{equation}
+
+\item [Demostración.] Puesto que $A A^{-1} = I_n$ y $A^{-1} A = I_n$ se sigue que $A^{-1}$ es invertible y $(A^{-1})^{-1} = A$.
+
+\item [Proposición.] Si $A, B \in \mathcal{M}_{n \times n}(k)$ son matrices invertibles, entonces $A B$ es invertible y $(A B)^{-1} = B^{-1} A^{-1}$.
+
+\item [Demostración.] Tenemos $A B B^{-1} A^{-1}$
+
+\begin{math}
+(A B)(B^{-1} A^{-1}) = A (B B^{-1}) A^{-1} = A I_n A^{-1} = A A^{-1} = I_n
+\end{math}
+
+Luego $A B$ es invertible y $(A B)^{-1} = B^{-1} A{-1}$
+
+\item [Proposición.] Si $A \in \mathcal{M}_{n \times n}(k)$ es una matriz invertible y $c \in k, c \ne 0$, entonces $c A$ es invertible y $(c A)^{-1} = c^{-1} A^{-1}$.
+
+\item [Demostración.] Tenemos $c A c^{-1} A^{-1}$
+
+\begin{math}
+c A c^{-1} A^{-1} = c c^{-1} A A^{-1} = 1 \cdot I_n = I_n
+\end{math}
+
+Luego $c A$ es invertible y $(c A)^{-1} = c^{-1} A^{-1}$.
+
+\item [Observación.] Puede suceder que $A, B \in \mathcal{M}_{n \times n}(k)$ sean matrices invertibles, pero $A + B$ no lo sea.
+
+\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item $
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix},
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+$ son invertibles y $
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}+
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}
+$ no lo es.
+
+\item $0 = 
+\begin{pmatrix}
+0 & 0 \\
+0 & 0
+\end{pmatrix}$ no es invertible.
+
+\item Sea $A =
+\begin{pmatrix}
+1 & 1 \\
+0 & 0
+\end{pmatrix}$. Tenemos $A \ne = 0$ y $A$ no es invertible.
+
+\item Sean $A =
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}$ y $B =
+\begin{pmatrix}
+2 & 0 \\
+1 & 1
+\end{pmatrix}$, entonces:
+
+\begin{math}
+A^{-1} =
+\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix},
+B^{-1} =
+\begin{pmatrix}
+\frac{1}{2} & 0 \\
+-\frac{1}{2} & 1
+\end{pmatrix}
+\end{math}
+
+En efecto:
+
+\begin{math}
+A A^{-1} =
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+B B^{-1} =
+\begin{pmatrix}
+2 & 0 \\
+1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\frac{1}{2} & 0 \\
+\frac{1}{2} & 1
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\end{math}
+
+Observamos que:
+
+\begin{math}
+A B =
+\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+2 & 0 \\
+1 & 1
+\end{pmatrix}=
+\begin{pmatrix}
+3 & 1 \\
+1 & 1
+\end{pmatrix}
+\end{math}
+
+\begin{math}
+B^{-1} A^{-1} =
+\begin{pmatrix}
+\frac{1}{2} & 0 \\
+-\frac{1}{2} & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}= \frac{1}{2}
+\begin{pmatrix}
+1 & 0 \\
+-1 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}= \frac{1}{2}
+\begin{pmatrix}
+1 & -1 \\
+-1 & 3
+\end{pmatrix}
+\end{math}
+
+Entonces $(A B)^{-1} = B^{-1} A^{-1}$
+
+\begin{math}
+A B B^{-1} A^{-1} = \frac{1}{2}
+\begin{pmatrix}
+3 & 1 \\
+1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & -1 \\
+-1 & 3
+\end{pmatrix} = \frac{1}{2}
+\begin{pmatrix}
+2 & 0 \\
+0 & 2
+\end{pmatrix} = I_n
+\end{math}
+
+Finalmente observamos
+
+\begin{math}
+A^{-1} B^{-1} =
+\begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\frac{1}{2} & 0 \\
+-\frac{1}{2} & 1
+\end{pmatrix} =
+\begin{pmatrix}
+1 & -1 \\
+-\frac{1}{2} & 1
+\end{pmatrix} \ne B^{-1} A^{-1}
+\end{math}
+
+\end{enumerate}
+
+\item [Definición.] Sea $A = (a_{ij})_{ij} \in \mathcal{M}_{n \times n}(k)$. La traspuesta de $A$, $A^t$ es la matrix $n \times n$ obtenida al cambiar los renglones de $A$ por columnas.
+
+Si $A =
+\begin{pmatrix}
+a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22} & \dots & a_{2n} \\
+\vdots & \vdots &       & \vdots \\
+a_{m1} & a_{m2} & \dots & a_{mn}
+\end{pmatrix}$, entonces:
+
+\begin{equation}
+A^t =
+\begin{pmatrix}
+a_{11} & a_{21} & \dots & a_{m1} \\
+a_{12} & a_{22} & \dots & a_{m2} \\
+\vdots & \vdots &       & \vdots \\
+a_{1n} & a_{2n} & \dots & a_{mn}
+\end{pmatrix}
+\end{equation}
+
+En la entrada $ij$ de $A^t$ esta $a_{ji}$, es decir $A^t = (a_{ji})_{ij}$.
+
+\item [Ejemplo.] Sea 
+\begin{math}
+A =
+\begin{pmatrix}
+1 & 0 & -\frac{1}{2} \\
+-3 & 2 & 0
+\end{pmatrix}
+\end{math}, entonces 
+\begin{math}
+A^t =
+\begin{pmatrix}
+1 & -3 \\
+0 & 2  \\
+-\frac{1}{2} & 0
+\end{pmatrix}
+\end{math}
+
+\item [Proposición.] Sean $A$, $B$ matrices y $c \in k$. Siempre que las operaciones se puedan realizar, se tiene:
+
+\begin{enumerate}[i)]
+\item $(A + B)^t = A^t + B^t$
+\item $(c A)^t = c A^t$
+\item $(A B)^t = B^t A^t$
+\item Si $A$ es invertible, entonces $A^t$ es invertible y $(A^t)^{-1} = (A^{-1})^t$
+\end{enumerate}
+
+\item [Demostraciones.] \mbox{}\\
+
+\begin{enumerate}[i)]
+\item
+\item
+\item Sean $A = (a_{ij})_{i = 1,n \mid j = 1,m}$ y $B = (b_{jk})_{j = 1,m \mid k = 1,p}$. Entonces $A B = (\sum\limits_{j=1}^{m} a_{ij} b_{jk})_{i = 1,n \mid k = 1,p}$
+
+Observemos que $A B$ es matriz $m \times p$ por lo que $(A B)^t$ es matriz $p \times m$. Por otro lado, $B^t$ es $p \times n$ y $A^t$ es $n \times m$, luego $B^t A^t$ es $p \times m$.
+
+En la entrada $ik$ de $(A B)^t$ esta el elemento $\sum\limits_{j=1}^{n} a_{kj} b_{ji}$. El $i$-esimo renglon de $B^t$ es $(b_{1i}, b_{2i}, \dots, b_{ni})$ y la $k$-esima coulmna de $A^t$ es $(a_{k1}, a_{k2}, \dots, a_{kn})$. Luego la entrada es $\sum\limits_{j=1}^{n} b_{ji} a_{kj}$. Asi pues $(A B)^t = B^t A^t$.
+
+\item Supongamos que $A$ es una matriz invertible $n \times n$. Tenemos $A^t (A^{-1})^t = (A^{-1} A)^t = I_n^t = I_n$. Entonces $(A^t)^{-1} = (A^{-1})^t$.
+\end{enumerate}
+
+\end{description}
+
+\subsection{Matriz de cambio de base}
+
+Sea $V$ un espacio vectorial de dimensión $n$ sobre $k$, sean $\{ v_1, v_2, \dots, v_n \}$ y $\{ v_1', v_2', \dots, v_n' \}$ bases de $V$. A $\{ v_1, v_2, \dots, v_n \}$ la consideramos como la base antigua de $V$ y a $\{ v_1', v_2', \dots, v_n' \}$ como la base nueva. Tenemos $v_i = \sum\limits_{k=1}^{n} c_{hi} v_k$, $1\le i \le n$, para algunos $c_{hi} \in k$. Entonces la matriz $P = \left( c_{hi} \right)_{ki}$ es la matriz de cambio de base de la base antigua a la base nueva.
+
+\begin{description}
+\item [Ejemplo.] Sean $V = \mathbbm{R}^2$, $\left\{ \left( e_1 = (1, 0), e_2 = (0, 1) \right) \right\}$ la base antigua, y 
+
+$\left\{ \left( v_1 = (1, 1), v_2 = (2, -1) \right) \right\}$ la base nueva.
+
+\begin{eqnarray}
+v_1 = (1, 1) = 1 (1, 0) + 1 (0, 1) = 1 e_1 + 1 e_2 \nonumber \\
+v_2 = (2, -1) = 2 (1, 0) - 1 (0, 1) = 2 e_1 - 1 e_2 \nonumber
+\end{eqnarray}
+
+Entonces la matriz de cambio de base es:
+
+\begin{equation}
+	P =
+	\begin{pmatrix}
+	1 & 2 \\
+	1 & -1
+	\end{pmatrix}\nonumber
+	\end{equation}
+\end{description}
+
+Consideremos ahora $\{ v_1', v_2', \dots, v_n' \}$ como base antigua y a $\{ v_1, v_2, \dots, v_n \}$ como base nueva. Tenemos entonces de manera analoga una matriz $Q = \left( d_{ih} \right)_{ih}$ de cambio de base de la nueva a la antigua.
+
+\begin{description}
+	\item [Ejemplo.] Con relación al ejemplo anterior.
+
+	\begin{eqnarray}
+	e_1 = (1, 0) = \frac{1}{3} (1, 0) + \frac{1}{3} (0, 1) = (1, 0) \nonumber \\
+	e_2 = (0, 1) = \frac{2}{3} (1, 0) - \frac{1}{3} (0, 1) = (0, 1) \nonumber
+	\end{eqnarray}
+
+	\begin{equation}
+	Q =
+	\begin{pmatrix}
+	\frac{1}{3} & \frac{2}{3} \\
+	\frac{1}{3} & -\frac{1}{3}
+	\end{pmatrix}\nonumber
+	\end{equation}
+\end{description}
+
+Observemos que para $1 \le h \le n$, $v_h = \sum\limits_{i=1}^{n} d_{ih} v_i' = \sum\limits_{i=1}^{n} d_{ih} \sum\limits_{l=1}^{n} c_{li} v_i$. Por lo tanto $v_h = \sum\limits_{l=1}^{n} \left( \sum\limits_{i=1}^{n} c_{li} d_{ih} \right) v_i$; luego entonces:
+
+\begin{equation}
+	\sum\limits_{i=1}^{n} c_{li} d_{ih} = \delta_{lh}
+\end{equation}
+
+Por lo tanto, $P Q = I_n$ y $Q = P^{-1}$, en particular, $P$ es invertible.
+
+Por otro lado observamos que si $v \in V$, entonces $v = \alpha_1 v_1 +\alpha_2 v_2 + \dots + \alpha_n v_n$ para algunos $\alpha_1, \alpha_2, \dots, \alpha_n \in k$ y $v = \alpha_1' v_1' +\alpha_2' v_2' + \dots + \alpha_n' v_n'$ para algunos $\alpha_1', \alpha_2', \dots, \alpha_n' \in k$. Luego entonces:
+
+\begin{eqnarray}
+	v = \sum\limits_{i=1}^{n} \alpha_i' v_i' = \sum\limits_{i=1}{n} \alpha_i' \sum\limits_{h=1}^{n} c_{hi} v_i \nonumber \\
+	v = \sum\limits_{h=1}^{n} \left( \sum\limits_{i=1}^{n} c_{hi} \alpha_i' \right) v_h = \sum\limits_{h=1}^{n} \alpha_h v_h \nonumber
+\end{eqnarray}
+
+En terminos de producto de matrices tenemos:
+
+\begin{equation}
+	\begin{pmatrix}
+		\alpha_1 \\
+		\alpha_2 \\
+		\vdots   \\
+		\alpha_n
+	\end{pmatrix} =
+	\begin{pmatrix}
+		c_{11} & c_{12} & \dots & c_{1n} \\
+		c_{21} & c_{22} & \dots & c_{2n} \\
+		\vdots & \vdots &   & \vdots \\
+		c_{n1} & c_{n2} & \dots & c_{nn}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\alpha_1' \\
+		\alpha_2' \\
+		\vdots \\
+		\alpha_n'
+	\end{pmatrix}
+\end{equation}
+
+Esto es $\left[ v \right]_{\left\{ v_i \right\}} = P \left[ v \right]_{\left\{ v_i' \right\}}$. Tambien tenemos que $\left[ v \right]_{\left\{ v_i' \right\}} = P^{-1} \left[ v \right]_{\left\{ v_i \right\}} = Q \left[ v \right]_{\left\{ v_i \right\}}$.
+
+\begin{description}
+	\item [Ejemplo.] Con relación a los ejemplos anteriores.
+
+	Teniendo el vector $v = (3, 4) \in k$ observamos que
+
+	\begin{equation}
+		v = \frac{11}{3} (1, 1) - \frac{1}{3} (2, -1) = (3, 4) \nonumber
+	\end{equation}
+
+	Por lo que:
+
+	\begin{equation}
+		\left[ v \right]_{\left\{ v_i \right\}} =
+		\begin{pmatrix}
+			\frac{11}{3} \\
+			-\frac{1}{3}
+		\end{pmatrix}
+		\nonumber
+	\end{equation}
+
+	Por lo tanto:
+
+	\begin{equation}
+		\left[ v \right]_{\left\{ e_i \right\}} =
+		\begin{pmatrix}
+			3 \\
+			4
+		\end{pmatrix}
+		\nonumber
+	\end{equation}
+
+	Comprobando:
+
+	\begin{equation}
+		P \left[ v \right]_{\{ v_i \}} =
+		\begin{pmatrix}
+			1 & 2 \\
+			1 & -1 
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac{11}{3} \\
+			-\frac{1}{3}
+		\end{pmatrix} =
+		\begin{pmatrix}
+			3 \\
+			4
+		\end{pmatrix} =
+		\left[ v \right]_{\left\{ e_i \right\}}
+		\nonumber
+	\end{equation}
+
+	\begin{equation}
+		Q \left[ v \right]_{\{ e_i \}} =
+		\begin{pmatrix}
+			\frac{1}{3} & \frac{2}{3} \\
+			\frac{1}{3} & -\frac{1}{3}
+		\end{pmatrix}
+		\begin{pmatrix}
+			3 \\
+			4
+		\end{pmatrix} =
+		\begin{pmatrix}
+			\frac{11}{3} \\
+			-\frac{1}{3}
+		\end{pmatrix} =
+		\left[ v \right]_{\left\{ v_i \right\}}
+		\nonumber
+	\end{equation}
+\end{description}
+
+\subsection{Método de eliminación de Gauss-Jordan}
+\begin{description}
+	\item
+\end{description}
+
+\newpage
+\section{Transformaciones lineales}
+\begin{description}
+	\item
+\end{description}
+
+\subsection{Matriz asociada}
+\begin{description}
+	\item
+\end{description}
+
+\newpage
+\section{Grupos de permutaciones}
+
+Sea $X$ un conjunto no vacío. El grupo de permutaciones en $X$, denotado por $S_X$, es el conjunto de las funciones biyectivas de $X$ en si mismo. Los elementos de $S_X$ se llaman permutaciones (de los elementos de $X$).
+
+\begin{description}
+	\item [Ejemplos.] \mbox{}\\
+
+\begin{enumerate}
+\item Sea $X = \{ x \}$ conjunto con un elemento.
+
+\begin{math}
+	S_X = \{ id_X \}
+\end{math}
+
+\item Sea $X = \{ x,y \}$ conjunto con dos elementos.
+
+\begin{math}
+	S_X = \{ id_X, \sigma \}
+\end{math}
+
+donde $\sigma : X \to X$, $x \mapsto y$, $y \mapsto x$.
+
+\item Sea $X = \{ x,y,z \}$ conjunto con tres elementos.
+
+\begin{math}
+	S_X = \{ id_X, \rho, \rho^2, \sigma, \tau, \lambda \}
+\end{math}
+\end{enumerate}
+
+\item [Proposición.] Sea $X$ conjunto no vacío. Tenemos:
+
+\begin{enumerate}[i)]
+	\item $\sigma, \tau \in S_X \implies \sigma \circ \tau \in S_X$
+	\item $\forall \sigma, \tau, \rho \in S_X$, tenemos que $(\sigma \circ \tau) \circ \rho = \sigma \circ (\tau \circ \rho)$
+	\item $\exists id_X \in S_X$ tal que $\sigma \circ id_X = id_X \circ \sigma = \sigma \quad \forall \sigma \in S_X$
+	\item Dado $\sigma \in S_X$, $\exists \tau \in S_X$ tal que $\sigma \circ \tau = \tau \circ \sigma = id_X$ $\therefore \tau = \sigma^{-1}$
+\end{enumerate}
+
+\item [Corolario.] Sean $\sigma, \tau, \rho \in S_X$, Tenemos:
+
+\begin{enumerate}[i)]
+	\item $\sigma \circ \tau = \sigma \circ \rho \implies \tau = \rho$
+	\item $\sigma \circ \rho = \tau \circ \rho \implies \sigma = \tau$
+\end{enumerate}
+
+\item [Corolario.] Si $X$ es un conjunto con $n$ elementos $S_X$ se denotará por $S_n$.
+
+\item [Observación.] De igual manera nos referiremos a la composición de permutaciones como producto y denotaremos la composición de permutaciones simplemente por yuxtaposición.
+
+\begin{equation}
+\varphi \tau = \varphi \circ \tau
+\end{equation}
+
+\end{description}
+
+\newpage
+\section{Determinantes}
+
+\newpage
+\section{Espacios Euclidianos}
+
+\end{document}

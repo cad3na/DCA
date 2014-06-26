@@ -1,0 +1,148 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Ejemplo de asignacion de polos con observacion de estado</title><meta name="generator" content="MATLAB 8.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-06-22"><meta name="DC.source" content="asignacion_polos.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Ejemplo de asignacion de polos con observacion de estado</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Se inicializan las variables simbolicas</a></li><li><a href="#2">Se describe el sistema en su representacion de estado</a></li><li><a href="#3">Se inicializan las variables con las que se crearan los polos para el controloador y el observador</a></li><li><a href="#4">Se calcula f para la retroalimentacion de estado</a></li><li><a href="#5">Se calcula k para la inyeccion de salida</a></li></ul></div><h2>Se inicializan las variables simbolicas<a name="1"></a></h2><pre class="codeinput">clear
+clc
+syms <span class="string">s</span>
+</pre><h2>Se describe el sistema en su representacion de estado<a name="2"></a></h2><pre class="codeinput">I = eye(3);
+v0= zeros(3,1);
+
+A = [0 1 0;
+     0 0 1;
+     0 0 0];
+b = [0;0;1];
+c = [-1 0 1];
+x0= [1;0;0];
+</pre><h2>Se inicializan las variables con las que se crearan los polos para el controloador y el observador<a name="3"></a></h2><pre class="codeinput">tc = 1;
+to = 10;
+</pre><h2>Se calcula f para la retroalimentacion de estado<a name="4"></a></h2><pre class="codeinput">f = [-tc^3 -3*tc^2 -3*tc];
+Af = A+ b*f;
+<span class="comment">% Se muestra el polinomio caracteristico con esta retroalimentacion de</span>
+<span class="comment">% estado</span>
+factor(det(s*I - Af))
+</pre><h2>Se calcula k para la inyeccion de salida<a name="5"></a></h2><pre>Primero se calcula la matriz en la forma observador con un cambio de
+base</pre><pre class="codeinput">Ao = A';
+co = b';
+<span class="comment">%  Se calcula la matriz de observabilidad</span>
+Observabilidad = [c;c*A;c*A^2]:
+Observabilidad_o = [co;co*Ao;co*Ao^2];
+<span class="comment">%  Se calcula la matriz de cambio de base para la forma observador</span>
+To = inv(Observabilidad)*Observabilidad_o;
+<span class="comment">%  Se calcula k y A en la forma observador</span>
+ko = [-to^3 -3*to^2 -3*to];
+Ako = Ao + ko*co;
+<span class="comment">%  Se muestra el polinomio caracteristico con la inyeccion de salida</span>
+factor(det(s*I - Ako))
+<span class="comment">%  Se calcula k y A en la forma normal</span>
+k = To*ko;
+Ak = A + k*c;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Ejemplo de asignacion de polos con observacion de estado
+%% Se inicializan las variables simbolicas
+clear
+clc
+syms s
+%% Se describe el sistema en su representacion de estado
+I = eye(3);
+v0= zeros(3,1);
+
+A = [0 1 0;
+     0 0 1;
+     0 0 0];
+b = [0;0;1];
+c = [-1 0 1];
+x0= [1;0;0];
+%% Se inicializan las variables con las que se crearan los polos para el controloador y el observador
+tc = 1;
+to = 10;
+%% Se calcula f para la retroalimentacion de estado
+f = [-tc^3 -3*tc^2 -3*tc];
+Af = A+ b*f;
+% Se muestra el polinomio caracteristico con esta retroalimentacion de
+% estado
+factor(det(s*I - Af))
+%% Se calcula k para la inyeccion de salida
+%  Primero se calcula la matriz en la forma observador con un cambio de
+%  base
+Ao = A';
+co = b';
+%  Se calcula la matriz de observabilidad
+Observabilidad = [c;c*A;c*A^2]:
+Observabilidad_o = [co;co*Ao;co*Ao^2];
+%  Se calcula la matriz de cambio de base para la forma observador
+To = inv(Observabilidad)*Observabilidad_o;
+%  Se calcula k y A en la forma observador
+ko = [-to^3 -3*to^2 -3*to];
+Ako = Ao + ko*co;
+%  Se muestra el polinomio caracteristico con la inyeccion de salida
+factor(det(s*I - Ako))
+%  Se calcula k y A en la forma normal
+k = To*ko;
+Ak = A + k*c;
+##### SOURCE END #####
+--></body></html>
