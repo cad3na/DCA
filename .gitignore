@@ -4,4 +4,4 @@
 *.fdb_ltexmk
 *.synctex.gz
 *.log
-
+*.out
