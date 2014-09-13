@@ -8,6 +8,7 @@ pdf:
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode $(TARGET).tex
 	@pdflatex -interaction=batchmode $(TARGET).tex
+	@pdflatex -interaction=batchmode $(TARGET).tex
 
 clean:
 	@echo "==============================================="
