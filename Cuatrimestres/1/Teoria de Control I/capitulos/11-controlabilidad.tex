@@ -1,359 +1,357 @@
 
 \chapter{Controlabilidad y asignación de polos}
 
-Sea un sistema para la Ecuación Diferencial Ordinaria:
+    Sea un sistema para la Ecuación Diferencial Ordinaria:
 
-\begin{equation}
-M \left(\frac{d}{dt} \right) y(t) = N \left(\frac{d}{dt} \right) u(t)
-\end{equation}
+    \begin{equation}
+        M \left(\frac{d}{dt} \right) y(t) = N \left(\frac{d}{dt} \right) u(t)
+    \end{equation}
 
-Sea la siguiente representación de estado de esta Ecuación Diferencial Ordinaria:
+    Sea la siguiente representación de estado de esta Ecuación Diferencial Ordinaria:
 
-\begin{eqnarray}
-\frac{d}{dt} x & = & A x + b u \nonumber \\
-y & = & c x + d u \nonumber
-\end{eqnarray}
+    \begin{eqnarray}
+    \frac{d}{dt} x & = & A x + b u \nonumber \\
+    y & = & c x + d u \nonumber
+    \end{eqnarray}
 
-donde $x \in \mathbbm{R}^n$ y $u,y \in \mathbbm{R}$.
+    donde $x \in \mathbbm{R}^n$ y $u,y \in \mathbbm{R}$.
 
-Problema. Se desea encontrar una ley de control $u = f(x)$, que nos permita asignar los polos a voluntad.
+    Problema. Se desea encontrar una ley de control $u = f(x)$, que nos permita asignar los polos a voluntad.
 
-Sabemos que:
+    Sabemos que:
 
-\begin{description}
-\item [Polos.] $\left\{ s \in \mathbbm{C} \mid M(s) = 0 \right\} = \left\{ s \in \mathbbm{C} \mid \det{(sI - A)} \right\}$
-\end{description}
+    \begin{description}
+        \item [Polos.] $\left\{ s \in \mathbbm{C} \mid M(s) = 0 \right\} = \left\{ s \in \mathbbm{C} \mid \det{(sI - A)} \right\}$
+    \end{description}
 
-Para resolver este problema hay que investigar el concepto estructural de la alcanzabilidad.
+    Para resolver este problema hay que investigar el concepto estructural de la alcanzabilidad.
 
-\section{Alcanzabilidad y Controlabilidad}
+    \section{Alcanzabilidad y Controlabilidad}
 
-\begin{itemize}
-\item Una representación de estado se dice controlable, si para cualquier condición inicial, $x(0) = x_0 \in \mathbbm{R}^n$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega al origen $\left( x(t_f) = 0 \right)$.
-\item Una representación de estado se dice alcanzable, si para cualquier punto $x \in \mathbbm{R}$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega a un punto cualquiera $\left( x(t_f) = x_f \right)$ desde el origen.
-\end{itemize}
+        \begin{itemize}
+            \item Una representación de estado se dice controlable, si para cualquier condición inicial, $x(0) = x_0 \in \mathbbm{R}^n$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega al origen $\left( x(t_f) = 0 \right)$.
+            \item Una representación de estado se dice alcanzable, si para cualquier punto $x \in \mathbbm{R}$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega a un punto cualquiera $\left( x(t_f) = x_f \right)$ desde el origen.
+        \end{itemize}
 
-En los sistemas lineales estas dos propiedades están mutuamente implicadas, por lo que se les trata indistinguiblemente. Pero en general:
+        En los sistemas lineales estas dos propiedades están mutuamente implicadas, por lo que se les trata indistinguiblemente. Pero en general:
 
-\begin{equation}
-\text{Alcanzabilidad} \implies \text{Controlabilidad}
-\end{equation}
+        \begin{equation}
+            \text{Alcanzabilidad} \implies \text{Controlabilidad}
+        \end{equation}
 
-La solución temporal de $\frac{dx}{dt} = Ax + bu$ con $x(0) = 0$ es:
+        La solución temporal de $\frac{dx}{dt} = Ax + bu$ con $x(0) = 0$ es:
 
-\begin{equation}
-x(t) = \int_0^t \exp{(A(t - \tau))} b u(\tau) d \tau
-\end{equation}
+        \begin{equation}
+            x(t) = \int_0^t \exp{(A(t - \tau))} b u(\tau) d \tau
+        \end{equation}
 
-del teorema de Cayley-Hamilton se tiene:
+        del teorema de Cayley-Hamilton se tiene:
 
-\begin{equation}
-\exp{(A t)} = \sum\limits_{i=0}^{\infty} \frac{1}{i!} A^i t^i = \sum\limits_{i=0}^{n-1} \varphi_i(t) A^i
-\end{equation}
+        \begin{equation}
+            \exp{(A t)} = \sum\limits_{i=0}^{\infty} \frac{1}{i!} A^i t^i = \sum\limits_{i=0}^{n-1} \varphi_i(t) A^i
+        \end{equation}
 
-donde $\varphi_i(t) = \sum\limits_{j=0}^{\infty} \varphi_{ij} t^j$, $\varphi_{ij} \in \mathbbm{R}$, $n \in \mathbbm{N}$, $j \in \mathbbm{Z}^+$. Por lo anterior, tenemos:
+        donde $\varphi_i(t) = \sum\limits_{j=0}^{\infty} \varphi_{ij} t^j$, $\varphi_{ij} \in \mathbbm{R}$, $n \in \mathbbm{N}$, $j \in \mathbbm{Z}^+$. Por lo anterior, tenemos:
 
-\begin{eqnarray}
-x(t) & = & \sum\limits_{i=0}^{n-1} \psi_i(t) A^i b \nonumber \\
-x(t) & = &
-\begin{pmatrix}
-b & A b & \dots & A^{n-1} b
-\end{pmatrix}
-\begin{pmatrix}
-\psi_0(t) \\
-\psi_1(t) \\
-\vdots \\
-\psi_{n-1}(t)
-\end{pmatrix}
-\end{eqnarray}
+        \begin{eqnarray}
+        x(t) & = & \sum\limits_{i=0}^{n-1} \psi_i(t) A^i b \nonumber \\
+        x(t) & = &
+        \begin{pmatrix}
+        b & A b & \dots & A^{n-1} b
+        \end{pmatrix}
+        \begin{pmatrix}
+        \psi_0(t) \\
+        \psi_1(t) \\
+        \vdots \\
+        \psi_{n-1}(t)
+        \end{pmatrix}
+        \end{eqnarray}
 
-donde $\psi_i(t) = \int_0^t \varphi_i (t - \tau) u(\tau) d \tau$.
+        donde $\psi_i(t) = \int_0^t \varphi_i (t - \tau) u(\tau) d \tau$.
 
-Entonces una condición necesaria para que $x(t_f) = x_f \quad \forall x \in \mathbbm{R}, \forall t_f \in \mathbbm{R}, t_f > 0$, es que la matriz de controlabilidad
+        Entonces una condición necesaria para que $x(t_f) = x_f \quad \forall x \in \mathbbm{R}, \forall t_f \in \mathbbm{R}, t_f > 0$, es que la matriz de controlabilidad
 
-\begin{equation}
-C_{(A,b)} =
-\begin{pmatrix}
-b & Ab & \dots & A^{n-1}b
-\end{pmatrix}
-\end{equation}
+        \begin{equation}
+            C_{(A,b)} =
+            \begin{pmatrix}
+            b & Ab & \dots & A^{n-1}b
+            \end{pmatrix}
+        \end{equation}
 
-sea de rango pleno por filas, de lo contrario existen componentes de $x(t)$ que siempre seran nulos. En nuestro caso particular $\left( y, u \in \mathbbm{R}^n \right)$:
+        sea de rango pleno por filas, de lo contrario existen componentes de $x(t)$ que siempre seran nulos. En nuestro caso particular $\left( y, u \in \mathbbm{R}^n \right)$:
 
-\begin{equation}
-\det{C_{(A,b)}} \ne 0
-\end{equation}
+        \begin{equation}
+            \det{C_{(A,b)}} \ne 0
+        \end{equation}
 
-Si la matriz de controlabilidad $C_{(A,b)}$ es de rango pleno por filas, entonces el gramiano de controlabilidad es invertible. \footnote{Aquí se esta abusando de la notación, ya que el gramiano de controlabilidad corresponde al caso en que $t \to \infty$}
+        Si la matriz de controlabilidad $C_{(A,b)}$ es de rango pleno por filas, entonces el gramiano de controlabilidad es invertible. \footnote{Aquí se esta abusando de la notación, ya que el gramiano de controlabilidad corresponde al caso en que $t \to \infty$}
 
-\begin{equation}
-W = \int_0^t \exp{(A \sigma)} b b^t \exp{(A^t \sigma)} d\sigma \quad t > 0, \sigma = t - \tau
-\end{equation}
+        \begin{equation}
+            W = \int_0^t \exp{(A \sigma)} b b^t \exp{(A^t \sigma)} d\sigma \quad t > 0, \sigma = t - \tau
+        \end{equation}
 
-Entonces, con la siguiente ley de control se tiene:
+        Entonces, con la siguiente ley de control se tiene:
 
-\begin{equation}
-u(t) = b^t \exp{(A^t(t_f - t))} W_{t_f}^{-1} x_f
-\end{equation}
+        \begin{equation}
+            u(t) = b^t \exp{(A^t(t_f - t))} W_{t_f}^{-1} x_f
+        \end{equation}
 
-Por lo que si sustituimos $t_f$ en la solución para $x(t)$:
+        Por lo que si sustituimos $t_f$ en la solución para $x(t)$:
 
-\begin{multline}
-x(t_f) = \int_0^{t_f} \exp{(A(t - \tau))} b u(\tau) d\tau \\
-       = \int_0^{t_f} \exp{(A(t - \tau))} b b^t \exp{(A^t(t_f - \tau))} W_{t_f}^{-1} x_f d\tau \\
-       = \int_{t_f}^0 \exp{(A \sigma)} b b^t \exp{(A^t \sigma)} d\sigma W_{t_f}^{-1} x_f \\
-       = W_{t_f} W_{t_f}^{-1} x_f = x_f
-\end{multline}
-
-\begin{itemize}
-\item Por lo que una condición suficiente y necesaria para que la ecuación de estado sea alcanzable (y por lo tanto controlable), es que su matriz de controlabilidad, $C_{(A,b)}$, sea de rango pleno por filas.
-\item Cuando la matriz de controlabilidad es de rango pleno por filas, se dice que el par $(A, b)$ es controlable.
-\end{itemize}
-
-\section{Asignación de polos}
-
-Sea la ecuación de estado controlable, es decir $\frac{dx}{dt} = Ax + bu$ con $b \ne 0$, $\det{(C_{(A,b)})} \ne 0$, $\Pi(s)$ y $\alpha(s)$ los polinomios característico y mínimo de $A$ respectivamente.
-
-\begin{equation}
-\Pi(s) = \det{(sI - A)} \quad \text{grado } \Pi(s) = n \nonumber
-\end{equation}
-
-\begin{equation}
-\alpha(s) \text{ es el polinomio de menor grado tal que } \alpha(A) = 0 \nonumber
-\end{equation}
-
-Sea $\kappa = \text{grado } \alpha(s)$, donde obviamente $1 \le \kappa \le n$.
-
-\begin{equation}
-\alpha(s) = s^{\kappa} + (a_{\kappa} + a_{\kappa - 1} s + \dots + a_1 s^{\kappa - 1}) \nonumber
-\end{equation}
-
-\begin{equation}
-\alpha(A) = A^{\kappa} + (a_{\kappa} + a_{\kappa - 1} A + \dots + a_1 A^{\kappa - 1}) \nonumber
-\end{equation}
-
-Sean $\alpha_i$ con $i \in \{ 0, 1, \dots, \kappa \}$, los polinomios mónicos auxiliares tales que:
-
-\begin{eqnarray}
-\alpha_0(s) & = & \alpha(s) \nonumber \\
-\alpha_1(s) & = & s^{\kappa - 1} + (a_{\kappa - 1} + a_{\kappa - 2} s + \dots + a_1 s^{\kappa - 2}) \nonumber \\
-\vdots \nonumber \\
-\alpha_{\kappa - 1}(s) & = & s + a_1 \nonumber \\
-\alpha_{\kappa}(s) & = & 1 \nonumber
-\end{eqnarray}
-
-en donde, por definición, $\alpha_1(A) \ne 0$ y $\alpha_0(A) = 0$.
-
-Sea $b \ne 0$, un vector en $\mathbbm{R}^n$ tal que su polinomio mínimo coincide con $\alpha(s)$.
-
-\begin{eqnarray}
-\alpha_i(A) b & \ne & 0 \quad i \in \{ 1, 2, \dots, \kappa \} \nonumber \\
-\alpha_0(A) b & = & 0 \nonumber
-\end{eqnarray}
-
-\begin{equation}
-\vdots \nonumber
-\end{equation}
-
-\begin{eqnarray}
-(A^{\kappa - 1} + (a_{\kappa - 1} + a_{\kappa - 2} A + \dots + a_1 A^{\kappa - 2})) b & \ne & 0 \nonumber \\
-\alpha_0(A) b & = & 0 \nonumber
-\end{eqnarray}
-
-\begin{equation}
-\vdots \nonumber
-\end{equation}
-
-\begin{eqnarray}
-\begin{pmatrix}
-b & Ab & \dots & A^{\kappa - 1} b
-\end{pmatrix}
-\begin{pmatrix}
-a_{\kappa - 1} \\
-a_{\kappa - 2} \\
-\vdots \\
-a_{1}
-\end{pmatrix} & \ne & 0 \nonumber \\
-\alpha_0(A) b & = & 0 \nonumber
-\end{eqnarray}
-
-Suponga que el par $(A,b)$ es controlable, por lo tanto $\det{C_{(A,b)}} \ne 0$, entonces:
-
-\begin{equation}
-\begin{pmatrix}
-b & A b & \dots & A^{n-1} b
-\end{pmatrix} v \ne 0 \quad \forall v \ne 0 \quad \therefore \kappa = n
-\end{equation}
-
-Por lo que el polinomio mínimo y el polinomio característico coinciden cuando el par $(A,b)$ es controlable. Definimos la base:
-
-\begin{eqnarray}
-e_n & = & \alpha_n(A) b = b \nonumber \\
-e_{n-1} & = & \alpha_{n-1}(A) b = (A + a_1I) b = A e_n + a_1 e_n \nonumber \\
-e_{n-2} & = & \alpha_{n-2}(A) b = (A^2 + (a_2I + a_1A)) b = A(A+a_1I) b + a_2 b = A e_{n-1} + a_2 e_n \nonumber \\
-\vdots & = & \vdots \nonumber \\
-e_1 & = & \alpha_1(A) b = A e_2 + a_{n-1} e_n
-\end{eqnarray}
-
-Note que sustituyendo $A$, tenemos:
-
-\begin{equation}
-\alpha(A) b = (A^n + (a_nI + a_{n-1}A + \dots + a_1 A^{n-1})) b = A e_1 + a_n e_n = 0
-\end{equation}
-
-Por lo que:
-
-\begin{eqnarray}
-e_n & = & b \nonumber \\
-A e_{n} & = & e_{n-1} + a_1 e_n \nonumber \\
-A e_{n-1} & = & e_{n-2} + a_2 e_n \nonumber \\
-\vdots & = & \vdots \nonumber \\
-A e_2 & = & e_1 + a_{n-1} e_n \nonumber \\
-A e_1 & = & - a_{n} e_n
-\end{eqnarray}
-
-Entonces, bajo la base definida, las transformaciones lineales tienen la siguiente forma:
-
-\begin{equation}
-A_c = \left[ A \right]_{\{ e_1, e_2, \dots, e_n \}} =
-\begin{pmatrix}
-0 & 1 & 0 & \dots & 0 & 0 & 0 \\
-0 & 0 & 1 & \dots & 0 & 0 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 0 \\
-\vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
-0 & 0 & 0 & \dots & 0 & 1 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 1 \\
--a_{n} & -a_{n-1} & -a_{n-2} & \dots & -a_{3} & -a_{2} & -a_{1}
-\end{pmatrix}
-\end{equation}
-
-\begin{equation}
-b_c = \left[ b \right]_{\{ e_1, e_2, \dots, e_n \}} =
-\begin{pmatrix}
-0 \\
-0 \\
-0 \\
-\vdots \\
-0 \\
-0 \\
-1
-\end{pmatrix}
-\end{equation}
-
-Por lo tanto:
-
-\begin{equation}
-\frac{d}{dt} x_c =
-\begin{pmatrix}
-0 & 1 & 0 & \dots & 0 & 0 & 0 \\
-0 & 0 & 1 & \dots & 0 & 0 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 0 \\
-\vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
-0 & 0 & 0 & \dots & 0 & 1 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 1 \\
--a_{n} & -a_{n-1} & -a_{n-2} & \dots & -a_{3} & -a_{2} & -a_{1}
-\end{pmatrix} x_c +
-\begin{pmatrix}
-0 \\
-0 \\
-0 \\
-\vdots \\
-0 \\
-0 \\
-1
-\end{pmatrix} u
-\end{equation}
-
-\begin{description}
-\item [Observaciones.] \mbox{}\\
-\begin{enumerate}
-\item Polinomio Característico
-
-\begin{equation}
-\det{(sI - A_c)} = s^n + a_1 s^{n-1} + \dots + a_{n-1} s + a_n = \Pi(s) \nonumber
-\end{equation}
-
-\item Retroalimentación de Estado
-
-Sea $u = f_c x_c + v$, donde $f_c = (a_n - \bar{a}_n)(a_{n-1} - \bar{a}_{n-1})\dots(a_1 - \bar{a}_1)$. Entonces el sistema de lazo cerrado es:
-
-\begin{equation}
-\frac{d}{dt} x_c = A_{f_c} x_c + v
-\end{equation}
-
-donde $A_{f_c} = A_c + b_c f_c$, es decir:
-
-\begin{equation}
-A_{f_c} =
-\begin{pmatrix}
-0 & 1 & 0 & \dots & 0 & 0 & 0 \\
-0 & 0 & 1 & \dots & 0 & 0 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 0 \\
-\vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
-0 & 0 & 0 & \dots & 0 & 1 & 0 \\
-0 & 0 & 0 & \dots & 0 & 0 & 1 \\
--\bar{a}_{n} & -\bar{a}_{n-1} & -\bar{a}_{n-2} & \dots & -\bar{a}_{3} & -\bar{a}_{2} & -\bar{a}_{1}
-\end{pmatrix}
-\end{equation}
-
-y su polinomio característico es $\det{(sI - A_{f_c})} = s^n + \bar{a}_1 s^{n-1} + \dots + \bar{a}_{n-1} s + \bar{a}_n$.
-
-\end{enumerate}
-\end{description}
-
-\section{Propiedades de la matriz de controlabilidad}
-
-\begin{enumerate}
-\item Matriz de controlabilidad del par $(A_c, b_c)$.
-
-\begin{equation}
-C_{(A_c,b_c)} =
-\begin{pmatrix}
-0 & 0 & 0 & \dots & 1 \\
-\vdots & \vdots & \vdots & & \vdots \\
-0 & 0 & 1 & \dots & * \\
-0 & 1 & * & \dots & * \\
-1 & * & * & \dots & *
-\end{pmatrix}
-\end{equation}
-
-\begin{equation}
-\det{C_{(A_c, b_c)}} = \pm 1
-\end{equation}
-
-\item Invarianza de la matriz de controlabilidad bajo cambio de base
-
-Sea el par $(A, b)$ controlable, sea $T$ una matriz de cambio de base y sean $A_1 = T^{-1} A T$ y $b_1 = T^{-1} b$ las matrices de nuestra nueva base.
-
-\begin{multline}
-C_{(A_1, b_1)} =
-\begin{pmatrix}
-b_1 & A_1 b_1 & \dots & A^{n-1} b_1
-\end{pmatrix} = \\
-\begin{pmatrix}
-T^{-1} b & T^{-1} A T T^{-1} b & \dots & (T^{-1} A T \dots T^{-1} A T) T^{-1} b
-\end{pmatrix} = \\
-\begin{pmatrix}
-T^{-1} b & T^{-1} A b & \dots & T^{-1} A^{n-1} b
-\end{pmatrix} = \\
-T^{-1}
-\begin{pmatrix}
-b & A b & \dots & A^{n-1} b
-\end{pmatrix} =
-T^{-1} C_{(A, b)} \nonumber
-\end{multline}
-
-\begin{equation}
-T = C_{(A, b)} C_{(A_1, b_1)}^{-1}
-\end{equation}
-
-\item Invarianza de la matriz de controlabilidad bajo retroalimentación de estado $u = f x + v$
-
-
-
-\item
-\end{enumerate}
-
-\section{Formas canónicas}
-\subsection{Forma canónica controlador}
-\subsection{Forma canónica controlabilidad}
+        \begin{multline}
+            x(t_f) = \int_0^{t_f} \exp{(A(t - \tau))} b u(\tau) d\tau \\
+                   = \int_0^{t_f} \exp{(A(t - \tau))} b b^t \exp{(A^t(t_f - \tau))} W_{t_f}^{-1} x_f d\tau \\
+                   = \int_{t_f}^0 \exp{(A \sigma)} b b^t \exp{(A^t \sigma)} d\sigma W_{t_f}^{-1} x_f \\
+                   = W_{t_f} W_{t_f}^{-1} x_f = x_f
+        \end{multline}
+
+        \begin{itemize}
+            \item Por lo que una condición suficiente y necesaria para que la ecuación de estado sea alcanzable (y por lo tanto controlable), es que su matriz de controlabilidad, $C_{(A,b)}$, sea de rango pleno por filas.
+            \item Cuando la matriz de controlabilidad es de rango pleno por filas, se dice que el par $(A, b)$ es controlable.
+        \end{itemize}
+
+    \section{Asignación de polos}
+
+        Sea la ecuación de estado controlable, es decir $\frac{dx}{dt} = Ax + bu$ con $b \ne 0$, $\det{(C_{(A,b)})} \ne 0$, $\Pi(s)$ y $\alpha(s)$ los polinomios característico y mínimo de $A$ respectivamente.
+
+        \begin{equation}
+            \Pi(s) = \det{(sI - A)} \quad \text{grado } \Pi(s) = n \nonumber
+        \end{equation}
+
+        \begin{equation}
+            \alpha(s) \text{ es el polinomio de menor grado tal que } \alpha(A) = 0 \nonumber
+        \end{equation}
+
+        Sea $\kappa = \text{grado } \alpha(s)$, donde obviamente $1 \le \kappa \le n$.
+
+        \begin{equation}
+            \alpha(s) = s^{\kappa} + (a_{\kappa} + a_{\kappa - 1} s + \dots + a_1 s^{\kappa - 1}) \nonumber
+        \end{equation}
+
+        \begin{equation}
+            \alpha(A) = A^{\kappa} + (a_{\kappa} + a_{\kappa - 1} A + \dots + a_1 A^{\kappa - 1}) \nonumber
+        \end{equation}
+
+        Sean $\alpha_i$ con $i \in \{ 0, 1, \dots, \kappa \}$, los polinomios mónicos auxiliares tales que:
+
+        \begin{eqnarray}
+        \alpha_0(s) & = & \alpha(s) \nonumber \\
+        \alpha_1(s) & = & s^{\kappa - 1} + (a_{\kappa - 1} + a_{\kappa - 2} s + \dots + a_1 s^{\kappa - 2}) \nonumber \\
+        \vdots \nonumber \\
+        \alpha_{\kappa - 1}(s) & = & s + a_1 \nonumber \\
+        \alpha_{\kappa}(s) & = & 1 \nonumber
+        \end{eqnarray}
+
+        en donde, por definición, $\alpha_1(A) \ne 0$ y $\alpha_0(A) = 0$.
+
+        Sea $b \ne 0$, un vector en $\mathbbm{R}^n$ tal que su polinomio mínimo coincide con $\alpha(s)$.
+
+        \begin{eqnarray}
+        \alpha_i(A) b & \ne & 0 \quad i \in \{ 1, 2, \dots, \kappa \} \nonumber \\
+        \alpha_0(A) b & = & 0 \nonumber
+        \end{eqnarray}
+
+        \begin{equation}
+            \vdots \nonumber
+        \end{equation}
+
+        \begin{eqnarray}
+        (A^{\kappa - 1} + (a_{\kappa - 1} + a_{\kappa - 2} A + \dots + a_1 A^{\kappa - 2})) b & \ne & 0 \nonumber \\
+        \alpha_0(A) b & = & 0 \nonumber
+        \end{eqnarray}
+
+        \begin{equation}
+            \vdots \nonumber
+        \end{equation}
+
+        \begin{eqnarray}
+        \begin{pmatrix}
+        b & Ab & \dots & A^{\kappa - 1} b
+        \end{pmatrix}
+        \begin{pmatrix}
+        a_{\kappa - 1} \\
+        a_{\kappa - 2} \\
+        \vdots \\
+        a_{1}
+        \end{pmatrix} & \ne & 0 \nonumber \\
+        \alpha_0(A) b & = & 0 \nonumber
+        \end{eqnarray}
+
+        Suponga que el par $(A,b)$ es controlable, por lo tanto $\det{C_{(A,b)}} \ne 0$, entonces:
+
+        \begin{equation}
+            \begin{pmatrix}
+            b & A b & \dots & A^{n-1} b
+            \end{pmatrix} v \ne 0 \quad \forall v \ne 0 \quad \therefore \kappa = n
+        \end{equation}
+
+        Por lo que el polinomio mínimo y el polinomio característico coinciden cuando el par $(A,b)$ es controlable. Definimos la base:
+
+        \begin{eqnarray}
+        e_n & = & \alpha_n(A) b = b \nonumber \\
+        e_{n-1} & = & \alpha_{n-1}(A) b = (A + a_1I) b = A e_n + a_1 e_n \nonumber \\
+        e_{n-2} & = & \alpha_{n-2}(A) b = (A^2 + (a_2I + a_1A)) b = A(A+a_1I) b + a_2 b = A e_{n-1} + a_2 e_n \nonumber \\
+        \vdots & = & \vdots \nonumber \\
+        e_1 & = & \alpha_1(A) b = A e_2 + a_{n-1} e_n
+        \end{eqnarray}
+
+        Note que sustituyendo $A$, tenemos:
+
+        \begin{equation}
+            \alpha(A) b = (A^n + (a_nI + a_{n-1}A + \dots + a_1 A^{n-1})) b = A e_1 + a_n e_n = 0
+        \end{equation}
+
+        Por lo que:
+
+        \begin{eqnarray}
+        e_n & = & b \nonumber \\
+        A e_{n} & = & e_{n-1} + a_1 e_n \nonumber \\
+        A e_{n-1} & = & e_{n-2} + a_2 e_n \nonumber \\
+        \vdots & = & \vdots \nonumber \\
+        A e_2 & = & e_1 + a_{n-1} e_n \nonumber \\
+        A e_1 & = & - a_{n} e_n
+        \end{eqnarray}
+
+        Entonces, bajo la base definida, las transformaciones lineales tienen la siguiente forma:
+
+        \begin{equation}
+            A_c = \left[ A \right]_{\{ e_1, e_2, \dots, e_n \}} =
+            \begin{pmatrix}
+            0 & 1 & 0 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 1 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 0 \\
+            \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+            0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 1 \\
+            -a_{n} & -a_{n-1} & -a_{n-2} & \dots & -a_{3} & -a_{2} & -a_{1}
+            \end{pmatrix}
+        \end{equation}
+
+        \begin{equation}
+            b_c = \left[ b \right]_{\{ e_1, e_2, \dots, e_n \}} =
+            \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            \vdots \\
+            0 \\
+            0 \\
+            1
+            \end{pmatrix}
+        \end{equation}
+
+        Por lo tanto:
+
+        \begin{equation}
+            \frac{d}{dt} x_c =
+            \begin{pmatrix}
+            0 & 1 & 0 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 1 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 0 \\
+            \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+            0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 1 \\
+            -a_{n} & -a_{n-1} & -a_{n-2} & \dots & -a_{3} & -a_{2} & -a_{1}
+            \end{pmatrix} x_c +
+            \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            \vdots \\
+            0 \\
+            0 \\
+            1
+            \end{pmatrix} u
+        \end{equation}
+
+        \begin{description}
+            \item [Observaciones.] \mbox{}\\
+            \begin{enumerate}
+                \item Polinomio Característico
+
+                \begin{equation}
+                    \det{(sI - A_c)} = s^n + a_1 s^{n-1} + \dots + a_{n-1} s + a_n = \Pi(s) \nonumber
+                \end{equation}
+
+                \item Retroalimentación de Estado
+
+                Sea $u = f_c x_c + v$, donde $f_c = (a_n - \bar{a}_n)(a_{n-1} - \bar{a}_{n-1})\dots(a_1 - \bar{a}_1)$. Entonces el sistema de lazo cerrado es:
+
+                \begin{equation}
+                    \frac{d}{dt} x_c = A_{f_c} x_c + v
+                \end{equation}
+
+                donde $A_{f_c} = A_c + b_c f_c$, es decir:
+
+                \begin{equation}
+                    A_{f_c} =
+                    \begin{pmatrix}
+                    0 & 1 & 0 & \dots & 0 & 0 & 0 \\
+                    0 & 0 & 1 & \dots & 0 & 0 & 0 \\
+                    0 & 0 & 0 & \dots & 0 & 0 & 0 \\
+                    \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+                    0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+                    0 & 0 & 0 & \dots & 0 & 0 & 1 \\
+                    -\bar{a}_{n} & -\bar{a}_{n-1} & -\bar{a}_{n-2} & \dots & -\bar{a}_{3} & -\bar{a}_{2} & -\bar{a}_{1}
+                    \end{pmatrix}
+                \end{equation}
+
+                y su polinomio característico es $\det{(sI - A_{f_c})} = s^n + \bar{a}_1 s^{n-1} + \dots + \bar{a}_{n-1} s + \bar{a}_n$.
+
+            \end{enumerate}
+        \end{description}
+
+    \section{Propiedades de la matriz de controlabilidad}
+
+        \begin{enumerate}
+            \item Matriz de controlabilidad del par $(A_c, b_c)$.
+
+                \begin{equation}
+                    C_{(A_c,b_c)} =
+                    \begin{pmatrix}
+                    0 & 0 & 0 & \dots & 1 \\
+                    \vdots & \vdots & \vdots & & \vdots \\
+                    0 & 0 & 1 & \dots & * \\
+                    0 & 1 & * & \dots & * \\
+                    1 & * & * & \dots & *
+                    \end{pmatrix}
+                \end{equation}
+
+                \begin{equation}
+                    \det{C_{(A_c, b_c)}} = \pm 1
+                \end{equation}
+
+            \item Invarianza de la matriz de controlabilidad bajo cambio de base
+
+                Sea el par $(A, b)$ controlable, sea $T$ una matriz de cambio de base y sean $A_1 = T^{-1} A T$ y $b_1 = T^{-1} b$ las matrices de nuestra nueva base.
+
+                \begin{multline}
+                C_{(A_1, b_1)} =
+                \begin{pmatrix}
+                b_1 & A_1 b_1 & \dots & A^{n-1} b_1
+                \end{pmatrix} = \\
+                \begin{pmatrix}
+                T^{-1} b & T^{-1} A T T^{-1} b & \dots & (T^{-1} A T \dots T^{-1} A T) T^{-1} b
+                \end{pmatrix} = \\
+                \begin{pmatrix}
+                T^{-1} b & T^{-1} A b & \dots & T^{-1} A^{n-1} b
+                \end{pmatrix} = \\
+                T^{-1}
+                \begin{pmatrix}
+                b & A b & \dots & A^{n-1} b
+                \end{pmatrix} =
+                T^{-1} C_{(A, b)} \nonumber
+                \end{multline}
+
+                \begin{equation}
+                    T = C_{(A, b)} C_{(A_1, b_1)}^{-1}
+                \end{equation}
+
+            \item Invarianza de la matriz de controlabilidad bajo retroalimentación de estado $u = f x + v$
+
+            \item
+        \end{enumerate}
+
+    \section{Formas canónicas}
+        \subsection{Forma canónica controlador}
+        \subsection{Forma canónica controlabilidad}
