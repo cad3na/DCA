@@ -16,6 +16,50 @@
 
     donde $x \in \mathbbm{R}^n$ y $u,y \in \mathbbm{R}$.
 
+    \begin{center}
+	    \tikzstyle{input} = [coordinate]
+        \tikzstyle{output} = [coordinate]
+        \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+        \tikzstyle{sum} = [draw, circle]
+        \tikzstyle{init} = [pin edge={to-, thin, black}]
+        \tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+             1 with {\arrow[semithick]{open triangle 60}}},
+             double distance=1.4pt, shorten >= 5.5pt,
+             preaction = {decorate},
+             postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+        \tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+
+        \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+            \node [input, name=entrada] {};
+            \node [block, right of=entrada] (b) {$b$};
+            \node [sum, right of=b] (s1) {$+$};
+            \node [block, right of=s1] (int) {$\int$};
+      		\node [inner sep=0,minimum size=0,right of=int] (v) {};
+            \node [block, right of=v] (c) {$c^T$};
+            \node [sum, right of=c] (s2) {$+$};
+            \node [output, right of=s2] (salida) {};
+            \node [block, below of=int] (a) {$A$};
+            \node [block, above of=int] (d) {$d$};
+
+            \draw [->] (entrada) -- node[name=u] {$u$} (b);
+            \draw [vecArrow] (b) -- (s1);
+            \draw [vecArrow] (s1) -- (int);
+            \draw [vecArrow] (int) -- (c);
+            \draw [->] (c) -- (s2);
+            \draw [->] (s2) -- node[name=y] {$y$} (salida);
+            \draw [vecArrow] (v) |- (a);
+            \draw [vecArrow] (a) -| (s1);
+            \draw [->] (u) |- (d);
+            \draw [->] (d) -| (s2);
+
+            \draw [innerWhite] (b) -- (s1);
+            \draw [innerWhite] (s1) -- (int);
+            \draw [innerWhite] (int) -- (c);
+            \draw [innerWhite] (v) |- (a);
+            \draw [innerWhite] (a) -| (s1);
+        \end{tikzpicture}
+	\end{center}
+
     Problema. Se desea encontrar una ley de control $u = f(x)$, que nos permita asignar los polos a voluntad.
 
     Sabemos que:
