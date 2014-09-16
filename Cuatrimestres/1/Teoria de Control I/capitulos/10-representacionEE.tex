@@ -127,7 +127,7 @@
         \tikzstyle{sum} = [draw, circle]
         \tikzstyle{init} = [pin edge={to-, thin, black}]
 
-        \begin{tikzpicture}[auto, node distance=1.25cm, >=latex']
+        \begin{tikzpicture}[auto, node distance=1.15cm, >=latex']
             \node [input, name=entrada] {};
             \node [sum, right of=entrada] (s1) {$+$};
             \node [block, right of=s1] (int1) {$\int$};
@@ -149,19 +149,39 @@
             \node [block, draw=none, below of=a2] (avacio) {$\vdots$};
             \node [block, below of=avacio] (an1) {$-a_{n-1}$};
             \node [block, below of=an1] (an) {$-a_n$};
-            % \node [block, above of=int] (d) {$d$};
+
+            \node [block, above of=bm] (bm1) {$b_{m-1}$};
+            \node [block, draw=none, above of=bm1] (bvacio) {$\vdots$};
+            \node [block, above of=bvacio] (b1) {$b_{1}$};
+            \node [block, above of=b1] (b0) {$b_{0}$};
 
             \draw [->] (entrada) -- node[name=u] {$u(t)$} (s1);
-            \draw [->] (s1) -- (int1);
-            \draw [->] (int1) -- (int2);
-            \draw [->] (int2) -- (vacio);
-            \draw [->] (vacio) -- (int3);
-            \draw [->] (int3) -- (int4);
-            \draw [->] (int4) -- (bm);
-            \draw [->] (bm) -- (s2);
-            \draw [->] (s2) -- node[name=y] {$y(t)$} (salida);
-            % \draw [->] (u) |- (d);
-            % \draw [->] (d) -| (s2);
+            \draw [->] (s1)      -- (int1);
+            \draw [->] (int1)    -- (int2);
+            \draw [->] (int2)    -- (vacio);
+            \draw [->] (vacio)   -- (int3);
+            \draw [->] (int3)    -- (int4);
+            \draw [->] (int4)    -- (bm);
+            \draw [->] (bm)      -- (s2);
+            \draw [->] (s2)      -- node[name=y] {$y(t)$} (salida);
+
+            \draw [->] (xn)  |- (a1);
+            \draw [->] (xn1) |- (a2);
+            \draw [->] (x2)  |- (an1);
+            \draw [->] (x1)  |- (an);
+
+            \draw [->] (a1)  -| (s1.324);
+            \draw [->] (a2)  -| (s1.288);
+            \draw [->] (an1) -| (s1.252);
+            \draw [->] (an)  -| (s1.216);
+
+            \draw [->] (xn)  |- (b0);
+            \draw [->] (xn1) |- (b1);
+            \draw [->] (x2)  |- (bm1);
+
+            \draw [->] (b0)  -| (s2.45);
+            \draw [->] (b1)  -| (s2.90);
+            \draw [->] (bm1) -| (s2.135);
         \end{tikzpicture}
     \end{center}
 
