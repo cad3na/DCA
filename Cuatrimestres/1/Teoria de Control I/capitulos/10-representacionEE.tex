@@ -123,23 +123,23 @@
         \tikzstyle{input} = [coordinate]
         \tikzstyle{output} = [coordinate]
         \tikzstyle{empty} = [coordinate]
-        \tikzstyle{block} = [draw, rectangle, minimum height=2.5em, minimum width=2.5em]
+        \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
         \tikzstyle{sum} = [draw, circle]
         \tikzstyle{init} = [pin edge={to-, thin, black}]
 
-        \begin{tikzpicture}[auto, node distance=1.15cm, >=latex']
+        \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
             \node [input, name=entrada] {};
             \node [sum, right of=entrada] (s1) {$+$};
             \node [block, right of=s1] (int1) {$\int$};
-            \node [inner sep=0,minimum size=0,right of=int1] (xn) {$x_n$};
+            \node [inner sep=0,minimum size=0,right of=int1] (xn) {};
             \node [block, right of=xn] (int2) {$\int$};
-            \node [inner sep=0,minimum size=0,right of=int2] (xn1) {$x_{n-1}$};
+            \node [inner sep=0,minimum size=0,right of=int2] (xn1) {};
             \node [block, draw=none, right of=xn1] (vacio) {$\dots$};
-            \node [inner sep=0,minimum size=0,right of=vacio] (x3) {$x_3$};
+            \node [inner sep=0,minimum size=0,right of=vacio] (x3) {};
             \node [block, right of=x3] (int3) {$\int$};
-            \node [inner sep=0,minimum size=0,right of=int3] (x2) {$x_2$};
+            \node [inner sep=0,minimum size=0,right of=int3] (x2) {};
             \node [block, right of=x2] (int4) {$\int$};
-            \node [inner sep=0,minimum size=0,right of=int4] (x1) {$x_1$};
+            \node [inner sep=0,minimum size=0,right of=int4] (x1) {};
             \node [block, right of=x1] (bm) {$b_m$};
             \node [sum, right of=bm] (s2) {$+$};
             \node [output, right of=s2] (salida) {};
@@ -157,11 +157,11 @@
 
             \draw [->] (entrada) -- node[name=u] {$u(t)$} (s1);
             \draw [->] (s1)      -- (int1);
-            \draw [->] (int1)    -- (int2);
-            \draw [->] (int2)    -- (vacio);
-            \draw [->] (vacio)   -- (int3);
-            \draw [->] (int3)    -- (int4);
-            \draw [->] (int4)    -- (bm);
+            \draw [->] (int1)    -- node[name=xn] {$x_n$} (int2);
+            \draw [->] (int2)    -- node[name=xn1] {$x_{n-1}$} (vacio);
+            \draw [->] (vacio)   -- node[name=x3] {$x_3$} (int3);
+            \draw [->] (int3)    -- node[name=x2] {$x_2$} (int4);
+            \draw [->] (int4)    -- node[name=x1] {$x_1$} (bm);
             \draw [->] (bm)      -- (s2);
             \draw [->] (s2)      -- node[name=y] {$y(t)$} (salida);
 
