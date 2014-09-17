@@ -1,3 +1,5 @@
+[![PDF Status](https://www.sharelatex.com/github/repos/robblack007/DCA/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/robblack007/DCA/builds/latest/output.pdf)
+
 DCA
 ===
 
