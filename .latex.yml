@@ -1,2 +1,3 @@
 # In .latex.yml
+compiler: pdflatex
 root_file: /Cuatrimestres/1/Teoria\ de\ Control/toeriadecontrol.tex
