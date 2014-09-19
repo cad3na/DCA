@@ -14,7 +14,7 @@ s = convolve(x,r)[:len(x)]*dt  # colored noise
 
 # the main axes is subplot(111) by default
 plot(t, s)
-axis([0, 1, 1.1*amin(s), 2*amax(s) ])
+axis([-1, 1, 1.1*amin(s), 2*amax(s) ])
 xlabel('Reales')
 ylabel('Imaginarios')
 title('Plano complejo')
