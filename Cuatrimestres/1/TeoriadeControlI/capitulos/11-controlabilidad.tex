@@ -16,7 +16,9 @@
 
     donde $x \in \mathbbm{R}^n$ y $u,y \in \mathbbm{R}$.
 
-    \begin{center}
+    \begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{
 	    \tikzstyle{input} = [coordinate]
         \tikzstyle{output} = [coordinate]
         \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
@@ -57,8 +59,8 @@
             \draw [innerWhite] (int) -- (c);
             \draw [innerWhite] (v) |- (a);
             \draw [innerWhite] (a) -| (s1);
-        \end{tikzpicture}
-	\end{center}
+        \end{tikzpicture}}
+	\end{figure}
 
     Problema. Se desea encontrar una ley de control $u = f(x)$, que nos permita asignar los polos a voluntad.
 
@@ -307,6 +309,59 @@
             1
             \end{pmatrix} u
         \end{equation}
+
+        \begin{figure}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{empty} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [block, right of=entrada] (uno) {$1$};
+                    \node [sum, right of=uno] (s1) {$+$};
+                    \node [block, right of=s1] (int1) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int1] (xn) {};
+                    \node [block, right of=xn] (int2) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int2] (xn1) {};
+                    \node [block, draw=none, right of=xn1] (vacio) {$\dots$};
+                    \node [inner sep=0,minimum size=0,right of=vacio] (x3) {};
+                    \node [block, right of=x3] (int3) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int3] (x2) {};
+                    \node [block, right of=x2] (int4) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int4] (x1) {};
+                    \node [output, right of=x1] (salida) {};
+
+                    \node [block, below of=int1] (a1) {$-a_1$};
+                    \node [block, below of=a1] (a2) {$-a_2$};
+                    \node [block, draw=none, below of=a2] (avacio) {$\vdots$};
+                    \node [block, below of=avacio] (an1) {$-a_{n-1}$};
+                    \node [block, below of=an1] (an) {$-a_n$};
+
+                    \draw [->] (entrada) -- node[name=u] {$u(t)$} (uno);
+                    \draw [->] (uno)     -- (s1);
+                    \draw [->] (s1)      -- (int1);
+                    \draw [->] (int1)    -- node[name=xn] {$x_n$} (int2);
+                    \draw [->] (int2)    -- node[name=xn1] {$x_{n-1}$} (vacio);
+                    \draw [->] (vacio)   -- node[name=x3] {$x_3$} (int3);
+                    \draw [->] (int3)    -- node[name=x2] {$x_2$} (int4);
+                    \draw [->] (int4)    -- node[name=x1] {$x_1$} (salida);
+
+                    \draw [->] (xn)  |- (a1);
+                    \draw [->] (xn1) |- (a2);
+                    \draw [->] (x2)  |- (an1);
+                    \draw [->] (x1)  |- (an);
+
+                    \draw [->] (a1)  -| (s1.324);
+                    \draw [->] (a2)  -| (s1.288);
+                    \draw [->] (an1) -| (s1.252);
+                    \draw [->] (an)  -| (s1.216);
+                \end{tikzpicture}}
+            \end{figure}
 
         \begin{description}
             \item [Observaciones.] \mbox{}\\
