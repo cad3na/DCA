@@ -1,20 +1,23 @@
 TARGET=teoriadecontrol
 OUTDIR=./PDF's/
+.PHONY: all completebook completeebook book ebook movebook moveebook clean
 
-complete: completebook completeebook
+all: completebook completeebook clean
 
-completebook: book movebook clean
+completebook: book movebook
 
-completeebook: ebook moveebook clean
+completeebook: ebook moveebook
 
-book: clean
+book:
+	${MAKE} clean
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{$(TARGET).tex}"
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{$(TARGET).tex}"
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{$(TARGET).tex}"
 
-ebook: clean
+ebook:
+	${MAKE} clean
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}"
