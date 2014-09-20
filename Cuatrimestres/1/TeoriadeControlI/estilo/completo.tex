@@ -1,5 +1,12 @@
-%\documentclass[12pt]{article}
-\documentclass{tufte-book}
+\ifebook
+    \documentclass[a5paper, 15pt]{book}
+    \usepackage[margin=2mm]{geometry}
+    \usepackage{mathpazo}
+    \usepackage{eulervm}
+\else
+    \documentclass{tufte-book}
+\fi
+
 \usepackage[spanish,es-noquoting]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
