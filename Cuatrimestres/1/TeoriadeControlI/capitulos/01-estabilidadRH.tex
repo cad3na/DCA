@@ -217,6 +217,31 @@
         \end{table}
 
         \subsection{Ejemplo:}
+
+            \begin{figure}
+                \centering
+                \resizebox{\textwidth}{!}{
+                    \tikzstyle{input} = [coordinate]
+                    \tikzstyle{output} = [coordinate]
+                    \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                    \tikzstyle{sum} = [draw, circle]
+                    \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                    \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                        \node [input, name=entrada] {};
+                        \node [sum, right of=entrada] (suma) {$+$};
+                        \node [block, right of=suma] (planta) {$\frac{k}{s(s^2 + s + 4)(s+2)}$};
+                        \node [output, right of=planta] (salida) {$\hat{y}(s)$};
+                        \node [block, below of=planta] (retro) {$-1$};
+
+                        \draw [->] (entrada) -- node[name=u] {$\hat{R}(s)$} (suma);
+                        \draw [->] (suma) -- (planta);
+                        \draw [->] (planta) -- node[name=y] {$y$} (salida);
+                        \draw [->] (y) |- (retro);
+                        \draw [->] (retro) -| (suma);
+                    \end{tikzpicture}}
+            \end{figure}
+
             Se toma el sistema $\frac{\hat{y}(s)}{\hat{R}(s)} = \frac{k}{s^4 + 3 s^3 + 3 s^2 + 2 s + k}$, entonces el polinomio característico del sistema será $F(s) = s^4 + 3 s^3 + 3 s^2 + 2 s + k$.
 
             Construimos su tabla de Routh (Cuadro~\ref{tab:EjemploAplicacion}):
