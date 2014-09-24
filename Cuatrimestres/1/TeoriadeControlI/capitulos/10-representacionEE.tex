@@ -33,13 +33,13 @@
 
     Por lo que se obtiene:
 
-    \begin{math}
+    \begin{equation*}
         \left( \frac{d^n}{dt^n} + a_1 \frac{d^{n-1}}{dt^{n-1}} + \dots + a_{n-1} \frac{d}{dt} + a_n \right) z(t) = u(t)
-    \end{math}
+    \end{equation*}
 
-    \begin{math}
+    \begin{equation*}
         y(t) = \left( b_m + b_{m-1} \frac{d}{dt} + \dots + b_1 \frac{d^{m-1}}{dt^{m-1}} + b_0 \frac{d^m}{dt^m} \right) z(t)
-    \end{math}
+    \end{equation*}
 
     es decir:
 
@@ -53,13 +53,13 @@
 
     Lo cual implica $M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)$. Donde:
 
-    \begin{math}
+    \begin{equation*}
         M \left( \frac{d}{dt} \right) = \left( \frac{d^n}{dt^n} + a_1 \frac{d^{n-1}}{dt^{n-1}} + \dots + a_{n-1} \frac{d}{dt} + a_n \right)
-    \end{math}
+    \end{equation*}
 
-    \begin{math}
+    \begin{equation*}
         N \left( \frac{d}{dt} \right) = \left( b_m + b_{m-1} \frac{d}{dt} + \dots + b_1 \frac{d^{m-1}}{dt^{m-1}} + b_0 \frac{d^m}{dt^m} \right)
-    \end{math}
+    \end{equation*}
 
     Esta es la misma ecuación diferencial con la que empezamos. Note que la escritura matricial de esta Ecuación Diferencial Ordinaria es:
 
@@ -68,7 +68,7 @@
     \end{equation}
 
     \begin{equation}
-        \vec{y}(t) = \vec{c} \cdot \vec{x}(t)
+        \vec{y}(t) = \vec{c}^{T} \cdot \vec{x}(t)
     \end{equation}
 
     Donde:
@@ -233,9 +233,9 @@
 
         Notese que: $\frac{d}{dt} x(t) = \left( \sum\limits_{i=0}^{\infty} \frac{1}{i!} \frac{d}{dt} (at)^i \right) x_0 = \left( \sum\limits_{i=1}^{\infty} \frac{1}{(i-1)!} (at)^{i-1} \right) a x_0 = \left( \sum\limits_{j=0}^{\infty} \frac{1}{j!} (at)^j \right) a x_0$
 
-        \begin{math}
+        \begin{equation*}
             \frac{d}{dt} x(t) = a e^{at} x_0 = a x(t) \quad x(0) = x_0
-        \end{math}
+        \end{equation*}
 
     \item Para el caso en que $A$ es una matriz y la solución es homogénea se considera la siguiente Ecuación Diferencial Ordinaria:
 
@@ -281,19 +281,19 @@
 
         Notese que:
 
-        \begin{math}
+        \begin{equation*}
             \frac{d}{dt} \exp{(At)} = \frac{d}{dt} \sum\limits_{i=0}^{\infty} \frac{1}{i!} (At)^i = \left( \sum\limits_{i=1}^{\infty} \frac{1}{(i-1)!} (At)^{i-1} \right) A = A \sum\limits_{j=0}^{\infty} \frac{1}{j!} (At)^j = A \exp{(At)}
-        \end{math}
+        \end{equation*}
 
         Por lo que:
 
-        \begin{math}
+        \begin{equation*}
             \vec{x}(t) = \exp{(At)} \vec{x}_0
-        \end{math}
+        \end{equation*}
 
-        \begin{math}
+        \begin{equation*}
             \frac{d}{dt} \vec{x}(t) = A \exp{(At)} \vec{x}_0 = A \vec{x}(t) \quad \vec{x}(0) = \vec{x}_0
-        \end{math}
+        \end{equation*}
 
     \item Para el caso en que $A$ es escalar y la solución es forzada:
 
@@ -307,9 +307,9 @@
             x(t) = \int_0^t e^{a(t-\tau)} b u(\tau) \, d \tau
         \end{equation}
 
-        \begin{math}
+        \begin{equation*}
             \frac{d}{dt} x(t) = e^{a(t-t)} b u(t) + \int_0^t \frac{d}{dt} e^{a(t-\tau)} b u(\tau) \, d \tau = b u(t) + a \int_0^t e^{a(t-\tau)} b u(\tau) \, d \tau
-        \end{math}
+        \end{equation*}
 
         \begin{equation}
             \frac{d}{dt} x(t) = b u(t) + a x(t)
@@ -335,9 +335,9 @@
 
         En efecto, derivando tenemos:
 
-        \begin{math}
+        \begin{equation*}
             \frac{d}{dt} \vec{x}(t) = \exp{(A(t-t))} \vec{b} u(t) + \int_0^t \frac{d}{dt} \exp{(A(t-\tau))} \vec{b} u(\tau) \, d \tau = \vec{b} u(t) + A \int_0^t \exp{(A(t-\tau))} \vec{b} u(\tau) \, d \tau
-        \end{math}
+        \end{equation*}
 
         \begin{equation}
             \frac{d}{dt} \vec{x}(t) = \vec{b} u(t) + a \vec{x}(t)
@@ -398,13 +398,13 @@
 
         donde:
 
-        \begin{math}
+        \begin{equation*}
             M \left( \frac{d}{dt} \right) = \frac{d^n}{dt^n} + a_1 \frac{d^{n-1}}{dt^{n-1}} + \dots + a_{n-1} \frac{d}{dt} + a_n
-        \end{math}
+        \end{equation*}
 
-        \begin{math}
+        \begin{equation*}
             N \left( \frac{d}{dt} \right) = b_m + b_{m-1} \frac{d}{dt} + \dots + b_1 \frac{d^{m-1}}{dt^{m-1}} + b_0 \frac{d^m}{dt^m}
-        \end{math}
+        \end{equation*}
 
         La función de transferencia con coeficientes independientes nulos de las ecuaciones es:
 
@@ -421,14 +421,14 @@
 
         \begin{eqnarray}
         \frac{d}{dt} x & = & A x + b u \nonumber \\
-        y & = & c x + d u \nonumber
+        y & = & c^T x + d u \nonumber
         \end{eqnarray}
 
         La función de transferencia con coeficientes independientes nulos en esta representación es:
 
         \begin{eqnarray}
         s x(s) & = & A x(s) + b u(s) \nonumber \\
-        y(s) & = & c x(s) + d u(s) \nonumber
+        y(s) & = & c^T x(s) + d u(s) \nonumber
         \end{eqnarray}
 
         \begin{equation}
@@ -437,7 +437,7 @@
 
         \begin{eqnarray}
         (s I - A) x(s) & = & b u(s) \nonumber \\
-        y(s) & = & c x(s) + d u(s) \nonumber
+        y(s) & = & c^T x(s) + d u(s) \nonumber
         \end{eqnarray}
 
         \begin{equation}
@@ -446,7 +446,7 @@
 
         \begin{eqnarray}
         x(s) & = & (s I - A)^{-1} b u(s) \nonumber \\
-        y(s) & = & c x(s) + d u(s) \nonumber
+        y(s) & = & c^T x(s) + d u(s) \nonumber
         \end{eqnarray}
 
         \begin{equation}
@@ -454,7 +454,7 @@
         \end{equation}
 
         \begin{equation}
-            y(s) = c[(s I - A)^{-1} b u(s)] + d u(s) = [c(s I - A)^{-1} b + d] u(s) \nonumber
+            y(s) = c^T[(s I - A)^{-1} b u(s)] + d u(s) = [c^T(s I - A)^{-1} b + d] u(s) \nonumber
         \end{equation}
 
         \begin{equation}
@@ -462,7 +462,7 @@
         \end{equation}
 
         \begin{equation}
-            F(s) = c(s I - A)^{-1} b + d
+            F(s) = c^T(s I - A)^{-1} b + d
         \end{equation}
 
     \section{Matriz sistema}
@@ -471,7 +471,7 @@
             \Sigma(s) =
             \begin{pmatrix}
             sI - A & b \\
-            -c & d
+            -c^T & d
             \end{pmatrix}
         \end{equation}
 
@@ -484,7 +484,7 @@
             \end{pmatrix}
             \begin{pmatrix}
             sI - A & b \\
-            -c & d
+            -c^T & d
             \end{pmatrix}
             \begin{pmatrix}
             I & -(sI - A)b \\
@@ -494,7 +494,7 @@
             =
             \begin{pmatrix}
             I & (sI - A)^{-1} b \\
-            -c & d
+            -c^T & d
             \end{pmatrix}
             \begin{pmatrix}
             I & -(sI - A)b \\
@@ -504,16 +504,16 @@
             =
             \begin{pmatrix}
             I & 0 \\
-            -c & (c(sI - A)^{-1} b + d)
+            -c^T & (c^T(sI - A)^{-1} b + d)
             \end{pmatrix}
             \nonumber
         \end{multline}
 
         Por lo que:
 
-        \begin{math}
-            \det{\left( (sI - A)^{-1} \right)} \cdot \det{\left( \Sigma(s) \right)} \cdot I = c(sI - A)^{-1} b + d
-        \end{math}
+        \begin{equation*}
+            \det{\left( (sI - A)^{-1} \right)} \cdot \det{\left( \Sigma(s) \right)} \cdot I = c^T(sI - A)^{-1} b + d
+        \end{equation*}
 
         \begin{equation}
             F(s) = \frac{\det{\left( \Sigma(s) \right)}}{\det{\left( sI - A \right)}}
