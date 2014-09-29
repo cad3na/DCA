@@ -61,7 +61,7 @@
         N \left( \frac{d}{dt} \right) = \left( b_m + b_{m-1} \frac{d}{dt} + \dots + b_1 \frac{d^{m-1}}{dt^{m-1}} + b_0 \frac{d^m}{dt^m} \right)
     \end{equation*}
 
-    Esta es la misma ecuación diferencial con la que empezamos. Note que la escritura matricial de esta Ecuación Diferencial Ordinaria es:
+    Esta es la misma ecuación diferencial con la que empezamos. Note que la escritura matricial de esta Ecuación Diferencial Ordinaria\footnote{Si bien la notación correcta es la que se utiliza justo ahora, al final  del capitulo se dejará a un lado, para obviar el hecho de que son vectores y matrices, sin que por eso se entienda que ya no lo son.} es:
 
     \begin{equation}
         \frac{d}{dt} \vec{x} = A \vec{x}(t) + \vec{b} u(t)
@@ -531,25 +531,24 @@
 
     \section{Propiedades de la Matriz A}
         \begin{enumerate}[i)]
-            \item
+            \item Definción de la matriz exponencial.
             \begin{equation}
                 \exp{(A t)} = \sum\limits_{i=0}^{\infty} \frac{1}{i!} (A t)^i
             \end{equation}
 
-            \item
+            \item Derivada de la matriz exponencial.
             \begin{equation}
                 \frac{d}{dt} \exp{(A t)} = A \exp{(A t)} = (\exp{(A t)}) A
             \end{equation}
 
-            \item
-
+            \item Linealidad del operador matriz exponencial bajo escalar.
             \begin{multline}
                 \exp{(At)} \exp{(A \tau)} = \left( \sum\limits_{i=0}^{\infty} \frac{1}{i!} (A t)^i \right) \left( \sum\limits_{j=0}^{\infty} \frac{1}{j!} (A \tau)^j \right) \\
                 = \sum\limits_{i=0}^{\infty} \sum\limits_{j=0}^{\infty} A^{i+j} \frac{t^i \tau^j}{i! j!} = \sum\limits_{k=0}^{\infty} A^k \sum\limits_{i=0}^{k} \frac{t^i \tau^{k-i}}{i! (k-i)!} \\
                 = \sum\limits_{k=0}^{\infty} A^k \frac{(t + \tau)^k}{k!} = \exp{(A(t + \tau))}
             \end{multline}
 
-            \item
+            \item Linealidad del operador matriz exponencial bajo matriz.
             \begin{equation}
                 \exp{((A + B) t)} = \exp{(A t)} \exp{(B t)} \iff A B = B A
             \end{equation}
@@ -578,14 +577,14 @@
 
                 \begin{eqnarray}
                 \frac{d}{dt} x & = & A x + b u \nonumber \\
-                y & = & c x + d u \nonumber
+                y & = & c^T x + d u \nonumber
                 \end{eqnarray}
 
                 Sea el cambio de variable $x = T \bar{x}$, $T$ invertible. Entonces:
 
                 \begin{eqnarray}
                 T \frac{d}{dt} \bar{x} & = & A T \bar{x} + b u \nonumber \\
-                y & = & c T \bar{x} + d u \nonumber
+                y & = & c^T T \bar{x} + d u \nonumber
                 \end{eqnarray}
 
                 \begin{equation}
@@ -594,7 +593,7 @@
 
                 \begin{eqnarray}
                 \frac{d}{dt} \bar{x} & = & T^{-1} A T \bar{x} + T^{-1} b u \nonumber \\
-                y & = & c T \bar{x} + d u \nonumber
+                y & = & c^T T \bar{x} + d u \nonumber
                 \end{eqnarray}
 
                 \begin{equation}
@@ -603,22 +602,22 @@
 
                 \begin{eqnarray}
                 \frac{d}{dt} \bar{x} & = & \bar{A} \bar{x} + \bar{b} u \nonumber \\
-                y & = & \bar{c} \bar{x} + d u
+                y & = & \bar{c}^T \bar{x} + d u
                 \end{eqnarray}
 
-                donde $\bar{A} = T^{-1} A T$, $\bar{b} = T^{-1} b$, $\bar{c} = c T$. La matriz sistema se puede escribir de la siguiente manera:
+                donde $\bar{A} = T^{-1} A T$, $\bar{b} = T^{-1} b$, $\bar{c}^T = c^T T$. La matriz sistema se puede escribir de la siguiente manera:
 
                 \begin{equation}
                     \Sigma =
                     \begin{pmatrix}
                     sI - A & b \\
-                    -c & d
+                    -c^T & d
                     \end{pmatrix}
                     \implies
                     \bar{\Sigma} =
                     \begin{pmatrix}
                     sI - \bar{A} & \bar{b} \\
-                    -\bar{c} & d
+                    -\bar{c}^T & d
                     \end{pmatrix}
                 \end{equation}
 
@@ -628,7 +627,7 @@
                     \bar{\Sigma} =
                     \begin{pmatrix}
                     sI - \bar{A} & \bar{b} \\
-                    -\bar{c} & d
+                    -\bar{c}^T & d
                     \end{pmatrix} =
                     \begin{pmatrix}
                     T^{-1} & 0 \\
@@ -636,7 +635,7 @@
                     \end{pmatrix}
                     \begin{pmatrix}
                     sI - A & b \\
-                    -c & d
+                    -c^T & d
                     \end{pmatrix}
                     \begin{pmatrix}
                     T & 0 \\
