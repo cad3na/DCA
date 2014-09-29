@@ -589,5 +589,216 @@
 
     \newpage
     \section{Formas canónicas}
+        Sea un sistema lineal invariante en el tiempo, una entrada, una salida (SISO), descrito por la siguiente Ecuación Diferencial Ordinaria (EDO):
+
+        \begin{multline}
+            \left( \frac{d^n}{dt^n} + a_1 \frac{d^{n-1}}{dt^{n-1}} + \dots + a_{n-1} \frac{d}{dt} + a_n \right) y(t) = \\
+            \left( b_n + b_{n-1} \frac{d}{dt} + \dots + b_1 \frac{d^{n-1}}{dt^{n-1}} \right) u(t)
+        \end{multline}
+
         \subsection{Forma canónica controlador}
+
+        \begin{equation}
+            \frac{d}{dt} x_c =
+            \begin{pmatrix}
+            0 & 1 & 0 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 1 & \dots & 0 & 0 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 0 \\
+            \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+            0 & 0 & 0 & \dots & 0 & 1 & 0 \\
+            0 & 0 & 0 & \dots & 0 & 0 & 1 \\
+            -a_{n} & -a_{n-1} & -a_{n-2} & \dots & -a_{3} & -a_{2} & -a_{1}
+            \end{pmatrix} x_c +
+            \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            \vdots \\
+            0 \\
+            0 \\
+            1
+            \end{pmatrix} u
+        \end{equation}
+
+        \begin{equation}
+            y =
+            \begin{pmatrix}
+                b_n & b_{n-1} & b_{n-2} & \dots & b_2 & b_1
+            \end{pmatrix} x_c
+        \end{equation}
+
+        \begin{figure*}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{empty} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (s1) {$+$};
+                    \node [block, right of=s1] (int1) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int1] (xn) {};
+                    \node [block, right of=xn] (int2) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int2] (xn1) {};
+                    \node [block, draw=none, right of=xn1] (vacio) {$\dots$};
+                    \node [inner sep=0,minimum size=0,right of=vacio] (x3) {};
+                    \node [block, right of=x3] (int3) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int3] (x2) {};
+                    \node [block, right of=x2] (int4) {$\int$};
+                    \node [inner sep=0,minimum size=0,right of=int4] (x1) {};
+                    \node [block, right of=x1] (bm) {$b_n$};
+                    \node [sum, right of=bm] (s2) {$+$};
+                    \node [output, right of=s2] (salida) {};
+
+                    \node [block, below of=int1] (a1) {$-a_1$};
+                    \node [block, below of=a1] (a2) {$-a_2$};
+                    \node [block, draw=none, below of=a2] (avacio) {$\vdots$};
+                    \node [block, below of=avacio] (an1) {$-a_{n-1}$};
+                    \node [block, below of=an1] (an) {$-a_n$};
+
+                    \node [block, above of=bm] (bm1) {$b_{n-1}$};
+                    \node [block, draw=none, above of=bm1] (bvacio) {$\vdots$};
+                    \node [block, above of=bvacio] (b1) {$b_{2}$};
+                    \node [block, above of=b1] (b0) {$b_{1}$};
+
+                    \draw [->] (entrada) -- node[name=u] {$u(t)$} (s1);
+                    \draw [->] (s1)      -- (int1);
+                    \draw [->] (int1)    -- node[name=xn] {$x_n$} (int2);
+                    \draw [->] (int2)    -- node[name=xn1] {$x_{n-1}$} (vacio);
+                    \draw [->] (vacio)   -- node[name=x3] {$x_3$} (int3);
+                    \draw [->] (int3)    -- node[name=x2] {$x_2$} (int4);
+                    \draw [->] (int4)    -- node[name=x1] {$x_1$} (bm);
+                    \draw [->] (bm)      -- (s2);
+                    \draw [->] (s2)      -- node[name=y] {$y(t)$} (salida);
+
+                    \draw [->] (xn)  |- (a1);
+                    \draw [->] (xn1) |- (a2);
+                    \draw [->] (x2)  |- (an1);
+                    \draw [->] (x1)  |- (an);
+
+                    \draw [->] (a1)  -| (s1.324);
+                    \draw [->] (a2)  -| (s1.288);
+                    \draw [->] (an1) -| (s1.252);
+                    \draw [->] (an)  -| (s1.216);
+
+                    \draw [->] (xn)  |- (b0);
+                    \draw [->] (xn1) |- (b1);
+                    \draw [->] (x2)  |- (bm1);
+
+                    \draw [->] (b0)  -| (s2.45);
+                    \draw [->] (b1)  -| (s2.90);
+                    \draw [->] (bm1) -| (s2.135);
+                \end{tikzpicture}}
+        \end{figure*}
+
+        \begin{description}
+            \item [Polos.]
+
+            \begin{equation}
+                \det{(sI - A_c)} = s^n + a_1 s^{n-1} + a_2 s^{n-2} + \dots + a_{n-1} s + a_n
+            \end{equation}
+
+            \item [Ceros.]
+
+            \begin{equation}
+                \det{\Sigma(s)} = b_1 s^{n-1} + \dots + b_{n-1} s + b_n
+            \end{equation}
+
+            \item [Matriz de Controlabilidad.]
+
+            \begin{equation}
+                C_{(A_c, b_c)} =
+                \begin{pmatrix}
+                    b_c & A_c b_c & \dots & A_c^{n-1} b_c
+                \end{pmatrix} \implies \det{C_{(A_c, b_c)}} = 1
+            \end{equation}
+        \end{description}
+
         \subsection{Forma canónica controlabilidad}
+
+        \begin{equation}
+            \frac{d}{dt} x_c =
+            \begin{pmatrix}
+            -a_{1} & 1 & 0 & \dots & 0 & 0 & 0 \\
+            -a_{2} & 0 & 1 & \dots & 0 & 0 & 0 \\
+            -a_{3} & 0 & 0 & \dots & 0 & 0 & 0 \\
+            \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+            -a_{n-2} & 0 & 0 & \dots & 0 & 1 & 0 \\
+            -a_{n-1} & 0 & 0 & \dots & 0 & 0 & 1 \\
+            -a_{n} & 0 & 0 & \dots & 0 & 0 & 0
+            \end{pmatrix} x_c +
+            \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            \vdots \\
+            0 \\
+            0 \\
+            1
+            \end{pmatrix} u
+        \end{equation}
+
+        \begin{equation}
+            y =
+            \begin{pmatrix}
+                \beta_n & \beta_{n-1} & \beta_{n-2} & \dots & \beta_2 & \beta_1
+            \end{pmatrix} x_c
+        \end{equation}
+
+        donde:
+
+        \begin{equation}
+            \begin{pmatrix}
+                \beta_1 \\
+                \beta_2 \\
+                \beta_3 \\
+                \vdots \\
+                \beta_{n-1} \\
+                \beta_{n}
+            \end{pmatrix} =
+            \begin{pmatrix}
+            1 & 0 & 0 & \dots & 0 & 0 \\
+            -a_{1} & 1 & 0 & \dots & 0 & 0 \\
+            -a_{2} & -a_{1} & 1 & \dots & 0 & 0 \\
+            \vdots & \vdots & \vdots & & \vdots & \vdots \\
+            -a_{n-3} & -a_{n-4} & -a_{n-5} & \dots & 0 & 0 \\
+            -a_{n-2} & -a_{n-3} & -a_{n-4} & \dots & 1 & 0 \\
+            -a_{n-1} & -a_{n-2} & -a_{n-3} & \dots  & -a_{1} & 1
+            \end{pmatrix} ^{-1}
+            \begin{pmatrix}
+                b_1 \\
+                b_2 \\
+                b_3 \\
+                \vdots \\
+                b_{n-2} \\
+                b_{n-1} \\
+                b_{n}
+            \end{pmatrix}
+        \end{equation}
+
+        \begin{description}
+            \item [Polos.]
+
+            \begin{equation}
+                \det{(sI - A_{co})} = s^n + a_1 s^{n-1} + a_2 s^{n-2} + \dots + a_{n-1} s + a_n
+            \end{equation}
+
+            \item [Ceros.]
+
+            \begin{equation}
+                \det{\Sigma(s)} = b_1 s^{n-1} + \dots + b_{n-1} s + b_n
+            \end{equation}
+
+            \item [Matriz de Controlabilidad.]
+
+            \begin{equation}
+                C_{(A_{co}, b_{co})} =
+                \begin{pmatrix}
+                    b_{co} & A_{co} b_{co} & \dots & A_{co}^{n-1} b_{co}
+                \end{pmatrix} \implies \det{C_{(A_{co}, b_{co})}} = \pm 1
+            \end{equation}
+        \end{description}
