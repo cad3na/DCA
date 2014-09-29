@@ -20,3 +20,9 @@
 
 \setcounter{secnumdepth}{0}
 \numberwithin{equation}{chapter}
+
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
