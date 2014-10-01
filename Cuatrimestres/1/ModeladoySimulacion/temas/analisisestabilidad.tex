@@ -1,0 +1,50 @@
+\input{./estilo/handout.tex}
+
+\title{Análisis de Estabilidad}
+\author{Roberto Cadena Vega}
+
+\begin{document}
+    \maketitle
+
+    \section{Mapeos no lineales (representando sistemas dinámicos autónomos).}
+
+        Sea un sistema dinámico no lineal, representado por la siguiente ecuación diferencial ordinaria:
+
+        \begin{equation}
+            \frac{dx}{dt} = f(x)
+        \end{equation}
+
+        donde $x \in \mathbbm{R}^n$, $f(x) : \mathbbm{R}^n \to \mathbbm{R}^n$ y $f \in C^1$, es decir, $f$ es continuamente diferenciable.
+
+        Dado $p \in \mathbbm{R}^n$ un punto en donde se quiere analizar la estabilidad del sistema, tenemos que:
+
+        \begin{equation}
+            f(x) = f(p) + J_f(p)(x-p) + \mathcal{O}(||x-p||)
+        \end{equation}
+
+        donde $J_f(p)$ es el Jacobiano de $f$ en $p$, es decir la pendiente generalizada de la función, $(x-p)$ es la distancia entre el punto de análisis y el punto de equilibrio del sistema, y $\mathcal{O}(||x-p||)$ son terminos de orden mayor de esta distancia.
+
+    \section{Estabilidad}
+
+        Para un sistema dinámico que tenga puntos de equilibro de la forma
+
+        \begin{equation}
+            f(\bar{x}) = 0 \implies \frac{dx}{dt} = 0 \quad \text{en } \bar{x}
+        \end{equation}
+
+        diremos que $\bar{x}$ es un punto hiperbólico si:
+
+        \begin{equation}
+            \det{(\lambda I - J_f)} \ne bi \quad b \in \mathbbm{R}
+        \end{equation}
+
+        es decir, que este determinante no tenga raices puramente imaginarias.
+
+        Por otro lado, una vez determinado que $\bar{x}$ es hiperbolico, podemos definir los siguientes comportamientos del sistema:
+
+        $\bar{x}$ es estable, si las partes reales de todas las raices de $\det{(\lambda I - J_f(\bar{x}))}$ son negativas.
+
+        $\bar{x}$ es inestable, si al menos una raiz de $\det{(\lambda I - J_f(\bar{x}))}$ tiene parte real positiva.
+
+
+\end{document}
