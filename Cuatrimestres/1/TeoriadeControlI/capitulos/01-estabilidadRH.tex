@@ -11,6 +11,7 @@
 
     El criterio de Routh-Hurwitz determina si existen raíces en el semiplano complejo derecho cerrado.
 
+    \newpage
     \section{Tabla de Routh}
         La tabla de Routh es un método para obtener el numero de raíces con parte real positiva que se encontraran en el polinomio característico del sistema (Ecuación~\ref{eqn:ECS}) sin tener que calcular las raíces en cuestión. Se puede dividir en cuatro pasos que se enumeran a continuación.
 
@@ -81,6 +82,7 @@
 
         \end{enumerate}
 
+    \newpage
     \section{Casos Especiales}
         \begin{enumerate}
 
@@ -195,6 +197,7 @@
             \caption{\label{fig:planocomplejo}Polos en el plano complejo.}
         \end{figure*}
 
+    \newpage
     \section{Aplicación del criterio de Routh}
         Si bien los sistemas numéricos actuales permiten el calculo de las raíces de un sistema de manera mas rápida y sencilla que con la aplicación de este método, aun existen aplicaciones practicas en las que es de suma importancia el determinar el numero de raíces positivas. Por ejemplo podemos tener ganancias en un sistema para las que queremos determinar de primera instancia, un rango de valores para los cuales el sistema no se volverá inestable.
 
@@ -262,6 +265,7 @@
 
             Si bien esto no nos aporta una ganancia especifica para un comportamiento deseado, si nos da la pauta a los valores a tomar en cuenta, si no se desea que el sistema sea inestable.
 
+    \newpage
     \section{Acción Proporcional}
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia proporcional y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
@@ -299,6 +303,7 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
                 \displaystyle \lim_{t \to \infty} e(t) = \lim_{s \to 0} s e(s) = \lim_{s \to 0} \frac{Ts + 1}{Ts + 1 + k} = \frac{1}{1 + k}
             \end{math}
 
+    \newpage
     \section{Acción Integral}
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia integral y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
@@ -337,6 +342,7 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
                 \displaystyle \lim_{t \to \infty} e(t) = \lim_{s \to 0} s e(s) = \lim_{s \to 0} s \left(\frac{s(Ts + 1)}{s(Ts + 1) + k} \frac{1}{s}\right) = 0
             \end{math}
 
+    \newpage
     \section{Acción Proporcional Integral}
         \subsection{Estabilidad}
         \subsection{Error en el estado permanente al escalón unitario}
