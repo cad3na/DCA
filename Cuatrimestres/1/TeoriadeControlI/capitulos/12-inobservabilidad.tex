@@ -1,9 +1,90 @@
 
 \chapter{Inobservabilidad y observador de estado}
+
+	Sea la siguiente representación de estado:
+
+	\begin{eqnarray} \label{eq:inob1}
+		\frac{d}{dt} x & = & A x + b u \nonumber \\
+		y & = & c^T x + d u
+	\end{eqnarray}
+
+	para el siguiente sistema:
+
+	\begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{
+	    \tikzstyle{input} = [coordinate]
+        \tikzstyle{output} = [coordinate]
+        \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+        \tikzstyle{sum} = [draw, circle]
+        \tikzstyle{init} = [pin edge={to-, thin, black}]
+        \tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+             1 with {\arrow[semithick]{open triangle 60}}},
+             double distance=1.4pt, shorten >= 5.5pt,
+             preaction = {decorate},
+             postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+        \tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+
+        \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+            \node [input, name=entrada] {};
+            \node [block, right of=entrada] (b) {$b$};
+            \node [sum, right of=b] (s1) {$+$};
+            \node [block, right of=s1] (int) {$\int$};
+      		\node [inner sep=0,minimum size=0,right of=int] (v) {};
+            \node [block, right of=v] (c) {$c^T$};
+            \node [sum, right of=c] (s2) {$+$};
+            \node [output, right of=s2] (salida) {};
+            \node [block, below of=int] (a) {$A$};
+            \node [block, above of=int] (d) {$d$};
+
+            \draw [->] (entrada) -- node[name=u] {$u$} (b);
+            \draw [vecArrow] (b) -- (s1);
+            \draw [vecArrow] (s1) -- (int);
+            \draw [vecArrow] (int) -- (c);
+            \draw [->] (c) -- (s2);
+            \draw [->] (s2) -- node[name=y] {$y$} (salida);
+            \draw [vecArrow] (v) |- (a);
+            \draw [vecArrow] (a) -| (s1);
+            \draw [->] (u) |- (d);
+            \draw [->] (d) -| (s2);
+
+            \draw [innerWhite] (b) -- (s1);
+            \draw [innerWhite] (s1) -- (int);
+            \draw [innerWhite] (int) -- (c);
+            \draw [innerWhite] (v) |- (a);
+            \draw [innerWhite] (a) -| (s1);
+        \end{tikzpicture}}
+	\end{figure}
+
+	donde $x \in \mathbbm{R}^n$ es el estado, $u(t) \in \mathbbm{R}^n$ y $y(t) \in \mathbbm{R}^n$ sean la entrada y salida respectivamente; siendo la condición inicial del estado $x(0) = x_0 \in \mathbbm{R}^n$. La solución esta descrita por:
+
+	\begin{equation*}
+		x(t) = \exp{(At)} x_0 + \int_0^t \exp{\left(A(t - \tau)\right)} b u(\tau) d\tau
+	\end{equation*}
+
+	\paragraph{Problema.}
+
+	Sea la representación de estado ~\ref{eq:inob1}, donde el estado $x$ no esta disponible. Se desea reconstruir el estado $x$, para poder aplicar una retroalimentación de estado.
+
+	\begin{equation}
+		u = f^T x + v
+	\end{equation}
+
+	Para resolver este problema, hay que investigar el concepto estructural de la inobservabilidad.
+
+	\newpage
     \section{Observabilidad e inobservabilidad}
+
+    \newpage
     \section{Dualidad}
+
+    \newpage
     \section{Propiedades de la matriz de observabilidad}
+
+    \newpage
     \section{Formas canónicas}
         \subsection{Forma canónica observador}
         \subsection{Forma canónica observabilidad}
+
+    \newpage
     \section{Observador de estado}
