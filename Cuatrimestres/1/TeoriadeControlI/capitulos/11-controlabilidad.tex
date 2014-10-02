@@ -461,7 +461,7 @@
 
             \item Invarianza de la matriz de controlabilidad bajo retroalimentación de estado, $u = f^T x + v$.
 
-                Sea $A_f = A + b_f^T$ la matriz A del sistema bajo la retroalimentación de estado $u = f^T x + v$. Tendremos que la matriz de controlabilidad de este sistema retroalimentado será:
+                Sea $A_f = A + b f^T$ la matriz A del sistema bajo la retroalimentación de estado $u = f^T x + v$. Tendremos que la matriz de controlabilidad de este sistema retroalimentado será:
 
                 \begin{multline*}
                 C_{(A_f, b)} =
@@ -469,7 +469,7 @@
                 b & A_f b & \dots & A_f^{n-1} b
                 \end{pmatrix} = \\
                 \begin{pmatrix}
-                b & \left( A + b_f^T \right) b & \dots & \left( A + b_f^T \right)^{n-1} b
+                b & \left( A + b f^T \right) b & \dots & \left( A + b f^T \right)^{n-1} b
                 \end{pmatrix}
                 \end{multline*}
 
