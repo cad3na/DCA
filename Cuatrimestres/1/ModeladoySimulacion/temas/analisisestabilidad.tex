@@ -48,7 +48,7 @@
 
     \section{Ejemplo 1}
 
-        Sea el sistema presa - depredador
+        Sea el sistema presa - depredador:
 
         \begin{eqnarray*}
             \dot{x}_1 & = & a x_1 - b x_1 x_2 \\
@@ -199,7 +199,7 @@
 
             y como sus raices son puramente imaginarias, podemos decir que $x_2$ no es hiperbólico.
 
-            Por otro lado el primer punto de equilibrio:
+            Por otro lado, el primer punto de equilibrio:
 
             \begin{equation*}
                 \lambda I - J_f(x_1) =
@@ -226,5 +226,71 @@
             Sus raices son $\lambda_1 = a$ y $\lambda_2 = -c$, por lo que si podemos aplicar el teorema de Hartman - Grobman y decir que es inestable debido a $\lambda_1 = a$.
 
     \section{Ejemplo 2}
+
+        Sea el sistema presa - depredador con limitante de recursos:
+
+        \begin{eqnarray*}
+            \dot{x}_1 = f_1(x) & = & a x_1 - b x_1 x_2 - e x_1^2 \\
+            \dot{x}_2 = f_2(x) & = & -c x_2 + d x_1 x_2
+        \end{eqnarray*}
+
+        \subsection{Puntos de Equilibrio}
+
+        \begin{equation*}
+            x_1 =
+            \begin{pmatrix}
+                0 \\
+                0
+            \end{pmatrix} \quad
+            x_2 =
+            \begin{pmatrix}
+                \frac{c}{d} \\
+                \frac{ad - ec}{db}
+            \end{pmatrix}
+        \end{equation*}
+
+        \subsection{Jacobiano}
+
+            \begin{equation*}
+                J_f(x) =
+                \begin{pmatrix}
+                    a - b x_2 - 2 e x_1 & - b x_1 \\
+                    d x_2 & - c + d x_1
+                \end{pmatrix}
+            \end{equation*}
+
+        \subsection{Hiperbolicidad}
+
+            Para el primer punto de equilibrio:
+
+            \begin{equation*}
+                J_f(x_1) =
+                \begin{pmatrix}
+                    a & 0 \\
+                    0 & -c
+                \end{pmatrix}
+            \end{equation*}
+
+            \begin{equation*}
+                \det{(\lambda I - J_f(x_1))} = \left( \lambda - a \right) \left( \lambda + c \right)
+            \end{equation*}
+
+            por lo que el primer punto de equilibrio $x_1$ es inestable.
+
+            Por otro lado, el segundo punto de equilibrio:
+
+            \begin{equation*}
+                J_f(x_2) =
+                \begin{pmatrix}
+                    -\frac{ec}{d} & - \frac{bc}{d} \\
+                    \frac{ad - ec}{b} & 0
+                \end{pmatrix}
+            \end{equation*}
+
+            \begin{equation*}
+                \det{(\lambda I - J_f(x_2))} = \lambda \left( \lambda + \frac{ec}{d} \right) + \frac{bc}{d} \frac{ad - ec}{b} = \lambda^2 + \frac{ec}{d} \lambda + ac - \frac{ec^2}{d}
+            \end{equation*}
+
+            Y si analizamos esta ecuación y el significado detras de los parametros, nos daremos cuenta que estas raices solo pueden ser de parte real negativa, por lo que $x_2$ es estable.
 
 \end{document}
