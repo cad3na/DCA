@@ -46,5 +46,185 @@
 
         $\bar{x}$ es inestable, si al menos una raiz de $\det{(\lambda I - J_f(\bar{x}))}$ tiene parte real positiva.
 
+    \section{Ejemplo 1}
+
+        Sea el sistema presa - depredador
+
+        \begin{eqnarray*}
+            \dot{x}_1 & = & a x_1 - b x_1 x_2 \\
+            \dot{x}_2 & = & -c x_2 + d x_1 x_2
+        \end{eqnarray*}
+
+        es decir:
+
+        \begin{equation*}
+            \dot{x} = f(x)
+        \end{equation*}
+
+        donde:
+
+        \begin{equation}
+            x =
+            \begin{pmatrix}
+                x_1 \\
+                x_2
+            \end{pmatrix}
+        \end{equation}
+
+        \begin{equation} \label{eq:predep}
+            f(x) =
+            \begin{pmatrix}
+                a x_1 - b x_1 x_2 \\
+                -c x_2 + d x_1 x_2
+            \end{pmatrix} : \mathbbm{R}^2 \to \mathbbm{R}^2 
+        \end{equation}
+
+        \subsection{Puntos de equilibrio}
+
+            Sea el primer punto de equilibrio:
+
+            \begin{equation*}
+                x_1 =
+                \begin{pmatrix}
+                    0 \\
+                    0
+                \end{pmatrix}
+            \end{equation*}
+
+            ya que:
+
+            \begin{equation*}
+                f(x_1) =
+                \begin{pmatrix}
+                    a \cdot 0 - b \cdot 0 \cdot 0 \\
+                    -c \cdot 0 + d \cdot 0 \cdot 0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    0 \\
+                    0
+                \end{pmatrix}
+            \end{equation*}
+
+            y el segundo punto de equilibrio:
+
+            \begin{equation*}
+                x_2 =
+                \begin{pmatrix}
+                    \frac{c}{d} \\
+                    \frac{a}{b}
+                \end{pmatrix}
+            \end{equation*}
+
+            ya que:
+
+            \begin{equation*}
+                f(x_2) =
+                \begin{pmatrix}
+                    a \cdot \frac{c}{d} - b \cdot \frac{c}{d} \cdot \frac{a}{b} \\
+                    -c \cdot \frac{a}{b} + d \cdot \frac{c}{d} \cdot \frac{a}{b}
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    0 \\
+                    0
+                \end{pmatrix}
+            \end{equation*}
+
+        \subsection{Jacobiano}
+
+            Si bien el sistema $\dot{x} = f(x)$, con los parametros de la ecuación ~\ref{eq:predep} es una función en $\mathbbm{R}^2$, tambien lo podemos ver como un par de funciones en $\mathbbm{R}$:
+
+            \begin{equation*}
+                f(x) =
+                \begin{pmatrix}
+                    a x_1 - b x_1 x_2 \\
+                    -c x_2 + d x_1 x_2
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    f_1(x) \\
+                    f_2(x)
+                \end{pmatrix}
+            \end{equation*}
+
+            Entonces su Jacobiano estará dado por la formula:
+
+            \begin{equation}
+                J_f(x) =
+                \begin{pmatrix}
+                    \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} \\
+                    \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2}
+                \end{pmatrix}
+            \end{equation}
+
+            En especifico, para nuestro sistema:
+
+            \begin{equation*}
+                J_f(x) =
+                \begin{pmatrix}
+                    a - b x_2 & - b x_1 \\
+                    d x_2 & - c + d x_1
+                \end{pmatrix}
+            \end{equation*}
+
+        \subsection{Hiperbolicidad}
+
+            Para descubrir si el punto de equilibrio planteado es hiperbólico o no, tenemod que sacar las raices del polinomio que resulta de $\det{(\lambda I - J_f)}$, empezaremos con el segundo punto de equilibrio.
+
+            \begin{equation*}
+                \lambda I - J_f(x_2) =
+                \begin{pmatrix}
+                    \lambda & 0 \\
+                    0 & \lambda
+                \end{pmatrix} -
+                \begin{pmatrix}
+                    0 & -\frac{bc}{d} \\
+                    \frac{da}{b} & 0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    \lambda & \frac{bc}{d} \\
+                    -\frac{da}{b} & \lambda
+                \end{pmatrix}
+            \end{equation*}
+
+            por lo que:
+
+            \begin{equation*}
+                \det{(\lambda I - J_f)} = \lambda^2 + ac
+            \end{equation*}
+
+            de aqui podemos ver que sus raices son:
+
+            \begin{equation*}
+                \lambda_{1,2} = \pm \sqrt{-ac} = \pm ac i 
+            \end{equation*}
+
+            y como sus raices son puramente imaginarias, podemos decir que $x_2$ no es hiperbólico.
+
+            Por otro lado el primer punto de equilibrio:
+
+            \begin{equation*}
+                \lambda I - J_f(x_1) =
+                \begin{pmatrix}
+                    \lambda & 0 \\
+                    0 & \lambda
+                \end{pmatrix} -
+                \begin{pmatrix}
+                    a & 0 \\
+                    0 & -c
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    \lambda - a & 0 \\
+                    0 & \lambda + c
+                \end{pmatrix}
+            \end{equation*}
+
+            por lo que:
+
+            \begin{equation*}
+                \det{(\lambda I - J_f)} = \left( \lambda - a \right) \left( \lambda + c \right)
+            \end{equation*}
+
+            Sus raices son $\lambda_1 = a$ y $\lambda_2 = -c$, por lo que si podemos aplicar el teorema de Hartman - Grobman y decir que es inestable debido a $\lambda_1 = a$.
+
+    \section{Ejemplo 2}
 
 \end{document}
