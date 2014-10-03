@@ -9,6 +9,8 @@ handout:
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode "$(SOUDIR)$(TARGET).tex"
+	@pdflatex -interaction=batchmode "$(SOUDIR)$(TARGET).tex"
+	@pdflatex -interaction=batchmode "$(SOUDIR)$(TARGET).tex"
 
 move:
 	@echo "==============================================="
