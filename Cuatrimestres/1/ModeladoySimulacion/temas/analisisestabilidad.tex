@@ -1,6 +1,6 @@
 \input{./estilo/handout.tex}
 
-\title{Análisis de Estabilidad}
+\title{Análisis de estabilidad}
 \author{Roberto Cadena Vega}
 
 \begin{document}
@@ -24,7 +24,7 @@
 
         donde $J_f(p)$ es el Jacobiano de $f$ en $p$, es decir la pendiente generalizada de la función, $(x-p)$ es la distancia entre el punto de análisis y el punto de equilibrio del sistema, y $\mathcal{O}(||x-p||)$ son terminos de orden mayor de esta distancia.
 
-    \section{Estabilidad}
+    \section{Teorema de Hartman - Grobman}
 
         Para un sistema dinámico que tenga puntos de equilibro de la forma
 
@@ -32,7 +32,7 @@
             f(\bar{x}) = 0 \implies \frac{dx}{dt} = 0 \quad \text{en } \bar{x}
         \end{equation}
 
-        diremos que $\bar{x}$ es un punto hiperbólico si:
+        diremos que $\bar{x}$ es un punto hiperbólico\footnote{Basicamente lo que dice el teorema de Hartman - Grobman, es que dado un sistema no lineal, existe una vecindad de puntos, $N$, alrededor de los puntos de equilibrio del sistema, $x_i$, para los cuales existe un homomorfismo entre el mismo sistema, $\dot{x} = f(x)$, y un mapeo lineal, $\dot{x} = Ax$, es decir una linealización, si la linealización tiene un polinomio caracteristico con raices con parte real no nula.} si:
 
         \begin{equation}
             \det{(\lambda I - J_f)} \ne bi \quad b \in \mathbbm{R}
@@ -40,7 +40,7 @@
 
         es decir, que este determinante no tenga raices puramente imaginarias.
 
-        Por otro lado, una vez determinado que $\bar{x}$ es hiperbolico, podemos definir los siguientes comportamientos del sistema:
+        Por otro lado, una vez determinado que $\bar{x}$ es hiperbólico, podemos definir los siguientes comportamientos del sistema:
 
         $\bar{x}$ es estable, si las partes reales de todas las raices de $\det{(\lambda I - J_f(\bar{x}))}$ son negativas.
 
