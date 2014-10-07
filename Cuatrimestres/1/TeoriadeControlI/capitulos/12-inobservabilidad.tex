@@ -146,7 +146,7 @@
 	\begin{equation*}
 		\mathcal{O}_{(c^T, A)} T^{-1} =
 		\begin{pmatrix}
-			\mathbbm{X} & 0 
+			\mathbbm{X} & 0
 		\end{pmatrix}
 	\end{equation*}
 
@@ -244,13 +244,140 @@
 
 	Por lo que es una condición necesaria y suficiente, para que la representación de estado sea observable que su matriz de observabilidad, $\mathcal{O}_{(c^T, A)}$, sea de rango pleno por columnas.
 
-	Cuando la matrizde observabilidad es de rango pleno por columnas, se dice que el par $(c^T, A)$ es observable.
+	Cuando la matriz de observabilidad es de rango pleno por columnas, se dice que el par $(c^T, A)$ es observable.
 
     \newpage
     \section{Dualidad}
 
+		La operación matricial "transpuesta", establece una dualidad entre la observabilidad y la controlabilidad. En efecto,
+
+		\begin{equation}
+			\mathcal{O}_{(c^T, A)} =
+			 \begin{pmatrix}
+			 	c^T \\
+				c^T A \\
+				\vdots \\
+				c^T A^{n-1}
+			 \end{pmatrix}
+		\end{equation}
+
+		\begin{equation}
+			\mathcal{O}_{(c^T, A)}^T =
+			\begin{pmatrix}
+				c^T \\
+				c^T A \\
+				\vdots \\
+				c^T A^{n-1}
+			\end{pmatrix}^T =
+			\begin{pmatrix}
+				c & A^T c & \dots & \left( A^T \right)^{n-1} c
+			\end{pmatrix} = C_{(A^T, c)}
+		\end{equation}
+
+		\begin{equation}
+			C^T_{(A, b)} =
+			\begin{pmatrix}
+				b & A b & \dots & A^{n-1} b
+			\end{pmatrix}^T =
+			\begin{pmatrix}
+				b^T \\
+				b^T A^T \\
+				\vdots \\
+				b^T (A^T)^{n-1}
+			\end{pmatrix} = \mathcal{O}_{(b^T, A^T)}
+		\end{equation}
+
+		note tambien que la función de transferencia es una funcion continua en $\mathbbm{R}^1$, por lo que:
+
+		\begin{equation*}
+			FT = FT^T
+		\end{equation*}
+
+		\begin{equation}
+			b^T \left( sI - A^T \right)^{-1} c + d = c^T \left( sI - A \right)^{-1} b + d
+		\end{equation}
+
+		ademas, el polinomio caracteristico es el mismo:
+
+		\begin{equation}
+			\det{(sI - A)} = \det{(sI - A^T)} \implies \sigma(A) = \sigma (A^T)
+		\end{equation}
+
+		Por lo que obtenemos la siguiente dualidad:
+
+		\begin{equation*}
+			A \leftrightarrow A^T
+		\end{equation*}
+
+		\begin{equation*}
+			b \leftrightarrow c
+		\end{equation*}
+
+		\begin{equation*}
+			c^T \leftrightarrow b^T
+		\end{equation*}
+
+		\begin{equation*}
+			d \leftrightarrow b
+		\end{equation*}
+
+		\begin{equation*}
+			f^T \leftrightarrow k^T
+		\end{equation*}
+
     \newpage
     \section{Propiedades de la matriz de observabilidad}
+
+		Dada la dualidad entre observabilidad y controlabilidad, todos los resultados de controlabilidad del par $(A, b)$ son extrapolables a la observabilidad del par $(c^T, A)$.
+
+		\begin{enumerate}
+			\item Asignación de los valores propios (polos), mediante la inyección de salida.
+
+			\begin{enumerate}
+				\item Si $\det{C_{(A, b)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $f \in \mathbbm{R}^n$, tal que:
+
+				\begin{equation*}
+					\sigma(A + b f^T) = \Lambda
+				\end{equation*}
+
+				\item Si $\det{\mathcal{O}_{(c^T, A)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $k \in \mathbbm{R}^n$, tal que:
+
+				\begin{equation*}
+					\sigma(A + k c^T) = \Lambda
+				\end{equation*}
+
+				\begin{equation*}
+					\sigma(A^T + c k^T) = \Lambda
+				\end{equation*}
+			\end{enumerate}
+
+			\item Invarianza de la matriz de observabilidad bajo cambio de base
+
+			Sea el siguiente cambio de base:
+
+			\begin{eqnarray}
+				A_1 & = & T^{-1} A T \\
+				c_1^T & = & c^T T
+			\end{eqnarray}
+
+			dado un cambio de base $T$ invertible; entonces tendremos lo siguiente:
+
+			\begin{equation}
+				\mathcal{O}_{(c_1^T, A_1)} = \mathcal{O}_{(c^T, A)} T^{-1}
+			\end{equation}
+
+			de donde podemos notar que:
+
+			\begin{equation}
+				T = \mathcal{O}_{(c_1^T, A_1)}^{-1} \mathcal{O}_{(c^T, A)}
+			\end{equation}
+
+			siempre que el par $(c^T, A)$ sea observable.
+
+			\item Invarianza de la matriz de observabilidad bajo inyección de salida
+
+			\item Invarianza de los ceros del sistema bajo iyección de salida
+		\end{enumerate}
 
     \newpage
     \section{Formas canónicas}
