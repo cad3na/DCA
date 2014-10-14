@@ -19,7 +19,7 @@
         Si no es estable, decimos que es inestable.
     \end{definicion}
 
-    \begin{teorema}
+    \begin{teorema} \label{te:lyap1}
         Una matriz $A$ es Hurwitz estable, es decir $\Re{\{ \lambda(A) \}} < 0$, si y solo si para cualquier matriz simetrica definida positiva dada, $Q$, existe una matriz  simetrica definida positiva, $P$, que satisface:
 
         \begin{equation}
@@ -172,4 +172,52 @@
 
     \begin{proof}
         \tarea{Buscar demostración en Teoría de Matrices}
+    \end{proof}
+
+    \begin{corolario}
+        En el teorema ~\ref{te:lyap1} se puede elegir a $Q$ como una matriz semidefinida positiva, $Q \ge 0$, bajo la condición inicial de que $x^T(t) Q x(t)$ no sea identicamente nula a lo largo de cualquier trayectoria no nula, solución de:
+
+        \begin{equation*}
+            \frac{d x(t)}{dt} = A x(t)
+        \end{equation*}
+
+        El requerimiento de este corolario se reduce a la condición  de que el par $(Q_{\sfrac{1}{2}}, A)$ sea observable:
+
+        \begin{equation*}
+            Q \ge 0 \exists Q_{\sfrac{1}{2}} \text{ tal que } Q = Q_{\sfrac{1}{2}}^T Q_{\sfrac{1}{2}}
+        \end{equation*}
+    \end{corolario}
+
+    \begin{corolario}
+        Si $A$ es una matriz Hurwitz estable entonces la ecuación de Lyapunov, $A^T P + P A = -Q$, tiene una única solución para cada $Q$.
+    \end{corolario}
+
+    \begin{proof}
+        Suponga que existen dos soluciones, $P_1$ y $P_2$, de la ecuación de Lyapunov, es decir:
+
+        \begin{eqnarray*}
+            A^T P_1 + P_1 A & = & -Q \\
+            A^T P_2 + P_2 A & = & -Q
+        \end{eqnarray*}
+
+        lo cual implica:
+
+        \begin{eqnarray*}
+            A^T (P_2 - P_1) + (P_2 - P_1) A & = & 0 \\
+            A^T (P_2 - P_1) - (P_2 - P_1) (-A) & = & 0 \\
+        \end{eqnarray*}
+
+        pero sabemos que el espectro de una matriz, no cambia debido a la transposición, $\sigma(A^T) = \sigma(A)$, y por otro lado tenemos que la matriz $A$ es Hurwitz estable, es decir $\Re{\left\{ \lambda(A)\right\}} < 0$, lo cual implica que:
+
+        \begin{equation*}
+            \Re{\left\{ \lambda(-A) \right\}} > 0
+        \end{equation*}
+
+        por lo que podemos concluir que:
+
+        \begin{equation*}
+            \sigma(A^T) \cap \sigma(-A) = \emptyset
+        \end{equation*}
+
+        por lo tanto, solo hay una solución y es la trivial.
     \end{proof}
