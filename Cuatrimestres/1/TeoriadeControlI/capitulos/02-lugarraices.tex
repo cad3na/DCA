@@ -25,7 +25,118 @@
 
 		Ejemplo: $H(s) = 1$, $G(s) = \frac{k}{s(s+1)(s+2)}$
 
+		Sabemos, por una inspección visual, que los polos del sistema son $0$, $-1$, y $-2$, y que este sistema no tiene ceros. Lo cual nos indica, por la condición de angulo, que la suma de las interacciones de estas raices, nos dará la interacción total del sistema:
+
+		\begin{equation*}
+			\angle G(s) = - \angle s - \angle s+1 - \angle s+2 = \pm 180^{\circ} (2R + 1)
+		\end{equation*}
+
+		Notemos que cualquier lugar de las raices en el semiplano derecho complejo (inestable), viene con un angulo de $0^o$, por lo que las interacciones de cada polo serían:
+
+		\begin{equation*}
+			\angle G(s) = - 0^o - 0^o - 0^o = 0^o
+		\end{equation*}
+
+		lo cual obviamente no cumple con la condición de angulo del sistema.
+
+		Si pasamos a la siguiente sección del eje real (creada por los mismos polos del sistema), tenemos que los angulos de interacción de cada polo son:
+
+		\begin{equation*}
+			\angle G(s) = - 180^o - 0^o - 0^o = -180^o
+		\end{equation*}
+
+		lo cual cumple con la condición de angulo del sistema.
+
+		En la siguiente sección (entre $-1$ y $-2$), tenemos lo siguiente:
+
+		\begin{equation*}
+			\angle G(s) = - 180^o - 180^o - 0^o = -360^o = 0^o
+		\end{equation*}
+
+		y esto no cumple con la condición de angulo del sistema.
+
+		En la ultima sección (entre $-2$ y $- \infty$) tenemos:
+
+		\begin{equation*}
+			\angle G(s) = - 180^o - 180^o - 180^o = -540^o = -180^o
+		\end{equation*}
+
+		por lo que esta ultima sección tambien es parte del lugar geométrico de las raices.
+
 		\item Determinar las asintotas del lugar de las raíces.
+
+		El lugar de las raices se aproxima a sus asintotas, mientras $s \to \infty$, por lo que podemos hacer una simplificación:
+
+		\begin{equation*}
+			\lim_{s \to \infty} G(s) = \lim_{s \to \infty} \frac{k}{s(s+1)(s+2)} = \lim_{s \to \infty} \frac{K}{s^3}
+		\end{equation*}
+
+		por lo que la condición de angulo queda:
+
+		\begin{equation*}
+			\angle G(s) = -3 \angle s = \pm 180^{\circ} (2R + 1) \implies \angle s = \pm 60^{\circ} (2R + 1)
+		\end{equation*}
+
+		lo cual nos da que los angulos de las asintotas son $60^o$, $-60^o$ y $120^o$.
+
+		Por otro lado, si hacemos un proceso similar, pero con el polinomio caracteristico desarrollado, podremos ver que hay terminos mas importantes que otros, en especial cuando hacemos $s \to \infty$, por lo que:
+
+		\begin{equation*}
+			G(s) = \frac{k}{s(s+1)(s+2)} = \frac{k}{s^3 + 3 s^2 + 2 s} \approx \frac{k}{(s+1)^3}
+		\end{equation*}
+
+		por lo que podemos ver que las asintotas tienen esa forma, y que podemos asegurar que parten del punto $-1 + 0 i$.
+
 		\item Determinar el punto de ruptura o partida de las asintotas en el eje real.
+
+		Para determinar el punto de ruptura del lugar de las raices, tenemos que pensar en el polinomio caracteristico como la suma de 2 polinomios diferentes $A(s)$ y $B(s)$, de tal manera que ninguno contenga a la ganancia $k$, entonces tendremos:
+
+		\begin{equation*}
+			F(s) = B(s) + k A(s) = 0 \implies k = - \frac{B(s)}{A(s)}
+		\end{equation*}
+
+		implicando que estamos obteniendo las ganancias, para las cuales se tienen polos en el plano complejo.
+
+		De aqui podemos pensar en el punto maximo de esta función de ganancias, como el punto de ruptura buscado, es decir:
+
+		\begin{equation}
+			\frac{dk}{ds} = 0
+		\end{equation}
+
+		En nuestro ejemplo, esto nos da como resultado:
+
+		\begin{equation*}
+			k = - s^3 - 3s^2 - 2 s \implies \frac{dk}{ds} = -3 s^2 + 6 s + 2 = 0
+		\end{equation*}
+
+		de donde obtenemos un par de respuestas $s_1 = -0.423$ y $s_2 = -1.577$, con ganancias asociadas $k_1 = 0.385$ y $k_2 = -0.385$.
+
+		De aqui podemos descartar $s_2$ ya que no se encuentra en el lugar de las raices del eje real, y obviamente no puede partir de ahi, si no existe en ese lugar en especifico.
+
 		\item Determinar los puntos donde el lugar de las raíces atraviesa el eje imaginario.
+
+		Ya hemos visto que los polos sobre el eje real no cruzan el eje imaginario, ahora solo tenemos que encontrar las ganancias criticas, es decir, cuando los polos estan sobre el eje imaginario.
+
+		\begin{equation*}
+			F(s) = s^3 + 3 s^2 + 2 s + k
+		\end{equation*}
+
+		\begin{table}[htbp]
+			\centering
+			\begin{tabular}{c|c c c c c}
+				$s^3$ & $1$ & $2$ \\
+				$s^2$ & $3$ & $k$ \\
+				$s^1$ & $2 - \sfrac{k}{3}$ & $0$ \\
+				$s^0$ & $k$
+			\end{tabular}
+		\end{table}
+
+		De donde obtenemos que $k > 0$, lo cual ocurre en el polo del origen  y $k < 6$, que es justo cuando cruza por el eje imaginario.
+
+		Ahora, tan solo tenemos que obtener las raices del polinomio caracteristico con la ganancia adecuada y obtendremos el punto de cruce, alternativamente, podemos usar el polinomio auxiliar de la tabla de Routh, usaremos el correspondiente a $s^2$.
+
+		\begin{equation*}
+			P_{aux} = 3 s^2 + k = 3 s^2 + 6 = 0 \implies s = \pm \sqrt{2} j
+		\end{equation*}
+
 	\end{enumerate}
