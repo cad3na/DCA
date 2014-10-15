@@ -1,0 +1,129 @@
+
+\chapter{Introducción a la optimización de funcionales}
+
+    El problema que tratamos de resolver es el siguiente; determinar $v(t)$, tal que la siguiente ecuación:
+
+    \begin{equation} \label{eq:opfun1}
+        J(v(t), v'(t)) = \int_{t_1}^{t_2} f_1(v(t), v'(t), t) dt
+    \end{equation}
+
+    sea un extremo.
+
+    Primero definamos una función de vecindad $v(t) \to v(\alpha, t)$ tal que si $\alpha = 0 \implies v^* = v(0, t) = v(t)$, es decir, $v^*$ es la función que extremiza a $J(v(t), v'(t))$.
+
+    Proponemos una solución en forma lineal:
+
+    \begin{equation}
+        v(\alpha, t) = v(0, t) + \alpha \eta(t)
+    \end{equation}
+
+    pero $v(t)$ y $u(t)$ deben ser idénticos en los puntos extremos.
+
+    \missingfigure{Trayectorias diferentes con inicio y fin comunes.}
+
+    es decir $\eta(t_1) = \eta(t_2) = 0$, pero además $\eta(t) \in e^1$.\footnote{Si $f \in e^1$, $f$ es una función diferenciable al menos una vez.}
+
+    Con esta parametrización en $\alpha$:
+
+    \begin{equation*}
+        v(t) \to v(\alpha, t) = v(0, t) + \alpha \eta(t)
+    \end{equation*}
+
+    tenemos que la ecuación~\ref{eq:opfun1} nos queda:
+
+    \begin{equation*}
+        J(\alpha) = \int_{t_1}^{t_2} f_1(v(\alpha, t), v'(\alpha, t), t) dt
+    \end{equation*}
+
+    donde tenemos que $\alpha = 0$ implica que $J$ es un extremo y $\alpha \ne 0$ implica que $J$ no es un extremo.
+
+    Debido a esto, podemos concluir que $J$ tambien esta parametrizada de esta manera:
+
+    \begin{equation*}
+        J \to J(\alpha)
+    \end{equation*}
+
+    La condición necesaria para que $J$ tenga un valor estacionario (extremo), es que $J$ sea independiente de $\alpha$ en primer orden (que este relacionado linealmente), a lo largo de la trayectoria que otorga el extremo ($\alpha = 0$), es decir:
+
+    \begin{equation}
+        \left. \frac{\partial J}{\partial \alpha} \right|_{\alpha=0} = 0 \quad \forall \eta \in e^1
+    \end{equation}
+
+    \begin{nota}
+        Observe que solo es una condición necesaria, es decir:
+
+        \begin{equation*}
+            J \text{ es extremo } \implies \left. \frac{\partial J}{\partial \alpha} \right|_{\alpha=0} = 0
+        \end{equation*}
+    \end{nota}
+    \newpage
+    \section{Ecuación de Euler}
+
+    La condición necesaria es:
+
+    \begin{equation*}
+        \left. \frac{\partial J}{\partial \alpha} \right|_{\alpha=0} = 0
+    \end{equation*}
+
+    entonces hay que seguir los siguientes pasos:
+
+    \begin{enumerate}
+        \item Calcular $\frac{\partial J}{\partial \alpha}$.
+        \item Hacer $\alpha = 0$.
+    \end{enumerate}
+
+    Empecemos calculando la derivada parcial de $J$:
+
+    \begin{multline*}
+        \frac{\partial J}{\partial \alpha} = \frac{\partial}{\partial \alpha} \int_{t_1}^{t_2} f_1(v(\alpha, t), v'(\alpha, t), t)dt = \\
+        \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \frac{\partial v(\alpha, t)}{d \alpha} + \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \frac{\partial v'(\alpha, t)}{d \alpha} \right) dt
+    \end{multline*}
+
+    en este punto aparecen términos reducibles:
+
+    \begin{equation*}
+        \frac{\partial v(\alpha, t)}{\partial \alpha} = \frac{\partial v(t)}{\partial \alpha} + \frac{\partial \left(\alpha \eta(t) \right)}{\partial \alpha} = \eta(t)
+    \end{equation*}
+
+    \begin{equation*}
+        \frac{d v'(\alpha, t)}{d\alpha} = \frac{\partial}{\partial \alpha} \left( \frac{d v(\alpha, t)}{dt} \right) = \frac{\partial}{\partial \alpha} \left( v'(t) + \alpha \frac{d \eta(t)}{dt} \right) = \frac{d \eta(t)}{dt}
+    \end{equation*}
+
+    lo que nos deja:
+
+    \begin{equation*}
+        \frac{\partial J}{\partial \alpha} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \eta(t) + \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \frac{d \eta(t)}{dt} \right) dt
+    \end{equation*}
+
+    la segunda parte de esta integral es integrable por partes, si hacemos $u = \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)}$, $dv = \frac{d\eta(t)}{dt}dt$, $du = \frac{d}{dt}\left( \frac{\partial f_1(\dots)}{dv'(\alpha, t)} \right)$ y $v = \eta(t)$:
+
+    \begin{equation*}
+        \frac{\partial J}{\partial \alpha} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \eta(t) - \frac{d}{dt} \left( \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \right) \eta(t) \right) dt + \left. \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \eta(t) \right|_{t_1}^{t_2}
+    \end{equation*}
+
+    pero recordemos que $\eta(t_1) = \eta(t_2) = 0$, por lo que el ultimo termino se elimina y nos queda:
+
+    \begin{multline} \label{eq:opfun2}
+        \frac{\partial J}{\partial \alpha} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \eta(t) - \frac{d}{dt} \left( \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \right) \eta(t) \right) dt = \\
+        \int_{t_1}^{t_2}\left( \frac{\partial f_1(v(\alpha, t), v'(\alpha, t), t)}{\partial v(\alpha, t)} - \frac{d}{dt} \left( \frac{\partial f_1(v(\alpha, t), v'(\alpha, t), t)}{\partial v'(\alpha, t)} \right) \right) \eta(t) dt
+    \end{multline}
+
+    Si ahora, en la ecuación~\ref{eq:opfun2} sustituimos $\alpha = 0$, obtendremos:
+
+    \begin{equation*}
+        \left. \frac{\partial J}{\partial \alpha} \right|_{\alpha=0} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(v(t), v'(t), t)}{\partial v(t)} - \frac{d}{dt} \left( \frac{\partial f_1(v(t), v'(t), t)}{\partial v'(t)} \right) \right) \eta(t) dt
+    \end{equation*}
+
+    Por lo que la condición necesaria es:
+
+    \begin{equation*}
+        \int_{t_1}^{t_2}\left( \frac{\partial f_1(v(t), v'(t), t)}{\partial v(t)} - \frac{d}{dt} \left( \frac{\partial f_1(v(t), v'(t), t)}{\partial v'(t)} \right) \right) \eta(t) dt = 0 \quad \forall \eta(t) \in e^1
+    \end{equation*}
+
+    lo cual implica que:
+
+    \begin{equation}
+        \frac{\partial f_1(v(t), v'(t), t)}{\partial v(t)} - \frac{d}{dt} \left( \frac{\partial f_1(v(t), v'(t), t)}{\partial v'(t)} \right)  = 0
+    \end{equation}
+
+    esta es la que conocemos como ecuación de Euler.
