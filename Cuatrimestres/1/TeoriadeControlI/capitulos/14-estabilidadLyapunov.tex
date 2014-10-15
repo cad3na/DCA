@@ -17,6 +17,8 @@
         \end{equation*}
 
         Si no es estable, decimos que es inestable.
+
+        \missingfigure{Diagrama de trayectoria acotada en 2 dimensiones.}
     \end{definicion}
 
     \begin{teorema} \label{te:lyap1}
@@ -27,6 +29,7 @@
         \end{equation}
 
         \begin{nota}
+            \tarea{Resumen de matrices Hermitianas de Introduction to Matrix Computations - G.W. Stewart Cap. 4 y 6}
             Una matriz $H \in \mathbbm{C}^{n\times n}$, se dice Hermitiana si su transpuesta conjugada es ella misma, $H^* = H$.
             Si $H \in \mathbbm{R}^{n \times n}$, se dice simétrica si su transpuesta es ella misma, $H^T = H$.
 
@@ -67,6 +70,7 @@
     \end{teorema}
 
     \begin{proof}
+        \tarea{Resumen de estabilidad de Lyapunov de Linear Systems - Thomas Kailath Cap. 2.6}
         Sea la función de Lyapunov:
 
         \begin{equation} \label{eq:lyap2}
@@ -114,7 +118,7 @@
             \int_{0}^{t}\frac{dV(x(\tau))}{d\tau} d\tau \le - \frac{\lambda_{min}(Q)}{\lambda_{max}(P)} \int_{0}^{t} V(x(\tau)) d\tau
         \end{equation*}
 
-        para lo cual necesitamos el lema de Bellman - Grönwall.
+        para lo cual necesitamos el lema de Bellman - Grönwall.\tarea{Feedback Systems - Input/Output Properties - Desoer, Vidyasagar Ap. E}
 
         \begin{nota}
             \begin{equation*}
@@ -146,6 +150,8 @@
             ||x(t)||^2 \le \frac{\lambda_{max}(P)}{\lambda_{min}(P)} ||x(0)||^2 \exp{\left( - \frac{\lambda_{min}(Q)}{\lambda_{max}(P)} t \right)}
         \end{equation*}
 
+        \missingfigure{Función arbitraria acotada por una exponencial negativa.}
+
         Dado que $A$ es Hurwitz estable tenemos que $\Re{\lambda(A)} < 0$, sea la siguiente matriz definida positiva:
 
         \begin{equation*}
@@ -171,7 +177,7 @@
     \end{lema}
 
     \begin{proof}
-        \tarea{Buscar demostración en Teoría de Matrices}
+        \tarea{Buscar demostración en The Theory of Matrices - F.R. Gantmacher, Vol 1, Cap. 8}
     \end{proof}
 
     \begin{corolario}
