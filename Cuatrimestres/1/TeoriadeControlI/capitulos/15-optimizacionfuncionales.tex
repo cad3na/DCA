@@ -56,6 +56,7 @@
             J \text{ es extremo } \implies \left. \frac{\partial J}{\partial \alpha} \right|_{\alpha=0} = 0
         \end{equation*}
     \end{nota}
+
     \newpage
     \section{Ecuación de Euler}
 
@@ -97,8 +98,7 @@
 
     la segunda parte de esta integral es integrable por partes, si hacemos $u = \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)}$, $dv = \frac{d\eta(t)}{dt}dt$, $du = \frac{d}{dt}\left( \frac{\partial f_1(\dots)}{dv'(\alpha, t)} \right)$ y $v = \eta(t)$:
 
-    \begin{equation*}
-        \frac{\partial J}{\partial \alpha} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \eta(t) - \frac{d}{dt} \left( \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \right) \eta(t) \right) dt + \left. \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \eta(t) \right|_{t_1}^{t_2}
+    \begin{equation*}\frac{\partial J}{\partial \alpha} = \int_{t_1}^{t_2}\left( \frac{\partial f_1(\dots)}{\partial v(\alpha, t)} \eta(t) - \frac{d}{dt} \left( \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \right) \eta(t) \right) dt + \left. \frac{\partial f_1(\dots)}{\partial v'(\alpha, t)} \eta(t) \right|_{t_1}^{t_2}
     \end{equation*}
 
     pero recordemos que $\eta(t_1) = \eta(t_2) = 0$, por lo que el ultimo termino se elimina y nos queda:
@@ -127,3 +127,119 @@
     \end{equation}
 
     esta es la que conocemos como ecuación de Euler.
+
+    \newpage
+    \section{Multiplicadores de Lagrange}
+
+    Deseamos resolver el siguiente problema:
+
+    Minimizar la función
+    $f(v):\mathbbm{R}^n \to \mathbbm{R}$
+    sujeta a la restricción $\mathscr{G}(v) = 0$
+    , donde $\mathscr{G}(v)=\begin{pmatrix}\mathscr{G}_1(v) & \mathscr{G}_2(v) & \dots & \mathscr{G}_m(v) \end{pmatrix} \in \mathbbm{R}^m$
+     y $\mathscr{G}_i(v): \mathbbm{R}^n \to \mathbbm{R}$
+     con $i \in \left\{ 1, 2, \dots, m \right\}$.
+
+    Para resolver este problema haremos uso de los multiplicadores de Lagrange, los cuales estan basados en el concepto de la derivada direccional\footnote{Esta derivada es formalmente conocida como la derivada de Fréchet, la cual se relaciona linealmente con la diferencial de Fréchet.}
+
+        \subsection{Derivada direccional y vector gradiente}
+
+        \begin{definicion}
+            La derivada direccional de $f_1$ en $v_0 \in \mathbbm{R}^n$ en la dirección del vector unitario $\eta \in \mathbbm{R}^n$ es:
+
+            \begin{equation}
+                D_{\eta} f_1(v_0) = \lim_{\alpha \to 0}^{n}  \frac{f_1(v_0 + \alpha) - f_1(v_0)}{\alpha}
+            \end{equation}
+
+            donde $\alpha$ es un escalar, es decir, $\alpha \in \mathbbm{R}$, en el caso de que este limite exista.
+
+            \missingfigure{Superficie con vector posición evaluado y vector dirección de la derivada unitario.}
+
+            \missingfigure{Curva cortada por una recta por la que pasa un vector restando los dos puntos evaluados de la curva.}
+
+            Esta derivada nos da la razon de cambio de $f_1$ en el punto $v_0$ y en la dirección $\eta$, siempre y cuando $\alpha \to 0$.
+        \end{definicion}
+
+        \begin{teorema}
+            Si $f_1$ es una función diferenciable de $v \in \mathbbm{R}^n$, entonces $f_1$ tiene una derivada direccional en la dirección de cualquier vector unitario $\eta \in \mathbbm{R}^n$ y por lo tanto:
+
+            \begin{equation}
+                D_{\eta} f_1(v) = \sum_{i=1}^n \frac{\partial f_1(v_i)}{dv_i} \eta_i
+            \end{equation}
+
+            donde $v = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \in \mathbbm{R}^n$, $\eta = \begin{pmatrix} \eta_1 \\ \eta_2 \\ \vdots \\ \eta_n \end{pmatrix} \in \mathbbm{R}^n$ con $|| \eta || = 1$.
+        \end{teorema}
+
+        \begin{definicion}
+            Dada una base ortonormal de $\mathbbm{R}^n$, $\left\{ e_1, e_2, \dots, e_n \right\}$, entonces el gradiente de $t_1$ es la función vectorial, $\nabla f_1$, definida por:
+
+            \begin{equation} \label{eq:opfun3}
+                \nabla_v f_1(v) = \sum_{i=1}^n \frac{\partial f_1}{\partial v_i} e_i
+            \end{equation}
+
+            donde $v_i = \sum_{i=1}^n v_i e_i$.
+        \end{definicion}
+
+        Con esta notación gradiente, la ecuación~\ref{eq:opfun3} de la derivada direccional se escribe:
+
+        \begin{equation}
+            D_{\eta} f_1(v) = \left( \nabla f_1(v), \eta \right)
+        \end{equation}
+
+        donde $\left( R, S \right): \mathbbm{R}^n \times \mathbbm{R}^n \to \mathbbm{R}$ es el producto punto, es decir, la proyección escalar del vector $R$ sobre la dirección del vector $S$.
+
+        \begin{teorema}
+            Suponga que $f_1: \mathbbm{R}^n \to \mathbbm{R}$ es una funcional diferenciable. El máximo valor de la derivada $D_{\eta}f(v)$ es $||D_{\eta}f(v)||$ y se obtiene cuando la dirección de $\eta$ coincide con el vector gradiente $\nabla_v f_1(v)$.
+        \end{teorema}
+
+        Sea la superficie, $\mathscr{S}$, definida por la funcional $\mathscr{G}:\mathbbm{R}^n \to \mathbbm{R}$ de la siguiente manera:
+
+        \begin{equation}
+            \mathscr{S} = \left\{ v \in \mathbbm{R}^n \mid \mathscr{G}(v) = k \right\}
+        \end{equation}
+
+        Sea $\mathscr{C}$ una curva contenida en $\mathscr{S}$ y que pase por el punto $v_0 \in \mathbbm{R}$, la cual está definida por la función vectorial $R: \mathbbm{R} \to \mathbbm{R}^n$, esto es:
+
+        \begin{equation}
+            \mathscr{C} = \left\{ v \in \mathbbm{R}^n, t \in \mathbbm{R} \mid v = R(t)\right\}
+        \end{equation}
+
+        Sea $t_0 \in \mathbbm{R}$ tal que $R(t_0) = v_0$.
+
+        Como $\mathscr{C} \subset \mathscr{S}$, entonces cualquier punto, $v \in \mathscr{C}$, satisface:
+
+        \begin{equation*}
+            \mathscr{G}(v) = k
+        \end{equation*}
+
+        lo cual implica (asumiendo que $v$ es una función diferenciable y que tambien $\mathscr{G}$ lo es):
+
+        \begin{equation*}
+            \sum_{i=1}^n \frac{\partial \mathscr{G}}{\partial v_i} \frac{d v_i}{dt} = 0
+        \end{equation*}
+
+        es decir:
+
+        \begin{equation*}
+            \left( \nabla_i \mathscr{G}, R'(t) \right) = 0
+        \end{equation*}
+
+        donde $R'(t) = \frac{dR(t)}{dt} = \begin{pmatrix} \frac{d v_1(t)}{dt} \\ \frac{d v_2(t)}{dt} \\ \vdots \\ \frac{d v_n(t)}{dt} \end{pmatrix} \in \mathbbm{R}^n$.
+
+        En particular, cuando $t = t_0$, se tiene:
+
+        \begin{equation*}
+            R(t_0) = v_0
+        \end{equation*}
+
+        \begin{equation*}
+            \left( \nabla_v \mathscr{G}(v_0), \frac{dR(t_0)}{dt} \right) = 0
+        \end{equation*}
+
+        Esta ecuación indica que el vector gradiente en $v_0$, $\nabla_v \mathscr{G}(v_0)$,  es perpendicular al vector tangente $\frac{dR(t_0)}{dt}$ a cualquier $\mathscr{C} \subset \mathscr{S}$ que pase por $v_0$.
+
+        \missingfigure{Superficie con vector tangente.}
+
+        \missingfigure{Plano tangente a superficie de nivel y vector normal al plano.}
+
+        
