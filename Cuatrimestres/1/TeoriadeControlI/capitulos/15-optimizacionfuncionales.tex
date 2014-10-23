@@ -242,4 +242,84 @@
 
         \missingfigure{Plano tangente a superficie de nivel y vector normal al plano.}
 
-        
+        Si $\nabla_v \mathscr{G}(v_0) \ne 0$, entonces se define el plano tangente a la superficie de nivel $\mathscr{S}$, en el punto $\mathscr{G}(v_0)$ y tiene un vector normal $\nabla_v \mathscr{G}(v_0)$, esto es, el plano tangente $\tau$ que esta definido por:
+
+        \begin{equation}
+            \tau = \left\{ v \in \mathbbm{R}^n \mid \left( \nabla_v \mathscr{G}(v_0), v - v_0 \right) = 0 \right\}
+        \end{equation}
+
+        \newpage
+        \section{Multiplicadores de Lagrange}
+
+        Procederemos ahora a resolver el problema original. Suponga que la funcional $f_1$ tiene un extremo en el punto $v_0$ en la superficie:
+
+        \begin{equation}
+            \mathscr{S}_m \left\{ v \in \mathbbm{R}^n, i \in \left\{ 1, 2, \dots, m \right\} \mid \mathscr{G}(v) = 0 \right\}
+        \end{equation}
+
+        donde $\mathscr{G}(v) = \begin{pmatrix} \mathscr{G}_1(v) \\ \mathscr{G}_2(v) \\ \vdots \\ \mathscr{G}_m(v) \end{pmatrix} \in \mathbbm{R}^m$
+            y $\mathscr{G}_i(v):\mathbbm{R}^n \to \mathbbm{R}$
+            con $i \in \left\{ 1,2,\dots,m \right\}$.
+
+        Sea una curva:
+
+        \begin{equation}
+            \mathscr{C} = \left\{ v\in \mathbbm{R}^n t \in \mathbbm{R} \mid v = R(t) \right\} \subset \mathscr{S}_m
+        \end{equation}
+
+        tal que $v_0 \in \mathscr{C}$.
+
+        Sea $t_0 \in \mathbbm{R}$ el paramtero correspondiente a $v_0$, es decir $v_0 = R(t_0)$.
+
+        La funcional compuesta:
+
+        \begin{equation}
+            \mathscr{H} = f_1(R(t))
+        \end{equation}
+
+        representa a los valores de $f$  que también está en $\mathscr{C}$.
+
+        Como $f_1$ tiene un extremo en $v_0$, entonces $\mathscr{H}$ tiene un extremo en $t_0$, por lo que:
+
+        \begin{equation}
+            \left. \frac{d \mathscr{H}(t)}{dt} \right|_{t=t_0} = 0
+        \end{equation}
+
+        Pero si $f$ es diferenciable, se deduce por la regla de la cadena:
+
+        \begin{equation}
+            0 = \left. \frac{d}{dt} \mathscr{H} \right|_{t=t_0} = \left. \sum_{i=1}^n \frac{\partial f_1}{\partial v_i} \frac{v_i(t)}{dt} \right|_{t=t_0, v=v_0} = \left( \nabla_v f_1(v_0), \frac{d}{dt} R(t_0) \right)
+        \end{equation}
+
+        esto nos indica que el vector gradiente $\nabla_v f_1(v_0)$, es ortogonal al vector tangente, $\frac{d R(t_0)}{dt}$, para cada una de estas curvas.
+
+        Pero sabemos que los vectores gradientes de las coordenadas, $\left( \mathscr{G}_i, \mathscr{G}_i(v_0) \right)$, son tambien ortogonales a $\frac{d R(t_0)}{dt}$, por lo que los vectores gradiente $\nabla_v f_1(v_0)$ y $\nabla_v \mathscr{G}_i(v_0)$ con $i \in \left\{ 1, 2, \dots, m \right\}$ necesariamente son paralelos.
+
+        Entonces, si $\nabla_v \mathscr{G}_i(v_0)$ con $i \in \left\{ 1, 2, \dots, m \right\}$, existen $\lambda_1, \lambda_2, \dots, \lambda_m$, tales que:
+
+        \begin{equation}
+            \nabla_v f_1(v_0) = \sum_{i=1}^m \lambda_i \nabla_v \mathscr{G}_i(v_0)
+        \end{equation}
+
+        y al vector $\lambda = \begin{pmatrix} \lambda_1 \\ \lambda_2 \\ \vdots \\ \lambda_m \end{pmatrix} \in \mathbbm{R}^m$ se le conoce como multiplicadores de Lagrange.
+
+        Entonces para resolver el problema original se procede como sigue:
+
+        \begin{enumerate}
+            \item Se construye la siguiente funcional aumentada:
+
+            \begin{equation}\label{eq:opfun3}
+                f_a(v, \lambda) = f_1(v) - \left( \lambda, \mathscr{G}(v) \right)
+            \end{equation}
+
+            \item Se encuentran los puntos estacionarios de la ecuación~\ref{eq:opfun3}:
+
+            \begin{eqnarray}\label{eq:opfun4}
+                \nabla_v f_a(v, \lambda) & = & 0 \nonumber \\
+                \nabla_\lambda f_a(v, \lambda) & = & 0
+            \end{eqnarray}
+        \end{enumerate}
+
+        El par $(v_0, \lambda_0)$ que satisface la ecuación~\ref{eq:opfun4} es la solución del problema original.
+
+        Observe que con este método, se esta transformando un problema de optimización con restricciones, en uno sin restricciones.
