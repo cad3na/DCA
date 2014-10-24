@@ -1,0 +1,49 @@
+\chapter{Introducción al control óptimo}
+
+    Sea el sistema descrito por la representación de estado:
+
+    \begin{equation} \label{eq:conop1}
+        \frac{dx}{dt} = A x + b u
+    \end{equation}
+
+    donde $A \in \mathbbm{R}^{n \times n}$, $b \in \mathbbm{R}^{n \times n}$, con condiciones iniciales $x(0) = x_0 \in \mathbbm{R}^n$; se desea minimizar el indice de desempeño:
+
+    \begin{equation}
+        J(x, u) = \frac{1}{2} \int_0^{\infty} \left( x^T Q x + f u^2 \right) dt
+    \end{equation}
+
+    donde $f > 0$ y $Q = Q^T \ge 0$, a lo largo de las trayectorias solución de la ecuación~\ref{eq:opfun1}.
+
+    Este problema de minimización con restricciones se va a resolver usando los multiplicadores de Lagrange.
+
+    Definiendo los siguientes funcionales:
+
+    \begin{description}
+        \item [Langrangiano]
+        \begin{equation}
+            \mathscr{L}(x, u, \lambda, t) = \frac{1}{2} \left( x^T Q x + f u^2 \right)
+        \end{equation}
+        \item [Hamiltoniano]
+        \begin{equation}
+            \mathscr{H}(x, u, \lambda, t) = \mathscr{L}(x, u, \lambda, t) + \lambda^T (A x + b u)
+        \end{equation}
+    \end{description}
+
+    se obtiene:
+
+    \begin{equation}
+        J(x, u, t) = \int_0^{\infty} \left( \mathscr{L}(x, u, \lambda, t) - \lambda^T \frac{dx}{dt} \right)
+    \end{equation}
+
+    este indice de desempeño es la función $f_1 = J(x, u, t)$ que minimizaremos con la ecuación de Euler.
+
+    \newpage
+    \section{Ecuación de Euler}
+
+        Sabemos que la ecuación de Euler es:
+
+        \begin{equation}
+            \frac{\partial f_1(x, \dot{x}, t)}{\partial x} - \frac{d}{dt} \left( \frac{\partial f_1(x, \dot{x}, t)}{\partial \dot{x}} \right) = 0
+        \end{equation}
+
+        
