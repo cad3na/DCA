@@ -223,7 +223,7 @@
 
             \begin{figure}
                 \centering
-                \resizebox{\textwidth}{!}{
+                \resizebox{0.6\textwidth}{!}{
                     \tikzstyle{input} = [coordinate]
                     \tikzstyle{output} = [coordinate]
                     \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
@@ -267,6 +267,9 @@
 
     \newpage
     \section{Acción Proporcional}
+
+        \missingfigure{Diagrama de bloques de planta lineal con controlador proporcional.}
+
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia proporcional y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
     \begin{equation}
@@ -303,8 +306,13 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
                 \displaystyle \lim_{t \to \infty} e(t) = \lim_{s \to 0} s e(s) = \lim_{s \to 0} \frac{Ts + 1}{Ts + 1 + k} = \frac{1}{1 + k}
             \end{math}
 
+            \missingfigure{Gráfica de respuesta sobreamortiguada y con error en estado estacionario.}
+
     \newpage
     \section{Acción Integral}
+
+        \missingfigure{Diagrama de bloques de sistema lineal con controlador integral.}
+
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia integral y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
         \begin{equation}
@@ -342,7 +350,13 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
                 \displaystyle \lim_{t \to \infty} e(t) = \lim_{s \to 0} s e(s) = \lim_{s \to 0} s \left(\frac{s(Ts + 1)}{s(Ts + 1) + k} \frac{1}{s}\right) = 0
             \end{math}
 
+            \missingfigure{Diagrama de bloques de sistema de 2º orden con controlador integral.}
+            \faltante{Falta escribir apunte}
+
     \newpage
     \section{Acción Proporcional Integral}
+    \faltante{Falta escribir apunte}
         \subsection{Estabilidad}
+        \faltante{Falta escribir apunte}
         \subsection{Error en el estado permanente al escalón unitario}
+        \faltante{Falta escribir apunte}
