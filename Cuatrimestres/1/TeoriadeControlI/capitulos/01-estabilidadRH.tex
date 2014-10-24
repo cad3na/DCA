@@ -112,7 +112,7 @@
             \caption{\label{tab:Caso1}Caso Especial 1.}
             \end{table}
 
-            \item Cuando existen cambios en los coeficientes del polinomio característico se sabe que existirán raíces con parte real positiva (Véase el cuadro~\ref{tab:Caso2}).
+            \item Cuando existen cambios en los coeficientes del polinomio característico se sabe que existirán raíces con parte real positiva (Véase el Cuadro~\ref{tab:Caso2}).
 
             \begin{math}
                 A(s) = s^3 - 3 s + 2 = 0
@@ -219,11 +219,11 @@
             \caption{\label{tab:Aplicacion}Aplicación del criterio de Routh.}
         \end{table}
 
-        \subsection{Ejemplo:}
+        \subsection{Ejemplo}
 
             \begin{figure}
                 \centering
-                \resizebox{0.6\textwidth}{!}{
+                \resizebox{0.7\textwidth}{!}{
                     \tikzstyle{input} = [coordinate]
                     \tikzstyle{output} = [coordinate]
                     \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
@@ -268,7 +268,31 @@
     \newpage
     \section{Acción Proporcional}
 
-        \missingfigure{Diagrama de bloques de planta lineal con controlador proporcional.}
+        \begin{figure}
+            \centering
+            \resizebox{0.7\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma) {$+$};
+                    \node [block, right of=suma] (ganancia) {$k$};
+                    \node [block, right of=ganancia] (planta) {$\frac{1}{Ts + 1}$};
+                    \node [output, right of=planta] (salida) {};
+                    \node [block, below of=planta] (retro) {$-1$};
+
+                    \draw [->] (entrada) -- node[name=x] {$x(s)$} (suma);
+                    \draw [->] (suma) -- node[name=e] {$e$} (ganancia);
+                    \draw [->] (ganancia) -- node[name=u] {$u$} (planta);
+                    \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
+                    \draw [->] (y) |- (retro);
+                    \draw [->] (retro) -| (suma);
+                \end{tikzpicture}}
+        \end{figure}
 
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia proporcional y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
@@ -311,7 +335,31 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
     \newpage
     \section{Acción Integral}
 
-        \missingfigure{Diagrama de bloques de sistema lineal con controlador integral.}
+        \begin{figure}
+            \centering
+            \resizebox{0.7\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma) {$+$};
+                    \node [block, right of=suma] (ganancia) {$\frac{k}{s}$};
+                    \node [block, right of=ganancia] (planta) {$\frac{1}{Ts + 1}$};
+                    \node [output, right of=planta] (salida) {};
+                    \node [block, below of=planta] (retro) {$-1$};
+
+                    \draw [->] (entrada) -- node[name=x] {$x(s)$} (suma);
+                    \draw [->] (suma) -- node[name=e] {$e$} (ganancia);
+                    \draw [->] (ganancia) -- node[name=u] {$u$} (planta);
+                    \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
+                    \draw [->] (y) |- (retro);
+                    \draw [->] (retro) -| (suma);
+                \end{tikzpicture}}
+        \end{figure}
 
         Tenemos un sistema de primer orden, al que le agregaremos un controlador de ganancia integral y una retroalimentación negativa, por lo que las ecuaciones que describen la salida y el error del sistema quedan:
 
@@ -350,12 +398,66 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
                 \displaystyle \lim_{t \to \infty} e(t) = \lim_{s \to 0} s e(s) = \lim_{s \to 0} s \left(\frac{s(Ts + 1)}{s(Ts + 1) + k} \frac{1}{s}\right) = 0
             \end{math}
 
-            \missingfigure{Diagrama de bloques de sistema de 2º orden con controlador integral.}
+            \begin{figure}
+                \centering
+                \resizebox{0.7\textwidth}{!}{
+                    \tikzstyle{input} = [coordinate]
+                    \tikzstyle{output} = [coordinate]
+                    \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                    \tikzstyle{sum} = [draw, circle]
+                    \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                    \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                        \node [input, name=entrada] {};
+                        \node [sum, right of=entrada] (suma) {$+$};
+                        \node [block, right of=suma] (ganancia) {$\frac{k}{s}$};
+                        \node [block, right of=ganancia] (planta) {$\frac{1}{s(Js + b)}$};
+                        \node [output, right of=planta] (salida) {};
+                        \node [block, below of=planta] (retro) {$-1$};
+
+                        \draw [->] (entrada) -- node[name=x] {$x(s)$} (suma);
+                        \draw [->] (suma) -- node[name=e] {$e$} (ganancia);
+                        \draw [->] (ganancia) -- node[name=u] {$u$} (planta);
+                        \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
+                        \draw [->] (y) |- (retro);
+                        \draw [->] (retro) -| (suma);
+                    \end{tikzpicture}}
+            \end{figure}
+
             \faltante{Falta escribir apunte}
 
     \newpage
     \section{Acción Proporcional Integral}
-    \faltante{Falta escribir apunte}
+
+        \begin{figure}
+            \centering
+            \resizebox{0.7\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma1) {$+$};
+                    \node [block, right of=suma1] (ganancia) {$k_p\left( 1 + \frac{1}{T_i s} \right)$};
+                    \node [sum, right of=ganancia, pin={[init]above:$d$}] (suma2) {$+$};
+                    \node [block, right of=suma2] (planta) {$\frac{1}{s(Js + b)}$};
+                    \node [output, right of=planta] (salida) {};
+                    \node [block, below of=planta] (retro) {$-1$};
+
+                    \draw [->] (entrada) -- node[name=x] {$x(s)$} (suma1);
+                    \draw [->] (suma1) -- node[name=e] {$e$} (ganancia);
+                    \draw [->] (ganancia) -- node[name=u] {$u$} (suma2);
+                    \draw [->] (suma2) -- (planta);
+                    \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
+                    \draw [->] (y) |- (retro);
+                    \draw [->] (retro) -| (suma);
+                \end{tikzpicture}}
+        \end{figure}
+
+        \faltante{Falta escribir apunte}
         \subsection{Estabilidad}
         \faltante{Falta escribir apunte}
         \subsection{Error en el estado permanente al escalón unitario}
