@@ -9,7 +9,7 @@
 	Donde $G(s)$ es la planta y $H(s)$ es el elemento de retroalimentación. Las condiciones de angulo y magnitud son las siguientes:
 
 	\begin{equation}
-		\angle H(s) G(s) = \pm 180^{\circ} (2R + 1) \mid R \in \mathbbm{Z}^+
+		\phase{H(s) G(s)} = \pm 180^{\circ} (2R + 1) \mid R \in \mathbbm{Z}^+
 	\end{equation}
 
 	\begin{equation}
@@ -28,13 +28,13 @@
 		Sabemos, por una inspección visual, que los polos del sistema son $0$, $-1$, y $-2$, y que este sistema no tiene ceros. Lo cual nos indica, por la condición de angulo, que la suma de las interacciones de estas raices, nos dará la interacción total del sistema:
 
 		\begin{equation*}
-			\angle G(s) = - \angle s - \angle s+1 - \angle s+2 = \pm 180^{\circ} (2R + 1)
+			\phase{G(s)} = - \phase{s} - \phase{s+1} - \phase{s+2} = \pm 180^{\circ} (2R + 1)
 		\end{equation*}
 
 		Notemos que cualquier lugar de las raices en el semiplano derecho complejo (inestable), viene con un angulo de $0^o$, por lo que las interacciones de cada polo serían:
 
 		\begin{equation*}
-			\angle G(s) = - 0^o - 0^o - 0^o = 0^o
+			\phase{G(s)} = - 0^o - 0^o - 0^o = 0^o
 		\end{equation*}
 
 		lo cual obviamente no cumple con la condición de angulo del sistema.
@@ -42,7 +42,7 @@
 		Si pasamos a la siguiente sección del eje real (creada por los mismos polos del sistema), tenemos que los angulos de interacción de cada polo son:
 
 		\begin{equation*}
-			\angle G(s) = - 180^o - 0^o - 0^o = -180^o
+			\phase{G(s)} = - 180^o - 0^o - 0^o = -180^o
 		\end{equation*}
 
 		lo cual cumple con la condición de angulo del sistema.
@@ -50,7 +50,7 @@
 		En la siguiente sección (entre $-1$ y $-2$), tenemos lo siguiente:
 
 		\begin{equation*}
-			\angle G(s) = - 180^o - 180^o - 0^o = -360^o = 0^o
+			\phase{G(s)} = - 180^o - 180^o - 0^o = -360^o = 0^o
 		\end{equation*}
 
 		y esto no cumple con la condición de angulo del sistema.
@@ -58,7 +58,7 @@
 		En la ultima sección (entre $-2$ y $- \infty$) tenemos:
 
 		\begin{equation*}
-			\angle G(s) = - 180^o - 180^o - 180^o = -540^o = -180^o
+			\phase{G(s)} = - 180^o - 180^o - 180^o = -540^o = -180^o
 		\end{equation*}
 
 		por lo que esta ultima sección tambien es parte del lugar geométrico de las raices.
@@ -74,7 +74,7 @@
 		por lo que la condición de angulo queda:
 
 		\begin{equation*}
-			\angle G(s) = -3 \angle s = \pm 180^{\circ} (2R + 1) \implies \angle s = \pm 60^{\circ} (2R + 1)
+			\phase{G(s)} = -3 \phase{s} = \pm 180^{\circ} (2R + 1) \implies \phase s = \pm 60^{\circ} (2R + 1)
 		\end{equation*}
 
 		lo cual nos da que los angulos de las asintotas son $60^o$, $-60^o$ y $120^o$.
