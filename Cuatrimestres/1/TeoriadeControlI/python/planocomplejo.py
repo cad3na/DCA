@@ -72,4 +72,4 @@ setp(a, xlim=(-0.01, 0.1), ylim=(-1.25, 1.25),
     xticklabels=[], yticklabels=[])
 
 # Se guarda la figura en la misma carpeta
-savefig("planocomplejo.pdf")
+savefig("planocomplejo.pdf", bbox_inches='tight', pad_inches=0, transparent="True")
