@@ -169,7 +169,7 @@
     siendo la ley de control óptimo (de las ecuaciones~\ref{eq:conop4} y~\ref{eq:conop7}):
 
     \begin{equation} \label{eq:conop9}
-        u = -f_*^T
+        u = -f_*^T x
     \end{equation}
 
     donde $f_*^T = \rho^{-1} b^T P$.
@@ -194,3 +194,123 @@
     Y que una manera gráfica de interpretar la minimización del indice de desempeño es de manera grafica.
 
     \missingfigure{Trayectoria del comportamiento del sistema a traves del tiempo.}
+
+    \section{Propiedades de la matriz de Hamilton}
+
+        \subsection{La controlabilidad del par $(A, b)$, garantiza la existencia de la solución del problema de control óptimo.}
+
+        Definiendo la siguiente matriz de cambio de base:
+
+        \begin{equation}
+            T =
+            \begin{pmatrix}
+                I & 0 \\
+                P & I
+            \end{pmatrix}, \quad T^{-1} =
+            \begin{pmatrix}
+                I & 0 \\
+                -P & I
+            \end{pmatrix}
+        \end{equation}
+
+        y aplicando este cambio de base, la representación de estado de la ecuación~\ref{eq:conop6} queda:
+
+        \begin{equation} \label{eq:conop10}
+            \begin{pmatrix}
+                \dot{x} \\
+                \dot{\bar{\lambda}}
+            \end{pmatrix} =
+            \begin{pmatrix}
+                A - b f_*^T & -b \rho^{-1} b^T \\
+                -0 & - (A - b f_*^T)^T
+            \end{pmatrix}
+            \begin{pmatrix}
+                x \\
+                \bar{\lambda}
+            \end{pmatrix}
+        \end{equation}
+
+        En efecto:
+
+        \begin{equation*}
+            \begin{pmatrix}
+                x \\
+                \bar{\lambda}
+            \end{pmatrix} =
+            \begin{pmatrix}
+                I & 0 \\
+                -P & I
+            \end{pmatrix}
+            \begin{pmatrix}
+                x \\
+                \lambda
+            \end{pmatrix}
+        \end{equation*}
+
+        \begin{eqnarray*}
+            T^{-1} M T & = &
+            \begin{pmatrix}
+                I & 0 \\
+                -P & I
+            \end{pmatrix}
+            \begin{pmatrix}
+                A & -b \rho^{-1} b^T \\
+                -Q & P b \rho^{-1} b^T - A^T
+            \end{pmatrix}
+            \begin{pmatrix}
+                I & 0 \\
+                P & I
+            \end{pmatrix} \\
+            & = &
+            \begin{pmatrix}
+                A & -b \rho^{-1} b^T \\
+                -(PA + Q) & P b \rho^{-1} b^T - A^T
+            \end{pmatrix}
+            \begin{pmatrix}
+                I & 0 \\
+                P & I
+            \end{pmatrix} \\
+            & = &
+            \begin{pmatrix}
+                A - b \rho^{-1} b^T P & -b \rho^{-1} b^T \\
+                -(A^TP + PA - Pb \rho^{-1} b^T P + Q) & - (A^T + P b \rho^{-1} b^T)
+            \end{pmatrix}
+        \end{eqnarray*}
+
+        si sustituimos las ecuaciones~\ref{eq:conop8} y~\ref{eq:conop9}, tendremos:
+
+        \begin{equation*}
+            T^{-1} M T =
+            \begin{pmatrix}
+                A - b f_*^T & - b \rho^{-1} b^T \\
+                0 & -(A - b f_*^T)^T
+            \end{pmatrix}
+        \end{equation*}
+
+        \begin{nota}
+            Note que el determinante de la matrix Hamiltoniana es igual al de esta matriz:
+
+            \begin{eqnarray*}
+                \det{(sI - M)} & = & \det{(sI - T^{-1}MT)} \\
+                 & = & (-1)^n \pi(s) \pi(-s)
+            \end{eqnarray*}
+
+            donde $\pi(s) = \det{(sI - (A - b f_*^T))}$, es decir que los valores propios de $M$ son simetricos con respecto al eje $j\omega$.
+        \end{nota}
+
+        Resolviendo el sistema de la ecuación~\ref{eq:conop10} en el horizonte de tiempo $[0, T]$ y con $A_{f_*} = A - b f_*^T$:
+
+        \begin{eqnarray}
+            \bar{\lambda}(t) & = & \exp{(A_{f_*}^T (T - t))} \bar{\lambda}(t) \\
+            x(t) & = & \exp{(A_{f_*} t)} x_0 - \int_0^t \exp{(A_{f_*}(t - \tau))} b \rho^{-1} b^T \bar{\lambda}(\tau) d\tau \nonumber
+        \end{eqnarray}
+
+        especificamente para nuestro tiempo $T$ y sustituyendo $\bar{\lambda}(t)$ en $x(t)$:
+
+        \begin{equation*}
+            x(T) = \exp{(A_{f_*} T)} x_0 - \int_0^T \exp{(A_{f_*}(T - \tau))} b \rho^{-1} b^T \exp{(A_{f_*}^T (T - \tau))} \bar{\lambda}(T) d\tau \bar{\lambda}(T)
+        \end{equation*}
+
+        Siendo la parte integral de esta solución el Gramiano de controlabilidad.
+
+        Recordemos que:
