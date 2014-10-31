@@ -314,3 +314,32 @@
         Siendo la parte integral de esta solución el Gramiano de controlabilidad.
 
         Recordemos que:
+
+        \begin{eqnarray*}
+            (A, b) \text{controlable} & \implies & (A_{f_*}, b) \text{controlable} \\
+            & \implies & \det{\int_0^T \exp{(A_{f_*}(T - \tau))} b b^T \exp{(A_{f_*}^T (T - \tau))} \bar{\lambda}(T) d\tau} \\
+            & \implies & \det{\int_0^T \exp{(A_{f_*}(T - \tau))} b \rho^{-1} b^T \exp{(A_{f_*}^T (T - \tau))} \bar{\lambda}(T) d\tau \bar{\lambda}(T)}
+        \end{eqnarray*}
+
+        Asi pues, asumiremos la controlabilidad del par $(A, b)$.
+
+        Sea $x^*$ la trayectoria óptima, por lo que:
+
+        \begin{equation*}
+            J(x^*, x_0) \le J(x, x_0)
+        \end{equation*}
+
+        para toda solución de la ecuación~\ref{eq:conop1}.
+
+        Entonces, el coestado $\bar{\lambda}^*$ que minimice a $Ja$ será:
+
+        \begin{equation*}
+            Ja(x^*, \lambda^*, x_0, \bar{\lambda}(T)) \le Ja(x, \bar{\lambda}, x_0, \bar{\lambda}(T))
+        \end{equation*}
+
+        para todo par $(x, \bar{\lambda})$ solución de la ecuación~\ref{eq:conop10} y estará caracterizada por:
+
+        \begin{eqnarray*}
+            \bar{\lambda}^*(T) & = & W_c^{-1}(0, T) \left( \exp{(A_{f_*} T)} x_0 - x^*(T) \right) \\
+            W_c & = & \int_0^T \exp{\left( A_{f_*}(T-\tau) \right)} b \rho^{-1} b^T \exp{\left( A_{f_*}^T(T-\tau) \right)} d\tau
+        \end{eqnarray*}
