@@ -57,5 +57,43 @@ Simpre va a ser estable para valores \emph{b$>$0}
 \\
 \\
 3. Sea el sistema (1) con \emph{a=1} y \emph{b=10}. Utilizando un control Proporcional Integral (PI) calcular sus ganancias para que el sistema en lazo cerrado tenga los polos en \emph{s=$-$20} 
+
+	\begin{equation}
+	 	(k_p  + \frac{k_i}{s}) * \frac{10}{s+1}= \frac{s k_p + K_i}{s(s+1)+k_p s + k_i} 
+	\end{equation}
+
+ Entonces en lazo cerrado:
+ \begin{equation}
+    \frac{ k_p + k_i }{ s^2 + ( 1 + 10 k_p )s + 10 k_i } 	
+\end{equation}
+Queremos polos repetidos en $-20$
+
+		\begin{equation}
+			(s + 20)(s + 20)= s^2 + 40 + 400
+		\end{equation}
+
+		Igualado con el polinomio de la planta en lazo cerrado
+
+\begin{equation}
+ 			1 + 10 K_p = 40
+\end{equation}
+		\begin{equation}
+			10 k_p = 39 
+		\end{equation}
+				
+		\begin{equation}
+			k_p = 3.9 
+\end{equation}
+ \\ por otro lado
+\begin{equation}
+	10 k_i = 400
+\end{equation} 
+
+\begin{equation}
+		K_i = 40
+\end{equation}
+
+
 \end{document}
+
 	
