@@ -187,21 +187,21 @@
         \tarea{Buscar demostración en The Theory of Matrices - F.R. Gantmacher, Vol 1, Cap. 8}
     \end{proof}
 
-    \begin{corolario}
-        En el teorema ~\ref{te:lyap1} se puede elegir a $Q$ como una matriz semidefinida positiva, $Q \ge 0$, bajo la condición inicial de que $x^T(t) Q x(t)$ no sea identicamente nula a lo largo de cualquier trayectoria no nula, solución de:
+    \begin{corolario} \label{co:lyap1}
+        En el teorema~\ref{te:lyap1} se puede elegir a $Q$ como una matriz semidefinida positiva, $Q \ge 0$, bajo la condición inicial de que $x^T(t) Q x(t)$ no sea identicamente nula a lo largo de cualquier trayectoria no nula, solución de:
 
         \begin{equation*}
             \frac{d x(t)}{dt} = A x(t)
         \end{equation*}
 
-        El requerimiento de este corolario se reduce a la condición  de que el par $(Q_{\sfrac{1}{2}}, A)$ sea observable:
+        El requerimiento de este corolario se reduce a la condición de que el par $(Q_{\sfrac{1}{2}}, A)$ sea observable:
 
         \begin{equation*}
             Q \ge 0 \exists Q_{\sfrac{1}{2}} \text{ tal que } Q = Q_{\sfrac{1}{2}}^T Q_{\sfrac{1}{2}}
         \end{equation*}
     \end{corolario}
 
-    \begin{corolario}
+    \begin{corolario} \label{co:lyap2}
         Si $A$ es una matriz Hurwitz estable entonces la ecuación de Lyapunov, $A^T P + P A = -Q$, tiene una única solución para cada $Q$.
     \end{corolario}
 
