@@ -1,0 +1,127 @@
+%--------------------------------------
+%       CONFIGURACIONES
+%--------------------------------------
+\documentclass{tufte-book}
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{todonotes}
+
+\usetikzlibrary{shapes, arrows, decorations.markings}
+
+\setcounter{secnumdepth}{0}
+\numberwithin{equation}{chapter}
+
+%--------------------------------------
+%       TITULO
+%--------------------------------------
+
+\title{Control\\Laboratorio}
+\author{Generación 2014}
+
+
+%--------------------------------------
+%       INICIO DEL DOCUMENTO
+%--------------------------------------
+\begin{document}
+
+ \maketitle
+
+\section{Ejercicios adicionales 1}
+		\begin{equation}
+	G_{(s)} = \frac{b}{s+a}
+	\end{equation}
+
+1. Calcular el error en estado estacionario si (1) es exponecialmente estable y si se regula en lazo cerrado con un cotrol proporciaonal y la referencia es un escal\`on unitario. Como se podria reducir el error? 
+
+		\begin{equation} 
+		E_{(s)} = \frac{1}{ 1 + G_{(s)}} \nonumber  
+		\end{equation}	
+		
+		\begin{equation}
+		\lim_{s \rightarrow 0 } \ s \ E_{(s)} \ R_{(s)}	\nonumber
+ \end{equation}
+		\begin{equation}
+		E_{(s)} = \frac{s+a}{s+a+b} \nonumber
+			\end{equation}
+
+	
+			\begin{equation}
+			\lim_{s\rightarrow 0} s \ \frac{s+a}{(s+a+b)s} = \frac{s+a}{s+a+b} = \frac{a}{a+b} \nonumber
+\end{equation}
+\\
+Como se podria reducir el error ? \\ Aumentado \emph{b} asi aumenta en denominador  esto reducira en error.
+\\
+
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.2]{/home/satex/Documents/Matlab/p1P.jpg}
+\includegraphics[scale=0.2]{/home/satex/Documents/Matlab/piG.jpg}
+\end{figure}
+
+En la imagen de lado izquierdo \emph{d=0.01} y del lado derecho \emph{d=100}
+
+2. Consid\`erese le sistema (1) en lazo cerrado con un controlador  Proporcional. El polo tiene un valor \emph{s=5} y la ganacia \emph{b=10}. Calcular el rango de los valores de ganancia proporcional para los cuales en lazo cerrado es exponecialmente estable. 
+
+\begin{center}Por Criterio de estabilidad de Routh-Horwitz\end{center}
+
+		\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c c}
+	$s^1$ & $1$ & $0$\\
+	$s^0$ & $a+b$ &  \\
+	\end{tabular}
+	\end{table} 
+Simpre va a ser estable para valores \emph{b$>$5} \\
+
+
+3. Sea el sistema (1) con \emph{a=1} y \emph{b=10}. Utilizando un control Proporcional Integral (PI) calcular sus ganancias para que el sistema en lazo cerrado tenga los polos en \emph{s=$-$20} 
+
+	\begin{equation}
+	 	(k_p  + \frac{k_i}{s}) * \frac{10}{s+1}= \frac{s k_p + K_i}{s(s+1)+k_p s + k_i} \nonumber
+	\end{equation}
+
+ Entonces en lazo cerrado:
+ \begin{equation}
+    \frac{ k_p + k_i }{ s^2 + ( 1 + 10 k_p )s + 10 k_i } \nonumber	
+\end{equation} 
+Queremos polos repetidos en $-20$
+
+		\begin{equation}
+			(s + 20)(s + 20)= s^2 + 40 + 400 \nonumber
+		\end{equation}
+
+		Igualado con el polinomio de la planta en lazo cerrado
+
+\begin{equation}
+ 			1 + 10 K_p = 40 \nonumber
+\end{equation}
+		\begin{equation}
+			10 k_p = 39 \nonumber
+		\end{equation}
+				
+		\begin{equation}
+			k_p = 3.9 \nonumber
+\end{equation}
+ \\ por otro lado
+\begin{equation}
+	10 k_i = 400 \nonumber
+\end{equation} 
+
+\begin{equation}
+		K_i = 40 \nonumber
+\end{equation}
+
+
+
+
+%--------------------------------------
+%       FIN DEL DOCUMENTO
+%--------------------------------------
+\end{document}
