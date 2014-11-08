@@ -125,24 +125,69 @@
         y de fase:
 
         \begin{eqnarray*}
-            \omega T \ll 1 & \implies & -\arctan{(\omega T)} \approx - \arctan{0} = 0^o \\
-            \omega T \gg 1 & \implies & -\arctan{(\omega T)} \approx - \arctan{\infty} = -90^o \\
-            \omega T = 1 & \implies & -\arctan{(\omega T)} = - \arctan{1} = -45^o
+            \omega T \ll 1 & \implies & -\arctan{(\omega T)} \approx - \arctan{(0)} = 0^o \\
+            \omega T \gg 1 & \implies & -\arctan{(\omega T)} \approx - \arctan{(\infty)} = -90^o \\
+            \omega T = 1 & \implies & -\arctan{(\omega T)} = - \arctan{(1)} = -45^o
         \end{eqnarray*}
 
-        Con estas expresiones podemos trazar asintotas las cuales nos ayudarán a gráficar el diagrama de Bode de la figura~\ref{fig:bodeprimerorden}.
+        Con estas expresiones podemos trazar asintotas,  las cuales nos ayudarán a gráficar el diagrama de Bode del sistema $G(s) = \frac{1}{Ts + 1}$ en la figura~\ref{fig:bodeprimerorden}.
 
-        \begin{figure*}
+        \begin{figure}
             \centering
-            \includegraphics[width=0.9\textwidth]{./imagenes/bodeprimerorden.pdf}
-            \caption{\label{fig:bodeprimerorden}Diagrama de Bode de sistema de primer orden.}
-        \end{figure*}
+            \includegraphics[width=0.5\textwidth]{./imagenes/bodeprimerorden.pdf}
+            \caption{\label{fig:bodeprimerorden}Diagrama de Bode del sistema $G(s) = \frac{1}{Ts + 1}$.}
+        \end{figure}
 
-    \section{Factor integral}
-        \faltante{Falta escribir apunte}
-    \section{Factor derivativo}
-        \faltante{Falta escribir apunte}
+        De manera similar podemos gráficar el sistema inverso $G(s) =Ts + 1$ en la figura~\ref{fig:bodeprimerordeninverso}.
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{./imagenes/bodeprimerordeninverso.pdf}
+            \caption{\label{fig:bodeprimerordeninverso}Diagrama de Bode del sistema $G(s) = Ts + 1$.}
+        \end{figure}
+
+        \subsection{Factor integral}
+
+            Dado el sistema $G(s) = \frac{1}{s}$ tendremos los siguientes valores para la magnitud y la fase:
+
+            \begin{eqnarray*}
+                \left| G(j \omega) \right|_{dB} & = & \left| \frac{1}{j \omega} \right|_{dB} = -20 \log{(\omega)} \\
+                \phase{G(j \omega)} & = & -90^o
+            \end{eqnarray*}
+
+            Por lo que el diagrama de Bode queda como en la figura~\ref{fig:bodeintegral}.
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\textwidth]{./imagenes/bodeintegral.pdf}
+                \caption{\label{fig:bodeintegral}Diagrama de Bode del sistema $G(s) = \frac{1}{s}$.}
+            \end{figure}
+
+        \subsection{Factor derivativo}
+
+            Dado el sistema $G(s) = s$ tendremos los siguientes valores para la magnitud y la fase:
+
+            \begin{eqnarray*}
+                \left| G(j \omega) \right|_{dB} & = & \left| j \omega \right|_{dB} = 20 \log{(\omega)} \\
+                \phase{G(j \omega)} & = & 90^o
+            \end{eqnarray*}
+
+            Por lo que el diagrama de Bode queda como en la figura~\ref{fig:bodederivativo}.
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\textwidth]{./imagenes/bodederivativo.pdf}
+                \caption{\label{fig:bodederivativo}Diagrama de Bode del sistema $G(s) = s$.}
+            \end{figure}
+
+    \newpage
     \section{Factores de segundo orden}
         \faltante{Falta escribir apunte}
-    \section{Frecuencia de resonancia $\omega_n$ y valor par de resonancia $M_R$}
+        \subsection{Frecuencia de resonancia $\omega_n$}
+            \faltante{Falta escribir apunte}
+        \subsection{Valor pico de resonancia $M_R$}
+            \faltante{Falta escribir apunte}
+
+    \newpage
+    \section{Factores de orden cero}
         \faltante{Falta escribir apunte}
