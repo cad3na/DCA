@@ -64,7 +64,7 @@
 
 	\paragraph{Problema.}
 
-	Sea la representación de estado ~\ref{eq:inob1}, donde el estado $x$ no esta disponible. Se desea reconstruir el estado $x$, para poder aplicar una retroalimentación de estado.
+	Sea la representación de estado de la ecuación~\ref{eq:inob1}, donde el estado $x$ no esta disponible. Se desea reconstruir el estado $x$, para poder aplicar una retroalimentación de estado.
 
 	\begin{equation}
 		u = f^T x + v
@@ -169,7 +169,7 @@
 
 	por lo que no es posible determinar la segunda parte de componentes, $\bar{x}_2(0)$, a partir de $\bar{\mathbbm{F}}(t_1, u, y)$.
 
-	Si la matriz de observabilidad es de rango pleno por columnas, entonces:
+	Si la matriz de observabilidad es de rango pleno por columnas, entonces\footnote{Este es un resultado del teorema de espacios vectoriales que indica que $\dim{V} = \dim{\ker{T}} + \dim{\imagen{T}}$, y que lo que queremos es que $\dim{V} = \dim{\imagen{T}}$}:
 
 	\begin{equation*}
 		\ker{\mathcal{O}_{(c^T, A)}} = {0}
