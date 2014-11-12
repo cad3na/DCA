@@ -9,7 +9,7 @@ completebook: book movebook
 completeebook: ebook moveebook
 
 book:
-	${MAKE} clean
+	@${MAKE} clean
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{$(TARGET).tex}"
@@ -17,7 +17,7 @@ book:
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{$(TARGET).tex}"
 
 ebook:
-	${MAKE} clean
+	@${MAKE} clean
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}"
