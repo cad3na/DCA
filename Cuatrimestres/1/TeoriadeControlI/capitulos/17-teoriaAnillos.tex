@@ -1,0 +1,53 @@
+\chapter{Sistemas  lineales bajo el punto de vista de teoria de anillos}
+
+    \section{Anillos conmutativos euclidianos}
+
+        Un anillo es una estructura algebraica de un conjunto $\mathcal{A}$, provisto de dos operaciones a las que les llamamos suma $(+)$ y producto $(\cdot)$, con las siguientes propiedades:
+
+        \begin{enumerate}
+            \item $(\mathcal{A}, +)$ es un grupo abeliano
+
+            \begin{enumerate}
+                \item $a, b, \in \mathcal{A} \implies a + b \in \mathcal{A}$
+                \item $a, b, c \in \mathcal{A} \implies a + (b + c) = (a + b) + c$
+                \item $\exists ! 0 \in \mathcal{A} \text{ tal que } 0 + a = a + 0 = a \quad \forall a \in \mathcal{A}$
+                \item $\forall a \in \mathcal{A} \exists \bar{a} \in \mathcal{A} \text{ tal que } a + \bar{a} = 0 \quad \bar{a} = -a \quad b + \bar{a} = b - a$
+                \item $a, b \in \mathcal{A} \implies a + b = b + a$
+            \end{enumerate}
+
+            \item $(\mathcal{A}, \cdot)$ es un semigrupo con unidad
+
+            \begin{enumerate}
+                \item $a, b \in \mathcal{A} \implies a \cdot b \in \mathcal{A}$
+                \item $a, b, c \in \mathcal{A} \implies a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+                \item $\exists ! 1 \in \mathcal{A} \text{ tal que } 1 \cdot a  = a \cdot 1 = a \quad \forall a \in \mathcal{A}$
+            \end{enumerate}
+
+            \item Distributividad de $(+)$ y $(\cdot)$
+
+            \begin{enumerate}
+                \item $a \cdot (b + c) = a \cdot b + a \cdot c$
+                \item $(a + b) \cdot c = a \cdot c + b \cdot c$
+            \end{enumerate}
+
+            \item Propiedad Euclidiana
+
+            Existe una función euclidiana llamada grado, $\grado : \mathcal{A} \to \mathbbm{Z}^+$, tal que para todo par de elementos $a, b \in \mathcal{A}$, existen $c, r \in \mathcal{A}$ tales que:
+
+            \begin{equation*}
+                a = b \cdot c + r
+            \end{equation*}
+
+            con $\grado{r} < \grado{b}$ o $\grado{r} = 0$.
+
+            A esto se le conoce como el algoritmo de la división de Euclides.
+            \item Conmutatividad de $(\cdot)$
+
+            Si $a \cdot b = b \cdot a \quad \forall a, b \in \mathcal{A}$ se dice que el anillo $\mathcal{A}$ es conmutativo.
+        \end{enumerate}
+
+        De aquí en adelante a los anillos euclidianos conmutativos les llamaremos simplemente anillos.
+
+        Esta estructura es la generalización de los numeros enteros. La función grado del anillo de los numeros enteros corresponde al valor absoluto y en el anillo de los polinomios corresponde al grado de los polinomios.
+
+        Dos nociones importantes de la teoría de anillos es el máximo común divisor y primos relativos.
