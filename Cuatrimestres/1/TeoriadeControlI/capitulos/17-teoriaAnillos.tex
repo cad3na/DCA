@@ -51,3 +51,230 @@
         Esta estructura es la generalización de los numeros enteros. La función grado del anillo de los numeros enteros corresponde al valor absoluto y en el anillo de los polinomios corresponde al grado de los polinomios.
 
         Dos nociones importantes de la teoría de anillos es el máximo común divisor y primos relativos.
+
+        \begin{definicion}
+            Dados $a, b, c \in \mathcal{A}$, siendo $\mathcal{A}$ un anillo conmutativo, entonces tendremos:
+
+            \begin{enumerate}
+                \item $b \ne 0$ es un divisor de $a$ si existe $m \in \mathcal{A}$ tal que:
+
+                \begin{equation*}
+                    a = b \cdot m
+                \end{equation*}
+
+                en dado caso se escribe $\sfrac{b}{a}$ y se dice que $b$ divide a $a$.
+
+                \item $c \in \mathcal{A}$ es el máximo común divisor de $a, b \in \mathcal{A}$ si:
+
+                \begin{enumerate}
+                    \item $c$ es divisor de $a$ y $b$, es decir $\sfrac{c}{a}$ y $\sfrac{c}{b}$, es decir, existen $m, n \in \mathcal{A}$ tal que:
+
+                    \begin{equation*}
+                        a = m \cdot c \quad y \quad b = n \cdot c
+                    \end{equation*}
+
+                    \item Cualquier otro divisor de $a$ y $b$ es tambien divisor de $c$, es decir, $\sfrac{d}{a}$ y $\sfrac{d}{b}$ implica que $\sfrac{d}{c}$, es decir, existe $l \in \mathcal{A}$ tal que:
+
+                    \begin{equation*}
+                        c = l \cdot d
+                    \end{equation*}
+
+                    y se escribe como $c = (a, b)$.
+                \end{enumerate}
+            \end{enumerate}
+        \end{definicion}
+
+        \begin{lema}
+            Si $a, b \in \mathcal{A}$, $a \ne 0$ y $b \ne 0$, entonces existe $(a, b)$. Ademas existen $m, n \in \mathcal{A}$ tales que:
+
+            \begin{equation}
+                m \cdot a + n \cdot b = (a, b)
+            \end{equation}
+        \end{lema}
+
+        \begin{definicion}
+            Sean $a, b \in \mathcal{A}$, $a$ y $b$ serán primos relativos si $(a, b) = 1$.
+        \end{definicion}
+
+        \begin{lema}
+            Sean $a, b, c \in \mathcal{A}$ con $(a, b) = 1$, entonces:
+
+            \begin{equation}
+                \exists m_0, n_0 \in \mathcal{A} \text{ tal que } m_0 a + n_0 b = 1
+            \end{equation}
+
+            \begin{equation}  \label{eq:anillos0}
+                \exists m, n \in \mathcal{A} \text{ tal que } m a + n b = c
+            \end{equation}
+
+            A la primera ecuación la conocemos como la identidad de Bezout y a la segunda como ecuación Diofantina.
+        \end{lema}
+
+        \begin{definicion}
+            El anillo de los polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbbm{R}[s]$, siendo su función $\grado$, el grado de los polinomios.
+
+            El anillo de fracciones propias de polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbbm{R}(s)$, siendo su función $\grado$, el grado relativo de la función, es decir, para una función $f(s) = \frac{a(s)}{b(s)} \in \mathbbm{R}(s)$ con $a(s), b(s) \in \mathbbm{R}[s]$, $b \ne 0$ y $\grado{a(s)} \le \grado{b(s)}$, el grado relativo es:
+
+            \begin{equation*}
+                \grado{f(s)} = \grado{b(s)} - \grado{a(s)}
+            \end{equation*}
+        \end{definicion}
+
+    \section{Representación de sistemas lineales en $\mathbbm{R}[s]$}
+
+        Sea un sistema lineal representado por la ecuación diferencial ordinaria:
+
+        \begin{equation} \label{eq:anillos1}
+            M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
+        \end{equation}
+
+        donde $M(s), N(s) \in \mathbbm{R}[s]$ y $\grado{M(s)} \ge \grado{N(s)}$, $y(t)$ es la salida y $u(t)$ es la señal de control.
+
+        \subsection{Asignación de polos con cancelación de ceros}
+
+            Se desea encontrar una ley de control lineal tal que el sistema en lazo cerrado este representado por la siguiente ecuación diferencial ordinaria siguiente:
+
+            \begin{equation}
+                Q \left( \frac{d}{dt} \right) y(t) = r(t)
+            \end{equation}
+
+            donde $Q(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz y $r(t)$ es la señal de referencia.
+
+            Este problema se resuelve utilizando el algoritmo de la división de Euclides. Para esto se propone la siguiente ley de control lineal:
+
+            \begin{equation} \label{eq:anillos2}
+                \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) = - \mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t)
+            \end{equation}
+
+            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbbm{R}[s]$, son solución del algoritmo de la división de Euclides, es decir:
+
+            \begin{equation} \label{eq:anillos3}
+                Q(s) = \mathcal{S}(s) M(s) + \mathcal{R}(s)
+            \end{equation}
+
+            donde $\grado{\mathcal{R}(s)} < \grado{M(s)}$ o $\grado{\mathcal{R}(s)} = 0$.
+
+            En efecto, aplicando el operador $\mathcal{S} \left( \frac{d}{dt} \right)$ a la ecuación~\ref{eq:anillos1} se obtiene que:
+
+            \begin{equation*}
+                \mathcal{S} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) y(t) = \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t)
+            \end{equation*}
+
+            y sustituyendo la ecuación~\ref{eq:anillos2} tenemos:
+
+            \begin{eqnarray*}
+                \mathcal{S} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) y(t) & = & -\mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t) \\
+                \left( \mathcal{S} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) + \mathcal{R} \left( \frac{d}{dt} \right) \right) y(t) & = & r(t)
+            \end{eqnarray*}
+
+            por lo que la ecuación~\ref{eq:anillos3} implica:
+
+            \begin{equation*}
+                Q \left( \frac{d}{dt} \right) y(t) = r(t)
+            \end{equation*}
+
+            Con respecto a la dinámica de la entrada, podemos aplicar el operador $\mathcal{R} \left( \frac{d}{dt} \right)$ a la ecuación~\ref{eq:anillos1} y obtener:
+
+            \begin{eqnarray*}
+                \mathcal{R} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) y(t) & = & \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \\
+                M \left( \frac{d}{dt} \right) \mathcal{R} \left( \frac{d}{dt} \right) y(t) & = & \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \\
+                M \left( \frac{d}{dt} \right) \left( r(t) - \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \right) & = & \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \\
+                \left( \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) + M \left( \frac{d}{dt} \right) \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) \right) u(t) & = & M \left( \frac{d}{dt} \right) r(t) \\
+                \left( \mathcal{R} \left( \frac{d}{dt} \right) + M \left( \frac{d}{dt} \right) \mathcal{S} \left( \frac{d}{dt} \right) \right) N \left( \frac{d}{dt} \right) u(t) & = & M \left( \frac{d}{dt} \right) r(t) \\
+            \end{eqnarray*}
+
+            por lo que la ecuación~\ref{eq:anillos3} implica:
+
+            \begin{equation}
+                Q \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) = M \left( \frac{d}{dt} \right) r(t)
+            \end{equation}
+
+            por lo que los ceros del sistema, raices de $N(s)$, pasan a formar parte de los polos de la dimensión del controlador.
+
+            Este esquema de control solo funcionará para sistemas de fase mínima, es decir, cuando $N(s)$ es un polinomio Hurwitz.
+
+            \subsection{Asignación de polos sin cancelación de ceros}
+
+            Se desea encontrar una ley de control, tal que el sistema en lazo cerrado este representado por la ecuación diferencial ordinaria:
+
+            \begin{equation}
+                Q_D \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) r(t)
+            \end{equation}
+
+            donde $Q_D(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz dado y $r(t)$ es la señal de referencia.
+
+            Para obtener la ley de control, se tiene que resolver la ecuación Diofantina (~\ref{eq:anillos0}), se asume que los polinomios de $M(s)$ y $N(s)$ son primos relativos, es decir $(M, N) = 1$.
+
+            Para esto se supone la siguiente ley de control lineal:
+
+            \begin{equation} \label{eq:anillos4}
+                \mathcal{S} \left( \frac{d}{dt} \right) u(t) = - \mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t)
+            \end{equation}
+
+            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbbm{R}[s]$, son solución de la ecuación Diofantina:
+
+            \begin{equation} \label{eq:anillos5}
+                \mathcal{S}(s) M(s) + \mathcal{R}(s) N(s) = Q_D(s)
+            \end{equation}
+
+            En efecto, aplicando el operador $\mathcal{S} \left( \frac{d}{dt} \right)$ a la ecuación~\ref{eq:anillos1} y sustituyendo la ecuación~\ref{eq:anillos4}, obtenemos:
+
+            \begin{eqnarray*}
+                \mathcal{S} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) y(t) & = & \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \\
+                & = & N \left( \frac{d}{dt} \right) \mathcal{S} \left( \frac{d}{dt} \right) u(t) \\
+                & = & N \left( \frac{d}{dt} \right) \left( -\mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t) \right) \\
+                & = & -N \left( \frac{d}{dt} \right) \mathcal{R} \left( \frac{d}{dt} \right) y(t) + N \left( \frac{d}{dt} \right) r(t) \\
+                \left( \mathcal{S} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) + N \left( \frac{d}{dt} \right) \mathcal{R} \left( \frac{d}{dt} \right) \right) & = & N \left( \frac{d}{dt} \right) r(t) \\
+                Q_D \left( \frac{d}{dt} \right) y(t) & = & N \left( \frac{d}{dt} \right) r(t)
+            \end{eqnarray*}
+
+            por lo que hemos llegado a la ley de control que esperabamos.
+
+            Con respecto a la dinámica de la entrada, aplicando el operador $\mathcal{R}\left( \frac{d}{dt} \right)$ a la ecuación~\ref{eq:anillos1} y sustituyendo la ecuación~\ref{eq:anillos4}, obtenemos:
+
+            \begin{eqnarray*}
+                \mathcal{R} \left( \frac{d}{dt} \right) M \left( \frac{d}{dt} \right) y(t) & = & \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) \\
+                M \left( \frac{d}{dt} \right) \mathcal{R} \left( \frac{d}{dt} \right) y(t) & = & \\
+                M \left( \frac{d}{dt} \right) \left( -\mathcal{S} \left( \frac{d}{dt} \right) u(t) + r(t) \right) & = & \\
+                \left( M \left( \frac{d}{dt} \right) \mathcal{S} \left( \frac{d}{dt} \right) + \mathcal{R} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) \right) u(t) & = & M \left( \frac{d}{dt} \right) r(t)
+            \end{eqnarray*}
+
+            por lo que llegamos a:
+
+            \begin{equation}
+                Q_D \left( \frac{d}{dt} \right) u(t) = M \left( \frac{d}{dt} \right) r(t)
+            \end{equation}
+
+            Note ahora que tanto la salida como la entrada tienen la misma dinámica dada por el polinomio Hurwitz seleccionado, $Q_D(s)$.
+
+            Note tambien que la salida continua con los mismos ceros determinados por $N(s)$.
+
+            Este esquema de control sirve tanto para sistemas de fase mínima, como para sistemas de fase no mínima.
+
+            Ahora bien, para resolver la ecuación Diofantina, se utiliza la matriz de Sylvester; consideremos por ejemplo:
+
+            \begin{eqnarray} \label{eq:anillos6}
+                M(s) & = & s^3 + a_1 s^2 + a_2 s + a_3 \nonumber \\
+                N(s) & = & b_0 s^3 + b_1 s^2 + b_2 s + b_3 \nonumber \\
+                \mathcal{R}(s) & = & r_0 s^2 + r_1 s + r_2 \nonumber \\
+                \mathcal{S}(s) & = & s_0 s^2 + s_1 s + s_2 \nonumber \\
+                Q_D(s) & = & q_0 s^5 + q_1 s^4 + q_2 s^3 + q_3 s^2 + q_4 s + q_5
+            \end{eqnarray}
+
+            Note que:
+
+            \begin{equation}
+                \grado{M(s)} = n \quad \grado{N(s)} \le n \quad \grado{\mathcal{R}(s)} < n \quad \grado{\mathcal{S}(s)} < n \quad \grado{Q_D(s)} < 2n
+            \end{equation}
+
+            Sustituyendo las ecuaciónes~\ref{eq:anillos6} en la ecuación~\ref{eq:anillos5} e igualando los coeficientes de los mismos monomios $s^i$ con $i \in {1, 2, \dots, n}$, se obtiene la siguiente expresión matricial.
+
+            \begin{equation*}
+                \mathcal{S}(s) M(s) + \mathcal{R}(s) N(s) = Q_D(s)
+            \end{equation*}
+
+            \begin{multline*}
+                (s_0 s^2 + s_1 s + s_2)(s^3 + a_1 s^2 + a_2 s + a_3) \\
+                + (r_0 s^2 + r_1 s + r_2)(b_0 s^3 + b_1 s^2 + b_2 s + b_3) \\
+                = q_0 s^5 + q_1 s^4 + q_2 s^3 + q_3 s^2 + q_4 s + q_5
+            \end{multline*}
