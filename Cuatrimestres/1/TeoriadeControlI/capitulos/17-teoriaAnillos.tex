@@ -263,9 +263,13 @@
 
             Note que:
 
-            \begin{equation}
-                \grado{M(s)} = n \quad \grado{N(s)} \le n \quad \grado{\mathcal{R}(s)} < n \quad \grado{\mathcal{S}(s)} < n \quad \grado{Q_D(s)} < 2n
-            \end{equation}
+            \begin{eqnarray}
+                \grado{M(s)} & = & n \nonumber \\
+                \grado{N(s)} & \le & n \nonumber \\
+                \grado{\mathcal{R}(s)} & < & n \nonumber \\
+                \grado{\mathcal{S}(s)} & < & n \nonumber \\
+                \grado{Q_D(s)} & < & 2n
+            \end{eqnarray}
 
             Sustituyendo las ecuaciónes~\ref{eq:anillos6} en la ecuación~\ref{eq:anillos5} e igualando los coeficientes de los mismos monomios $s^i$ con $i \in {1, 2, \dots, n}$, se obtiene la siguiente expresión matricial.
 
@@ -278,3 +282,60 @@
                 + (r_0 s^2 + r_1 s + r_2)(b_0 s^3 + b_1 s^2 + b_2 s + b_3) \\
                 = q_0 s^5 + q_1 s^4 + q_2 s^3 + q_3 s^2 + q_4 s + q_5
             \end{multline*}
+
+            \begin{multline*}
+                s^{5} \left( s_{1} + b_{0} r_{0} \right) + s^{4} \left( s_{1} + a_{1} s_{0} + b_{0} r_{1} + b_{1} r_{0} \right) \\
+                + s^{3} \left( s_{2} + a_{1} s_{1} + a_{2} s_{0} + b_{0} r_{2} + b_{1} r_{1} + b_{2} r_{0} \right) \\
+                + s^{2} \left( a_{1} s_{2} + a_{2} s_{1} + a_{3} s_{0} + b_{1} r_{2} + b_{2} r_{1} + b_{3} r_{0} \right) \\
+                + s \left( a_{2} s_{2} + a_{3} s_{1} + b_{2} r_{2} + b_{3} r_{1} \right) + a_{3} s_{2} + b_{3} r_{2}\\
+                = q_0 s^5 + q_1 s^4 + q_2 s^3 + q_3 s^2 + q_4 s + q_5
+            \end{multline*}
+
+            \begin{eqnarray*}
+                q_0 & = & s_{0} + b_{0} r_{0} \\
+                q_1 & = & s_{1} + a_{1} s_{0} + b_{0} r_{1} + b_{1} r_{0} \\
+                q_2 & = & s_{2} + a_{1} s_{1} + a_{2} s_{0} + b_{0} r_{2} + b_{1} r_{1} + b_{2} r_{0} \\
+                q_3 & = & a_{1} s_{2} + a_{2} s_{1} + a_{3} s_{0} + b_{1} r_{2} + b_{2} r_{1} + b_{3} r_{0} \\
+                q_4 & = & a_{2} s_{2} + a_{3} s_{1} + b_{2} r_{2} + b_{3} r_{1} \\
+                q_5 & = & a_{3} s_{2} + b_{3} r_{2}
+            \end{eqnarray*}
+
+            es decir:
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & 0 & 0 & b_{0} & 0 & 0 \\
+                    a_{1} & 1 & 0 & b_{1} & b_{0} & 0 \\
+                    a_{2} & a_{1} & 1 & b_{2} & b_{1} & b_{0} \\
+                    a_{3} & a_{2} & a_{1} & b_{3} & b_{2} & b_{1} \\
+                    0 & a_{3} & a_{2} & 0 & b_{3} & b_{2} \\
+                    0 & 0 & a_{3} & 0 & 0 & b_{3}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    s_0 \\
+                    s_1 \\
+                    s_2 \\
+                    r_0 \\
+                    r_1 \\
+                    r_2
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    q_0 \\
+                    q_1 \\
+                    q_2 \\
+                    q_3 \\
+                    q_4 \\
+                    q_5
+                \end{pmatrix}
+            \end{equation*}
+
+            \begin{equation*}
+                S(M, N)
+                \begin{pmatrix}
+                    S \\
+                    R
+                \end{pmatrix} =
+                Q_D
+            \end{equation*}
+
+            MacDuffee demostró que la matriz de Sylvester, $S(M, N)$, es invertible si y solo si los polinomios son primos relativos, o equivalentemente, si y solo si el sistema es controlable.
