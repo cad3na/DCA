@@ -223,10 +223,60 @@
 
             donde $0 \le \zeta \le \frac{1}{\sqrt{2}}$.
 
-        \subsection{Valor pico de resonancia $M_R$}
+        \subsection{Valor pico de resonancia $M_r$}
 
             Si sustituimos esta frecuencia de resonancia en la magnitud, tendremos el valor pico de resonancia.
 
+            \begin{eqnarray*}
+                M_r = \left| G(j \omega_r) \right|_{dB} & = & \frac{1}{\sqrt{\left( 1 - \left( \frac{\omega_n \sqrt{1 - 2 \zeta^2}}{\omega_n} \right)^2 + \left( 2 \zeta \left( \frac{\omega_n \sqrt{1 - 2 \zeta^2}}{\omega_n} \right) \right)^2 \right)}} \\
+                & = & \frac{1}{\sqrt{\left( 1 - \left( \sqrt{1 - 2 \zeta^2} \right)^2 + \left( 2 \zeta \left( \sqrt{1 - 2 \zeta^2} \right) \right)^2 \right)}} \\
+                & = & \frac{1}{\sqrt{4 \zeta^4 + 4 \zeta^2 \left( 1 - 2 \zeta^2 \right)}} \\
+                & = & \frac{1}{2 \zeta \sqrt{\zeta^2 + 1 - 2 \zeta^2}} = \frac{1}{2 \zeta \sqrt{1 - \zeta^2}}
+            \end{eqnarray*}
+
+            Note que para diferentes valores de amortiguamiento tenemos:
+
+            \begin{eqnarray*}
+                \zeta = 0 & \implies & \omega_r = \omega_n \text{ y } M_r \to \infty \\
+                \zeta = \frac{1}{\sqrt{2}} & \implies & \omega_r = 0 \text{ y } M_r = 1 \\
+                \zeta > \frac{1}{\sqrt{2}} & \implies & M_r = 1
+            \end{eqnarray*}
+
+            Tendremos pues el diagrama de Bode de la figura~\ref{fig:bodesegundoorden}.
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\textwidth]{./imagenes/bodesegundoorden.pdf}
+                \caption{\label{fig:bodesegundoorden}Diagrama de Bode del sistema $G(s) = \frac{1}{\left( \frac{s}{\omega_n} \right)^2 + 2 \zeta \left( \frac{s}{\omega_n} \right) + 1}$.}
+            \end{figure}
+
+            y el inverso en la figura~\ref{fig:bodesegundoordeninverso}.
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.5\textwidth]{./imagenes/bodesegundoordeninverso.pdf}
+                \caption{\label{fig:bodesegundoordeninverso}Diagrama de Bode del sistema $G(s) = \left( \frac{s}{\omega_n} \right)^2 + 2 \zeta \left( \frac{s}{\omega_n} \right) + 1$.}
+            \end{figure}
+
     \newpage
     \section{Factores de orden cero}
-        \faltante{Falta escribir apunte}
+        Tan solo podemos notar rapidamente que los factores de orden cero, o ganancias, no tienen una dinámica asociada, por lo tanto sus diagramas de Bode son muy simples de graficar.
+
+        \begin{equation*}
+            G(s) = k
+        \end{equation*}
+
+        por lo que tendremos magnitud y fase:
+
+        \begin{eqnarray*}
+            \left| G(j \omega) \right|_{dB} & = & 20 \log{k} \\
+            \phase{G(j \omega)} & = & 0^o
+        \end{eqnarray*}
+
+        y sus diagramas de bode, los de la figura~\ref{fig:bodeordencero}.
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{./imagenes/bodeordencero.pdf}
+            \caption{\label{fig:bodeordencero}Diagrama de Bode del sistema $G(s) = k$.}
+        \end{figure}
