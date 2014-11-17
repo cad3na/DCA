@@ -61,7 +61,7 @@
         y_{ss}(t) = \lim_{t \to \infty} y(t) = a e^{-j \omega t} + \bar{a} e ^{j \omega t}
     \end{equation*}
 
-    es decir, cuando $t$ tiende a $infty$ todos los polos del sistema se eliminan y nos queda el comportamiento de la entrada a seguir.
+    es decir, cuando $t$ tiende a $\infty$ todos los polos del sistema se eliminan y nos queda el comportamiento de la entrada a seguir.
 
     Por otro lado, para obtener los valores de $a$ y $\bar{a}$ aplicamos fracciones parciales y obtenemos:
 
@@ -182,11 +182,50 @@
 
     \newpage
     \section{Factores de segundo orden}
-        \faltante{Falta escribir apunte}
-        \subsection{Frecuencia de resonancia $\omega_n$}
-            \faltante{Falta escribir apunte}
+
+        Dado el sistema de segundo orden
+
+        \begin{equation*}
+            G(s) = \frac{1}{\left( \frac{s}{\omega_n} \right)^2 + 2 \zeta \left( \frac{s}{\omega_n} \right) + 1}
+        \end{equation*}
+
+        tendremos que su magnitud y fase estarán dados por:
+
+        \begin{eqnarray*}
+            \left| G(j \omega) \right|_{dB} & = & -20 \log{\sqrt{\left( 1 - \left( \frac{\omega}{\omega_n} \right)^2 \right)^2 + \left( 2 \zeta \left( \frac{\omega}{\omega_n} \right) \right)^2}} \\
+            \phase{G(j \omega)} & = & -\arctan{\left( \frac{2 \zeta \left( \frac{\omega}{\omega_n} \right)}{1 - \left( \frac{\omega}{\omega_n} \right)^2} \right)}
+        \end{eqnarray*}
+
+        De estas ecuaciones, podemos aproximar su comportamiento cuando $\frac{\omega}{\omega_n}$ es muy grande o muy pequeño:
+
+        \begin{eqnarray*}
+            \frac{\omega}{\omega_n} \ll 1 & \implies & \left| G(j \omega) \right|_{dB} \approx -20 \log{\sqrt{1}} = 0 dB \\
+            \frac{\omega}{\omega_n} \gg 1 & \implies & \left| G(j \omega) \right|_{dB} \approx -20 \log{\sqrt{\left( \frac{\omega}{\omega_n} \right)^4}} = -40 \log{\left( \frac{\omega}{\omega_n} \right)} dB
+        \end{eqnarray*}
+
+        \subsection{Frecuencia de resonancia $\omega_r$}
+
+            Para encontrar la frecuencia de resonancia, necesitamos encontrar el punto en que la gráfica de magnitud cambia de dirección, es decir cuando la derivada cambia de signo. Por comodidad lo haremos con la función auxiliar $g(s) = \left( 1 - \left( \frac{\omega}{\omega_n} \right)^2 + \left( 2 \zeta \left( \frac{\omega}{\omega_n} \right) \right)^2 \right)$. Asi pues, la derivada será:
+
+            \begin{eqnarray*}
+                \frac{d g}{d \omega} & = & 2 \left( 1 - \left( \frac{\omega}{\omega_n} \right)^2 \right) \left( -2 \frac{\omega}{\omega_n} \right) + 4 \zeta^2 (2) \left( \frac{\omega}{\omega_n} \right) \\
+                & = & -4 \frac{\omega}{\omega_n} \left( 1 - \left( \frac{\omega}{\omega_n} \right)^2 \right) + 4 \frac{\omega}{\omega_n} \left( 2 \zeta^2 \right) \\
+                & = & 4 \frac{\omega}{\omega_n} \left( \left( \frac{\omega}{\omega_n} \right)^2 - 1 + 2 \zeta^2 \right) = 0
+            \end{eqnarray*}
+
+            por lo que la gráfica tiene pendiente nula cuando $\omega = 0$ o bien cuando $\left( \frac{\omega}{\omega_n} \right)^2 - 1 + 2 \zeta^2 = 0$, por lo que podemos ver que la frecuencia de resonancia se encuentra cuando:
+
+            \begin{eqnarray*}
+                \left( \frac{\omega}{\omega_n} \right)^2 & = & 1 - 2 \zeta^2 \\
+                \frac{\omega}{\omega_n} & = & \sqrt{1 - 2 \zeta^2} \\
+                \omega_r & = & \omega_n \sqrt{1 - 2 \zeta^2}
+            \end{eqnarray*}
+
+            donde $0 \le \zeta \le \frac{1}{\sqrt{2}}$.
+
         \subsection{Valor pico de resonancia $M_R$}
-            \faltante{Falta escribir apunte}
+
+            Si sustituimos esta frecuencia de resonancia en la magnitud, tendremos el valor pico de resonancia.
 
     \newpage
     \section{Factores de orden cero}
