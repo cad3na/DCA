@@ -1,7 +1,7 @@
 
 \chapter{Compensador Adelanto/Atraso (LR)}
 
-    El concepto de fase surge del análisis del lugar de las raices, al pensar que el angulo que tiene un conjunto de raices complejas conjugadas con respecto al ejereal positivo es la fase, es decir, el angulo del fasor. De esta manera, podemos modificar el comportamiento de un sistema agregando dinámicas al sistema ayudandolo a mover el lugar geométrico de las reaices hacia donde lo necesitemos.
+    El concepto de fase surge del análisis del lugar de las raices, al pensar que el angulo que tiene un conjunto de raices complejas conjugadas con respecto al eje real positivo es la fase, es decir, el angulo del fasor. De esta manera, podemos modificar el comportamiento de un sistema agregando dinámicas al sistema ayudandolo a mover el lugar geométrico de las raices hacia donde lo necesitemos.
 
     El adelanto de fase pues, será un comportamiento demasiado rápido y subamortiguado y el atraso de fase demasiado lento y sobreamortiguado, por lo que agregaremos polos que atraigan el lugar de las raices y que modifiquen la fase para adelantarla (si es un comportamiento demasiado lento o sobreamortiguado) o atrasarla (si es un comportamiento demasiado rapido o subamortiguado).
 
@@ -24,7 +24,7 @@
                 \node [output, right of=planta] (salida) {};
                 \node [block, below of=planta] (retro) {$-1$};
 
-                \draw [->] (entrada) -- node[name=u] {$x(s)$} (suma);
+                \draw [->] (entrada) -- node[name=u] {$r(s)$} (suma);
                 \draw [->] (suma) -- (ganancia);
                 \draw [->] (ganancia) -- (planta);
                 \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
@@ -55,7 +55,7 @@
                     \node [output, right of=planta] (salida) {};
                     \node [block, below of=planta] (retro) {$-1$};
 
-                    \draw [->] (entrada) -- node[name=u] {$x(s)$} (suma);
+                    \draw [->] (entrada) -- node[name=u] {$r(s)$} (suma);
                     \draw [->] (suma) -- (ganancia);
                     \draw [->] (ganancia) -- (planta);
                     \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
@@ -107,7 +107,7 @@
                     \node [output, right of=planta] (salida) {};
                     \node [block, below of=planta] (retro) {$-1$};
 
-                    \draw [->] (entrada) -- node[name=u] {$x(s)$} (suma);
+                    \draw [->] (entrada) -- node[name=u] {$r(s)$} (suma);
                     \draw [->] (suma) -- (ganancia);
                     \draw [->] (ganancia) -- (planta);
                     \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
@@ -166,7 +166,7 @@
                         \node [output, right of=planta] (salida) {};
                         \node [block, below of=planta] (retro) {$-1$};
 
-                        \draw [->] (entrada) -- node[name=u] {$x(s)$} (suma);
+                        \draw [->] (entrada) -- node[name=u] {$r(s)$} (suma);
                         \draw [->] (suma) -- (planta);
                         \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
                         \draw [->] (y) |- (retro);
@@ -177,7 +177,7 @@
             con una entrada de tipo escalón:
 
             \begin{equation*}
-                x(s) = \frac{1}{s}
+                r(s) = \frac{1}{s}
             \end{equation*}
 
             y un sistema $G(s)$:
@@ -198,7 +198,7 @@
             El error en estado permanente a una entrada rampa unitaria es:
 
             \begin{equation*}
-                x(s) = \frac{1}{s^2}
+                r(s) = \frac{1}{s^2}
             \end{equation*}
 
             \begin{equation*}
@@ -210,6 +210,6 @@
             \end{equation*}
 
             \missingfigure{Gráfica de rampa unitaria con error en estado estacionario.}
-            
+
         \subsection{Ejemplo}
         \faltante{Falta escribir apunte}

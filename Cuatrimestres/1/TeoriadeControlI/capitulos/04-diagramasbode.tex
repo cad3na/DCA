@@ -17,7 +17,7 @@
                 \node [block, right of=entrada] (planta) {$G(s)$};
                 \node [output, right of=planta] (salida) {};
 
-                \draw [->] (entrada) -- node[name=u] {$x(s)$} (planta);
+                \draw [->] (entrada) -- node[name=u] {$r(s)$} (planta);
                 \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
             \end{tikzpicture}}
     \end{figure}
@@ -25,13 +25,13 @@
     con $G(s)$ Hurwitz estable:
 
     \begin{equation*}
-        y(s) = G(s) x(s)
+        y(s) = G(s) r(s)
     \end{equation*}
 
     asumimos que la entrada es de la forma:
 
     \begin{equation*}
-        x(s) = X \left( \frac{\omega}{s^2 + \omega^2} \right)
+        r(s) = X \left( \frac{\omega}{s^2 + \omega^2} \right)
     \end{equation*}
 
     y la planta es de la forma:
