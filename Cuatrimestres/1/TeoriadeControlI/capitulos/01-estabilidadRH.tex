@@ -1,9 +1,15 @@
 
 \chapter{Criterio de Estabilidad de Routh-Hurwitz}
 
+    \missingfigure{Diagrama de bloques de una función de transferencia general}
+
+    Dado el sistema mostrado en la figura, tenemos que su función de transferencia es de la forma:
+
     \begin{equation}
         \frac{\hat{y}(s)}{\hat{r}(s)} = \frac{b_0 s^m + b_1 s^{m-1} + ... + b_{m-1} s + b_m}{a_0 s^n + a_1 s^{n-1} + ... + a_{n-1} s + a_n} = \frac{B(s)}{A(s)}
     \end{equation}
+
+    es decir:
 
     \begin{equation}
         \frac{\hat{y}(s)}{\hat{r}(s)} = \sum{\frac{k_{1,i}}{s + \alpha_i}} + \sum{\frac{k_{2,j} + k_{3,j} \cdot s}{(s + \beta_i)^2 + {\gamma_i}^2}} ; m \leq n
