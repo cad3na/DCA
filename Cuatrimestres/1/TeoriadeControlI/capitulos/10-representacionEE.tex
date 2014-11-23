@@ -64,7 +64,7 @@
         N \left( \frac{d}{dt} \right) = \left( b_m + b_{m-1} \frac{d}{dt} + \dots + b_1 \frac{d^{m-1}}{dt^{m-1}} + b_0 \frac{d^m}{dt^m} \right)
     \end{equation*}
 
-    Esta es la misma ecuación diferencial con la que empezamos. Note que la escritura matricial de esta Ecuación Diferencial Ordinaria\footnote{Si bien la notación correcta es la que se utiliza justo ahora, al final  del capitulo se dejará a un lado, para obviar el hecho de que son vectores y matrices, sin que por eso se entienda que ya no lo son.} es:
+    Esta es la misma ecuación diferencial con la que empezamos. Note que la escritura matricial de esta Ecuación Diferencial Ordinaria\footnote{Si bien la notación correcta es la que se utiliza justo ahora, al final del capitulo se dejará a un lado, para obviar el hecho de que son vectores y matrices, sin que por eso se entienda que ya no lo son.} es:
 
     \begin{equation}
         \frac{d}{dt} \vec{x} = A \vec{x}(t) + \vec{b} u(t)
@@ -121,6 +121,8 @@
         0
         \end{pmatrix}
     \end{equation}
+
+    Por lo que esta representación puede ser vista de la siguiente manera en un diagrama de bloques.
 
     \begin{figure*}
     \centering
@@ -188,6 +190,7 @@
             \draw [->] (b1)  -| (s2.90);
             \draw [->] (bm1) -| (s2.135);
         \end{tikzpicture}}
+    \caption{\label{dia:represtado1}Diagrama de bloques de una representación en espacio de estados.}
     \end{figure*}
 
 %-------------------------------------------------------------------------------
@@ -217,7 +220,7 @@
             \alpha_1 + 2 \alpha_2 t + 3 \alpha_3 t^2 + \dots + k \alpha_k t^{k-1} + \dots \\ = a \alpha_0 + a \alpha_1 t + a \alpha_2 t^2 + \dots + a \alpha_k t^k + \dots \nonumber
         \end{multline}
 
-        Por lo que las $\alpha_i$ deben satisfacer:
+        Por lo que las $\alpha_{i}$ deben satisfacer:
 
         \begin{equation}
             \begin{array}{c c c c c}
@@ -239,10 +242,14 @@
             x(t) = e^{at} x_0
         \end{equation}
 
-        Notese que: $\frac{d}{dt} x(t) = \left( \sum\limits_{i=0}^{\infty} \frac{1}{i!} \frac{d}{dt} (at)^i \right) x_0 = \left( \sum\limits_{i=1}^{\infty} \frac{1}{(i-1)!} (at)^{i-1} \right) a x_0 = \left( \sum\limits_{j=0}^{\infty} \frac{1}{j!} (at)^j \right) a x_0$
+        Notese que:
 
         \begin{equation*}
-            \frac{d}{dt} x(t) = a e^{at} x_0 = a x(t) \quad x(0) = x_0
+            \frac{d}{dt} x(t) = \left( \sum\limits_{i=0}^{\infty} \frac{1}{i!} \frac{d}{dt} (at)^i \right) x_{0} = \left( \sum\limits_{i=1}^{\infty} \frac{1}{(i-1)!} (at)^{i-1} \right) a x_{0} = \left( \sum\limits_{j=0}^{\infty} \frac{1}{j!} (at)^j \right) a x_{0}
+        \end{equation*}
+
+        \begin{equation*}
+            \frac{d}{dt} x(t) = a e^{at} x_{0} = a x(t) \quad x(0) = x_{0}
         \end{equation*}
 
     \item Para el caso en que $A$ es una matriz y la solución es homogénea se considera la siguiente Ecuación Diferencial Ordinaria:
