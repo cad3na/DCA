@@ -1,3 +1,6 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA CAPITULO
+%-------------------------------------------------------------------------------
 
 \chapter{Diagramas de Bode}
 
@@ -96,6 +99,10 @@
 
     en donde $y = X \left| G(j \omega) \right|$ y $\phi = \phase{G(j \omega)}$.
 
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
     \newpage
     \section{Factores de primer orden}
         Para analizar ahora el comportamiento de una planta con factores de primer orden, proponemos el sistema siguiente:
@@ -146,6 +153,8 @@
             \caption{\label{fig:bodeprimerordeninverso}Diagrama de Bode del sistema $G(s) = Ts + 1$.}
         \end{figure}
 
+%-------------------------------------------------------------------------------
+
         \subsection{Factor integral}
 
             Dado el sistema $G(s) = \frac{1}{s}$ tendremos los siguientes valores para la magnitud y la fase:
@@ -163,6 +172,8 @@
                 \caption{\label{fig:bodeintegral}Diagrama de Bode del sistema $G(s) = \frac{1}{s}$.}
             \end{figure}
 
+%-------------------------------------------------------------------------------
+
         \subsection{Factor derivativo}
 
             Dado el sistema $G(s) = s$ tendremos los siguientes valores para la magnitud y la fase:
@@ -179,6 +190,10 @@
                 \includegraphics[width=0.5\textwidth]{./imagenes/bodederivativo.pdf}
                 \caption{\label{fig:bodederivativo}Diagrama de Bode del sistema $G(s) = s$.}
             \end{figure}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Factores de segundo orden}
@@ -203,6 +218,8 @@
             \frac{\omega}{\omega_n} \gg 1 & \implies & \left| G(j \omega) \right|_{dB} \approx -20 \log{\sqrt{\left( \frac{\omega}{\omega_n} \right)^4}} = -40 \log{\left( \frac{\omega}{\omega_n} \right)} dB
         \end{eqnarray*}
 
+%-------------------------------------------------------------------------------
+
         \subsection{Frecuencia de resonancia $\omega_r$}
 
             Para encontrar la frecuencia de resonancia, necesitamos encontrar el punto en que la gráfica de magnitud cambia de dirección, es decir cuando la derivada cambia de signo. Por comodidad lo haremos con la función auxiliar $g(s) = \left( 1 - \left( \frac{\omega}{\omega_n} \right)^2 + \left( 2 \zeta \left( \frac{\omega}{\omega_n} \right) \right)^2 \right)$. Asi pues, la derivada será:
@@ -222,6 +239,8 @@
             \end{eqnarray*}
 
             donde $0 \le \zeta \le \frac{1}{\sqrt{2}}$.
+
+%-------------------------------------------------------------------------------
 
         \subsection{Valor pico de resonancia $M_r$}
 
@@ -257,6 +276,10 @@
                 \includegraphics[width=0.5\textwidth]{./imagenes/bodesegundoordeninverso.pdf}
                 \caption{\label{fig:bodesegundoordeninverso}Diagrama de Bode del sistema $G(s) = \left( \frac{s}{\omega_n} \right)^2 + 2 \zeta \left( \frac{s}{\omega_n} \right) + 1$.}
             \end{figure}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Factores de orden cero}

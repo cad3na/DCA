@@ -1,3 +1,6 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA CAPITULO
+%-------------------------------------------------------------------------------
 
 \chapter{Controlabilidad y asignación de polos}
 
@@ -71,6 +74,10 @@
     \end{description}
 
     Para resolver este problema hay que investigar el concepto estructural de la alcanzabilidad.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Alcanzabilidad y Controlabilidad}
@@ -156,6 +163,10 @@
             \item Por lo que una condición suficiente y necesaria para que la ecuación de estado sea alcanzable (y por lo tanto controlable), es que su matriz de controlabilidad, $C_{(A,b)}$, sea de rango pleno por filas.
             \item Cuando la matriz de controlabilidad es de rango pleno por filas, se dice que el par $(A, b)$ es controlable.
         \end{itemize}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Asignación de polos}
@@ -402,6 +413,10 @@
             \end{enumerate}
         \end{description}
 
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
     \newpage
     \section{Propiedades de la matriz de controlabilidad}
 
@@ -450,7 +465,7 @@
                 por lo que, podemos notar la siguiente correspondencia:
 
                 \begin{equation*}
-                    C_{(A_1, b_1)} = \frac{C_{(A, b)}}{T} 
+                    C_{(A_1, b_1)} = \frac{C_{(A, b)}}{T}
                 \end{equation*}
 
                 Mas notablemente podemos notar una manera de calcular la transformación lineal a una forma controlable.
@@ -587,6 +602,10 @@
             Se concluye que la retroalimentaión de estado no afecta a los ceros del sistema; solo puede modificar a los polos controlables.
         \end{enumerate}
 
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
     \newpage
     \section{Formas canónicas}
         Sea un sistema lineal invariante en el tiempo, una entrada, una salida (SISO), descrito por la siguiente Ecuación Diferencial Ordinaria (EDO):
@@ -595,6 +614,8 @@
             \left( \frac{d^n}{dt^n} + a_1 \frac{d^{n-1}}{dt^{n-1}} + \dots + a_{n-1} \frac{d}{dt} + a_n \right) y(t) = \\
             \left( b_n + b_{n-1} \frac{d}{dt} + \dots + b_1 \frac{d^{n-1}}{dt^{n-1}} \right) u(t)
         \end{multline}
+
+%-------------------------------------------------------------------------------
 
         \subsection{Forma canónica controlador}
 
@@ -717,6 +738,8 @@
                 \end{pmatrix} \implies \det{C_{(A_c, b_c)}} = 1
             \end{equation}
         \end{description}
+
+%-------------------------------------------------------------------------------
 
         \subsection{Forma canónica controlabilidad}
 

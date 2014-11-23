@@ -1,3 +1,6 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA CAPITULO
+%-------------------------------------------------------------------------------
 
 \chapter{Criterio de Estabilidad de Routh-Hurwitz}
 
@@ -16,6 +19,10 @@
     \end{equation}
 
     El criterio de Routh-Hurwitz determina si existen raíces en el semiplano complejo derecho cerrado.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Tabla de Routh}
@@ -87,6 +94,10 @@
             \end{table}
 
         \end{enumerate}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Casos Especiales}
@@ -203,6 +214,10 @@
             \caption{\label{fig:planocomplejo}Polos en el plano complejo.}
         \end{figure*}
 
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
     \newpage
     \section{Aplicación del criterio de Routh}
         Si bien los sistemas numéricos actuales permiten el calculo de las raíces de un sistema de manera mas rápida y sencilla que con la aplicación de este método, aun existen aplicaciones practicas en las que es de suma importancia el determinar el numero de raíces positivas. Por ejemplo podemos tener ganancias en un sistema para las que queremos determinar de primera instancia, un rango de valores para los cuales el sistema no se volverá inestable.
@@ -224,6 +239,8 @@
             \end{tabular}
             \caption{\label{tab:Aplicacion}Aplicación del criterio de Routh.}
         \end{table}
+
+%-------------------------------------------------------------------------------
 
         \subsection{Ejemplo}
 
@@ -270,6 +287,10 @@
             De lo anterior podemos concluir que, para que no existan cambios de signos, toda la primera columna tiene que ser positiva, por lo que $k > 0$ y  $2 - \sfrac{9}{7} k > 0$, por lo que el rango de valores que puede ocupar la ganancia $k$ es $0 < k < \sfrac{14}{9}$
 
             Si bien esto no nos aporta una ganancia especifica para un comportamiento deseado, si nos da la pauta a los valores a tomar en cuenta, si no se desea que el sistema sea inestable.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Acción Proporcional}
@@ -329,6 +350,8 @@
 
 Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
 
+%-------------------------------------------------------------------------------
+
         \subsection{Error en el estado permanente al escalón unitario}
             También es importante investigar el error que causara el controlador al introducirse. Si ponemos como señal de referencia al escalón unitario($R(s) = \frac{1}{s}$), podemos ver lo siguiente:
 
@@ -337,6 +360,10 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
             \end{equation*}
 
             \missingfigure{Gráfica de respuesta sobreamortiguada y con error en estado estacionario.}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
 
     \newpage
     \section{Acción Integral}
@@ -377,6 +404,8 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
             \frac{\hat{e}(s)}{\hat{r}(s)} = \frac{\hat{r}(s) - \hat{y}(s)}{\hat{r}(s)} = \frac{s(Ts + 1)}{s(Ts + 1) + k}
         \end{equation}
 
+%-------------------------------------------------------------------------------
+
         \subsection{Estabilidad}
             El problema reside en encontrar un conjunto de ganancias $k$ para las cuales el sistema es estable.
             \begin{equation}
@@ -396,6 +425,8 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
             \end{table}
 
             Por lo que concluimos que la ganancia $k$ debe de seguir: $k>0$
+
+%-------------------------------------------------------------------------------
 
         \subsection{Error en el estado permanente al escalón unitario}
             También es importante investigar el error que causará el controlador al introducirse. Si ponemos como señal de referencia al escalón unitario($\hat{r}(s) = \frac{1}{s}$), podemos ver lo siguiente:
@@ -432,6 +463,10 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
 
             \faltante{Falta escribir apunte}
 
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
     \newpage
     \section{Acción Proporcional Integral}
 
@@ -464,7 +499,13 @@ Por lo que concluimos que la ganancia $k$ debe de seguir: $k>-1$
         \end{figure}
 
         \faltante{Falta escribir apunte}
+
+%-------------------------------------------------------------------------------
+
         \subsection{Estabilidad}
         \faltante{Falta escribir apunte}
+
+%-------------------------------------------------------------------------------
+
         \subsection{Error en el estado permanente al escalón unitario}
         \faltante{Falta escribir apunte}
