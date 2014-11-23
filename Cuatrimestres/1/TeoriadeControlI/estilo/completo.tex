@@ -3,6 +3,8 @@
     \usepackage[margin=2mm]{geometry}
     \usepackage{mathpazo}
     \usepackage{eulervm}
+    \usepackage{wrapfig}
+    \newenvironment{marginfigure}{\begin{wrapfigure}{r}{0.2\textwidth}}{\end{wrapfigure}}
 \else
     \documentclass{tufte-book}
 \fi
