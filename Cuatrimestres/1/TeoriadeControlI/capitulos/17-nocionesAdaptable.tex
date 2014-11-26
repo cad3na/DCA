@@ -1,0 +1,52 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA CAPITULO
+%-------------------------------------------------------------------------------
+
+\chapter{Nociones de control adaptable}
+
+    El control adaptable es la combinación de una ley de control lineal con un algoritmo de identificación en linea.
+
+    \begin{figure}
+        \centering
+        \resizebox{0.8\textwidth}{!}{
+        \tikzstyle{input} = [coordinate]
+        \tikzstyle{output} = [coordinate]
+        \tikzstyle{block} = [draw, rectangle, minimum height=4.5em, minimum width=4em]
+        \tikzstyle{sum} = [draw, circle]
+        \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+        \begin{tikzpicture}[auto, scale=1, node distance=3.2cm, >=latex']
+            \node [input, name=entrada] {};
+            \node [sum, right of=entrada] (suma) {$+$};
+            \node [block, right of=suma] (cont) {Controlador};
+            \node [block, right of=cont] (planta) {Planta};
+            \node [output, right of=planta] (salida) {};
+            \node [block, align=center, below of=planta] (ident) {Algoritmo \\ de \\ Identificación};
+            \node [block, below of=ident] (retro) {$-1$};
+
+            \draw [->] (entrada) -- node[name=x] {$\hat{r}(s)$} (suma);
+            \draw [->] (suma) -- node[name=e] {$e$} (cont);
+            \draw [->] (cont) -- node[name=u] {$u$} (planta);
+            \draw [->] (planta) -- node[name=y] {$\hat{y}(s)$} (salida);
+            \draw [->] (y) |- (retro);
+            \draw [->] (y) |- (ident);
+            \draw [->] (u) |- (ident);
+            \draw [->] (ident.south) -| (cont.south);
+            \draw [->] (retro) -| (suma);
+        \end{tikzpicture}}
+        \caption{\label{dia:adap1}Sistema con un esquema de control adaptable.}
+    \end{figure}
+
+    Para abordar este tipo de controlador necesitamos estudiar primero los conceptos de regresor lineal, algoritmo de identificacion y prueba de convergencia con estabilidad.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Regresor lineal}
+
+        Consideremos un sistema lineal, invariante en el tiempo, representado por la siguiente ecuación diferencial ordinaria:
+
+        \begin{equation}
+            M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
+        \end{equation}
