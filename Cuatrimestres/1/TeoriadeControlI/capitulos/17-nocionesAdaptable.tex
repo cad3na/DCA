@@ -50,3 +50,87 @@
         \begin{equation}
             M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
         \end{equation}
+
+        la cual es equivalente al diagrama de bloques de la figura~\ref{dia:adap2}.
+
+        \begin{marginfigure}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [block, right of=entrada] (planta) {$\frac{N(s)}{M(s)}$};
+                    \node [output, right of=planta] (salida) {};
+
+                    \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
+                    \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
+                \end{tikzpicture}}
+            \caption{\label{dia:adap2}Sistema con una función de transferencia propia.}
+        \end{marginfigure}
+
+        Sabemos que $M(s), N(s) \in \mathbbm{R}[s]$ estarán dados por:
+
+        \begin{eqnarray}
+            M(s) & = & s^n + a_1 s^{n-1} + \dots + a_{n-1} s + a_n \nonumber \\
+            N(s) & = & b_0 s^m + b_1 s^{m-1} + \dots + b_{m-1} s + b_m
+        \end{eqnarray}
+
+        con $m \le n$.
+
+        \begin{marginfigure}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
+                    \node [output, right of=planta] (salida) {};
+
+                    \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
+                    \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida);
+                \end{tikzpicture}}
+            \caption{\label{dia:adap3}Filtro auxiliar de la entrada del sistema.}
+        \end{marginfigure}
+
+        \begin{marginfigure}
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{input} = [coordinate]
+                \tikzstyle{output} = [coordinate]
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \tikzstyle{sum} = [draw, circle]
+                \tikzstyle{init} = [pin edge={to-, thin, black}]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
+                    \node [output, right of=planta] (salida) {};
+
+                    \draw [->] (entrada) -- node[name=u] {$y(s)$} (planta);
+                    \draw [->] (planta) -- node[name=y] {$y_f(s)$} (salida);
+                \end{tikzpicture}}
+            \caption{\label{dia:adap4}Filtro auxiliar de la salida del sitema.}
+        \end{marginfigure}
+
+        Consideremos los filtros auxiliares de las figuras~\ref{dia:adap3} y~\ref{dia:adap4}, por lo que las ecuaciones que representan su comportamiento serán:
+
+        \begin{eqnarray}
+            F \left( \frac{d}{dt} \right) u_f (t) & = & u(t) \nonumber \\
+            F \left( \frac{d}{dt} \right) y_f (t) & = & y(t)
+        \end{eqnarray}
+
+        en donde $F(s) \in \mathbbm{R}[s]$ es Hurwitz estable y tiene la forma:
+
+        \begin{equation*}
+            F(s) = s^n + f_1 s^{n-1} + \dots + f_{n-1} s + f_n
+        \end{equation*}
