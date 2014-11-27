@@ -47,7 +47,7 @@
 
         Consideremos un sistema lineal, invariante en el tiempo, representado por la siguiente ecuación diferencial ordinaria:
 
-        \begin{equation}
+        \begin{equation} \label{eq:adap1}
             M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
         \end{equation}
 
@@ -75,7 +75,7 @@
 
         Sabemos que $M(s), N(s) \in \mathbbm{R}[s]$ estarán dados por:
 
-        \begin{eqnarray}
+        \begin{eqnarray} \label{eq:adap2}
             M(s) & = & s^n + a_1 s^{n-1} + \dots + a_{n-1} s + a_n \nonumber \\
             N(s) & = & b_0 s^m + b_1 s^{m-1} + \dots + b_{m-1} s + b_m
         \end{eqnarray}
@@ -124,7 +124,7 @@
 
         Consideremos los filtros auxiliares de las figuras~\ref{dia:adap3} y~\ref{dia:adap4}, por lo que las ecuaciones que representan su comportamiento serán:
 
-        \begin{eqnarray}
+        \begin{eqnarray} \label{eq:adap3}
             F \left( \frac{d}{dt} \right) u_f (t) & = & u(t) \nonumber \\
             F \left( \frac{d}{dt} \right) y_f (t) & = & y(t)
         \end{eqnarray}
@@ -134,3 +134,56 @@
         \begin{equation*}
             F(s) = s^n + f_1 s^{n-1} + \dots + f_{n-1} s + f_n
         \end{equation*}
+
+        Si sustituimos las ecuaciones~\ref{eq:adap3} en la ecuación~\ref{eq:adap1}, tendremos:
+
+        \begin{equation*}
+            M \left( \frac{d}{dt} \right) F \left( \frac{d}{dt} \right) y_f (t) = N \left( \frac{d}{dt} \right) F \left( \frac{d}{dt} \right) u_f (t)
+        \end{equation*}
+
+        es decir:
+
+        \begin{equation*}
+            F \left( \frac{d}{dt} \right) \left( M \left( \frac{d}{dt} \right)  y_f (t) - N \left( \frac{d}{dt} \right) u_f (t) \right) = 0
+        \end{equation*}
+
+        por lo que podemos introducir la función $\xi(t)$:
+
+        \begin{equation*}
+            F \left( \frac{d}{dt} \right) \xi(t) = 0
+        \end{equation*}
+
+        por lo que podemos escribir nuestra función original como:
+
+        \begin{equation} \label{eq:adap4}
+            M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t) + \xi(t)
+        \end{equation}
+
+        Puesto que $F(s)$ es un polinomio Hurwitz estable, entonces existe $k, \alpha \in \mathbbm{R}^+$, con $k > 0$ y $\alpha > 0$, tal que:
+
+        \begin{equation*}
+            |\xi(t)| \le k e^{- \alpha t} \quad \forall t \ge 0
+        \end{equation*}
+
+        \missingfigure{Comportamiento general acotado por exponencial}
+
+        por lo que para un $\alpha$ suficientemente grande, los comportamientos de las ecuaciones~\ref{eq:adap4} y~\ref{eq:adap1} será aproximadamente iguales.
+
+        Desarrollando la ecuación~\ref{eq:adap4} se obtiene el siguiente regresor lineal:
+
+        \begin{equation}
+            y_f^{(n)}(t) = \theta^T \phi(t) + \xi(t)
+        \end{equation}
+
+        en donde:
+
+        \begin{eqnarray*}
+            \theta^T & = & \begin{pmatrix} a_1 & \dots & a_n & b_0 & \dots & b_m \end{pmatrix} \in \mathbbm{R}^{n+m+1} \\
+            \phi^T & = & \begin{pmatrix} -y_f^{(n-1)} & \dots & -y_f & u_f^{(m)} & \dots & u_f \end{pmatrix} \in \mathbbm{R}^{n+m+1}
+        \end{eqnarray*}
+
+        a los que llamamos vector de parametros y vector de mediciones.
+
+        Note que las derivadas sucesivas de $y_f(t)$ y $u_f(t)$, se obtienen directamente de los filtros de las ecuaciones~\ref{eq:adap3}.
+
+        \missingfigure{Diagrama de bloques de un filtro para el regresor lineal}
