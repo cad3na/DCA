@@ -4,11 +4,9 @@
 
 \chapter{Diagramas de Bode}
 
-    Dado el siguiente sistema:
-
-    \begin{figure}
+    \begin{marginfigure}
         \centering
-        \resizebox{0.6\textwidth}{!}{
+        \resizebox{\textwidth}{!}{
             \tikzstyle{input} = [coordinate]
             \tikzstyle{output} = [coordinate]
             \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
@@ -24,9 +22,9 @@
                 \draw [->] (planta) -- node[name=y] {$y(s)$} (salida);
             \end{tikzpicture}}
         \caption{\label{dia:bode1}Sistema Hurwitz estable.}
-    \end{figure}
+    \end{marginfigure}
 
-    con $G(s)$ Hurwitz estable:
+    Dado el sistema de la figura~\ref{dia:bode1}, con $G(s)$ Hurwitz estable, sabemos que la ecuación del sistema será:
 
     \begin{equation*}
         y(s) = G(s) r(s)
