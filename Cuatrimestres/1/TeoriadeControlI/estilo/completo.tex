@@ -1,41 +1,54 @@
+% Compila en uno de dos formatos diferentes dependiendo del valor de ebook, el
+% cual puede ser pasado por medio de una cadena de caracteres al mandar compilar
+% el archivo, un ejemplo es este:
+%
+% pdflatex -interaction=batchmode "\newif\ifebook\ebookfalse\input{archivo.tex}"
+%
+% pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{archivo.tex}"
+%
+% Estas dos entradas produciran archivos diferentes con un formato especifico
 \ifebook
-    \documentclass[a5paper, 15pt]{book}
-    \usepackage[margin=2mm]{geometry}
-    \usepackage{mathpazo}
-    \usepackage{eulervm}
+    \documentclass[a5paper, 15pt]{book} % Papel: A5, Letra: 15pt
+    \usepackage[margin=2mm]{geometry} % Margenes estrechos
+    \usepackage{mathpazo} % Letra: Palatino
+    \usepackage{eulervm} % Letra para matematicas: Euler
     \usepackage{wrapfig}
-    \newenvironment{marginfigure}{\begin{wrapfigure}{r}{0.2\textwidth}}{\end{wrapfigure}}
+    \newenvironment{marginfigure} % Definicion complementaria
+        {\begin{wrapfigure}{r}{0.2\textwidth}}
+        {\end{wrapfigure}}
 \else
-    \documentclass{tufte-book}
+    \documentclass{tufte-book} % Papel: Letter, Estilo: Tufte
 \fi
-
-\usepackage[spanish,es-noquoting]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{xfrac}
-\usepackage{graphicx}
-\usepackage{bbm}
-\usepackage{enumerate}
-\usepackage{tikz}
-\usepackage{todonotes}
-\usepackage{mathrsfs}
-\usepackage{steinmetz}
-
+% Paquetes a utilizar
+\usepackage[spanish, es-noquoting]{babel} % Español
+\usepackage[utf8]{inputenc} % Texto de entrada en UTF-8
+\usepackage{amsmath}        % Paquete con definiciones matematicas
+\usepackage{amsthm}         % Paquete para definir ambientes de teoremas
+\usepackage{amssymb}        % Paquete con simbolos matematicos
+\usepackage{xfrac}          % Paquete para usar fracciones inclinadas
+\usepackage{graphicx}       % Paquete para incluir imagenes
+\usepackage{bbm}            % Paquete con simbolos de campos
+\usepackage{enumerate}      % Paquete para crear ambientes de listas enumeradas
+\usepackage{tikz}           % Paquete para crear diagramas
+\usepackage{todonotes}      % Paquete para crear anotaciones
+\usepackage{mathrsfs}       % Paquete para mas simbolos de campos
+\usepackage{steinmetz}      % Paquete para escribir numeros complejos
+% Subpaquete para diagramas de bloques
 \usetikzlibrary{shapes, arrows, decorations.markings}
-
+% Estilos comunes de bloques para diagramas
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{init} = [pin edge={to-, thin, black}]
+% Hace que la numeración dependa del numero de capitulo
 \setcounter{secnumdepth}{0}
 \numberwithin{equation}{chapter}
-
-\newenvironment{amatrix}[1]{%
-  \left(\begin{array}{@{}*{#1}{c}|c@{}}
-}{%
-  \end{array}\right)
-}
-
-\newtheorem{definicion}{Definición}
-\numberwithin{definicion}{chapter}
+% Definición de matriz adjunta
+\newenvironment{amatrix}[1]
+    {\left(\begin{array}{@{}*{#1}{c}|c@{}}}
+    {\end{array}\right)}
+% Definiciones de teoremas
+\newtheorem{definicion}{Definición} % definicion de teorema: Definición
+\numberwithin{definicion}{chapter}  % numeracion de teorema por capitulo
 \newtheorem{lema}{Lema}
 \numberwithin{lema}{chapter}
 \newtheorem{teorema}{Teorema}
@@ -44,13 +57,20 @@
 \numberwithin{nota}{chapter}
 \newtheorem{corolario}{Corolario}
 \numberwithin{corolario}{chapter}
-
+% Definiciones de operadores
 \DeclareMathOperator{\rango}{rango}
 \DeclareMathOperator{\imagen}{Im}
 \DeclareMathOperator{\grado}{grado}
-
+% Definiciones para recordatorios por hacer
 \newcommand{\tarea}[2][]
-    {\todo[linecolor=black!50!white, backgroundcolor=black!30!white, bordercolor=black!30!white, #1]{#2}}
-
+    {\todo[
+        linecolor=black!50!white,       % Color de linea: Gris
+        backgroundcolor=black!30!white, % Color de fondo: Gris claro
+        bordercolor=black!30!white,     % Color de borde: Gris claro
+        #1]{#2}}
 \newcommand{\faltante}[2][]
-    {\todo[linecolor=red!50!white, backgroundcolor=red!30!white, bordercolor=red!30!white, #1]{#2}}
+    {\todo[
+        linecolor=red!50!white,        % Color de linea: Rojo
+        backgroundcolor=red!30!white,  % Color de fondo: Rojo claro
+        bordercolor=red!30!white,      % Color de borde: Rojo claro
+        #1]{#2}}
