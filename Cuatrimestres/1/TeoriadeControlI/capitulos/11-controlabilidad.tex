@@ -22,11 +22,8 @@
     \begin{figure}
     \centering
     \resizebox{\textwidth}{!}{
-	    \tikzstyle{input} = [coordinate]
-        \tikzstyle{output} = [coordinate]
         \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
         \tikzstyle{sum} = [draw, circle]
-        \tikzstyle{init} = [pin edge={to-, thin, black}]
         \tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
              1 with {\arrow[semithick]{open triangle 60}}},
              double distance=1.4pt, shorten >= 5.5pt,
@@ -87,7 +84,7 @@
             \item Una representación de estado se dice controlable, si para cualquier condición inicial, $x(0) = x_0 \in \mathbbm{R}^n$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega al origen $\left( x(t_f) = 0 \right)$.
 
             \missingfigure{Trayectoria en plano de estados de condicion inicial general al origen}
-            
+
             \missingfigure{Trayectoria de condicion inicial al origen atraves del tiempo}
 
             \item Una representación de estado se dice alcanzable, si para cualquier punto $x \in \mathbbm{R}$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega a un punto cualquiera $\left( x(t_f) = x_f \right)$ desde el origen.
@@ -332,12 +329,9 @@
         \begin{figure}
             \centering
             \resizebox{\textwidth}{!}{
-                \tikzstyle{input} = [coordinate]
-                \tikzstyle{output} = [coordinate]
                 \tikzstyle{empty} = [coordinate]
                 \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
                 \tikzstyle{sum} = [draw, circle]
-                \tikzstyle{init} = [pin edge={to-, thin, black}]
 
                 \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
                     \node [input, name=entrada] {};
@@ -658,12 +652,9 @@
         \begin{figure*}
             \centering
             \resizebox{\textwidth}{!}{
-                \tikzstyle{input} = [coordinate]
-                \tikzstyle{output} = [coordinate]
                 \tikzstyle{empty} = [coordinate]
                 \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
                 \tikzstyle{sum} = [draw, circle]
-                \tikzstyle{init} = [pin edge={to-, thin, black}]
 
                 \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
                     \node [input, name=entrada] {};
