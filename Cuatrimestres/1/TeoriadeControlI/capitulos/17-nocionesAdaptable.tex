@@ -79,7 +79,6 @@
         \begin{marginfigure}
             \centering
             \resizebox{\textwidth}{!}{
-<<<<<<< HEAD
                 \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
 
                 \begin{tikzpicture}[auto, node distance=2cm, >=latex']
@@ -90,22 +89,6 @@
                     \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
                     \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida);
                 \end{tikzpicture}}
-=======
-            \tikzstyle{input} = [coordinate]
-            \tikzstyle{output} = [coordinate]
-            \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
-            \tikzstyle{sum} = [draw, circle]
-            \tikzstyle{init} = [pin edge={to-, thin, black}]
-
-            \begin{tikzpicture}[auto, node distance=2cm, >=latex']
-                \node [input, name=entrada] {};
-                \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
-                \node [output, right of=planta] (salida) {};
-
-                \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
-                \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida);
-            \end{tikzpicture}}
->>>>>>> 05fa5caa012d196d6906bc5bd2df5d6e81fc3fa9
             \caption{\label{dia:adap3}Filtro auxiliar de la entrada del sistema.}
         \end{marginfigure}
 
