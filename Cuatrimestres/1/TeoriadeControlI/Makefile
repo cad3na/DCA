@@ -37,4 +37,4 @@ moveebook:
 clean:
 	@echo "==============================================="
 	@echo "Quitando archivos irrelevantes."
-	@rm -rf *.aux *.log *.fdb_latexmk *.synctex.gz *.out *.tdo *toc
+	@rm -rf *.aux *.log *.fdb_latexmk *.synctex.gz *.out *.tdo *.toc
