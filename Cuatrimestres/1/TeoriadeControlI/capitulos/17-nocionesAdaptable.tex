@@ -42,7 +42,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+    \newpage
     \section{Regresor lineal}
 
         Consideremos un sistema lineal, invariante en el tiempo, representado por la siguiente ecuación diferencial ordinaria:
@@ -82,47 +82,47 @@
 
         con $m \le n$.
 
+        Consideremos los filtros auxiliares de las figuras~\ref{dia:adap3} y~\ref{dia:adap4}, por lo que las ecuaciones que representan su comportamiento serán:
+
         \begin{marginfigure}
             \centering
             \resizebox{\textwidth}{!}{
-                \tikzstyle{input} = [coordinate]
-                \tikzstyle{output} = [coordinate]
-                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
-                \tikzstyle{sum} = [draw, circle]
-                \tikzstyle{init} = [pin edge={to-, thin, black}]
+            \tikzstyle{input} = [coordinate]
+            \tikzstyle{output} = [coordinate]
+            \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+            \tikzstyle{sum} = [draw, circle]
+            \tikzstyle{init} = [pin edge={to-, thin, black}]
 
-                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
-                    \node [input, name=entrada] {};
-                    \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
-                    \node [output, right of=planta] (salida) {};
+            \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                \node [input, name=entrada] {};
+                \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
+                \node [output, right of=planta] (salida) {};
 
-                    \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
-                    \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida);
-                \end{tikzpicture}}
+                \draw [->] (entrada) -- node[name=u] {$u(s)$} (planta);
+                \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida);
+            \end{tikzpicture}}
             \caption{\label{dia:adap3}Filtro auxiliar de la entrada del sistema.}
         \end{marginfigure}
 
         \begin{marginfigure}
             \centering
             \resizebox{\textwidth}{!}{
-                \tikzstyle{input} = [coordinate]
-                \tikzstyle{output} = [coordinate]
-                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
-                \tikzstyle{sum} = [draw, circle]
-                \tikzstyle{init} = [pin edge={to-, thin, black}]
+            \tikzstyle{input} = [coordinate]
+            \tikzstyle{output} = [coordinate]
+            \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+            \tikzstyle{sum} = [draw, circle]
+            \tikzstyle{init} = [pin edge={to-, thin, black}]
 
-                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
-                    \node [input, name=entrada] {};
-                    \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
-                    \node [output, right of=planta] (salida) {};
+            \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                \node [input, name=entrada] {};
+                \node [block, right of=entrada] (planta) {$\frac{1}{F(s)}$};
+                \node [output, right of=planta] (salida) {};
 
-                    \draw [->] (entrada) -- node[name=u] {$y(s)$} (planta);
-                    \draw [->] (planta) -- node[name=y] {$y_f(s)$} (salida);
-                \end{tikzpicture}}
+                \draw [->] (entrada) -- node[name=u] {$y(s)$} (planta);
+                \draw [->] (planta) -- node[name=y] {$y_f(s)$} (salida);
+            \end{tikzpicture}}
             \caption{\label{dia:adap4}Filtro auxiliar de la salida del sitema.}
         \end{marginfigure}
-
-        Consideremos los filtros auxiliares de las figuras~\ref{dia:adap3} y~\ref{dia:adap4}, por lo que las ecuaciones que representan su comportamiento serán:
 
         \begin{eqnarray} \label{eq:adap3}
             F \left( \frac{d}{dt} \right) u_f (t) & = & u(t) \nonumber \\
@@ -156,7 +156,7 @@
         por lo que podemos escribir nuestra función original como:
 
         \begin{equation} \label{eq:adap4}
-            M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t) + \xi(t)
+            M \left( \frac{d}{dt} \right) y_f(t) = N \left( \frac{d}{dt} \right) u_f(t) + \xi(t)
         \end{equation}
 
         Puesto que $F(s)$ es un polinomio Hurwitz estable, entonces existe $k, \alpha \in \mathbbm{R}^+$, con $k > 0$ y $\alpha > 0$, tal que:
@@ -177,13 +177,105 @@
 
         en donde:
 
-        \begin{eqnarray*}
-            \theta^T & = & \begin{pmatrix} a_1 & \dots & a_n & b_0 & \dots & b_m \end{pmatrix} \in \mathbbm{R}^{n+m+1} \\
+        \begin{eqnarray} \label{eq:adap5}
+            \theta^T & = & \begin{pmatrix} a_1 & \dots & a_n & b_0 & \dots & b_m \end{pmatrix} \in \mathbbm{R}^{n+m+1} \nonumber \\
             \phi^T & = & \begin{pmatrix} -y_f^{(n-1)} & \dots & -y_f & u_f^{(m)} & \dots & u_f \end{pmatrix} \in \mathbbm{R}^{n+m+1}
-        \end{eqnarray*}
+        \end{eqnarray}
 
         a los que llamamos vector de parametros y vector de mediciones.
 
         Note que las derivadas sucesivas de $y_f(t)$ y $u_f(t)$, se obtienen directamente de los filtros de las ecuaciones~\ref{eq:adap3}.
 
         \missingfigure{Diagrama de bloques de un filtro para el regresor lineal}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \newpage
+    \section{Algoritmo de identificación en linea}
+
+        Un algoritmo de identificación es un procedimiento para estimar el vector de parámetros $\theta$ mediante la minimización de un criterio predeterminado.
+
+        Se consideran dos tipos de algoritmo de identificación a saber:
+
+        \begin{enumerate}
+            \item Algoritmo tipo gradiente
+            \item Algoritmo de mínimos cuadrados
+        \end{enumerate}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Algoritmo tipo gradiente}
+
+            \begin{problema}
+                Encontrar el vector de parametros estimados $\theta(t)$, que minimice al siguiente criterio:
+
+                \begin{equation}
+                    J \left( \theta(t) \right) = \frac{1}{2} e^2 \left( \theta(t) \right) \ge 0
+                \end{equation}
+
+                donde:
+
+                \begin{eqnarray}
+                    e \left( \theta(t) \right) & = & \theta^T(t) \phi(t) - y_f^{(n)}(t) \nonumber \\
+                    & = & \tilde{\theta}^T(t) \phi(t) = \phi^T(t) \tilde{\theta}(t)
+                \end{eqnarray}
+
+                y $\tilde{\theta}$ la definimos como:
+
+                \begin{equation}
+                    \tilde{\theta}(t) = \tilde{\theta}(t) - \theta
+                \end{equation}
+
+                A $e \left( \theta(t) \right)$ se le conoce como error de estimación y a $\tilde{\theta}(t)$ se le conoce como error paramétrico.
+            \end{problema}
+
+            Para resolver este problema derivemos el criterio $J(t)$ con respecto al tiempo:
+
+            \begin{equation} \label{eq:adap6}
+                \frac{d J(t)}{dt} = \frac{\partial J(t)}{\partial \theta(t)} \frac{d \theta(t)}{dt} = e(t) \frac{\partial e(t)}{\partial \theta(t)}^T \frac{d \theta(t)}{dt}
+            \end{equation}
+
+            para que $J(t)$ decrezca, se propone:
+
+            \begin{equation}\label{eq:adap7}
+                \frac{d \theta(t)}{dt} = -k e(t) \frac{\partial e(\theta(t))}{\partial \theta(t)} \text{ con } k > 0
+            \end{equation}
+
+            en efecto, de las ecuaciones~\ref{eq:adap6} y~\ref{eq:adap7} se tiene que:
+
+            \begin{equation*}
+                \frac{d J(t)}{dt} = -k e^2(t) \frac{\partial e(\theta(t))}{\partial \theta(t)}^T \frac{\partial e(\theta(t))}{\partial \theta(t)} \le 0 \quad \forall t \ge 0
+            \end{equation*}
+
+            lo cual implica que
+
+            \begin{equation}
+                J(t + T) \le J(t) \quad \forall T > t \ge 0
+            \end{equation}
+
+            Este es un algoritmo de programación no lineal de paso descendente.
+            De la ecuación~\ref{eq:adap5} y la ecuación~\ref{eq:adap7} se obtiene el algoritmo de identificación tipo gradiente:
+
+            \begin{equation} \label{eq:adap7}
+                \frac{d \theta(t)}{dt} = -k \phi(t)e(t)
+            \end{equation}
+
+            \missingfigure{Diagrama de bloques de un identificador de tipo gradiente}
+
+            \begin{lema}
+                El algoritmo tipo gradiente descrito en la ecuación~\ref{eq:adap5} y en la ecuación~\ref{eq:adap7} tiene las siguientes propiedades:
+
+                \begin{enumerate}
+                    \item $\tilde{\theta}^T(t + T) \theta(t + T) \le \tilde{\theta}^T(t) \theta(t)$ para todo $T > t \ge 0$
+                    \item $\left| \tilde{\theta}^T(t) \theta(t) \right| < \infty$ para casi todo $t \ge 0$
+                    \item $\int_0^{\infty} e^2(\tau) d\tau < \infty$ para todo $t > 0$
+                \end{enumerate}
+
+                A estas propiedades les llamamos error paramétrico no creciente, error paramétrico acotado, y energía de error de estimación acotada.
+            \end{lema}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Algoritmo de mínimos cuadrados}
