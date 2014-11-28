@@ -252,8 +252,8 @@
                 El algoritmo tipo gradiente descrito en la ecuación~\ref{eq:adap5} y en la ecuación~\ref{eq:adap7} tiene las siguientes propiedades:
 
                 \begin{enumerate}
-                    \item $\tilde{\theta}^T(t + T) \theta(t + T) \le \tilde{\theta}^T(t) \theta(t)$ para todo $T > t \ge 0$
-                    \item $\left| \tilde{\theta}^T(t) \theta(t) \right| < \infty$ para casi todo $t \ge 0$
+                    \item $\tilde{\theta}^T(t + T) \tilde{\theta}(t + T) \le \tilde{\theta}^T(t) \tilde{\theta}(t)$ para todo $T > t \ge 0$
+                    \item $\left| \tilde{\theta}^T(t) \tilde{\theta}(t) \right| < \infty$ para casi todo $t \ge 0$
                     \item $\int_0^{\infty} e^2(\tau) d\tau < \infty$ para todo $t > 0$
                 \end{enumerate}
 
@@ -264,7 +264,7 @@
                 Sea la siguiente función de Lyapunov:
 
                 \begin{equation*}
-                    V(t) = \frac{1}{2} \tilde{\theta}^T(t) \theta(t) \ge 0 \quad \forall t \ge 0
+                    V(t) = \frac{1}{2} \tilde{\theta}^T(t) \tilde{\theta}(t) \ge 0 \quad \forall t \ge 0
                 \end{equation*}
 
                 Entonces, recordando las ecuaciones~\ref{eq:adap5} y~\ref{eq:adap7} tenemos que:
@@ -309,12 +309,20 @@
                 esto es:
 
                 \begin{equation*}
-                    \tilde{\theta}^T(t + T) \theta(t + T) \le \tilde{\theta}^T(t) \theta(t) \quad \forall T > t \ge 0
+                    \tilde{\theta}^T(t + T) \tilde{\theta}(t + T) \le \tilde{\theta}^T(t) \tilde{\theta}(t) \quad \forall T > t \ge 0
                 \end{equation*}
 
                 Finalmente, haciendo la siguiente asignación:
 
+                \begin{equation*}
+                    (t, T) \mapsto (0, t)
+                \end{equation*}
 
+                se obtiene que:
+
+                \begin{equation*}
+                    \tilde{\theta}^T(t) \tilde{\theta}(t) \le \tilde{\theta}^T(0) \tilde{\theta}(0) \quad \text{ para casi todo } t \ge 0
+                \end{equation*}
             \end{proof}
 
 %-------------------------------------------------------------------------------
