@@ -276,6 +276,63 @@
                 A estas propiedades les llamamos error paramétrico no creciente, error paramétrico acotado, y energía de error de estimación acotada.
             \end{lema}
 
+            \begin{proof}
+                Sea la siguiente función de Lyapunov:
+
+                \begin{equation*}
+                    V(t) = \frac{1}{2} \tilde{\theta}^T(t) \theta(t) \ge 0 \quad \forall t \ge 0
+                \end{equation*}
+
+                Entonces, recordando las ecuaciones~\ref{eq:adap5} y~\ref{eq:adap7} tenemos que:
+
+                \begin{eqnarray*}
+                    \frac{d V(t)}{dt} & = & \tilde{\theta}^T(t) \frac{d \tilde{\theta}(t)}{dt} \\
+                    & = & \tilde{\theta}^T(t) \frac{d \theta(t)}{dt} \\
+                    & = & -k \tilde{\theta}^T(t) \phi(t) e(t) \\
+                    & = & -k e^2(t) \quad \forall t \ge 0
+                \end{eqnarray*}
+
+                por lo que:
+
+                \begin{equation*}
+                    \frac{d V(t)}{dt} \le 0 \quad \forall t \ge 0
+                \end{equation*}
+
+                lo cual implica que:
+
+                \begin{equation*}
+                    V(t) = V(0) - k \int_0^t e^2(\tau) d\tau
+                \end{equation*}
+
+                y dado que $V(t) \ge 0$, se tiene que:
+
+                \begin{equation*}
+                    \int_0^t e^2(\tau) d\tau = \frac{1}{k} \left( V(0) - V(t) \right) \le \frac{1}{k} V(0)
+                \end{equation*}
+
+                es decir:
+
+                \begin{equation*}
+                    \int_0^t e^2(\tau) d\tau \le \infty
+                \end{equation*}
+
+                Puesto que $V(t) \ge 0$ y $\frac{dV}{dt} \le 0$ para todo $t \ge 0$, se tiene que:
+
+                \begin{equation*}
+                    V(t + T) \le V(t) \quad \forall T > t \ge 0
+                \end{equation*}
+
+                esto es:
+
+                \begin{equation*}
+                    \tilde{\theta}^T(t + T) \theta(t + T) \le \tilde{\theta}^T(t) \theta(t) \quad \forall T > t \ge 0
+                \end{equation*}
+
+                Finalmente, haciendo la siguiente asignación:
+
+                
+            \end{proof}
+
 %-------------------------------------------------------------------------------
 
         \subsection{Algoritmo de mínimos cuadrados}
