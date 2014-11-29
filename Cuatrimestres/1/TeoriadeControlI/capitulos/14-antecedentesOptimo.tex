@@ -27,67 +27,67 @@
 
             Si no es estable, decimos que es inestable.
 
-            \begin{marginfigure}
-                \centering
-                \includegraphics[width=\textwidth]{./imagenes/trayectoriaacotada.pdf}
-                \caption{\label{fig:trayectoriaestable}Trayectoria acotada por un limite $\epsilon$.}
-            \end{marginfigure}
-
-            \begin{marginfigure}
-                \centering
-                \includegraphics[width=\textwidth]{./imagenes/trayectoriaacotada3d.pdf}
-                \caption{\label{fig:trayectoriaestable3d}Trayectoria acotada por un limite $\epsilon$ atraves del tiempo.}
-            \end{marginfigure}
-
         \end{definicion}
 
+        \begin{marginfigure}
+            \centering
+            \includegraphics[width=\textwidth]{./imagenes/trayectoriaacotada.pdf}
+            \caption{\label{fig:trayectoriaestable}Trayectoria acotada por un limite $\epsilon$.}
+        \end{marginfigure}
+
+        \begin{marginfigure}
+            \centering
+            \includegraphics[width=\textwidth]{./imagenes/trayectoriaacotada3d.pdf}
+            \caption{\label{fig:trayectoriaestable3d}Trayectoria acotada por un limite $\epsilon$ atraves del tiempo.}
+        \end{marginfigure}
+
         \begin{teorema} \label{te:lyap1}
-            Una matriz $A$ es Hurwitz estable, es decir $\Re{\{ \lambda(A) \}} < 0$, si y solo si para cualquier matriz simetrica definida positiva dada, $Q$, existe una matriz  simetrica definida positiva, $P$, que satisface:
+            Una matriz $A$ es Hurwitz estable, es decir $\Re{\{ \lambda(A) \}} < 0$, si y solo si para cualquier matriz simetrica definida positiva dada, $Q$, existe una matriz simétrica definida positiva, $P$, que satisface:
 
             \begin{equation}
                 A^T P + P A = -Q
             \end{equation}
-
-            \begin{nota}
-                \tarea{Resumen de matrices Hermitianas de Introduction to Matrix Computations - G.W. Stewart Cap. 4 y 6}
-                Una matriz $H \in \mathbbm{C}^{n\times n}$, se dice Hermitiana si su transpuesta conjugada es ella misma, $H^* = H$.
-                Si $H \in \mathbbm{R}^{n \times n}$, se dice simétrica si su transpuesta es ella misma, $H^T = H$.
-
-                De estas matrices, podemos notar ciertas propiedades:
-
-                \begin{enumerate}
-                    \item Todos sus valores propios son reales.
-                    \item Cuando los valores propios de $H$ son todos positivos o negativos, se dice que $H$ es definida positiva o negativa, y se escribe $H > 0$ o $H < 0$ respectivamente.
-                    \item Cuando los valores propios de $H$ son todos no negativos o no positivos, se dice que $H$ es semidefinida positiva o semidefinida negativa y se escribe $H \ge 0$ o $H \le 0$ respectivamente.
-                    \item Desigualdad de Raleigh
-
-                    Dada $H$ Hermitiana:
-
-                    \begin{equation*}
-                        \lambda_{min}(H) x^* x \le x^* H x \le \lambda_{max}(H) x^*x \quad \forall x \in \mathbbm{C}^n
-                    \end{equation*}
-
-                    Dada $H$ simétrica:
-
-                    \begin{equation*}
-                        \lambda_{min}(H) x^T x \le x^T H x \le \lambda_{max}(H) x^T x \quad \forall x \in \mathbbm{C}^n
-                    \end{equation*}
-                    \item $H$ es semidefinida positiva, si y solo si, puede escribirse de la forma factorizada:
-
-                    \begin{equation*}
-                        H = G^* G
-                    \end{equation*}
-
-                    para alguna matriz $G$, conocida como raiz cuadrada de $H$, tambien denotada por $H_{\sfrac{1}{2}}$, $\sqrt{H}$, $H^{\sfrac{1}{2}}$, por lo que la factorización queda como sigue:
-
-                    \begin{equation*}
-                        H = H_{\sfrac{1}{2}}^* H_{\sfrac{1}{2}}
-                    \end{equation*}
-
-                    Cuando $H$ es definida positiva, $H_{\sfrac{1}{2}}$ es una matriz de rango pleno.
-                \end{enumerate}
-            \end{nota}
         \end{teorema}
+
+        \begin{nota}
+            \tarea{Resumen de matrices Hermitianas de Introduction to Matrix Computations - G.W. Stewart Cap. 4 y 6}
+            Una matriz $H \in \mathbbm{C}^{n\times n}$, se dice Hermitiana si su transpuesta conjugada es ella misma, $H^* = H$.
+            Si $H \in \mathbbm{R}^{n \times n}$, se dice simétrica si su transpuesta es ella misma, $H^T = H$.
+
+            De estas matrices, podemos notar ciertas propiedades:
+
+            \begin{enumerate}
+                \item Todos sus valores propios son reales.
+                \item Cuando los valores propios de $H$ son todos positivos o negativos, se dice que $H$ es definida positiva o negativa, y se escribe $H > 0$ o $H < 0$ respectivamente.
+                \item Cuando los valores propios de $H$ son todos no negativos o no positivos, se dice que $H$ es semidefinida positiva o semidefinida negativa y se escribe $H \ge 0$ o $H \le 0$ respectivamente.
+                \item Desigualdad de Raleigh
+
+                Dada $H$ Hermitiana:
+
+                \begin{equation*}
+                    \lambda_{min}(H) x^* x \le x^* H x \le \lambda_{max}(H) x^*x \quad \forall x \in \mathbbm{C}^n
+                \end{equation*}
+
+                Dada $H$ simétrica:
+
+                \begin{equation*}
+                    \lambda_{min}(H) x^T x \le x^T H x \le \lambda_{max}(H) x^T x \quad \forall x \in \mathbbm{C}^n
+                \end{equation*}
+                \item $H$ es semidefinida positiva, si y solo si, puede escribirse de la forma factorizada:
+
+                \begin{equation*}
+                    H = G^* G
+                \end{equation*}
+
+                para alguna matriz $G$, conocida como raiz cuadrada de $H$, tambien denotada por $H_{\sfrac{1}{2}}$, $\sqrt{H}$, $H^{\sfrac{1}{2}}$, por lo que la factorización queda como sigue:
+
+                \begin{equation*}
+                    H = H_{\sfrac{1}{2}}^* H_{\sfrac{1}{2}}
+                \end{equation*}
+
+                Cuando $H$ es definida positiva, $H_{\sfrac{1}{2}}$ es una matriz de rango pleno.
+            \end{enumerate}
+        \end{nota}
 
         \begin{proof}
             \tarea{Resumen de estabilidad de Lyapunov de Linear Systems - Thomas Kailath Cap. 2.6}
@@ -139,12 +139,9 @@
             \end{equation*}
 
             para lo cual necesitamos el lema de Bellman - Grönwall.\tarea{Feedback Systems - Input/Output Properties - Desoer, Vidyasagar Ap. E}
-
-            \begin{nota}
-                \begin{equation*}
-                    u(t) \le c + \int_0^t K(\tau) u(\tau) d\tau \implies u(t) \le c \exp{\left( \int_0^t K(\tau) d\tau \right)} \quad \forall t \ge 0
-                \end{equation*}
-            \end{nota}
+            \begin{equation*}
+                u(t) \le c + \int_0^t K(\tau) u(\tau) d\tau \implies u(t) \le c \exp{\left( \int_0^t K(\tau) d\tau \right)} \quad \forall t \ge 0
+            \end{equation*}
 
             por lo tanto, podemos ver que:
 
@@ -170,12 +167,6 @@
                 ||x(t)||^2 \le \frac{\lambda_{max}(P)}{\lambda_{min}(P)} ||x(0)||^2 \exp{\left( - \frac{\lambda_{min}(Q)}{\lambda_{max}(P)} t \right)}
             \end{equation*}
 
-            \begin{marginfigure}
-                \centering
-                \includegraphics[width=\textwidth]{./imagenes/trayectoria.pdf}
-                \caption{\label{fig:trayectoria}Solución exponencialmente estable.}
-            \end{marginfigure}
-
             Dado que $A$ es Hurwitz estable tenemos que $\Re{\lambda(A)} < 0$, sea la siguiente matriz definida positiva:
 
             \begin{equation*}
@@ -192,6 +183,12 @@
                 & = & 0 - Q = - Q
             \end{eqnarray*}
         \end{proof}
+
+        \begin{marginfigure}
+            \centering
+            \includegraphics[width=\textwidth]{./imagenes/trayectoria.pdf}
+            \caption{\label{fig:trayectoria}Solución exponencialmente estable.}
+        \end{marginfigure}
 
         \begin{lema}
             La ecuación matricial $A X = X B$, tiene unicamente la solución trivial, $X=0$, si y solo si, $A$ y $B$ no tienen valores propios en común, es decir:
@@ -398,15 +395,14 @@
             Deseamos resolver el siguiente problema:
 
             Minimizar la función
-            $f(v):\mathbbm{R}^n \to \mathbbm{R}$
-            sujeta a la restricción $\mathscr{G}(v) = 0$
+            $f(v):\mathbbm{R}^n \to \mathbbm{R}$ sujeta a la restricción $\mathscr{G}(v) = 0$
             , donde $\mathscr{G}(v)=\begin{pmatrix}\mathscr{G}_1(v) & \mathscr{G}_2(v) & \dots & \mathscr{G}_m(v) \end{pmatrix} \in \mathbbm{R}^m$
              y $\mathscr{G}_i(v): \mathbbm{R}^n \to \mathbbm{R}$
              con $i \in \left\{ 1, 2, \dots, m \right\}$.
 
             Para resolver este problema haremos uso de los multiplicadores de Lagrange, los cuales estan basados en el concepto de la derivada direccional\footnote{Esta derivada es formalmente conocida como la derivada de Fréchet, la cual se relaciona linealmente con la diferencial de Fréchet.}
 
-            \paragraph{Derivada direccional y vector gradiente}
+            \paragraph{Derivada direccional y vector gradiente}\mbox{}\\
 
                 \begin{definicion}
                     La derivada direccional de $f_1$ en $v_0 \in \mathbbm{R}^n$ en la dirección del vector unitario $\eta \in \mathbbm{R}^n$ es:
@@ -417,20 +413,14 @@
 
                     donde $\alpha$ es un escalar, es decir, $\alpha \in \mathbbm{R}$, en el caso de que este limite exista.
 
-                    \begin{marginfigure}
-                        \centering
-                        \includegraphics[width=\textwidth]{./imagenes/superficie3d.pdf}
-                        \caption{\label{fig:superficie3d}Superficie de funcional con puntos a acercar.}
-                    \end{marginfigure}
-
-                    \begin{marginfigure}
-                        \centering
-                        \includegraphics[width=\textwidth]{./imagenes/trayectoriaderivada.pdf}
-                        \caption{\label{fig:trayderivada}Vector direccional a la derivada del funcional.}
-                    \end{marginfigure}
-
                     Esta derivada nos da la razon de cambio de $f_1$ en el punto $v_0$ y en la dirección $\eta$, siempre y cuando $\alpha \to 0$.
                 \end{definicion}
+
+                \begin{marginfigure}
+                    \centering
+                    \includegraphics[width=\textwidth]{./imagenes/superficie3d.pdf}
+                    \caption{\label{fig:superficie3d}Superficie de funcional con puntos a acercar.}
+                \end{marginfigure}
 
                 \begin{teorema}
                     Si $f_1$ es una función diferenciable de $v \in \mathbbm{R}^n$, entonces $f_1$ tiene una derivada direccional en la dirección de cualquier vector unitario $\eta \in \mathbbm{R}^n$ y por lo tanto:
@@ -441,6 +431,12 @@
 
                     donde $v = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} \in \mathbbm{R}^n$, $\eta = \begin{pmatrix} \eta_1 \\ \eta_2 \\ \vdots \\ \eta_n \end{pmatrix} \in \mathbbm{R}^n$ con $|| \eta || = 1$.
                 \end{teorema}
+
+                \begin{marginfigure}
+                    \centering
+                    \includegraphics[width=\textwidth]{./imagenes/trayectoriaderivada.pdf}
+                    \caption{\label{fig:trayderivada}Vector direccional a la derivada del funcional.}
+                \end{marginfigure}
 
                 \begin{definicion}
                     Dada una base ortonormal de $\mathbbm{R}^n$, $\left\{ e_1, e_2, \dots, e_n \right\}$, entonces el gradiente de $t_1$ es la función vectorial, $\nabla f_1$, definida por:
@@ -508,13 +504,13 @@
                     \left( \nabla_v \mathscr{G}(v_0), \frac{dR(t_0)}{dt} \right) = 0
                 \end{equation*}
 
-                Esta ecuación indica que el vector gradiente en $v_0$, $\nabla_v \mathscr{G}(v_0)$,  es perpendicular al vector tangente $\frac{dR(t_0)}{dt}$ a cualquier $\mathscr{C} \subset \mathscr{S}$ que pase por $v_0$.
-
                 \begin{marginfigure}
                     \centering
                     \includegraphics[width=\textwidth]{./imagenes/superficie3dplano.pdf}
                     \caption{\label{fig:supplano}Plano tangente a superficie de funcional.}
                 \end{marginfigure}
+
+                Esta ecuación indica que el vector gradiente en $v_0$, $\nabla_v \mathscr{G}(v_0)$, es perpendicular al vector tangente $\frac{dR(t_0)}{dt}$ a cualquier $\mathscr{C} \subset \mathscr{S}$ que pase por $v_0$.
 
                 Si $\nabla_v \mathscr{G}(v_0) \ne 0$, entonces se define el plano tangente a la superficie de nivel $\mathscr{S}$, en el punto $\mathscr{G}(v_0)$ y tiene un vector normal $\nabla_v \mathscr{G}(v_0)$, esto es, el plano tangente $\tau$ que esta definido por:
 

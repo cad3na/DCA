@@ -21,6 +21,7 @@
 \fi
 % Paquetes a utilizar
 \usepackage[spanish, es-noquoting]{babel} % Español
+\usepackage[usenames,dvipsnames]{xcolor} % Nombres de colores
 \usepackage[utf8]{inputenc} % Texto de entrada en UTF-8
 \usepackage{amsmath}        % Paquete con definiciones matematicas
 \usepackage{amsthm}         % Paquete para definir ambientes de teoremas
@@ -33,6 +34,7 @@
 \usepackage{todonotes}      % Paquete para crear anotaciones
 \usepackage{mathrsfs}       % Paquete para mas simbolos de campos
 \usepackage{steinmetz}      % Paquete para escribir numeros complejos
+\usepackage{tcolorbox}
 % Subpaquete para diagramas de bloques
 \usetikzlibrary{shapes, arrows, decorations.markings}
 % Estilos comunes de bloques para diagramas
@@ -55,18 +57,60 @@
     {\left(\begin{array}{@{}*{#1}{c}|c@{}}}
     {\end{array}\right)}
 % Definiciones de teoremas
-\newtheorem{definicion}{Definición} % definicion de teorema: Definición
-\numberwithin{definicion}{chapter}  % numeracion de teorema por capitulo
-\newtheorem{lema}{Lema}
-\numberwithin{lema}{chapter}
-\newtheorem{teorema}{Teorema}
-\numberwithin{teorema}{chapter}
-\newtheorem{nota}{Nota}
-\numberwithin{nota}{chapter}
-\newtheorem{corolario}{Corolario}
-\numberwithin{corolario}{chapter}
-\newtheorem{problema}{Problema}
-\numberwithin{problema}{chapter}
+\theoremstyle{plain}
+\newtheorem{lema}{Lema}[chapter]
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{corolario}{Corolario}[chapter]
+\theoremstyle{remark}
+\newtheorem{nota}{Nota}[chapter]
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}[chapter]
+\newtheorem{problema}{Problema}[chapter]
+% % Opciones para colores en teoremas
+% \tcbuselibrary{skins}
+% % Ambiente con colores para teoremas de estilo plano
+% \tcolorboxenvironment{lema}
+%     {enhanced jigsaw,
+%     colframe=SkyBlue,
+%     interior hidden,
+%     before skip=10pt,
+%     after skip=10pt}
+% \tcolorboxenvironment{teorema}
+%     {enhanced jigsaw,
+%     colframe=SkyBlue,
+%     interior hidden,
+%     before skip=10pt,
+%     after skip=10pt}
+% \tcolorboxenvironment{corolario}
+%     {enhanced jigsaw,
+%     colframe=SkyBlue,
+%     interior hidden,
+%     before skip=10pt,
+%     after skip=10pt}
+% % Ambiente con colores para teoremas de estilo anotacion
+% \tcolorboxenvironment{nota}
+%     {blanker,
+%     left=5mm,
+%     before skip=10pt,
+%     after skip=10pt,
+%     borderline west={1mm}{0pt}{Orchid}}
+% % Ambiente con colores para teoremas de estilo definicion
+% \tcolorboxenvironment{definicion}
+%     {frame empty,
+%     colback=OliveGreen!10!White,
+%     grow to left by=6pt,
+%     grow to right by=6pt,
+%     left=1.6pt,
+%     right=1.6pt,
+%     arc=5pt}
+% \tcolorboxenvironment{problema}
+%     {frame empty,
+%     colback=OliveGreen!10!White,
+%     grow to left by=6pt,
+%     grow to right by=6pt,
+%     left=1.6pt,
+%     right=1.6pt,
+%     arc=5pt}
 % Definiciones de operadores
 \DeclareMathOperator{\rango}{rango}
 \DeclareMathOperator{\imagen}{Im}
