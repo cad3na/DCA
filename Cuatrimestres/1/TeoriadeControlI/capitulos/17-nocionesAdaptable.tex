@@ -321,10 +321,104 @@
                 se obtiene que:
 
                 \begin{equation*}
-                    \tilde{\theta}^T(t) \tilde{\theta}(t) \le \tilde{\theta}^T(0) \tilde{\theta}(0) \quad \text{ para casi todo } t \ge 0
+                    \tilde{\theta}^T(t) \tilde{\theta}(t) \le \tilde{\theta}^T(0) \tilde{\theta}(0) \text{ para casi todo } t \ge 0
                 \end{equation*}
             \end{proof}
 
 %-------------------------------------------------------------------------------
 
         \subsection{Algoritmo de mínimos cuadrados}
+
+            \begin{problema}
+                Se quiere encontrar el vector de parametros que minimice el criterio de la ecuación~\ref{eq:adap8}:
+
+                \begin{equation} \label{eq:adap8}
+                    J \left( \theta(t) \right) = \int_0^t \lambda(\tau) e^2 (t, \tau) d\tau
+                \end{equation}
+
+                en donde:
+
+                \begin{eqnarray}
+                    & 0 < \lambda(\tau) < 1 & \nonumber \\
+                    & e(t, \tau) = \theta^T(t) \phi(\tau) - y_f^{(n)}(\tau) & \tau \in [0, t]
+                \end{eqnarray}
+            \end{problema}
+
+            De nuevo comenzamos derivando el criterio a minimizar $J \left( \theta(t) \right)$ con respecto a $\theta(t)$ e igualamos a $0$ para obtener:
+
+            \begin{eqnarray*}
+                \frac{\partial J \left( \theta(t) \right)}{\partial \theta(t)} & = & \int_0^t \lambda(\tau) 2 e(t, \tau)\frac{\partial e(t, \tau)}{\partial \theta(t)} d\tau \\
+                & = & 2 \int_0^t \lambda(\tau) \left( \theta^T(t) \phi(\tau) - y_f^{(n)}(\tau) \right) \phi(\tau) d\tau = 0
+            \end{eqnarray*}
+
+            es decir:
+
+            \begin{equation} \label{eq:adap9}
+                \theta(t) = \left( \int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau \right)^{-1} \int_0^t \lambda(\tau) \phi(\tau) y_f^{(n)}(\tau) d\tau
+            \end{equation}
+
+            por lo que primero notamos que la inversa de la matriz $\int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau$ existe bajo la condición de excitación persistente:
+
+            \begin{equation}
+                \int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau \ge \delta I > 0 \quad \delta > 0
+            \end{equation}
+
+            es decir, para una $\delta I$ definida positivamente, tenemos que $\int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau - \delta I$ tiene que ser semidefinida positivamente para que la matriz tenga una inversa.
+
+            Por otro lado, podemos ver que el Hessiano del criterio de minimización $J \left( \theta(t) \right)$ es:
+
+            \begin{equation}
+                \frac{\partial^2 J \left( \theta(t) \right)}{\partial \theta(t) \partial \theta^T(t)} = 2 \int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau > 0
+            \end{equation}
+
+            Si ahora definimos las matriz $P(t)$:
+
+            \begin{equation}
+                P(t) = \left( \int_0^t \lambda(\tau) \phi(\tau) \phi^T(\tau) d\tau \right) ^{-1}
+            \end{equation}
+
+            se tiene que su derivada con respecto al tiempo de su inversa es:
+
+            \begin{equation} \label{eq:adap10}
+                \frac{d P^{-1}(t)}{dt} = \lambda(t) \phi(t) \phi^T(t)
+            \end{equation}
+
+            entonces la ecuación~\ref{eq:adap9} tiene la siguiente forma:
+
+            \begin{equation} \label{eq:adap11}
+                \theta(t) = P(t) \int_0^t \lambda(\tau) \phi(\tau) y_f^{(n)}(\tau) d\tau
+            \end{equation}
+
+            lo cual implica que su derivada será:
+
+            \begin{equation} \label{eq:adap12}
+                \frac{d \theta(t)}{dt} = \frac{d P(t)}{dt} \int_0^t \lambda(\tau) \phi(\tau) y_f^{(n)}(\tau) d\tau + \lambda(t) P(t) \phi(t) y_f^{(n)}(t)
+            \end{equation}
+
+            Si notamos que
+
+            \begin{equation*}
+                0 = \frac{dI}{dt} = \frac{dP(t) P^{-1}(t)}{dt} = \frac{dP(t)}{dt} P^{-1}(t) + P(t) \frac{dP^{-1}(t)}{dt}
+            \end{equation*}
+
+            podemos obtener de la ecuación~\ref{eq:adap10}:
+
+            \begin{equation} \label{eq:adap13}
+                \frac{d P(t)}{dt} = - \lambda(t) P(t) \phi(t) \phi^T(t) P(t)
+            \end{equation}
+
+            por lo que de las ecuaciones~\ref{eq:adap11},~\ref{eq:adap12} y~\ref{eq:adap13} tenemos:
+
+            \begin{eqnarray*}
+                \frac{d \theta(t)}{dt} & = & - \lambda(t) P(t) \phi(t) \phi^T(t) P(t) \int_0^t \lambda(\tau) \phi(\tau) y_f^{(n)}(\tau) d\tau + \lambda(t) P(t) \phi(t) y_f^{(n)}(t) \\
+                & = & - \lambda(t) P(t) \phi(t) \phi^T(t) \theta(t) + \lambda(t) P(t) \phi(t) y_f^{(n)}(t) \\
+                & = & - \lambda(t) P(t) \phi(t) \left( \phi^T(t) \theta(t) - y_f^{(n)}(t) \right)
+            \end{eqnarray*}
+
+            es decir:
+
+            \begin{eqnarray}
+                \frac{d \theta(t)}{dt} & = & - \lambda(t) P(t) \phi(t) e(t) \nonumber \\
+                e(t) & = & \theta^T(t) \phi(t) - y_f^{(n)}(t) \nonumber \\
+                \frac{d P(t)}{dt} & = & - \lambda(t) P(t) \phi(t) \phi^T(t) P(t)
+            \end{eqnarray}
