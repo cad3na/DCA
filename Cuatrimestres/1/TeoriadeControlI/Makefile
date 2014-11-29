@@ -20,7 +20,7 @@ ebook:
 	@${MAKE} clean
 	@echo "==============================================="
 	@echo "Compilando con pdflatex, el archivo:" $(TARGET)
-	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}"
+	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}" || cat $(TARGET).log | grep -A1 "!"
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}"
 	@pdflatex -interaction=batchmode "\newif\ifebook\ebooktrue\input{$(TARGET).tex}"
 
