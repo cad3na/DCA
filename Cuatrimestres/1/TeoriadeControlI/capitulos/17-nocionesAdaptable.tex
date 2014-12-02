@@ -422,3 +422,156 @@
                 e(t) & = & \theta^T(t) \phi(t) - y_f^{(n)}(t) \nonumber \\
                 \frac{d P(t)}{dt} & = & - \lambda(t) P(t) \phi(t) \phi^T(t) P(t)
             \end{eqnarray}
+
+            Dado este algoritmo de identificación tipo gradiente se sabe que tendrá las siguientes propiedades:
+
+            \begin{enumerate}
+                \item
+                    \begin{eqnarray*}
+                        0 < & P(t) & \le P(0) \\
+                        0 < & P^{-1}(0) & \le P(t) \quad \forall t \ge 0
+                    \end{eqnarray*}
+
+                \item
+                    \begin{equation*}
+                        \int_0^t || P(\tau) \phi(\tau) || d\tau \le \traza{P(0)}
+                    \end{equation*}
+
+                \item
+                    \begin{equation*}
+                        \lim_{t \to \infty} P(t) = P_{\infty}
+                    \end{equation*}
+
+                \item
+                    \begin{equation*}
+                        P^{-1}(t)\tilde{\theta}(t) = P^{-1}(0) \tilde{\theta}(0)
+                    \end{equation*}
+
+                \item
+                    \begin{eqnarray*}
+                        \int_0^tP^2(\tau) d\tau & \le & \tilde{\theta}^T(0)P^{-1}(0)\tilde{\theta}(0) \\
+                        \lambda_{min} \left\{ P^{-1}(0) \right\} || \hat{\theta}(t) ||_2^2 & \le & \tilde{\theta}^T(0)P^{-1}(0) \tilde{\theta}(0) \\
+                        \lim_{t \to \infty} \tilde{\theta}(t) & = & P_{\infty}P^{-1}(0)\tilde{\theta}(0)
+                    \end{eqnarray*}
+
+                \item
+                    \begin{equation*}
+                        \int_{nT}^{(n-1)T} \phi(\tau) \phi^T(\tau) d\tau \ge \delta I > 0 \implies \lim_{t \to \infty} \theta(t) = \theta
+                    \end{equation*}
+            \end{enumerate}
+
+    \newpage
+    \section{Ejemplo}
+
+        Sea el sistema representado por la ecuación diferencial ordinaria:
+
+        \begin{equation}
+            M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
+        \end{equation}
+
+        donde $M(s) = s + a_1$ y $N(s) = b_0 s + b_1$.
+        Se desea realizar un control adaptable tal que se asigne al polo en lazo cerrado en $s = -1$, sin modificar al cero\footnote{Al eliminar al cero del sistema corremos el riesgo de que el algoritmo de identificación tienda a hacer $0$ nuestra entrada al sistema, por lo que como regla general no se modifican los ceros.}, esto es, se desea la función de transferencia:
+
+        \begin{equation}
+            \frac{y(s)}{r(s)} = \frac{b_0 s + b_1}{s + 1}
+        \end{equation}
+
+        \subsection{Control lineal}
+
+            Resolvamos primero la ecuación Diofantina:
+
+            \begin{equation*}
+                \mathcal{S}(s) M(s) + \mathcal{R}(s) N(s) = Q_D(s)
+            \end{equation*}
+
+            en donde:
+
+            \begin{eqnarray}
+                M(s) & = & s + a_1 \quad \grado{M(s)} = n = 1 \\
+                N(s) & = & b_0 s + b_1 \quad \grado{N(s)} = m = 1 \le n = 1 \\
+                Q_D(s) & = & q_0 s + q_1 \quad \grado{Q_D(d)} = 1 \le 2n - 1 = 1 \\
+                \mathcal{R}(s) & = & r_0 \quad \grado{\mathcal{R}(s)} = 0 \le n - 1 = 0 \\
+                \mathcal{S}(s) & = & s_0 \quad \grado{\mathcal{S}(s)} = 0 \le n - 1 = 0
+            \end{eqnarray}
+
+            Note que en este caso no es necesario la observación de estado implicita, ya que solo se tiene un estado del sistema, la salida.
+            Así pues, la ecuación Diofantina queda:
+
+            \begin{equation*}
+                s_0 (s + a_1) + r_0 (b_0 s + b_1) = (s + 1)
+            \end{equation*}
+
+            lo cual implica:
+
+            \begin{eqnarray*}
+                s_0 + r_0 b_0 & = & 1 \\
+                s_0 a_1 + r_0 b_1 & = & 1
+            \end{eqnarray*}
+
+            es decir:
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & b_0 \\
+                    a_1 & b_1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    s_0 \\
+                    r_0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1 \\
+                    1
+                \end{pmatrix}
+            \end{equation*}
+
+            y como los polinomios son primos relativos, esta matriz $S(M, N)$ tiene inversa, es decir:
+
+            \begin{equation*}
+                \det{S(M, N)} = b_1 - a_1 b_0 = b_0 \left( \frac{b_1}{b_0} - a_1 \right)
+            \end{equation*}
+
+            por lo que procedemos a sacar la inversa:
+
+            \begin{equation*}
+                S^{-1}(M, N) = \frac{1}{b_1 - a_1 b_0}
+                \begin{pmatrix}
+                    b_1 & -b_0 \\
+                    -a_1 & 1
+                \end{pmatrix}
+            \end{equation*}
+
+            y por lo tanto:
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    s_0 \\
+                    r_0
+                \end{pmatrix} = \frac{1}{b_1 - a_1 b_0}
+                \begin{pmatrix}
+                    b_1 & -b_0 \\
+                    -a_1 & 1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 \\
+                    1
+                \end{pmatrix} = \frac{1}{b_1 - a_1 b_0}
+                \begin{pmatrix}
+                    b_1 - b_0 \\
+                    1 - a_1
+                \end{pmatrix}
+            \end{equation*}
+
+            por lo que la ley de control lineal es:
+
+            \begin{equation*}
+                u(s) = - \frac{\mathcal{R}(s)}{\mathcal{S}(s)} y(s) + \frac{1}{\mathcal{S}(s)} r(s)
+            \end{equation*}
+
+            es decir:
+
+            \begin{equation}
+                u(s) = - \frac{1 - a_1}{b_1 - b_0} y(s) + \frac{b_1 - a_1 b_0}{b_1 - b_0} r(s)
+            \end{equation}
+
+            \missingfigure{Diagrama de bloques de controlador lineal basado en la resolución de la ecuación Diofantina por medio de la matriz de Sylvester.}
