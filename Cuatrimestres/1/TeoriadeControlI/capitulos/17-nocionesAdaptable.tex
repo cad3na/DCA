@@ -174,7 +174,54 @@
 
         Note que las derivadas sucesivas de $y_f(t)$ y $u_f(t)$, se obtienen directamente de los filtros de las ecuaciones~\ref{eq:adap3}.
 
-        \missingfigure{Diagrama de bloques de un filtro para el regresor lineal}
+        \begin{figure}
+            \centering
+            \resizebox{\textwidth}{!}{
+            \tikzstyle{block} = [draw, rectangle, minimum height=2.25em, minimum width=2.25em]
+
+            \begin{tikzpicture}[auto, node distance=1.1cm, >=latex']
+                \node [input, name=entrada] {};
+                \node [block, right of=entrada] (uno) {$1$};
+                \node [sum, right of=uno] (s1) {$+$};
+                \node [block, right of=s1] (int1) {$\int$};
+                \node [inner sep=0,minimum size=0,right of=int1] (xn) {};
+                \node [block, right of=xn] (int2) {$\int$};
+                \node [inner sep=0,minimum size=0,right of=int2] (xn1) {};
+                \node [block, draw=none, right of=xn1] (vacio) {$\dots$};
+                \node [inner sep=0,minimum size=0,right of=vacio] (x3) {};
+                \node [block, right of=x3] (int3) {$\int$};
+                \node [inner sep=0,minimum size=0,right of=int3] (x2) {};
+                \node [block, right of=x2] (int4) {$\int$};
+                \node [inner sep=0,minimum size=0,right of=int4] (x1) {};
+                \node [output, right of=x1] (salida) {};
+
+                \node [block, below of=int1] (a1) {$-f_1$};
+                \node [block, below of=a1] (a2) {$-f_2$};
+                \node [block, draw=none, below of=a2] (avacio) {$\vdots$};
+                \node [block, below of=avacio] (an1) {$-f_{n-1}$};
+                \node [block, below of=an1] (an) {$-f_n$};
+
+                \draw [->] (entrada) -- node[name=u] {$x$} (uno);
+                \draw [->] (uno)     -- (s1);
+                \draw [->] (s1)      -- (int1);
+                \draw [->] (int1)    -- node[name=xn] {$x^{(n)}$} (int2);
+                \draw [->] (int2)    -- node[name=xn1] {$x^{(n-1)}$} (vacio);
+                \draw [->] (vacio)   -- node[name=x3] {$x^{(3)}$} (int3);
+                \draw [->] (int3)    -- node[name=x2] {$x^{(2)}$} (int4);
+                \draw [->] (int4)    -- node[name=x1] {$x'$} (salida);
+
+                \draw [->] (xn)  |- (a1);
+                \draw [->] (xn1) |- (a2);
+                \draw [->] (x2)  |- (an1);
+                \draw [->] (x1)  |- (an);
+
+                \draw [->] (a1)  -| (s1.324);
+                \draw [->] (a2)  -| (s1.288);
+                \draw [->] (an1) -| (s1.252);
+                \draw [->] (an)  -| (s1.216);
+            \end{tikzpicture}}
+            \caption{\label{dia:adap5}Diagrama de bloques de un filtro para el regresor lineal.}
+        \end{figure}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -602,31 +649,53 @@
                 y_f' = \theta^T \phi(t) + \xi(t)
             \end{equation*}
 
-            en donde $\theta = \begin{pmatrix} a_1 \\ b_0 \\ b_1 \end{pmatrix}$ y $\phi = \begin{pmatrix} -y_f \\ u_f' \\ u_f \end{pmatrix}$ y las derivadas de las señales, las podemos obtener de los filtros:
+            en donde $\theta = \begin{pmatrix} a_1 \\ b_0 \\ b_1 \end{pmatrix}$ y $\phi = \begin{pmatrix} -y_f \\ u_f' \\ u_f \end{pmatrix}$ y las derivadas de las señales las podemos obtener de los filtros.
 
-            \begin{figure}
+            \begin{marginfigure}
                 \centering
-                \resizebox{0.6\textwidth}{!}{
-                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+                \resizebox{\textwidth}{!}{
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=3em]
 
                 \begin{tikzpicture}[auto, node distance=2cm, >=latex']
                     \node [input, name=entrada] {};
                     \node [sum, right of=entrada] (suma) {$+$};
-                    \node [block, right of=suma] (planta) {$\int$};
-                    \node [output, right of=planta] (salida1) {};
+                    \node [block, right of=suma] (integral) {$\int$};
+                    \node [output, right of=integral] (salida1) {};
                     \node [output, above of=salida1] (salida2) {};
-                    \node [block, below of=planta] (retro) {$-\frac{1}{\epsilon}$};
+                    \node [block, below of=integral] (retro) {$-\frac{1}{\epsilon}$};
 
                     \draw [->] (entrada) -- node[name=u] {$u(s)$} (suma);
-                    \draw [->] (suma) -- (planta);
-                    \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida1);
+                    \draw [->] (suma) -- node[name=e]{} (integral);
+                    \draw [->] (integral) -- node[name=y] {$u_f(s)$} (salida1);
                     \draw [->] (y) |- (retro);
+                    \draw [->] (e) |- node[name=ufp, pos=0.9] {$u_f'(s)$} (salida2);
                     \draw [->] (retro) -| (suma);
                 \end{tikzpicture}}
-                \caption{\label{dia:caa4}Diagrama de bloques de filtro de señal de entrada.}
-            \end{figure}
+                \caption{\label{dia:adap6}Diagrama de bloques de filtro de señal de entrada.}
+            \end{marginfigure}
 
-            \missingfigure{Diagrama de bloques de filtro de señal de salida}
+            \begin{marginfigure}
+                \centering
+                \resizebox{\textwidth}{!}{
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=3em]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma) {$+$};
+                    \node [block, right of=suma] (integral) {$\int$};
+                    \node [output, right of=integral] (salida1) {};
+                    \node [output, above of=salida1] (salida2) {};
+                    \node [block, below of=integral] (retro) {$-\frac{1}{\epsilon}$};
+
+                    \draw [->] (entrada) -- node[name=u] {$y(s)$} (suma);
+                    \draw [->] (suma) -- node[name=e]{} (integral);
+                    \draw [->] (integral) -- node[name=y] {$y_f(s)$} (salida1);
+                    \draw [->] (y) |- (retro);
+                    \draw [->] (e) |- node[name=ufp, pos=0.9] {$y_f'(s)$} (salida2);
+                    \draw [->] (retro) -| (suma);
+                \end{tikzpicture}}
+                \caption{\label{dia:adap7}Diagrama de bloques de filtro de señal de salida.}
+            \end{marginfigure}
 
         \subsection{Algoritmo de identificación}
 
