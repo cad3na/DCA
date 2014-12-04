@@ -735,10 +735,10 @@
                 \begin{eqnarray}
                     \hat{\theta}'(t) & = & - P(t) \phi(t) e(t) \\
                     e(t) & = & \hat{\theta}^T(t) \phi(t) - y_f'(t) \\
-                    P'(t) & = & - P(t) \phi(t) \phi^T(t) P(t)
+                    P'(t) & = & - P(t) \phi(t) \phi^T(t) P(t) = - \left( P(t) \phi(t) \right) \left( P(t) \phi(t) \right)^T
                 \end{eqnarray}
 
-                por lo que para empezar, tenemos que encontrar el valor de $P(t)$ de la siguiente ecuación:
+                Por lo que para empezar, tenemos que encontrar el valor de $P(t)$ de la siguiente ecuación:
 
                 \begin{equation*}
                     \frac{d}{dt}
@@ -758,3 +758,53 @@
                         p_3 & p_5 & p_6
                     \end{pmatrix}
                 \end{equation*}
+
+                Para desarrollar el lado derecho podemos escribir la matriz $P$ en función de sus filas:
+
+                \begin{equation*}
+                    \frac{d}{dt}
+                    \begin{pmatrix}
+                        P_1 \\
+                        P_2 \\
+                        P_3
+                    \end{pmatrix} = - \left(
+                    \begin{pmatrix}
+                        P_1 \\
+                        P_2 \\
+                        P_3
+                    \end{pmatrix} \phi(t) \right) \left(
+                    \begin{pmatrix}
+                        P_1 \\
+                        P_2 \\
+                        P_3
+                        \end{pmatrix} \phi(t) \right)^T
+                \end{equation*}
+
+                y al multiplicar al vector $\phi(t)$ con cada fila tendremos:
+
+                \begin{equation*}
+                    \frac{d}{dt}
+                    \begin{pmatrix}
+                        P_1 \\
+                        P_2 \\
+                        P_3
+                    \end{pmatrix} = -
+                    \begin{pmatrix}
+                        P_1 \phi \\
+                        P_2 \phi \\
+                        P_3 \phi
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        P_1 \phi \\
+                        P_2 \phi \\
+                        P_3 \phi
+                    \end{pmatrix}^T = -
+                    \begin{pmatrix}
+                        (P_1 \phi)^2 \\
+                        (P_2 \phi)^2 \\
+                        (P_3 \phi)^2
+                    \end{pmatrix}
+                \end{equation*}
+
+                Este ultimo termino es un abuso de notación, ayuda a visualizar el hecho de que el algoritmo se llama de mínimos cuadrados.
+                Por otro lado, sabemos que vamos a necesitar $P(t) \phi(t)$ en la ecuación para la estima de parametros de $\hat{\theta}$, por lo que podemos tomar simplemente estos terminos.
