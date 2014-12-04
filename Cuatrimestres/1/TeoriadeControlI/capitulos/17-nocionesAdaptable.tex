@@ -143,13 +143,17 @@
             M \left( \frac{d}{dt} \right) y_f(t) = N \left( \frac{d}{dt} \right) u_f(t) + \xi(t)
         \end{equation}
 
+        \begin{marginfigure}
+            \centering
+            \includegraphics[width=\textwidth]{./imagenes/trayectoriafiltrada.pdf}
+            \caption{\label{fig:trayectoriafiltrada}Comportamiento general de la señal filtrada acotado por exponencial.}
+        \end{marginfigure}
+
         Puesto que $F(s)$ es un polinomio Hurwitz estable, entonces existe $k, \alpha \in \mathbbm{R}^+$, con $k > 0$ y $\alpha > 0$, tal que:
 
         \begin{equation*}
             |\xi(t)| \le k e^{- \alpha t} \quad \forall t \ge 0
         \end{equation*}
-
-        \missingfigure{Comportamiento general acotado por exponencial}
 
         por lo que para un $\alpha$ suficientemente grande, los comportamientos de las ecuaciones~\ref{eq:adap4} y~\ref{eq:adap1} será aproximadamente iguales.
 
@@ -575,3 +579,113 @@
             \end{equation}
 
             \missingfigure{Diagrama de bloques de controlador lineal basado en la resolución de la ecuación Diofantina por medio de la matriz de Sylvester.}
+
+        \subsection{Regresor lineal}
+
+            Si escribimos la ecuación diferencial ordinaria con los polinomios $M \left( \frac{d}{dt} \right)$ y $N \left( \frac{d}{dt} \right)$, tendremos:
+
+            \begin{equation*}
+                \left( \frac{d}{dt} + a_1 \right) y(t) = \left( b_0 \frac{d}{dt} + b_1 \right) u(t)
+            \end{equation*}
+
+            Asi pues, sean las señales filtradas:
+
+            \begin{eqnarray*}
+                F \left( \frac{d}{dt} \right) u_f & = & u \\
+                F \left( \frac{d}{dt} \right) y_f & = & y
+            \end{eqnarray*}
+
+            en donde $F(s) = s + \frac{1}{\epsilon}$ con $\epsilon > 0$.
+            Entonces tenemos:
+
+            \begin{equation*}
+                y_f' = \theta^T \phi(t) + \xi(t)
+            \end{equation*}
+
+            en donde $\theta = \begin{pmatrix} a_1 \\ b_0 \\ b_1 \end{pmatrix}$ y $\phi = \begin{pmatrix} -y_f \\ u_f' \\ u_f \end{pmatrix}$ y las derivadas de las señales, las podemos obtener de los filtros:
+
+            \begin{figure}
+                \centering
+                \resizebox{0.6\textwidth}{!}{
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+
+                \begin{tikzpicture}[auto, node distance=2cm, >=latex']
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma) {$+$};
+                    \node [block, right of=suma] (planta) {$\int$};
+                    \node [output, right of=planta] (salida1) {};
+                    \node [output, above of=salida1] (salida2) {};
+                    \node [block, below of=planta] (retro) {$-\frac{1}{\epsilon}$};
+
+                    \draw [->] (entrada) -- node[name=u] {$u(s)$} (suma);
+                    \draw [->] (suma) -- (planta);
+                    \draw [->] (planta) -- node[name=y] {$u_f(s)$} (salida1);
+                    \draw [->] (y) |- (retro);
+                    \draw [->] (retro) -| (suma);
+                \end{tikzpicture}}
+                \caption{\label{dia:caa4}Diagrama de bloques de filtro de señal de entrada.}
+            \end{figure}
+
+            \missingfigure{Diagrama de bloques de filtro de señal de salida}
+
+        \subsection{Algoritmo de identificación}
+
+            \paragraph{Algoritmo tipo gradiente}\mbox{}\\
+
+                Para implementar el algoritmo de identificación de tipo gradiente tenemos que usar las ecuaciones encontradas:
+
+                \begin{eqnarray*}
+                    \hat{\theta}'(t) & = & -k \phi(t) e(t) \\
+                    \begin{pmatrix}
+                        \hat{a}_1(t) \\
+                        \hat{b}_0(t) \\
+                        \hat{b}_1(t)
+                    \end{pmatrix}' & = & -k
+                    \begin{pmatrix}
+                        -y_f(t) \\
+                        u_f'(t) \\
+                        u_f(t)
+                    \end{pmatrix} e(t)
+                \end{eqnarray*}
+
+                en donde:
+
+                \begin{eqnarray}
+                    e(t) & = & \hat{\theta}^T(t) \phi(t) - y_f'(t) \\
+                    & = & \left( -\hat{a}_1(t) y_f(t) + \hat{b}_0 u_f'(t) + \hat{b}_1(t) u_f(t) \right)
+                \end{eqnarray}
+
+                asi pues, el diagrama de bloques de este algoritmo de identificación queda:
+
+                \missingfigure{Diagrama de bloques de alogritmo de identificacion de tipo gradiente}
+
+            \paragraph{Algoritmo de mínimos cuadrados}\mbox{}\\
+
+                Para el algoritmo de mínimos cuadrados tenemos las siguientes ecuaciones:
+
+                \begin{eqnarray}
+                    \hat{\theta}'(t) & = & - P(t) \phi(t) e(t) \\
+                    e(t) & = & \hat{\theta}^T(t) \phi(t) - y_f'(t) \\
+                    P'(t) & = & - P(t) \phi(t) \phi^T(t) P(t)
+                \end{eqnarray}
+
+                por lo que para empezar, tenemos que encontrar el valor de $P(t)$ de la siguiente ecuación:
+
+                \begin{equation*}
+                    \frac{d}{dt}
+                    \begin{pmatrix}
+                        p_1 & p_2 & p_3 \\
+                        p_2 & p_4 & p_5 \\
+                        p_3 & p_5 & p_6
+                    \end{pmatrix} = -
+                    \begin{pmatrix}
+                        p_1 & p_2 & p_3 \\
+                        p_2 & p_4 & p_5 \\
+                        p_3 & p_5 & p_6
+                    \end{pmatrix} \phi(t) \phi^T(t)
+                    \begin{pmatrix}
+                        p_1 & p_2 & p_3 \\
+                        p_2 & p_4 & p_5 \\
+                        p_3 & p_5 & p_6
+                    \end{pmatrix}
+                \end{equation*}
