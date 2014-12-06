@@ -203,12 +203,12 @@
 
                 \draw [->] (entrada) -- node[name=u] {$x$} (uno);
                 \draw [->] (uno)     -- (s1);
-                \draw [->] (s1)      -- (int1);
-                \draw [->] (int1)    -- node[name=xn] {$x^{(n)}$} (int2);
-                \draw [->] (int2)    -- node[name=xn1] {$x^{(n-1)}$} (vacio);
-                \draw [->] (vacio)   -- node[name=x3] {$x^{(3)}$} (int3);
-                \draw [->] (int3)    -- node[name=x2] {$x^{(2)}$} (int4);
-                \draw [->] (int4)    -- node[name=x1] {$x'$} (salida);
+                \draw [->] (s1)      -- node[name=xn] {$x_f^{(n)}$} (int1);
+                \draw [->] (int1)    -- node[name=xn] {$x_f^{(n-1)}$} (int2);
+                \draw [->] (int2)    -- node[name=xn1] {$x_f^{(n-2)}$} (vacio);
+                \draw [->] (vacio)   -- node[name=x3] {$x_f^{(2)}$} (int3);
+                \draw [->] (int3)    -- node[name=x2] {$x_f'$} (int4);
+                \draw [->] (int4)    -- node[name=x1] {$x_f$} (salida);
 
                 \draw [->] (xn)  |- (a1);
                 \draw [->] (xn1) |- (a2);
