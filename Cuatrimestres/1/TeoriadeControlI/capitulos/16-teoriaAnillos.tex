@@ -10,53 +10,55 @@
 
     \section{Anillos conmutativos euclidianos}
 
-        Un anillo es una estructura algebraica de un conjunto $\mathcal{A}$, provisto de dos operaciones a las que les llamamos suma $(+)$ y producto $(\cdot)$, con las siguientes propiedades:
-
-        \begin{enumerate}
-            \item $(\mathcal{A}, +)$ es un grupo abeliano
+        \begin{definicion}
+            Un anillo es una estructura algebraica de un conjunto $\mathcal{A}$, provisto de dos operaciones a las que les llamamos suma $(+)$ y producto $(\cdot)$, con las siguientes propiedades:
 
             \begin{enumerate}
-                \item $a, b, \in \mathcal{A} \implies a + b \in \mathcal{A}$
-                \item $a, b, c \in \mathcal{A} \implies a + (b + c) = (a + b) + c$
-                \item $\exists ! 0 \in \mathcal{A} \text{ tal que } 0 + a = a + 0 = a \quad \forall a \in \mathcal{A}$
-                \item $\forall a \in \mathcal{A} \exists \bar{a} \in \mathcal{A} \text{ tal que } a + \bar{a} = 0 \quad \bar{a} = -a \quad b + \bar{a} = b - a$
-                \item $a, b \in \mathcal{A} \implies a + b = b + a$
+                \item $(\mathcal{A}, +)$ es un grupo abeliano
+
+                \begin{enumerate}
+                    \item $a, b, \in \mathcal{A} \implies a + b \in \mathcal{A}$
+                    \item $a, b, c \in \mathcal{A} \implies a + (b + c) = (a + b) + c$
+                    \item $\exists ! 0 \in \mathcal{A} \text{ tal que } 0 + a = a + 0 = a \quad \forall a \in \mathcal{A}$
+                    \item $\forall a \in \mathcal{A} \exists \bar{a} \in \mathcal{A} \text{ tal que } a + \bar{a} = 0 \quad \bar{a} = -a \quad b + \bar{a} = b - a$
+                    \item $a, b \in \mathcal{A} \implies a + b = b + a$
+                \end{enumerate}
+
+                \item $(\mathcal{A}, \cdot)$ es un semigrupo con unidad
+
+                \begin{enumerate}
+                    \item $a, b \in \mathcal{A} \implies a \cdot b \in \mathcal{A}$
+                    \item $a, b, c \in \mathcal{A} \implies a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+                    \item $\exists ! 1 \in \mathcal{A} \text{ tal que } 1 \cdot a  = a \cdot 1 = a \quad \forall a \in \mathcal{A}$
+                \end{enumerate}
+
+                \item Distributividad de $(+)$ y $(\cdot)$
+
+                \begin{enumerate}
+                    \item $a \cdot (b + c) = a \cdot b + a \cdot c$
+                    \item $(a + b) \cdot c = a \cdot c + b \cdot c$
+                \end{enumerate}
+
+                \item Propiedad Euclidiana
+
+                Existe una función euclidiana llamada grado, $\grado : \mathcal{A} \to \mathbbm{Z}^+$, tal que para todo par de elementos $a, b \in \mathcal{A}$, existen $c, r \in \mathcal{A}$ tales que:
+
+                \begin{equation*}
+                    a = b \cdot c + r
+                \end{equation*}
+
+                con $\grado{r} < \grado{b}$ o $\grado{r} = 0$.
+
+                A esto se le conoce como el algoritmo de la división de Euclides.
+                \item Conmutatividad de $(\cdot)$
+
+                Si $a \cdot b = b \cdot a \quad \forall a, b \in \mathcal{A}$ se dice que el anillo $\mathcal{A}$ es conmutativo.
             \end{enumerate}
 
-            \item $(\mathcal{A}, \cdot)$ es un semigrupo con unidad
+            De aquí en adelante a los anillos euclidianos conmutativos les llamaremos simplemente anillos.
 
-            \begin{enumerate}
-                \item $a, b \in \mathcal{A} \implies a \cdot b \in \mathcal{A}$
-                \item $a, b, c \in \mathcal{A} \implies a \cdot (b \cdot c) = (a \cdot b) \cdot c$
-                \item $\exists ! 1 \in \mathcal{A} \text{ tal que } 1 \cdot a  = a \cdot 1 = a \quad \forall a \in \mathcal{A}$
-            \end{enumerate}
-
-            \item Distributividad de $(+)$ y $(\cdot)$
-
-            \begin{enumerate}
-                \item $a \cdot (b + c) = a \cdot b + a \cdot c$
-                \item $(a + b) \cdot c = a \cdot c + b \cdot c$
-            \end{enumerate}
-
-            \item Propiedad Euclidiana
-
-            Existe una función euclidiana llamada grado, $\grado : \mathcal{A} \to \mathbbm{Z}^+$, tal que para todo par de elementos $a, b \in \mathcal{A}$, existen $c, r \in \mathcal{A}$ tales que:
-
-            \begin{equation*}
-                a = b \cdot c + r
-            \end{equation*}
-
-            con $\grado{r} < \grado{b}$ o $\grado{r} = 0$.
-
-            A esto se le conoce como el algoritmo de la división de Euclides.
-            \item Conmutatividad de $(\cdot)$
-
-            Si $a \cdot b = b \cdot a \quad \forall a, b \in \mathcal{A}$ se dice que el anillo $\mathcal{A}$ es conmutativo.
-        \end{enumerate}
-
-        De aquí en adelante a los anillos euclidianos conmutativos les llamaremos simplemente anillos.
-
-        Esta estructura es la generalización de los numeros enteros. La función grado del anillo de los numeros enteros corresponde al valor absoluto y en el anillo de los polinomios corresponde al grado de los polinomios.
+            Esta estructura es la generalización de los numeros enteros. La función grado del anillo de los numeros enteros corresponde al valor absoluto y en el anillo de los polinomios corresponde al grado de los polinomios.
+        \end{definicion}
 
         Dos nociones importantes de la teoría de anillos es el máximo común divisor y primos relativos.
 
@@ -147,13 +149,15 @@
 
         \subsection{Asignación de polos con cancelación de ceros}
 
-            Se desea encontrar una ley de control lineal tal que el sistema en lazo cerrado este representado por la siguiente ecuación diferencial ordinaria siguiente:
+            \begin{problema}
+                Se desea encontrar una ley de control lineal tal que el sistema en lazo cerrado este representado por la siguiente ecuación diferencial ordinaria siguiente:
 
-            \begin{equation}
-                Q \left( \frac{d}{dt} \right) y(t) = r(t)
-            \end{equation}
+                \begin{equation}
+                    Q_E \left( \frac{d}{dt} \right) y(t) = r(t)
+                \end{equation}
 
-            donde $Q(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz y $r(t)$ es la señal de referencia.
+                donde $Q_E(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz y $r(t)$ es la señal de referencia.
+            \end{problema}
 
             Este problema se resuelve utilizando el algoritmo de la división de Euclides. Para esto se propone la siguiente ley de control lineal:
 
@@ -164,7 +168,7 @@
             donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbbm{R}[s]$, son solución del algoritmo de la división de Euclides, es decir:
 
             \begin{equation} \label{eq:anillos3}
-                Q(s) = \mathcal{S}(s) M(s) + \mathcal{R}(s)
+                Q_E(s) = \mathcal{S}(s) M(s) + \mathcal{R}(s)
             \end{equation}
 
             donde $\grado{\mathcal{R}(s)} < \grado{M(s)}$ o $\grado{\mathcal{R}(s)} = 0$.
@@ -185,7 +189,7 @@
             por lo que la ecuación~\ref{eq:anillos3} implica:
 
             \begin{equation*}
-                Q \left( \frac{d}{dt} \right) y(t) = r(t)
+                Q_E \left( \frac{d}{dt} \right) y(t) = r(t)
             \end{equation*}
 
             Con respecto a la dinámica de la entrada, podemos aplicar el operador $\mathcal{R} \left( \frac{d}{dt} \right)$ a la ecuación~\ref{eq:anillos1} y obtener:
@@ -201,7 +205,7 @@
             por lo que la ecuación~\ref{eq:anillos3} implica:
 
             \begin{equation}
-                Q \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) = M \left( \frac{d}{dt} \right) r(t)
+                Q_E \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) = M \left( \frac{d}{dt} \right) r(t)
             \end{equation}
 
             por lo que los ceros del sistema, raices de $N(s)$, pasan a formar parte de los polos de la dimensión del controlador.
@@ -210,15 +214,17 @@
 
 %-------------------------------------------------------------------------------
 
-            \subsection{Asignación de polos sin cancelación de ceros}
+        \subsection{Asignación de polos sin cancelación de ceros}
 
-            Se desea encontrar una ley de control, tal que el sistema en lazo cerrado este representado por la ecuación diferencial ordinaria:
+            \begin{problema}
+                Se desea encontrar una ley de control, tal que el sistema en lazo cerrado este representado por la ecuación diferencial ordinaria:
 
-            \begin{equation}
-                Q_D \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) r(t)
-            \end{equation}
+                \begin{equation}
+                    Q_D \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) r(t)
+                \end{equation}
 
-            donde $Q_D(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz dado y $r(t)$ es la señal de referencia.
+                donde $Q_D(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz dado y $r(t)$ es la señal de referencia.
+            \end{problema}
 
             Para obtener la ley de control, se tiene que resolver la ecuación Diofantina (~\ref{eq:anillos0}), se asume que los polinomios de $M(s)$ y $N(s)$ son primos relativos, es decir $(M, N) = 1$.
 
@@ -346,13 +352,80 @@
                 \end{pmatrix}
             \end{equation*}
 
-            \begin{equation*}
+            \begin{equation} \label{eq:anillos7}
                 S(M, N)
                 \begin{pmatrix}
                     \mathcal{S} \\
                     \mathcal{R}
                 \end{pmatrix} =
                 Q_D
-            \end{equation*}
+            \end{equation}
 
             MacDuffee demostró que la matriz de Sylvester, $S(M, N)$, es invertible si y solo si los polinomios son primos relativos, o equivalentemente, si y solo si el sistema es controlable.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \newpage
+    \section{Ejemplo}
+
+        Consideremos nuevamente el sistema representado por la ecuación~\ref{eq:anillos1}, en donde:
+
+        \begin{equation*}
+            M(s) = (s+1)(s^2 + s + 1) = s^3 + 2 s^2 + 2 s +1
+        \end{equation*}
+
+        \begin{equation*}
+            N(s) = 2(s+a) = 2s  + 2a
+        \end{equation*}
+
+        Por lo que la matriz de Silvester tiene la siguiente forma:
+
+        \begin{equation*}
+            S(M,N) =
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 & 0 & 0 \\
+                2 & 1 & 0 & 0 & 0 & 0 \\
+                2 & 2 & 1 & 2 & 0 & 0 \\
+                1 & 2 & 2 & 2a & 2 & 0 \\
+                0 & 1 & 2 & 0 & 2a & 2 \\
+                0 & 0 & 1 & 0 & 0 & 2a
+            \end{pmatrix}
+        \end{equation*}
+
+        Note que:
+
+        \begin{equation*}
+            \det{S(M, N)} = -8 (-a + 1) (a^2 -a +1)
+        \end{equation*}
+
+        por lo que $S(M, N)$ será singular cuando la raiz de $N(s) = 2 (s + a)$, es también la raiz de $M(s) = (s + 1)(s^2 + s + 1)$, es decir, tendrá una única solución cuando $M(s)$ y $N(s)$ son primos relativos.
+
+        Note que la matriz inversa de $S(M, N)$ toma la siguiente forma:
+
+        \begin{equation*}
+            S^{-1}(M, N) =
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 & 0 & 0 \\
+                -2 & 1 & 0 & 0 & 0 & 0 \\
+                * & * & * & * & * & * \\
+                * & * & * & * & * & * \\
+                * & * & * & * & * & * \\
+                * & * & * & * & * & *
+            \end{pmatrix}
+        \end{equation*}
+
+        donde $*$ son elementos no cero, por lo que de la ecuación~\ref{eq:anillos7} se observa, que para que el controlador:
+
+        \begin{equation*}
+            \hat{u}(s) = - \frac{\mathcal{R}(s)}{\mathcal{S}(s)} \hat{y}(s) + \frac{1}{\mathcal{S}(s)} \hat{r}(s)
+        \end{equation*}
+
+        sea propio, $\grado{\mathcal{S}}(s) \ge \grado{\mathcal{R}}(s)$, el coeficiente $q_0$ no debe ser $0$, esto es:
+
+        \begin{equation*}
+            \grado{Q_D(s)} = 2 \grado{M(s)} - 1
+        \end{equation*}
+
+        es decir, el exceso de grado, $\grado{M(s)} - 1$, corresponde al observador de estado, que está implicitamente considerado en la descripción polinomial $N(s) M(S)$, con $(M(s), N(s)) = 1$, es decir en la realización controlable y observable.
