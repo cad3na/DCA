@@ -10,7 +10,7 @@
 
     \section{Anillo de las fracciones propias Hurwitz estable $RH_{\infty}$}
 
-        Consideremos el siguiente conjunto:
+        Consideremos el siguiente conjunto
 
         \begin{equation}
             \left\{ F(s) \in \mathbbm{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbbm{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbbm{C} - \mathbbm{C}_+ \right\}
@@ -25,7 +25,7 @@
         \end{definicion}
 
         \begin{definicion}
-            Existe una función grado $\delta: RH_{\infty} \to \mathbbm{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces:
+            Existe una función grado $\delta: RH_{\infty} \to \mathbbm{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces
 
             \begin{equation}
                 \delta(F) = \cardinalidad{\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
@@ -34,7 +34,7 @@
             En donde a $\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbbm{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
         \end{definicion}
 
-        Dado que $RH_{\infty}$ es un anillo conmutativo euclidiano podemos aplicar:
+        Dado que $RH_{\infty}$ es un anillo conmutativo euclidiano podemos aplicar
 
         \begin{enumerate}
             \item Algoritmo de la división de Euclides
@@ -45,7 +45,7 @@
         Note que, las unidades en este anillo son las fracciones propias de grado relativo cero, Hurwitz estebles, y de fase mínima.
 
         \begin{definicion}
-            La norma de $RH_{\infty}$ esta definida de la siguiente manera:
+            La norma de $RH_{\infty}$ esta definida de la siguiente manera
 
             \begin{equation}
                 ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbbm{R}, F \in RH_{\infty}
@@ -64,20 +64,20 @@
 
     \section{Factorización coprima}
 
-        Sea $F(s)$ una función de transferencia propia, es decir:
+        Sea $F(s)$ una función de transferencia propia, es decir
 
         \begin{equation*}
             F(s) \in \mathbbm{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
         \end{equation*}
 
-        Una factorización coprima de $F$ en $RH_{\infty}$, es la descomposición de $F$ en fracciones coprimas en $RH_{\infty}$, es decir:
+        Una factorización coprima de $F$ en $RH_{\infty}$, es la descomposición de $F$ en fracciones coprimas en $RH_{\infty}$, es decir
 
         \begin{equation*}
             F(s) = \frac{N(s)}{M(s)}
         \end{equation*}
 
         donde $M, N \in RH_{\infty}$, $M \ne 0$.
-        Por lo tanto existirán $X, Y \in RH_{\infty}$ tal que:
+        Por lo tanto existirán $X, Y \in RH_{\infty}$ tal que
 
         \begin{equation}
             X(s) M(s) + Y(s) N(s) = 1
@@ -95,16 +95,208 @@
 
     \section{Estabilidad interna}
 
-        Sea el diagrama de bloques de la figura, la representación de un sistema con función de transferencia estrictamente propia, es decir:
+        Sea el diagrama de bloques de la figura, la representación de un sistema con función de transferencia estrictamente propia, es decir
 
         \begin{equation*}
             G(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} G(s) = 0
         \end{equation*}
 
-        y controlado por un controlador representado por una función de transferencia propia, es decir:
+        y controlado por un controlador representado por una función de transferencia propia, es decir
 
         \begin{equation*}
             K(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
         \end{equation*}
 
-        \missingfigure{Diagrama de bloques }
+        \missingfigure{Diagrama de bloques en donde $u$ es la señal de control, $y$ es la salida y $v_1$ y $v_2$ con señales exógenas (consignas, perturbaciones, ruidos, etc.).}
+
+        Este sistema puede ser representado matricialmente de la siguiente manera
+
+        \begin{equation}
+            \begin{pmatrix}
+                1 & -K(s) \\
+                -G(s) & 1
+            \end{pmatrix}
+            \begin{pmatrix}
+                u \\
+                y
+            \end{pmatrix} =
+            \begin{pmatrix}
+                v_1 \\
+                v_2
+            \end{pmatrix}
+        \end{equation}
+
+        es decir
+
+        \begin{equation*}
+            m(s)
+            \begin{pmatrix}
+                u \\
+                y
+            \end{pmatrix} =
+            \begin{pmatrix}
+                v_1 \\
+                v_2
+            \end{pmatrix}
+        \end{equation*}
+
+        de donde podemos ver que
+
+        \begin{equation*}
+            \det{m(s)} = 1 - G(s) K(s)
+        \end{equation*}
+
+        por lo que dadas las condiciones asumidas para $K(s)$ y $G(s)$, tenemos que
+
+        \begin{equation*}
+            \lim_{s \to \infty} \det{m(s)} = 1 - 0 \lim_{s \to \infty} K(s) = 1
+        \end{equation*}
+
+        por lo que nuestro sistema es invertible, es decir tiene solución dependiente de
+
+        \begin{equation*}
+            m^{-1}(s) = \frac{1}{\det{m(s)}}
+            \begin{pmatrix}
+                1 & K(s) \\
+                G(s) & 1
+            \end{pmatrix}
+        \end{equation*}
+
+        y esta solución es propia para todo $K(s) \in \mathbbm{R}(s)$ con $\lim_{s \to \infty} K(s) < \infty$.
+        Por lo que las cuatro funciones de transferencia del sistema en lazo cerrado del sistema son propias.
+
+        Diremos que $K(s)$ estabiliza a $G(s)$ si sus cuatro funciones de transferencia son estables, esto es, si
+
+        \begin{equation*}
+            m^{-1}(s) \in RH_{\infty}
+        \end{equation*}
+
+        A esto le llamamos estabilidad interna.
+
+        Sean $M, N$ y $V, U$ factorizaciones coprimas de $RH_\infty$ de $G(s)$ y $K(s)$ respectivamente, es decir
+
+        \begin{eqnarray}
+            G(s) & = & \frac{N(s)}{M(s)} \quad N, M \in RH_{\infty} \quad (M, N) = 1 \\
+            K(s) & = & \frac{U(s)}{V(s)} \quad U, V \in RH_{\infty} \quad (U, V) = 1
+        \end{eqnarray}
+
+        Utilizando estas factorizaciones coprimas, el diagrama de bloques de la figura se puede ver como el de la figura.
+
+        \missingfigure{Diagrama de bloques en donde $u$ es la señal de control, $y$ es la salida y $v_1$ y $v_2$ con señales exógenas (consignas, perturbaciones, ruidos, etc.), $\eta$ y $\xi$ son señales intermedias entre los terminos de la factorizaciónes coprimas de $G$ y $K$}
+
+        De la figura tenemos que
+
+        \begin{eqnarray} \label{eq:robus1}
+            y & = & N \xi + v_2 \nonumber \\
+            M \xi & = & u \nonumber \\
+            u & = & U \eta + v_1 \nonumber \\
+            V \eta & = & y
+        \end{eqnarray}
+
+        De estas ecuaciones se deduce que la estabilidad del par $\xi, \eta$ implica la estabilidad $y, u$.
+        Por otro lado, dado que $(M, N) = 1$ sabemos que existen $X, Y \in RH_{\infty}$ tal que
+
+        \begin{equation}
+            X M + Y N = 1
+        \end{equation}
+
+        lo cual implica que
+
+        \begin{equation} \label{eq:robus2}
+            X M \xi + Y N \xi = \xi
+        \end{equation}
+
+        por lo que de la ecuación~\ref{eq:robus1} y la ecuación~\ref{eq:robus2} podemos obtener que
+
+        \begin{eqnarray}
+            X u + Y (y - v_2) & = & \xi \nonumber \\
+            X u + Y y - Y v_2 & = & \xi
+        \end{eqnarray}
+
+        y tenemos que la estabilidad del par $u, y$ implica la estabilidad de $\xi$.
+
+        Similarmente para $\eta$, tenemos que $(U, V) = 1$, por lo que existen $\hat{X}, \hat{Y} \in RH_{\infty}$ tales que
+
+        \begin{eqnarray}
+            \hat{X} V + \hat{Y} U & = & 1 \nonumber \\
+            \hat{X} V \eta + \hat{Y} U \eta & = & \eta \nonumber \\
+            \hat{X} y + \hat{Y} (u - v_1) & = & 1 \nonumber \\
+            \hat{X} y + \hat{Y} u - \hat{Y} v_1 & = & 1
+        \end{eqnarray}
+
+        por lo que la estabilidad del par $u, y$ implica la estabilidad de $\eta$.
+
+        Esto es, las cuatro funciones de transferencia de $u, y$ contra $v_1, v_2$ pertenecen a $RH_{\infty}$ si y solamente si las cuatro funciones de transferencia de $\xi, \eta$ contra $v_1, v_2$ pertenecen a $RH_{\infty}$.
+        Por lo que podemos ver el siguiente resultado, $K$ estabiliza a $G$ si
+
+        \begin{equation}
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix}^{-1} \in RH_{\infty}
+        \end{equation}
+
+        En efecto, notamos primero que
+
+        \begin{equation*}
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix} =
+            \begin{pmatrix}
+                1 & K \\
+                G & 1
+            \end{pmatrix}
+            \begin{pmatrix}
+                M & 0 \\
+                0 & V
+            \end{pmatrix}
+        \end{equation*}
+
+        puesto que $M \ne 0$, $V \ne 0$ y $\lim_{s \to \infty} G(s) = 0$, tenemos que
+
+        \begin{eqnarray*}
+            \lim_{s \to \infty} \det{
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix}
+            } & = & \lim_{s \to \infty} \left( \left( 1 - K(s) G(s) \right) \left( M(s) V(s) \right) \right) \\
+            & = & \lim_{s \to \infty} M(s) V(s) \ne 0
+        \end{eqnarray*}
+
+        por lo que
+
+        \begin{equation*}
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix}^{-1} \in \mathbbm{R}(s)
+        \end{equation*}
+
+        es decir, la inversa de esta matriz existe.
+        Notemos ahora de la figura que:
+
+        \begin{equation*}
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix}
+            \begin{pmatrix}
+                \xi \\
+                - \eta
+            \end{pmatrix} =
+            \begin{pmatrix}
+                v_1 \\
+                v_2
+            \end{pmatrix}
+        \end{equation*}
+
+        Por lo que $K$ estabiliza a $G$ si y solamente si:
+
+        \begin{equation*}
+            \begin{pmatrix}
+                M & U \\
+                N & V
+            \end{pmatrix}^{-1} \in RH_{\infty}
+        \end{equation*}
