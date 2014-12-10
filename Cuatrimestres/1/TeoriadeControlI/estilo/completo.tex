@@ -18,6 +18,13 @@
         {\end{wrapfigure}}
 \else
     \documentclass{tufte-book} % Papel: Letter, Estilo: Tufte
+    \AtBeginDocument{\fontsize{11}{15}\selectfont}
+    \geometry{
+    left=15mm, % left margin
+    textwidth=120mm, % main text block
+    marginparsep=6mm, % gutter between main text block and margin notes
+    marginparwidth=60mm % width of margin notes
+    }
 \fi
 % Paquetes a utilizar
 \usepackage[spanish, es-noquoting]{babel} % Español
