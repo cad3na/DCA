@@ -1,0 +1,110 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA CAPITULO
+%-------------------------------------------------------------------------------
+
+\chapter{Nociones de control robusto $H_{\infty}$}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Anillo de las fracciones propias Hurwitz estable $RH_{\infty}$}
+
+        Consideremos el siguiente conjunto:
+
+        \begin{equation}
+            \left\{ F(s) \in \mathbbm{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbbm{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbbm{C} - \mathbbm{C}_+ \right\}
+        \end{equation}
+
+        en donde $\mathbbm{C}_+ = \left\{ s \in \mathbbm{C} \mid \Re{s} \ge 0 \right\}$.
+
+        Es decir, $RH_{\infty}$ es el conjunto de funciones de transferencia propias Hurwitz estable.
+
+        \begin{definicion}
+            El conjunto $RH_{\infty}$ forma un anillo conmutativo bajo las operaciones usuales $+$ y $\cdot$.
+        \end{definicion}
+
+        \begin{definicion}
+            Existe una función grado $\delta: RH_{\infty} \to \mathbbm{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces:
+
+            \begin{equation}
+                \delta(F) = \cardinalidad{\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
+            \end{equation}
+
+            En donde a $\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbbm{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
+        \end{definicion}
+
+        Dado que $RH_{\infty}$ es un anillo conmutativo euclidiano podemos aplicar:
+
+        \begin{enumerate}
+            \item Algoritmo de la división de Euclides
+            \item Identidad de Bezout
+            \item Ecuación Diofantina
+        \end{enumerate}
+
+        Note que, las unidades en este anillo son las fracciones propias de grado relativo cero, Hurwitz estebles, y de fase mínima.
+
+        \begin{definicion}
+            La norma de $RH_{\infty}$ esta definida de la siguiente manera:
+
+            \begin{equation}
+                ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbbm{R}, F \in RH_{\infty}
+            \end{equation}
+
+            $RH_{\infty}$ bajo esta norma forma un espacio de Banach.
+        \end{definicion}
+
+        \missingfigure{Diagrama de Bode de funcion de transferencia propia con valor supremo $||F||_{\infty}$.}
+
+        \missingfigure{Diagrama de Nyquist de funcion de transferencia propia con valor supremo $||F||_{\infty}$}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Factorización coprima}
+
+        Sea $F(s)$ una función de transferencia propia, es decir:
+
+        \begin{equation*}
+            F(s) \in \mathbbm{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
+        \end{equation*}
+
+        Una factorización coprima de $F$ en $RH_{\infty}$, es la descomposición de $F$ en fracciones coprimas en $RH_{\infty}$, es decir:
+
+        \begin{equation*}
+            F(s) = \frac{N(s)}{M(s)}
+        \end{equation*}
+
+        donde $M, N \in RH_{\infty}$, $M \ne 0$.
+        Por lo tanto existirán $X, Y \in RH_{\infty}$ tal que:
+
+        \begin{equation}
+            X(s) M(s) + Y(s) N(s) = 1
+        \end{equation}
+
+        Note que los polos no Hurwitz de $F(s)$ pasan a ser ceros no Hurwitz de $M(s)$ y los ceros no Hurwitz de $F(s)$ pasan a ser ceros no Hurwitz de $N(s)$.
+
+        \begin{equation*}
+            F(s) = \frac{(s-1)(s+2)}{(s-3)(s+4)} = \frac{\frac{(s-1)(s+2)}{(s+a)^2}}{\frac{(s-3)(s+4)}{(s+a)^2}} \text{ con } a > 0
+        \end{equation*}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Estabilidad interna}
+
+        Sea el diagrama de bloques de la figura, la representación de un sistema con función de transferencia estrictamente propia, es decir:
+
+        \begin{equation*}
+            G(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} G(s) = 0
+        \end{equation*}
+
+        y controlado por un controlador representado por una función de transferencia propia, es decir:
+
+        \begin{equation*}
+            K(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
+        \end{equation*}
+
+        \missingfigure{Diagrama de bloques }
