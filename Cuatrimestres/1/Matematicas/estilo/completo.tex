@@ -42,82 +42,70 @@
 \usepackage{mathrsfs}       % Paquete para mas simbolos de campos
 %\usepackage{steinmetz}      % Paquete para escribir numeros complejos
 \usepackage{tcolorbox}
-% % Subpaquete para diagramas de bloques
-% \usetikzlibrary{shapes, arrows, decorations.markings}
-% % Estilos comunes de bloques para diagramas
-% \tikzstyle{input} = [coordinate]
-% \tikzstyle{output} = [coordinate]
-% \tikzstyle{init} = [pin edge={to-, thin, black}]
-% \tikzstyle{sum} = [draw, circle]
-% \tikzstyle{empty} = [coordinate]
-% \tikzstyle{vecArrow} = [thick, decoration={markings, mark=at position
-%     1 with {\arrow[semithick]{open triangle 60}}},
-%     double distance=1.4pt, shorten >= 5.5pt,
-%     preaction = {decorate},
-%     postaction = {draw,line width=1.4pt, white, shorten >= 4.5pt}]
-% \tikzstyle{innerWhite} = [semithick, white, line width=1.4pt, shorten >= 4.5pt]
+
+\setcounter{tocdepth}{2}
 % Hace que la numeración dependa del numero de capitulo
-\setcounter{secnumdepth}{0}
-\numberwithin{equation}{chapter}
+\setcounter{secnumdepth}{1}
+\numberwithin{equation}{section}
 % Definición de matriz adjunta
 \newenvironment{amatrix}[1]
     {\left(\begin{array}{@{}*{#1}{c}|c@{}}}
     {\end{array}\right)}
 % Definiciones de teoremas
 \theoremstyle{plain}
-\newtheorem{lema}{Lema}[chapter]
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{corolario}{Corolario}[chapter]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{corolario}{Corolario}[section]
+\newtheorem{proposicion}{Proposición}[section]
 \theoremstyle{remark}
-\newtheorem{nota}{Nota}[chapter]
+\newtheorem{nota}{Nota}[section]
 \theoremstyle{definition}
-\newtheorem{definicion}{Definición}[chapter]
-\newtheorem{problema}{Problema}[chapter]
-% % Opciones para colores en teoremas
-% \tcbuselibrary{skins}
-% % Ambiente con colores para teoremas de estilo plano
-% \tcolorboxenvironment{lema}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% \tcolorboxenvironment{teorema}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% \tcolorboxenvironment{corolario}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% % Ambiente con colores para teoremas de estilo anotacion
-% \tcolorboxenvironment{nota}
-%     {blanker,
-%     left=5mm,
-%     before skip=10pt,
-%     after skip=10pt,
-%     borderline west={1mm}{0pt}{Orchid}}
-% % Ambiente con colores para teoremas de estilo definicion
-% \tcolorboxenvironment{definicion}
-%     {frame empty,
-%     colback=OliveGreen!10!White,
-%     grow to left by=6pt,
-%     grow to right by=6pt,
-%     left=1.6pt,
-%     right=1.6pt,
-%     arc=5pt}
-% \tcolorboxenvironment{problema}
-%     {frame empty,
-%     colback=OliveGreen!10!White,
-%     grow to left by=6pt,
-%     grow to right by=6pt,
-%     left=1.6pt,
-%     right=1.6pt,
-%     arc=5pt}
+\newtheorem{definicion}{Definición}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+% Opciones para colores en teoremas
+\tcbuselibrary{skins}
+% Ambiente con colores para teoremas de estilo plano
+\tcolorboxenvironment{lema}
+    {enhanced jigsaw,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+\tcolorboxenvironment{teorema}
+    {enhanced jigsaw,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+\tcolorboxenvironment{corolario}
+    {enhanced jigsaw,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+\tcolorboxenvironment{proposicion}
+    {enhanced jigsaw,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+% Ambiente con colores para teoremas de estilo anotacion
+\tcolorboxenvironment{nota}
+    {blanker,
+    left=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{Orchid}}
+% Ambiente con colores para teoremas de estilo definicion
+\tcolorboxenvironment{definicion}
+    {frame empty,
+    colback=OliveGreen!10!White,
+    grow to left by=6pt,
+    grow to right by=6pt,
+    left=1.6pt,
+    right=1.6pt,
+    arc=5pt}
 % Definiciones de operadores
 \DeclareMathOperator{\rango}{rango}
 \DeclareMathOperator{\imagen}{imagen}
@@ -125,6 +113,7 @@
 \DeclareMathOperator{\traza}{traza}
 \DeclareMathOperator{\supremo}{supremo}
 \DeclareMathOperator{\cardinalidad}{cardinalidad}
+
 % Definiciones para recordatorios por hacer
 \newcommand{\tarea}[2][]
     {\todo[
@@ -138,3 +127,6 @@
         backgroundcolor=red!30!white,  % Color de fondo: Rojo claro
         bordercolor=red!30!white,      % Color de borde: Rojo claro
         #1]{#2}}
+
+\newcommand\+{\mkern2mu}
+\newcommand{\op}{\star}

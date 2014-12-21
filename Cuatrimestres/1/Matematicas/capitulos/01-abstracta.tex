@@ -1,0 +1,236 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Grupos}
+
+    \subsection{Definiciones}
+
+        \begin{definicion}
+            Un grupo es un conjunto no vacio $G$ en el que esta definida la operacion $\op$, tal que:
+
+            \begin{eqnarray*}
+                \op \colon G, G & \to & G \\
+                (a, b) & \to & (a \op b)
+            \end{eqnarray*}
+
+            Existen definiciones parciales de grupo dependiendo de las propiedades que cumple su operación:
+
+            \begin{description}
+                \item [Cerradura] $a \op b \in G \quad \forall a, b \in G$
+                \item [Asociatividad] $a \op (b \op c) = (a \op b) \op c \quad \forall a, b, c, \in G$
+                \item [Identidad] $\exists\+ e \in G \ni a \op e = e \op a = a \quad \forall a \in G$
+                \item [Inverso] $\exists\+ b \in G \ni a \op b = b \op a = e \quad \forall a \in G$
+            \end{description}
+
+            Cuando se cumplen las propiedades de \emph{cerradura} y \emph{asociatividad} se le llama \emph{semigrupo}; si adicionalmente se cumple la propiedad de \emph{existencia de identidad} se le llama \emph{monoide}; si adicionalmente se cumple la propiedad de \emph{existencia de inverso} se le llama \emph{grupo}.
+        \end{definicion}
+
+        \begin{ejercicio}
+            Demostrar que el grupo cimpuesto por las matrices de la forma:
+
+            \begin{equation}
+                \begin{pmatrix}
+                    \cos{\theta} & \sin{\theta} \\
+                    -\sin{\theta} & \cos{\theta}
+                \end{pmatrix}, \quad \forall\+ \theta \in \mathbbm{R}
+            \end{equation}
+
+            es un grupo.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Se dice que un grupo $G$ es abeliano si:
+
+            \begin{equation}
+                a \op b = b \op a
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            El conjunto $\sfrac{\mathbbm{Z}}{n\mathbbm{Z}}$
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Consideremos a $\mathbbm{Z}$ con el producto usual ¿Es este un grupo?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Consideremos a $\mathbbm{Z}^+$ con el producto usual ¿Es este un grupo?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $G = \mathbbm{R} \setminus \{0\}$. Si definimos $a \op b = a^2 b$ ¿G es un grupo?
+        \end{ejercicio}
+
+        \begin{definicion}
+            Orden de un grupo es el numero de elementos que tiene dicho grupo y se denota por $|G|$.
+
+            Un grupo $G$ será finito si tiene orden finito, de lo contrario será infinito.
+        \end{definicion}
+
+        \begin{ejemplo}
+            Si $G = \{e\}$, su orden será $\left| G = \{e\} \right| = 1$
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            El orden del conjunto de numeros reales es infinito $\left| \mathbbm{R} \right| = \infty$.
+        \end{ejemplo}
+
+        \begin{proposicion}
+            Si $G$ es un grupo, entonces:
+
+            \begin{enumerate}
+                \item El elemento identidad es único.
+                \item El elemento inverso $a^{-1} \quad \forall \+ a \in G$ es único.
+                \item El elemento inverso del inverso del un elemento del grupo es el mismo elemento $\left( a^{-1} \right)^{-1} = a \quad \forall \+ a \in G$.
+                \item El elemento inverso de la operación de dos elementos del grupo es la operacion de los inversos de los elementos en orden inverso $\left( a \op b \right)^{-1} = b^{-1} \op a^{-1}$
+                \item En general lo anterior se cumple para cualquier numero de elementos $(a_1 \op a_2 \op \dots \op a_n)^{-1} = a_n^{-1} \op \dots \op a_2^{-1} \op a_1^{-1}$.
+            \end{enumerate}
+        \end{proposicion}
+
+        \begin{proof}\mbox{}\\
+            \begin{enumerate}
+                \item Dados $e_1$ y $e_2$ identidades del grupo, son identicos.
+                Si aplicamos la identidad $e_2$ a $e_1$, tenemos como resultado $e_1$, y si aplicamos la identidad $e_1$ a $e_2$ obtenemos como resultado $e_2$:
+
+                \begin{equation*}
+                    e_1 = e_2 \op e_1 = e_1 \op e_2 = e_2
+                \end{equation*}
+
+                por lo que podemos ver que ambas identidades son la misma.
+
+                \item Sean $b, c$ inversos de $a$, entonces:
+
+                \begin{eqnarray*}
+                    b \op a & = & e \\
+                    a \op c & = & e
+                \end{eqnarray*}
+
+                por lo que podemos ver que:
+
+                \begin{equation*}
+                    b = b \op e = b \op (a \op c) = (b \op a) \op c = e \op c = c
+                \end{equation*}
+
+                \item Sabemos que existe un inverso $a^{-1}$ tal que:
+
+                \begin{equation*}
+                    a \op a^{-1} = a^{-1} \op a = e \quad \forall \+ a \in G
+                \end{equation*}
+
+                asi pues, se sigue que:
+
+                \begin{equation*}
+                    \left( a^{-1} \right)^{-1} \op a^{-1} = e
+                \end{equation*}
+
+                y como sabemos que el elemento que operado con el inverso sea la identidad es el elemento mismo tenemos que:
+
+                \begin{equation*}
+                    \left( a^{-1} \right)^{-1} = a
+                \end{equation*}
+
+                \item Si operamos por la izquierda el termino $b^{-1} \op a^{-1}$ con $a \op b$:
+
+                \begin{equation*}
+                    \left( b^{-1} \op a^{-1} \right) \op \left( a \op b \right) = b^{-1} \op \left( a^{-1} \op a \right) b = b^{-1} \op e \op b = b^{-1} \op b = e
+                \end{equation*}
+
+                de la misma manera si operamos por la derecha:
+
+                \begin{equation*}
+                    \left( a \op b \right) \op \left( b^{-1} \op a^{-1} \right) = a^{-1} \op \left( b^{-1} \op b \right) a = a^{-1} \op e \op a = a^{-1} \op a = e
+                \end{equation*}
+
+                por lo tanto:
+
+                \begin{equation*}
+                    b^{-1} \op a^{-1} = \left( a \op b \right)^{-1}
+                \end{equation*}
+
+            \end{enumerate}
+        \end{proof}
+
+        \tarea{Demostrar el caso general del inverso de la operacion de elementos.}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Reglas de cancelación}
+
+        \begin{proposicion}
+            Sea $G$ un grupo y $a, b, c \in G$, tendremos que:
+
+            \begin{eqnarray}
+                a \op b = a \op c & \implies & b = c \nonumber \\
+                b \op a = c \op a & \implies & b = c
+            \end{eqnarray}
+        \end{proposicion}
+
+        \begin{proof}
+            Si tomamos en cuenta que $a \op b = a \op c$:
+
+            \begin{equation*}
+                b = e \op b = \left( a^{-1} \op a \right) \op b = a^{-1} \op \left( a \op b \right) = a^{-1} \op \left( a \op c \right) = \left( a^{-1} \op a \right) \op c = e \op c = c
+            \end{equation*}
+
+            de la misma manera para $b \op a = c \op a$:
+
+            \begin{equation*}
+                b = b \op e = b \op \left( a \op a^{-1} \right) = \left( b \op a \right) \op a^{-1} = \left( c \op a \right) \op a^{-1} = c \op \left( a \op a^{-1} \right) = c \op e = c
+            \end{equation*}
+        \end{proof}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Subgrupos}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Subgrupo Normal}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Homomorfismos de grupo}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\newpage
+\section{Anillos}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Definiciones}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Homomorfismos de anillo}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Ideales}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\newpage
+\section{Dominios Enteros}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Definiciones}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Máximo Común Divisor}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{mínimo común multiplo}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Algoritmo de la división de Euclides}
