@@ -9,18 +9,18 @@
         \begin{definicion}
             Un grupo es un conjunto no vacio $G$ en el que esta definida la operacion $\op$, tal que:
 
-            \begin{eqnarray*}
-                \op \colon G, G & \to & G \\
+            \begin{eqnarray}
+                \op \colon G, G & \to & G \nonumber \\
                 (a, b) & \to & (a \op b)
-            \end{eqnarray*}
+            \end{eqnarray}
 
             Existen definiciones parciales de grupo dependiendo de las propiedades que cumple su operación:
 
             \begin{description}
-                \item [Cerradura] $a \op b \in G \quad \forall a, b \in G$
-                \item [Asociatividad] $a \op (b \op c) = (a \op b) \op c \quad \forall a, b, c, \in G$
-                \item [Identidad] $\exists\+ e \in G \ni a \op e = e \op a = a \quad \forall a \in G$
-                \item [Inverso] $\exists\+ b \in G \ni a \op b = b \op a = e \quad \forall a \in G$
+                \item [Cerradura] $a \op b \in G \quad \forall \+ a, b \in G$
+                \item [Asociatividad] $a \op (b \op c) = (a \op b) \op c \quad \forall \+ a, b, c, \in G$
+                \item [Identidad] $\exists\+ e \in G \ni a \op e = e \op a = a \quad \forall \+ a \in G$
+                \item [Inverso] $\exists\+ b \in G \ni a \op b = b \op a = e \quad \forall \+ a \in G$
             \end{description}
 
             Cuando se cumplen las propiedades de \emph{cerradura} y \emph{asociatividad} se le llama \emph{semigrupo}; si adicionalmente se cumple la propiedad de \emph{existencia de identidad} se le llama \emph{monoide}; si adicionalmente se cumple la propiedad de \emph{existencia de inverso} se le llama \emph{grupo}.
@@ -29,12 +29,12 @@
         \begin{ejercicio}
             Demostrar que el grupo cimpuesto por las matrices de la forma:
 
-            \begin{equation}
+            \begin{equation*}
                 \begin{pmatrix}
                     \cos{\theta} & \sin{\theta} \\
                     -\sin{\theta} & \cos{\theta}
                 \end{pmatrix}, \quad \forall\+ \theta \in \mathbbm{R}
-            \end{equation}
+            \end{equation*}
 
             es un grupo.
         \end{ejercicio}
@@ -152,8 +152,6 @@
             \end{enumerate}
         \end{proof}
 
-        \tarea{Demostrar el caso general del inverso de la operacion de elementos.}
-
 %-------------------------------------------------------------------------------
 
     \subsection{Reglas de cancelación}
@@ -184,6 +182,96 @@
 %-------------------------------------------------------------------------------
 
     \subsection{Subgrupos}
+
+        \begin{definicion}
+            Un subconjunto no vacio $H$ de un grupo $G$ se llama subgrupo si $H$ mismo forma un grupo respecto a la operación de $G$.
+
+            Cuando $H$ es subgrupo de $G$ se denota $H < G$ o $G > H$.
+        \end{definicion}
+
+        \begin{observacion}
+            Todo grupo $G$ tiene automaticamente dos subconjuntos triviales, el mismo $G$ y la identidad $\{e\}$.
+        \end{observacion}
+
+        \begin{proposicion}
+            Un subconjunto no vacio $H \subset G$ es un subgrupo de $G$ si y solo si $H$ es cerrado respecto a la operación de $G$ y $a \in H \implies a^{-1} \in H$.
+        \end{proposicion}
+
+        \begin{proof}
+            Teniendo que $H$ es un subgrupo de $G$ tenemos que $H$ es un grupo, por lo que automaticamente se cumple la cerradura y la existencia del inverso dentro del subgrupo.
+
+            Teniendo que $H$ es cerrado, no vacio y $a^{-1} \in H \quad \forall \+ a \in H$.
+            Sabemos que $a^{-1} \op a  = e \in H$ debido a que $H$ es cerrado.
+            Ademas para $a, b, c \in H$ sabemos que $a \star (b \star c) = (a \star b) \star c$ debido a que se cumple en $G$ y $H$ hereda esta propiedad.
+
+            Por lo que $H$ es un grupo, y por lo tanto subgrupo de $G$.
+        \end{proof}
+
+        \begin{ejemplo}
+            Sea $G = \mathbbm{Z}$ con la suma usual y sea $H$ el conjunto de los enteros pares, es decir:
+
+            \begin{equation*}
+                H = \left\{ 2n | n \in \mathbbm{Z} \right\}
+            \end{equation*}
+
+            ¿Es $H$ un subgrupo de $G$?
+
+            Empecemos con dos elementos $a, b \in H$, por lo que tenemos que:
+
+            \begin{eqnarray*}
+                a & = & 2 q \quad q \in \mathbbm{Z} \\
+                b & = & 2 q' \quad q' \in \mathbbm{Z}
+            \end{eqnarray*}
+
+            y al sumarlos tenemos que:
+
+            \begin{equation*}
+                a + b = 2q + 2q' = 2(q + q') = 2q'' \quad q'' \in \mathbbm{Z}
+            \end{equation*}
+
+            por lo que $a + b \in H$.
+
+            Por otro lado, para $a \in H$ existe un $q \in \mathbbm{Z}$ tal que $a = 2q$.
+            Su inverso será:
+
+            \begin{equation*}
+                -a = -2 q = 2(-q)
+            \end{equation*}
+
+            por lo que existe $q' = -q \in \mathbbm{Z}$ tal que:
+
+            \begin{equation*}
+                2 q' = -a \in H
+            \end{equation*}
+
+            y por lo tanto $H < \mathbbm{Z}$.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Consideremos $G = \mathbbm{C}^* = \mathbbm{C} \setminus \{ 0 \}$ con el producto usual, y un subconjunto $\mathcal{U}$
+
+            \begin{equation*}
+                \mathcal{U} = \left\{ z \in \mathbbm{C}^* \left| |z| = 1 \right. \right\}
+            \end{equation*}
+
+            ¿Es $\mathcal{U}$ un subgrupo de $G$?
+
+            Dados dos elementos $z_1, z_2 \in \mathcal{U}$ sabemos que $|z_1| = |z_2| = 1$, por lo tanto:
+
+            \begin{equation*}
+                |z_1 z_2| = |z_1| |z_2| = 1
+            \end{equation*}
+
+            por lo que $z_1 z_2 \in \mathcal{U}$.
+
+            Por otro lado, para $z \in \mathcal{U}$ tenemos que $|z| = 1$, y por lo tanto:
+
+            \begin{equation*}
+                |z^{-1}| = |z|^{-1} = \frac{a}{|z|} = 1
+            \end{equation*}
+
+            por lo que $z^{-1} \in \mathcal{U}$ y $\mathcal{U} < \mathbbm{C}^*$
+        \end{ejemplo}
 
 %-------------------------------------------------------------------------------
 

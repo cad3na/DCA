@@ -59,6 +59,7 @@
 \newtheorem{proposicion}{Proposición}[section]
 \theoremstyle{remark}
 \newtheorem{nota}{Nota}[section]
+\newtheorem{observacion}{Observación}[section]
 \theoremstyle{definition}
 \newtheorem{definicion}{Definición}[section]
 \newtheorem{ejemplo}{Ejemplo}[section]
@@ -92,6 +93,12 @@
     after skip=10pt}
 % Ambiente con colores para teoremas de estilo anotacion
 \tcolorboxenvironment{nota}
+    {blanker,
+    left=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{Orchid}}
+\tcolorboxenvironment{observacion}
     {blanker,
     left=5mm,
     before skip=10pt,
