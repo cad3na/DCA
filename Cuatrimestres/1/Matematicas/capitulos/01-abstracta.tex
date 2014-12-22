@@ -49,7 +49,7 @@
 
         \begin{ejemplo}
             El conjunto $\sfrac{\mathbbm{Z}}{n\mathbbm{Z}}$
-        \end{ejemplo}
+        \end{ejemplo} \faltante{Falta escribir ejemplo}
 
         \begin{ejercicio}
             Consideremos a $\mathbbm{Z}$ con el producto usual ¿Es este un grupo?
@@ -202,7 +202,7 @@
 
             Teniendo que $H$ es cerrado, no vacio y $a^{-1} \in H \quad \forall \+ a \in H$.
             Sabemos que $a^{-1} \op a  = e \in H$ debido a que $H$ es cerrado.
-            Ademas para $a, b, c \in H$ sabemos que $a \star (b \star c) = (a \star b) \star c$ debido a que se cumple en $G$ y $H$ hereda esta propiedad.
+            Ademas para $a, b, c \in H$ sabemos que $a \op (b \op c) = (a \op b) \op c$ debido a que se cumple en $G$ y $H$ hereda esta propiedad.
 
             Por lo que $H$ es un grupo, y por lo tanto subgrupo de $G$.
         \end{proof}
@@ -251,7 +251,7 @@
             Consideremos $G = \mathbbm{C}^* = \mathbbm{C} \setminus \{ 0 \}$ con el producto usual, y un subconjunto $\mathcal{U}$
 
             \begin{equation*}
-                \mathcal{U} = \left\{ z \in \mathbbm{C}^* \left| |z| = 1 \right. \right\}
+                \mathcal{U} = \left\{ z \in \mathbbm{C}^* \mid |z| = 1 \right\}
             \end{equation*}
 
             ¿Es $\mathcal{U}$ un subgrupo de $G$?
@@ -273,13 +273,86 @@
             por lo que $z^{-1} \in \mathcal{U}$ y $\mathcal{U} < \mathbbm{C}^*$
         \end{ejemplo}
 
+        \begin{ejemplo}
+            Sea $G$ un grupo, $a$ un elemento del grupo y $C(a) = \left\{ g \in G \mid g \op a = a \op g \right\}$ ¿Es $C(a)$ subgrupo de $G$?
+
+            Primero notamos que $C(a)$ es no vacio debido a que al menos tiene a la identidad.
+
+            \begin{equation*}
+                e \op a = a \op e \implies e \in C(a)
+            \end{equation*}
+
+            Ahora tomemos dos elementos $g_1, g_2 \in C(a)$, para los cuales:
+
+            \begin{eqnarray*}
+                g_1 \op a & = & a \op g_1 \\
+                g_2 \op a & = & a \op g_2
+            \end{eqnarray*}
+
+            Ahora, si operamos estos dos elementos tendremos:
+
+            \begin{equation*}
+                (g_1 \op g_2) \op a = g_1 \op (g_2 \op a) = g_1 \op (a \op g_2) = (g_1 \op a) \op g_2 = (a \op g_1) \op g_2 = a \op (g_1 \op g_2)
+            \end{equation*}
+
+            por lo que $g_1 \op g_2 \in C(a)$.
+
+            Por ultimo, podemos ver que:
+
+            \begin{equation*}
+                a = a \op e = a \op \left( g \op g^{-1} \right) = (g \op a) \op g^{-1}
+            \end{equation*}
+
+            En donde para que el elemento inverso exista en $C(a)$, se debe de cumplir que $g^{-1} \op a = a \op g^{-1}$:
+
+            \begin{equation*}
+                g^{-1} \op a = g^{-1} \op \left( (g \op a) \op g^{-1} \right) = g^{-1} \op (g \op a) \op g^{-1} = g^{-1} \op g \op a \op g^{-1} = e \op a \op g^{-1} = a \op g^{-1}
+            \end{equation*}
+
+            Por lo que $C(a) < G$.
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Sea $X$ un conjunto no vacio. Consideremos $G = \delta X$. Sea $a \in X$, $H(a) = \left\{ f \in \delta X \mid f(a) = a \right\}$. Verificar que $H \subset G$ es un subgrupo bajo la composición de funciones. Note que $H(a)$ es no vacio, debido a que $\identidad_X \in H(a)$.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Sea $G$ un grupo y $a \in G$. El conjunto
+
+            \begin{equation}
+                A = <a> = \left\{ a^i \mid i \in \mathbbm{Z} \right\}
+            \end{equation}
+
+            es un subgrupo de $G$.
+
+            A es no vacio, puesto que $a^0 = e \in A$.
+
+            Por otro lado, para dos elementos $a^i, a^j \in A$ tenemos que:
+
+            \begin{equation*}
+                a^i a^j = a^{i+j} \in A
+            \end{equation*}
+
+            y para un elemento $a^i \in A$, tenemos que:
+
+            \begin{equation*}
+                a^{-i} = \left( a^i \right)^{-1} = \left( a^{-1} \right)^i \in A
+            \end{equation*}
+
+            por lo que $<a>$ es un subgrupo. A este se le llama subgrupo ciclico de $G$ generado por $a$.
+        \end{definicion}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Subgrupo Normal}
 
+        \faltante{Falta escribir apunte}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Homomorfismos de grupo}
+
+        \faltante{Falta escribir apunte}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -292,13 +365,19 @@
 
     \subsection{Definiciones}
 
+        \faltante{Falta escribir apunte}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Homomorfismos de anillo}
 
+        \faltante{Falta escribir apunte}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Ideales}
+
+        \faltante{Falta escribir apunte}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -311,14 +390,22 @@
 
     \subsection{Definiciones}
 
+        \faltante{Falta escribir apunte}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Máximo Común Divisor}
+
+        \faltante{Falta escribir apunte}
 
 %-------------------------------------------------------------------------------
 
     \subsection{mínimo común multiplo}
 
+        \faltante{Falta escribir apunte}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Algoritmo de la división de Euclides}
+
+        \faltante{Falta escribir apunte}
