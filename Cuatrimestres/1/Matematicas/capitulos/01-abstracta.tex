@@ -320,7 +320,7 @@
             Sea $G$ un grupo y $a \in G$. El conjunto
 
             \begin{equation}
-                A = <a> = \left\{ a^i \mid i \in \mathbbm{Z} \right\}
+                A = \langle a \rangle = \left\{ a^i \mid i \in \mathbbm{Z} \right\}
             \end{equation}
 
             es un subgrupo de $G$.
@@ -339,8 +339,174 @@
                 a^{-i} = \left( a^i \right)^{-1} = \left( a^{-1} \right)^i \in A
             \end{equation*}
 
-            por lo que $<a>$ es un subgrupo. A este se le llama subgrupo ciclico de $G$ generado por $a$.
+            por lo que $\langle a \rangle$ es un subgrupo. A este se le llama subgrupo cíclico de $G$ generado por $a$.
         \end{definicion}
+
+        \begin{definicion}
+            Sea $G$ un grupo, decimos que $G$ es cíclico si $G = \langle a \rangle$ para algun $a \in G$.
+        \end{definicion}
+
+        \begin{ejemplo}
+            Dado el grupo $G = \{e\}$, tenemos que el subgrupo cíclico generador de $G$ es:
+
+            \begin{equation*}
+                \langle e \rangle = \left\{ e^i \in G \mid i \in \mathbbm{Z} \right\}
+            \end{equation*}
+
+            al operar este subgrupo tenemos:
+
+            \begin{eqnarray*}
+                e^1 & = & e \\
+                e^2 & = & e \op e = e \\
+                e^3 & = & e \op e \op e = e
+            \end{eqnarray*}
+
+            por lo que obtenemos todos los elementos del grupo.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Dado el grupo $G = \{a, e\}$, y la siguiente tabla para la operación del grupo:
+
+            \begin{center}
+                \begin{tabular}{l | c r}
+                    $\op$ & e & a \\
+                    \hline
+                    e & e & a \\
+                    a & a & e
+                \end{tabular}
+            \end{center}
+
+            con esto, tenemos que el subgrupo ciclico generador de $G$ es:
+
+            \begin{equation*}
+                \langle a \rangle = \left\{ a^i \in G \mid i \in \mathbbm{Z} \right\}
+            \end{equation*}
+
+            y al operar este subgrupo tenemos:
+
+            \begin{eqnarray*}
+                a^1 & = & a  \\
+                a^2 & = & a \op a = e
+            \end{eqnarray*}
+
+            y obtenemos todos los elementos del grupo.
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Dado el grupo $G = \{e, a, b\}$ y la operación:
+
+            \begin{center}
+                \begin{tabular}{l | c c r}
+                    $\op$ & e & a & b \\
+                    \hline
+                    e & e & a & b \\
+                    a & a & b & e \\
+                    b & b & e & a
+                \end{tabular}
+            \end{center}
+
+            Encontrar el subgrupo cíclico generador.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Dado el grupo $\sfrac{\mathbbm{Z}}{2\mathbbm{Z}} = \mathbbm{Z}_2 = \left\{ [0], [1] \right\}$ con la operación $[a] + [b]$; encontrar el subgrupo cíclico generador.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $G$ un grupo en el que $x^2 = e$ para todo $x \in G$. Verificar que $G$ es abeliano, es decir $a \op b = b \op a$.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Sea $G$ un grupo, $H$ un subgrupo de $G$ ($H < G$), para $a, b \in G$, decimos que $a$ es congruente con $b \mod H$, denotado por:
+
+            \begin{equation}
+                a \cong b \mod H
+            \end{equation}
+
+            si
+
+            \begin{equation}
+                a \op b^{-1} \in H
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejercicio}
+            Demostrar que $\cong$ es una relación de equivalencia.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Si $H$ es un subgrupo de $G$ y $a \in G$, entonces
+
+            \begin{equation}
+                Ha = \left\{ ha \mid h \in H \right\}
+            \end{equation}
+
+            se llama clase lateral derecha de $H$ en $G$.
+        \end{definicion}
+
+        \begin{lema}
+            Para todo $a \in G$ se tiene que:
+
+            \begin{equation}
+                Ha = \left\{ x \in G \mid a \cong x \mod H \right\}
+            \end{equation}
+        \end{lema}
+
+        \begin{proof}
+            Sea un conjunto definido como $[a] = \left\{ x \in G \mid a \cong x \mod H \right\}$, por verificar que $Ha = [a]$. Para verficar esto, tenemos que verificar que $Ha \subseteq [a]$ y despues que $[a] \subseteq Ha$.
+
+            Para verificar que $Ha \subseteq [a]$ definimos un elemento $h \in H$ y $ha \in Ha$, si ahora operamos $a$ con $(ha)^{-1}$ y verificamos que esta en $H$, podemos decir que $a \cong ha \mod H$:
+
+            \begin{equation*}
+                a(ha)^{-1} = a(a^{-1}h^{-1}) = (a a^{-1})h^{-1} = h^{-1} \in H
+            \end{equation*}
+
+            por lo que podemos concluir que $a \cong ha \mod H$, lo que implica que $ha \in [a]$; pero como $ha$ es un elemento arbitrario de $Ha$, tenemos que:
+
+            \begin{equation*}
+                Ha \subseteq [a]
+            \end{equation*}
+
+            Para verificar que $[a] \subseteq Ha$ empezamos con un elemento $x \in [a]$, es decir $a \cong x \mod H$, lo cual implica $a x^{-1} \in H$, en particular nos interesa:
+
+            \begin{equation*}
+                (a x^{-1})^{-1} = x a^{-1} \in H
+            \end{equation*}
+
+            Por otro lado, sea $h = x a^{-1} \in H$, entonces tenemos que:
+
+            \begin{equation*}
+                ha = (x a^{-1})a = x (a^{-1} a) = x \in Ha
+            \end{equation*}
+
+            por lo que podemos decir que:
+
+            \begin{equation*}
+                [a] \subseteq Ha
+            \end{equation*}
+
+            y por lo tanto
+
+            \begin{equation*}
+                [a] = Ha
+            \end{equation*}
+        \end{proof}
+
+        \begin{teorema}
+            Sea $G$ un grupo finito y $H \subset G$, entonces el orden de $H$ divide al orden de $G$
+
+            \begin{equation}
+                \sfrac{|H|}{|G|}
+            \end{equation}
+
+            y esto implica que existe una $k \in \mathbbm{Z}$ tal que:
+
+            \begin{equation}
+                |G| = k |H|
+            \end{equation}
+
+            A esto se le conoce como Teorema de Lagrange.
+        \end{teorema}
 
 %-------------------------------------------------------------------------------
 
