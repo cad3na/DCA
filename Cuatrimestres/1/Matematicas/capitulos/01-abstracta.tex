@@ -623,11 +623,108 @@
             \end{equation}
         \end{lema}
 
+        \begin{proof}
+            Si $gNg^{-1} = N \quad \forall \+ g \in G$, entonces en particular tenemos que:
+
+            \begin{equation*}
+                gNg^{-1} \subseteq N
+            \end{equation*}
+
+            por lo que se tiene que $gng^{-1} \in N \quad \forall \+ n \in N$, por lo tanto  $N \bigtriangleup G$.
+
+            Por otro lado, si $N$ es un subgrupo normal de $G$, entonces tenemos que:
+
+            \begin{equation*}
+                gng^{-1} \in N
+            \end{equation*}
+
+            para todo $g \in G$ y para todo $n \in N$, esto implica que:
+
+            \begin{equation*}
+                gNg^{-1} \subseteq N
+            \end{equation*}
+
+            Por ultimo, podemos ver que $g^{-1} N g = g^{-1} N \left( g^{-1} \right)^{-1} \subseteq N$, ademas:
+
+            \begin{equation*}
+                N = e N e = g \left( g^{-1} N g \right) g^{-1} \subseteq g N g^{-1}
+            \end{equation*}
+
+            por lo tanto, podemos concluir que $gNg^{-1} = N$
+        \end{proof}
+
+        \begin{lema}
+            El subgrupo $N$ de $G$, es un subgrupo normal de $G$ ($N \bigtriangleup G$), si y solo si toda clase lateral izquierda de $N$ en $G$ es una clase lateral derecha de $N$ en $G$.
+        \end{lema}
+
+        \begin{proof}
+            Sea $aH = \left\{ ah \mid h \in H \right\}$ la clase lateral izquierda de $H$.
+
+            Si $N$ es un subgrupo normal de $G$, para todo $g \in G$ y para todo $n \in N$, tenemos que:
+
+            \begin{equation*}
+                gNg^{-1} = N
+            \end{equation*}
+
+            entonces tenemos que:
+
+            \begin{equation*}
+                gN = gNe = gN \left( g^{1} g \right) = \left( gNg^{-1} \right) g = N g
+            \end{equation*}
+
+            por lo que toda clase lateral izquierda coincide con la clase lateral derecha.
+
+            Por otro lado, si ahora suponemos que las clases laterales coinciden, entonces:
+
+            \begin{equation*}
+                gNg^{-1} = \left( gN \right) g^{-1} = Ng g^{-1} = N
+            \end{equation*}
+
+            por lo que podemos concluir que se trata de un subgrupo normal.
+        \end{proof}
+
+        \begin{definicion}
+            Denotamos $\sfrac{G}{N}$ a la colección de las clases laterales derechas de $N$ en $G$.
+
+            \begin{equation}
+                \sfrac{G}{N} = \left\{ Na \mid a \in G \right\}
+            \end{equation}
+        \end{definicion}
+
+        \begin{teorema}
+            Si $G$ es un grupo y $N$ es un subgrupo normal de $G$, entonces $\sfrac{G}{N}$ es tambien un grupo y se denomina grupo cociente.
+        \end{teorema}
+
+        \begin{proof}
+            Para demostrar la existencia de identidad primero verificamos que para un elemento $x \in \sfrac{G}{N}$, el elemento tiene la forma $x = Na \quad a \in G$, por lo que podemos ver que:
+
+            \begin{eqnarray*}
+                xNe = xN = Na N = NNa = Na & = & x \\
+                Nex = Nx = NNa = Na & = & x
+            \end{eqnarray*}
+        \end{proof}
+
+        Para demostrar la existencia de un inverso definimos un elemento $x \in \sfrac{G}{N}$ y $Na^{-1} \in \sfrac{G}{N}$, y queremos demostrar que $x^{-1} = Na^{-1}$ es el inverso de $x = Na$. Al operar estos elementos por la derecha y la izquierda tenemos:
+
+        \begin{eqnarray*}
+            x x^{-1} = Na Na^{-1} = NNaa^{-1} = Ne & = & N \\
+            x^{-1} x = Na^{-1} Na = NNa^{-1}a = Ne & = & N
+        \end{eqnarray*}
+
+        por lo tanto $Na^{-1} = x^{-1}$ es el inverso de $x$.
+        Por lo tanto, $\sfrac{G}{N}$ es un grupo.
+
 %-------------------------------------------------------------------------------
 
     \subsection{Homomorfismos de grupo}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Sea una aplicación $\varphi \colon G \to \bar{G}$, $G$ un grupo con operacion $\opone$ y $\bar{G}$ un grupo con operación $\optwo$. Se dice que $\varphi$ es un homomorfismo si para $a, b \in G$ cualesquiera se tiene que:
+
+            \begin{equation}
+                \varphi(a \opone b) = \varphi(a) \optwo \varphi(b)
+            \end{equation}
+        \end{definicion}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
