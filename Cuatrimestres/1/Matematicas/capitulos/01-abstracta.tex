@@ -726,6 +726,84 @@
             \end{equation}
         \end{definicion}
 
+        \begin{ejemplo}
+            Sea $G = \mathbbm{R}^+ \setminus \{0\}$, bajo el producto usual y sea $\bar{G} = \mathbbm{R}$ bajo la adición, definimos $\varphi \colon G \to \bar{G}$ como:
+
+            \begin{eqnarray*}
+                \varphi \colon \mathbbm{R}^+ \setminus \{0\} & \to & \mathbbm{R} \\
+                r & \to & \ln{r}
+            \end{eqnarray*}
+
+            Sean $r_1, r_2 \in \mathbbm{R}^+ \setminus \{0\}$ tal que:
+
+            \begin{equation*}
+                \varphi(r_1 \cdot r_2) = \ln{(r_1 \cdot r_2)} = \ln{r_1} + \ln{r_2} = \varphi(r_1) + \varphi(r_2)
+            \end{equation*}
+
+            por lo que podemos asegurar que $\varphi$ es un homomorfismo.
+        \end{ejemplo}
+
+        \begin{lema}
+            Supongamos que $G$ es un grupo y que $N$ es un subgrupo normal de $G$. Definamos la aplicación:
+
+            \begin{eqnarray*}
+                \varphi \colon G & \to & \sfrac{G}{N} \\
+                x & \to & Nx
+            \end{eqnarray*}
+
+            entonces $\varphi$ es es un homomorfismo.
+        \end{lema}
+
+        \begin{proof}
+            Sean $x, y \in G$, entonces $\varphi(x) = Nx$ y $\varphi(y) = Ny$, por lo que podemos ver que:
+
+            \begin{equation*}
+                \varphi(x \opone y) = Nxy = NNxy = NxNy = \varphi(x) \optwo \varphi(y)
+            \end{equation*}
+
+            por lo que $\varphi$ es un homomorfismo.
+        \end{proof}
+
+        \begin{definicion}
+            Si $\varphi$ es un homomorfismo de $G$ en $\bar{G}$, el nucleo de $\varphi$, denominado $\ker{\varphi}$ se define:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ x \in G \mid \varphi(x) = \bar{e} \right\}
+            \end{equation}
+
+            donde $\bar{e}$ es la identidad de $\bar{G}$.
+        \end{definicion}
+
+        \begin{lema}
+            Si $\varphi$ es un homomorfismo de $G$ es $\bar{G}$, entonces:
+
+            \begin{enumerate}
+                \item $\varphi(e) = \bar{e}$
+                \item $\varphi(x^{-1}) = \varphi(x)^{-1} \quad \forall \+ x \in G$
+            \end{enumerate}
+        \end{lema}
+
+        \begin{proof}
+            Para demostrar la primera parte tenemos un elemento $x \in G$, por lo que:
+
+            \begin{equation*}
+                \varphi(x) \optwo \bar{e} = \varphi(x) = \varphi(x \opone e) = \varphi(x) \optwo \varphi(e)
+            \end{equation*}
+
+            por lo que $\bar{e} = \varphi(e)$
+
+            Para demostrar la segunda parte, notamos que:
+
+            \begin{eqnarray*}
+                \bar{e} = \varphi(e) & = & \varphi(x \opone x^{-1}) = \varphi(x) \optwo \varphi(x^{-1}) = \bar{e} \\
+                & = & \varphi(x^{-1} \opone x) = \varphi(x^{-1}) \optwo \varphi(x) = \bar{e}
+            \end{eqnarray*}
+
+            por lo que $\varphi(x)^{-1} = \varphi(x^{-1})$.
+        \end{proof}
+
+        \marginnote{De nuevo, se dejará la notación de $\opone$ y $\optwo$ para los operadores de grupos, sin que por eso se entienda que la operación es la misma en ambos grupos, es decir, se deberá entender por el contexto, la operación indicada.}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
