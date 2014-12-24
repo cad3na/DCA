@@ -508,6 +508,99 @@
             A esto se le conoce como Teorema de Lagrange.
         \end{teorema}
 
+        \begin{proof}
+            Dado $[a] = Ha$, las clases de equivalencia forman una partición de $G$:
+
+            \begin{eqnarray*}
+                [a_1] \cup [a_2] \cup \dots \cup [a_k] & = & G \\[0cm]
+                [a_i] \cap [a_j] & = & \varnothing \quad i \ne j
+            \end{eqnarray*}
+
+            Por otro lado, las clases laterales derechas forman una partición:
+
+            \begin{eqnarray*}
+                H a_1 \cup H a_2 \cup \dots \cup H a_k & = & G \\
+                H a_i \cap H a_j & = & \varnothing \quad i \ne j
+            \end{eqnarray*}
+
+            Establezcamos una biyección:
+
+            \begin{eqnarray*}
+                Ha_i & \to & H \\
+                ha_i & \to & h
+            \end{eqnarray*}
+
+            es decir, el orden de $Ha_i$ es el orden de $H$
+
+            \begin{equation*}
+                |Ha_i| = |H| \quad \forall \+ 1 \le i \le k
+            \end{equation*}
+
+            entonces:
+
+            \begin{eqnarray*}
+                |G| & = & |Ha_1| + |Ha_2| + \dots + |Ha_k| \\
+                & = & |H| + |H| + \dots + |H| \\
+                |G| & = & k |H|
+            \end{eqnarray*}
+
+            pero $k \in \mathbbm{Z}$, entonces:
+
+            \begin{equation*}
+                \sfrac{|H|}{|G|}
+            \end{equation*}
+        \end{proof}
+
+        \begin{definicion}
+            Si $G$ es finito y $H$ es un subgrupo de $G$ lllamamos $\frac{|G|}{|H|}$ el indice de $H$ en $G$ y lo denotamos por $i_G(H)$.
+        \end{definicion}
+
+        \begin{definicion}
+            Si $G$ es finito y $a \in G$, llamamos orden de $a$ al mínimo entero positivo $n$ tal que $a^n = e$ y lo denotamos por $O(a)$, por lo que se sigue que:
+
+            \begin{equation}
+                a^{O(a)} = e
+            \end{equation}
+        \end{definicion}
+
+        \begin{proposicion}
+            Si $G$ es finito y $a \in G$, entonces el orden de $a$ divide al orden de $G$:
+
+            \begin{equation}
+                \sfrac{O(a)}{|G|}
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Supongamos $H = \langle a \rangle$, entonces $O(a) = |H|$. Podemos ver ahora, por el teorema de Lagrange:
+
+            \begin{equation*}
+                \sfrac{|H|}{|G|} \implies \sfrac{O(a)}{|G|}
+            \end{equation*}
+        \end{proof}
+
+        \begin{corolario}
+            Si $G$ es un grupo finito de orden $n$, entonces:
+
+            \begin{equation}
+                a^n = e \quad \forall \+ a \in G
+            \end{equation}
+        \end{corolario}
+
+        \begin{proof}
+            Por la proposición anterior tenemos que:
+
+            \begin{equation*}
+                \sfrac{O(a)}{|G|} = \sfrac{O(a)}{n}
+            \end{equation*}
+
+            esto equivale a decir que existe un $k \in \mathbbm{Z}$, tal que $n = k O(a)$, entonces podemos decir:
+
+            \begin{equation*}
+                a^n = a^{k O(a)} = \left( a^{O(a)} \right)^k = e^k = e \quad \forall \+ a \in G
+            \end{equation*}
+        \end{proof}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Subgrupo Normal}
