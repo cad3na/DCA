@@ -13,10 +13,10 @@
         Consideremos el siguiente conjunto
 
         \begin{equation}
-            \left\{ F(s) \in \mathbbm{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbbm{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbbm{C} - \mathbbm{C}_+ \right\}
+            \left\{ F(s) \in \mathbb{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbb{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbb{C} \setminus \mathbb{C}_+ \right\}
         \end{equation}
 
-        en donde $\mathbbm{C}_+ = \left\{ s \in \mathbbm{C} \mid \Re{s} \ge 0 \right\}$.
+        en donde $\mathbb{C}_+ = \left\{ s \in \mathbb{C} \mid \Re{s} \ge 0 \right\}$.
 
         Es decir, $RH_{\infty}$ es el conjunto de funciones de transferencia propias Hurwitz estable.
 
@@ -25,13 +25,13 @@
         \end{definicion}
 
         \begin{definicion}
-            Existe una función grado $\delta: RH_{\infty} \to \mathbbm{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces
+            Existe una función grado $\delta: RH_{\infty} \to \mathbb{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces
 
             \begin{equation}
-                \delta(F) = \cardinalidad{\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
+                \delta(F) = \cardinalidad{\left\{ s \in \mathbb{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
             \end{equation}
 
-            En donde a $\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbbm{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
+            En donde a $\left\{ s \in \mathbb{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbb{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
         \end{definicion}
 
         Dado que $RH_{\infty}$ es un anillo conmutativo euclidiano podemos aplicar
@@ -48,7 +48,7 @@
             La norma de $RH_{\infty}$ esta definida de la siguiente manera
 
             \begin{equation}
-                ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbbm{R}, F \in RH_{\infty}
+                ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbb{R}, F \in RH_{\infty}
             \end{equation}
 
             $RH_{\infty}$ bajo esta norma forma un espacio de Banach.
@@ -67,7 +67,7 @@
         Sea $F(s)$ una función de transferencia propia, es decir
 
         \begin{equation*}
-            F(s) \in \mathbbm{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
+            F(s) \in \mathbb{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
         \end{equation*}
 
         Una factorización coprima de $F$ en $RH_{\infty}$, es la descomposición de $F$ en fracciones coprimas en $RH_{\infty}$, es decir
@@ -98,13 +98,13 @@
         Sea el diagrama de bloques de la figura, la representación de un sistema con función de transferencia estrictamente propia, es decir
 
         \begin{equation*}
-            G(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} G(s) = 0
+            G(s) \in \mathbb{R}[s] \quad \lim_{s \to \infty} G(s) = 0
         \end{equation*}
 
         y controlado por un controlador representado por una función de transferencia propia, es decir
 
         \begin{equation*}
-            K(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
+            K(s) \in \mathbb{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
         \end{equation*}
 
         \missingfigure{Diagrama de bloques en donde $u$ es la señal de control, $y$ es la salida y $v_1$ y $v_2$ con señales exógenas (consignas, perturbaciones, ruidos, etc.).}
@@ -162,7 +162,7 @@
             \end{pmatrix}
         \end{equation*}
 
-        y esta solución es propia para todo $K(s) \in \mathbbm{R}(s)$ con $\lim_{s \to \infty} K(s) < \infty$.
+        y esta solución es propia para todo $K(s) \in \mathbb{R}(s)$ con $\lim_{s \to \infty} K(s) < \infty$.
         Por lo que las cuatro funciones de transferencia del sistema en lazo cerrado del sistema son propias.
 
         Diremos que $K(s)$ estabiliza a $G(s)$ si sus cuatro funciones de transferencia son estables, esto es, si
@@ -271,7 +271,7 @@
             \begin{pmatrix}
                 M & U \\
                 N & V
-            \end{pmatrix}^{-1} \in \mathbbm{R}(s)
+            \end{pmatrix}^{-1} \in \mathbb{R}(s)
         \end{equation*}
 
         es decir, la inversa de esta matriz existe.

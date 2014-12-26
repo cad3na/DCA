@@ -10,7 +10,7 @@
         \frac{dx}{dt} = A x + b u
     \end{equation}
 
-    donde $A \in \mathbbm{R}^{n \times n}$, $b \in \mathbbm{R}^{n \times n}$, con condiciones iniciales $x(0) = x_0 \in \mathbbm{R}^n$; se desea minimizar el indice de desempeño:
+    donde $A \in \mathbb{R}^{n \times n}$, $b \in \mathbb{R}^{n \times n}$, con condiciones iniciales $x(0) = x_0 \in \mathbb{R}^n$; se desea minimizar el indice de desempeño:
 
     \begin{equation} \label{eq:conop2}
         J(x, u) = \frac{1}{2} \int_0^{\infty} \left( x^T Q x + \rho u^2 \right) dt
@@ -454,7 +454,7 @@
         por lo que:
 
         \begin{equation}
-            \rango{\begin{pmatrix} Q_{\sfrac{1}{2}} \\ sI - A \end{pmatrix}} = n \forall s \in \mathbbm{C} \implies \rango{\begin{pmatrix} Q_{\sfrac{1}{2}} \\ f_*^T \\ sI - A + b f_*^T \end{pmatrix}} = n \forall s \in \mathbbm{C}
+            \rango{\begin{pmatrix} Q_{\sfrac{1}{2}} \\ sI - A \end{pmatrix}} = n \forall s \in \mathbb{C} \implies \rango{\begin{pmatrix} Q_{\sfrac{1}{2}} \\ f_*^T \\ sI - A + b f_*^T \end{pmatrix}} = n \forall s \in \mathbb{C}
         \end{equation}
 
         \begin{nota}
@@ -463,13 +463,13 @@
                 \item El par $(A, b)$ es controlable si y solo si:
 
                 \begin{equation*}
-                    \rango{\begin{pmatrix} sI - A & b \end{pmatrix}} = n \quad \forall s \in \mathbbm{C}
+                    \rango{\begin{pmatrix} sI - A & b \end{pmatrix}} = n \quad \forall s \in \mathbb{C}
                 \end{equation*}
 
                 \item El par $(c^T, A)$ es observable si y solo si:
 
                 \begin{equation*}
-                    \rango{\begin{pmatrix} c^T & sI - A \end{pmatrix}} = n \quad \forall s \in \mathbbm{C}
+                    \rango{\begin{pmatrix} c^T & sI - A \end{pmatrix}} = n \quad \forall s \in \mathbb{C}
                 \end{equation*}
             \end{enumerate}
         \end{nota}

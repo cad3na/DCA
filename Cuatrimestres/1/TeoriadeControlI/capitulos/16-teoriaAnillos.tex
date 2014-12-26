@@ -41,7 +41,7 @@
 
                 \item Propiedad Euclidiana
 
-                Existe una función euclidiana llamada grado, $\grado : \mathcal{A} \to \mathbbm{Z}^+$, tal que para todo par de elementos $a, b \in \mathcal{A}$, existen $c, r \in \mathcal{A}$ tales que:
+                Existe una función euclidiana llamada grado, $\grado : \mathcal{A} \to \mathbb{Z}^+$, tal que para todo par de elementos $a, b \in \mathcal{A}$, existen $c, r \in \mathcal{A}$ tales que:
 
                 \begin{equation*}
                     a = b \cdot c + r
@@ -121,9 +121,9 @@
         \end{lema}
 
         \begin{definicion}
-            El anillo de los polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbbm{R}[s]$, siendo su función $\grado$, el grado de los polinomios.
+            El anillo de los polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbb{R}[s]$, siendo su función $\grado$, el grado de los polinomios.
 
-            El anillo de fracciones propias de polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbbm{R}(s)$, siendo su función $\grado$, el grado relativo de la función, es decir, para una función $f(s) = \frac{a(s)}{b(s)} \in \mathbbm{R}(s)$ con $a(s), b(s) \in \mathbbm{R}[s]$, $b \ne 0$ y $\grado{a(s)} \le \grado{b(s)}$, el grado relativo es:
+            El anillo de fracciones propias de polinomios, en el indeterminado $s$, y con coeficientes reales se le denomina $\mathbb{R}(s)$, siendo su función $\grado$, el grado relativo de la función, es decir, para una función $f(s) = \frac{a(s)}{b(s)} \in \mathbb{R}(s)$ con $a(s), b(s) \in \mathbb{R}[s]$, $b \ne 0$ y $\grado{a(s)} \le \grado{b(s)}$, el grado relativo es:
 
             \begin{equation*}
                 \grado{f(s)} = \grado{b(s)} - \grado{a(s)}
@@ -135,7 +135,7 @@
 %-------------------------------------------------------------------------------
 
     \newpage
-    \section{Representación de sistemas lineales en $\mathbbm{R}[s]$}
+    \section{Representación de sistemas lineales en $\mathbb{R}[s]$}
 
         Sea un sistema lineal representado por la ecuación diferencial ordinaria:
 
@@ -143,7 +143,7 @@
             M \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) u(t)
         \end{equation}
 
-        donde $M(s), N(s) \in \mathbbm{R}[s]$ y $\grado{M(s)} \ge \grado{N(s)}$, $y(t)$ es la salida y $u(t)$ es la señal de control.
+        donde $M(s), N(s) \in \mathbb{R}[s]$ y $\grado{M(s)} \ge \grado{N(s)}$, $y(t)$ es la salida y $u(t)$ es la señal de control.
 
 %-------------------------------------------------------------------------------
 
@@ -156,7 +156,7 @@
                     Q_E \left( \frac{d}{dt} \right) y(t) = r(t)
                 \end{equation}
 
-                donde $Q_E(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz y $r(t)$ es la señal de referencia.
+                donde $Q_E(s) \in \mathbb{R}[s]$ es un polinomio Hurwitz y $r(t)$ es la señal de referencia.
             \end{problema}
 
             Este problema se resuelve utilizando el algoritmo de la división de Euclides. Para esto se propone la siguiente ley de control lineal:
@@ -165,7 +165,7 @@
                 \mathcal{S} \left( \frac{d}{dt} \right) N \left( \frac{d}{dt} \right) u(t) = - \mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t)
             \end{equation}
 
-            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbbm{R}[s]$, son solución del algoritmo de la división de Euclides, es decir:
+            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbb{R}[s]$, son solución del algoritmo de la división de Euclides, es decir:
 
             \begin{equation} \label{eq:anillos3}
                 Q_E(s) = \mathcal{S}(s) M(s) + \mathcal{R}(s)
@@ -223,7 +223,7 @@
                     Q_D \left( \frac{d}{dt} \right) y(t) = N \left( \frac{d}{dt} \right) r(t)
                 \end{equation}
 
-                donde $Q_D(s) \in \mathbbm{R}[s]$ es un polinomio Hurwitz dado y $r(t)$ es la señal de referencia.
+                donde $Q_D(s) \in \mathbb{R}[s]$ es un polinomio Hurwitz dado y $r(t)$ es la señal de referencia.
             \end{problema}
 
             Para obtener la ley de control, se tiene que resolver la ecuación Diofantina (~\ref{eq:anillos0}), se asume que los polinomios de $M(s)$ y $N(s)$ son primos relativos, es decir $(M, N) = 1$.
@@ -234,7 +234,7 @@
                 \mathcal{S} \left( \frac{d}{dt} \right) u(t) = - \mathcal{R} \left( \frac{d}{dt} \right) y(t) + r(t)
             \end{equation}
 
-            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbbm{R}[s]$, son solución de la ecuación Diofantina:
+            donde $\mathcal{S}(s), \mathcal{R}(s) \in \mathbb{R}[s]$, son solución de la ecuación Diofantina:
 
             \begin{equation} \label{eq:anillos5}
                 \mathcal{S}(s) M(s) + \mathcal{R}(s) N(s) = Q_D(s)

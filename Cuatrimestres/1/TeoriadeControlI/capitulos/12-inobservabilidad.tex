@@ -50,7 +50,7 @@
 	\caption{\label{dia:inob1}Diagrama de bloques de una representación en espacio de estados simplificado.}
 	\end{figure}
 
-	donde $x \in \mathbbm{R}^n$ es el estado, $u(t) \in \mathbbm{R}^n$ y $y(t) \in \mathbbm{R}^n$ sean la entrada y salida respectivamente; siendo la condición inicial del estado $x(0) = x_0 \in \mathbbm{R}^n$. La solución esta descrita por:
+	donde $x \in \mathbb{R}^n$ es el estado, $u(t) \in \mathbb{R}^n$ y $y(t) \in \mathbb{R}^n$ sean la entrada y salida respectivamente; siendo la condición inicial del estado $x(0) = x_0 \in \mathbb{R}^n$. La solución esta descrita por:
 
 	\begin{equation*}
 		x(t) = \exp{(At)} x_0 + \int_0^t \exp{\left(A(t - \tau)\right)} b u(\tau) d\tau
@@ -73,10 +73,10 @@
 	\newpage
     \section{Observabilidad e inobservabilidad}
 
-	    Una representación de estado se dice observable si dadas las trayectorias de salida, $y(t)$, y entrada, $u(t)$, en un horizonte de tiempo finito, $t_1 \in \mathbbm{R}$, $t_1 > 0$, existe una función $\mathbbm{F}(t, u, y)$, tal que:
+	    Una representación de estado se dice observable si dadas las trayectorias de salida, $y(t)$, y entrada, $u(t)$, en un horizonte de tiempo finito, $t_1 \in \mathbb{R}$, $t_1 > 0$, existe una función $\mathbb{F}(t, u, y)$, tal que:
 
 	    \begin{equation}
-	    	\mathbbm{F}(t_1, u(t), y(t)) = x(0) \quad t \in [0, t_1]
+	    	\mathbb{F}(t_1, u(t), y(t)) = x(0) \quad t \in [0, t_1]
 	    \end{equation}
 
 		\missingfigure{Trayectorias de entrada y salida del sistema a una condición requerida desde una condicion inicial general}
@@ -100,7 +100,7 @@
 		donde:
 
 		\begin{equation*}
-			\varphi_i(t) = \sum_{j=0}^{\infty} \varphi_{ij} t^j, \quad \varphi_{ij} \in \mathbbm{R}, \quad i \in \{ 0, 1, \dots , n-1 \}, \quad j \in \mathbbm{Z}^+
+			\varphi_i(t) = \sum_{j=0}^{\infty} \varphi_{ij} t^j, \quad \varphi_{ij} \in \mathbb{R}, \quad i \in \{ 0, 1, \dots , n-1 \}, \quad j \in \mathbb{Z}^+
 		\end{equation*}
 
 		Si juntamos las ecuaciones ~\ref{eq:inob2} y ~\ref{eq:inob3} obtendremos:
@@ -124,7 +124,7 @@
 			\varphi^T(t_1) \mathcal{O}_{(c^T, A)} x(0) = y(t_1) - \int_0^{t_1} c^T \exp{\left(A(t - \tau)\right)} b u(\tau) d\tau +d u(t_1)
 		\end{equation}
 
-		siendo el lado derecho, la función $\mathbbm{F}$. Entonces, una condición necesaia para que se pueda inferir cualquier condición inicial del estado $x(0) = x_0$, a partir de las trayectorias de salida, $y(t)$, y de entrada ,$u(t)$, en el horizonte de tiempo, es que la matriz de observabilidad:
+		siendo el lado derecho, la función $\mathbb{F}$. Entonces, una condición necesaia para que se pueda inferir cualquier condición inicial del estado $x(0) = x_0$, a partir de las trayectorias de salida, $y(t)$, y de entrada ,$u(t)$, en el horizonte de tiempo, es que la matriz de observabilidad:
 
 		\begin{equation}
 			\mathcal{O}_{(c^T, A)} =
@@ -138,7 +138,7 @@
 
 		sea de rango pleno por columnas.
 
-		En nuestro caso particular, como la entrada y la salida estan en $\mathbbm{R}$, esta condición es:
+		En nuestro caso particular, como la entrada y la salida estan en $\mathbb{R}$, esta condición es:
 
 		\begin{equation*}
 			\det{\mathcal{O}_{(c^T, A)}} \ne 0
@@ -149,28 +149,28 @@
 		\begin{equation*}
 			\mathcal{O}_{(c^T, A)} T^{-1} =
 			\begin{pmatrix}
-				\mathbbm{X} & 0
+				\mathbb{X} & 0
 			\end{pmatrix}
 		\end{equation*}
 
-		siendo $\mathbbm{X}$ una matriz de rango plano por columnas.
+		siendo $\mathbb{X}$ una matriz de rango plano por columnas.
 
 		Haciendo el cambio de base, $\bar{x} = T x$, se obtiene de la ecuación ~\ref{eq:inob4}:
 
 		\begin{eqnarray*}
-			\varphi^T(t_1) \mathcal{O}_{(c^T, A)} T^{-1} \bar{x}(0) & = & \bar{\mathbbm{F}}(t_1, u, y) \\
+			\varphi^T(t_1) \mathcal{O}_{(c^T, A)} T^{-1} \bar{x}(0) & = & \bar{\mathbb{F}}(t_1, u, y) \\
 			\varphi^T(t_1)
 			\begin{pmatrix}
-			 	\mathbbm{X} & 0
+			 	\mathbb{X} & 0
 			\end{pmatrix}
 			\begin{pmatrix}
 			 	\bar{x}_1(0) \\
 			 	\bar{x}_2(0)
-			\end{pmatrix} & = & \bar{\mathbbm{F}}(t_1, u, y) \\
-			\varphi^T(t_1) \mathbbm{X} \bar{x}_1(0) & = & \bar{\mathbbm{F}}(t_1, u, y)
+			\end{pmatrix} & = & \bar{\mathbb{F}}(t_1, u, y) \\
+			\varphi^T(t_1) \mathbb{X} \bar{x}_1(0) & = & \bar{\mathbb{F}}(t_1, u, y)
 		\end{eqnarray*}
 
-		por lo que no es posible determinar la segunda parte de componentes, $\bar{x}_2(0)$, a partir de $\bar{\mathbbm{F}}(t_1, u, y)$.
+		por lo que no es posible determinar la segunda parte de componentes, $\bar{x}_2(0)$, a partir de $\bar{\mathbb{F}}(t_1, u, y)$.
 
 		Si la matriz de observabilidad es de rango pleno por columnas, entonces\footnote{Este es un resultado del teorema de espacios vectoriales que indica que $\dim{V} = \dim{\ker{T}} + \dim{\imagen{T}}$, y que lo que queremos es que $\dim{V} = \dim{\imagen{T}}$}:
 
@@ -178,7 +178,7 @@
 			\ker{\mathcal{O}_{(c^T, A)}} = {0}
 		\end{equation*}
 
-		y para nuestro caso particular, $u, y \in \mathbbm{R}$:
+		y para nuestro caso particular, $u, y \in \mathbb{R}$:
 
 		\begin{equation*}
 			\det{\mathcal{O}_{(c^T, A)}} \ne 0
@@ -294,7 +294,7 @@
 			\end{pmatrix} = \mathcal{O}_{(b^T, A^T)}
 		\end{equation}
 
-		note tambien que la función de transferencia es una funcion continua en $\mathbbm{R}^1$, por lo que:
+		note tambien que la función de transferencia es una funcion continua en $\mathbb{R}^1$, por lo que:
 
 		\begin{equation*}
 			FT = FT^T
@@ -345,13 +345,13 @@
 			\item Asignación de los valores propios (polos), mediante la inyección de salida.
 
 			\begin{enumerate}
-				\item Si $\det{C_{(A, b)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $f \in \mathbbm{R}^n$, tal que:
+				\item Si $\det{C_{(A, b)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $f \in \mathbb{R}^n$, tal que:
 
 				\begin{equation*}
 					\sigma(A + b f^T) = \Lambda
 				\end{equation*}
 
-				\item Si $\det{\mathcal{O}_{(c^T, A)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $k \in \mathbbm{R}^n$, tal que:
+				\item Si $\det{\mathcal{O}_{(c^T, A)}} \ne 0$, entonces dado un conjunto simetrico con respecto al eje real de $n$ numeros complejos, $\Lambda$, existe un vector $k \in \mathbb{R}^n$, tal que:
 
 				\begin{equation*}
 					\sigma(A + k c^T) = \Lambda

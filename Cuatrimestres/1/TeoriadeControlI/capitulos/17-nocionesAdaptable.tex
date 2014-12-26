@@ -65,7 +65,7 @@
             \caption{\label{dia:adap2}Sistema con una función de transferencia propia.}
         \end{marginfigure}
 
-        Sabemos que $M(s), N(s) \in \mathbbm{R}[s]$ estarán dados por:
+        Sabemos que $M(s), N(s) \in \mathbb{R}[s]$ estarán dados por:
 
         \begin{eqnarray} \label{eq:adap2}
             M(s) & = & s^n + a_1 s^{n-1} + \dots + a_{n-1} s + a_n \nonumber \\
@@ -113,7 +113,7 @@
             F \left( \frac{d}{dt} \right) y_f (t) & = & y(t)
         \end{eqnarray}
 
-        en donde $F(s) \in \mathbbm{R}[s]$ es Hurwitz estable y tiene la forma:
+        en donde $F(s) \in \mathbb{R}[s]$ es Hurwitz estable y tiene la forma:
 
         \begin{equation*}
             F(s) = s^n + f_1 s^{n-1} + \dots + f_{n-1} s + f_n
@@ -149,7 +149,7 @@
             \caption{\label{fig:trayectoriafiltrada}Comportamiento general de la señal filtrada acotado por exponencial.}
         \end{marginfigure}
 
-        Puesto que $F(s)$ es un polinomio Hurwitz estable, entonces existe $k, \alpha \in \mathbbm{R}^+$, con $k > 0$ y $\alpha > 0$, tal que:
+        Puesto que $F(s)$ es un polinomio Hurwitz estable, entonces existe $k, \alpha \in \mathbb{R}^+$, con $k > 0$ y $\alpha > 0$, tal que:
 
         \begin{equation*}
             |\xi(t)| \le k e^{- \alpha t} \quad \forall t \ge 0
@@ -166,8 +166,8 @@
         en donde:
 
         \begin{eqnarray} \label{eq:adap5}
-            \theta^T & = & \begin{pmatrix} a_1 & \dots & a_n & b_0 & \dots & b_m \end{pmatrix} \in \mathbbm{R}^{n+m+1} \nonumber \\
-            \phi^T & = & \begin{pmatrix} -y_f^{(n-1)} & \dots & -y_f & u_f^{(m)} & \dots & u_f \end{pmatrix} \in \mathbbm{R}^{n+m+1}
+            \theta^T & = & \begin{pmatrix} a_1 & \dots & a_n & b_0 & \dots & b_m \end{pmatrix} \in \mathbb{R}^{n+m+1} \nonumber \\
+            \phi^T & = & \begin{pmatrix} -y_f^{(n-1)} & \dots & -y_f & u_f^{(m)} & \dots & u_f \end{pmatrix} \in \mathbb{R}^{n+m+1}
         \end{eqnarray}
 
         a los que llamamos vector de parametros y vector de mediciones.
@@ -241,10 +241,10 @@
 
 %-------------------------------------------------------------------------------
 
-        \subsection{Algoritmo tipo gradiente}
+        \subsection{Algoritmo tipo gradiente}\footnote{Hacemos enfasis en que los parametros estimados no son los mismos que los de la planta real denotando a las estimaciones como $\hat{\theta}(t)$ las cuales variarán en el tiempo y a los parametros reales como $\theta$ que obviamente son constantes, excepto en el caso de que las condiciones del sistema lo modifiquen.}
 
             \begin{problema}
-                Encontrar el vector de parametros estimados $\hat{\theta}(t)$\footnote{Hacemos enfasis en que los parametros estimados no son los mismos que los de la planta real denotando a las estimaciones como $\hat{\theta}(t)$ las cuales variarán en el tiempo y a los parametros reales como $\theta$ que obviamente son constantes, excepto en el caso de que las condiciones del sistema lo modifiquen.}, que minimice al siguiente criterio:
+                Encontrar el vector de parametros estimados $\hat{\theta}(t)$, que minimice al siguiente criterio:
 
                 \begin{equation}
                     J \left( \hat{\theta}(t) \right) = \frac{1}{2} e^2 \left( \hat{\theta}(t) \right) \ge 0

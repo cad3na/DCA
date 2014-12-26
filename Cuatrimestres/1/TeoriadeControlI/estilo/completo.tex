@@ -35,7 +35,6 @@
 \usepackage{amssymb}        % Paquete con simbolos matematicos
 \usepackage{xfrac}          % Paquete para usar fracciones inclinadas
 \usepackage{graphicx}       % Paquete para incluir imagenes
-\usepackage{bbm}            % Paquete con simbolos de campos
 \usepackage{enumerate}      % Paquete para crear ambientes de listas enumeradas
 \usepackage{tikz}           % Paquete para crear diagramas
 \usepackage{todonotes}      % Paquete para crear anotaciones
@@ -73,51 +72,57 @@
 \theoremstyle{definition}
 \newtheorem{definicion}{Definición}[chapter]
 \newtheorem{problema}{Problema}[chapter]
-% % Opciones para colores en teoremas
-% \tcbuselibrary{skins}
-% % Ambiente con colores para teoremas de estilo plano
-% \tcolorboxenvironment{lema}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% \tcolorboxenvironment{teorema}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% \tcolorboxenvironment{corolario}
-%     {enhanced jigsaw,
-%     colframe=SkyBlue,
-%     interior hidden,
-%     before skip=10pt,
-%     after skip=10pt}
-% % Ambiente con colores para teoremas de estilo anotacion
-% \tcolorboxenvironment{nota}
-%     {blanker,
-%     left=5mm,
-%     before skip=10pt,
-%     after skip=10pt,
-%     borderline west={1mm}{0pt}{Orchid}}
-% % Ambiente con colores para teoremas de estilo definicion
-% \tcolorboxenvironment{definicion}
-%     {frame empty,
-%     colback=OliveGreen!10!White,
-%     grow to left by=6pt,
-%     grow to right by=6pt,
-%     left=1.6pt,
-%     right=1.6pt,
-%     arc=5pt}
-% \tcolorboxenvironment{problema}
-%     {frame empty,
-%     colback=OliveGreen!10!White,
-%     grow to left by=6pt,
-%     grow to right by=6pt,
-%     left=1.6pt,
-%     right=1.6pt,
-%     arc=5pt}
+% Opciones para colores en teoremas
+\tcbuselibrary{skins, breakable}
+% Ambiente con colores para teoremas de estilo plano
+\tcolorboxenvironment{lema}
+    {enhanced jigsaw,
+    breakable,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+\tcolorboxenvironment{teorema}
+    {enhanced jigsaw,
+    breakable,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+\tcolorboxenvironment{corolario}
+    {enhanced jigsaw,
+    breakable,
+    colframe=SkyBlue,
+    interior hidden,
+    before skip=10pt,
+    after skip=10pt}
+% Ambiente con colores para teoremas de estilo anotacion
+\tcolorboxenvironment{nota}
+    {blanker,
+    breakable,
+    left=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{Orchid}}
+% Ambiente con colores para teoremas de estilo definicion
+\tcolorboxenvironment{definicion}
+    {frame empty,
+    breakable,
+    colback=OliveGreen!10!White,
+    grow to left by=6pt,
+    grow to right by=6pt,
+    left=1.6pt,
+    right=1.6pt,
+    arc=5pt}
+\tcolorboxenvironment{problema}
+    {frame empty,
+    breakable,
+    colback=OliveGreen!10!White,
+    grow to left by=6pt,
+    grow to right by=6pt,
+    left=1.6pt,
+    right=1.6pt,
+    arc=5pt}
 % Definiciones de operadores
 \DeclareMathOperator{\rango}{rango}
 \DeclareMathOperator{\imagen}{Im}
