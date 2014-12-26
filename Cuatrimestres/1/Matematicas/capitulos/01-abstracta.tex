@@ -898,6 +898,218 @@
             \end{equation}
         \end{definicion}
 
+        \begin{proposicion}
+            Si $\varphi \colon G \to G'$ es un homomorfismo, entonces:
+
+            \begin{equation}
+                \imagen{\varphi} < G'
+            \end{equation}
+
+            donde:
+
+            \begin{equation}
+                \imagen{\varphi} = \left\{ x \in G, y \in G' \mid \varphi(x) = y \right\} \subset G'
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Para demostrar que $\imagen{\varphi}$ es un subgrupo de $G'$, tenemos que demostrar que esta contenido en $G'$ y que es grupo, pero por definición sabemos que $\imagen{\varphi} \subset G'$, por lo que solo nos queda demostrar que es un grupo.
+            Para demostrar que es un grupo, pasamos a verificar la cerradura y la existencia de un inverso.
+
+            Para demostrar la propiedad de cerradura, tomamos dos elementos $y_1, y_2 \in \imagen{\varphi}$ tales que tienen la forma:
+
+            \begin{eqnarray*}
+                y_1 = \varphi(x_1) \in G' & \quad & x_1 \in G \\
+                y_2 = \varphi(x_2) \in G' & \quad & x_2 \in G
+            \end{eqnarray*}
+
+            por lo que al operarlos entre si tenemos:
+
+            \begin{equation*}
+                y_1 y_2 = \varphi(x_1) \varphi(x_2) = \varphi(x_1 x_2) = y_1 y_2 \in \imagen{\varphi}
+            \end{equation*}
+
+            Por otro lado, para demostrar la existencia de un inverso, operamos un elemento $y = \varphi(x) \in \imagen{\varphi}$ con el elemento $\varphi(x^{-1})$, el cual queremos demostrar es el inverso.
+
+            \begin{eqnarray*}
+                \varphi(x) \varphi(x^{-1}) = \varphi(x x^{-1}) = \varphi(e) & = & e' \in G' \\
+                \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) & = & e' \in G'
+            \end{eqnarray*}
+
+            por lo que se concluye que el inverso es:
+
+            \begin{equation*}
+                \varphi(x)^{-1} = \varphi(x^{-1})
+            \end{equation*}
+
+            y por lo tanto $\imagen{\varphi}$ es subgrupo de $G'$.
+        \end{proof}
+
+        \begin{definicion}
+            Sea $\varphi \colon G \to G'$ un homomorfismo, el nucleo de $\varphi$ es:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ a \in G \mid \varphi(a) = e' \right\} \subset G
+            \end{equation}
+        \end{definicion}
+
+        \begin{observacion}
+            \begin{equation}
+                \ker{\varphi} = \left\{ \varphi^{-1}(e') \mid a = \varphi^{-1}(e'), a \in G \right\}
+            \end{equation}
+
+            son las preimagenes de $e'$.
+        \end{observacion}
+
+        \begin{proposicion}
+            Sea $\varphi \colon G \to G'$ un homomorfismo. Entonces $\varphi$ es un monomorfismo, si y solo si:
+
+            \begin{equation}
+                \ker{\varphi} = \{0\}
+            \end{equation}
+
+            es decir $e = 0 \in G$.
+        \end{proposicion}
+
+        \begin{proof}
+            Si suponemos que $\ker{\varphi} = \{0\}$, tenemos que para dos elementos $\varphi(x_1)$ y $\varphi(x_2)$ iguales:
+
+            \begin{eqnarray*}
+                \varphi(x_1) & = & \varphi(x_2) \\
+                \varphi(x_1) - \varphi(x_2) & = & 0 \\
+                \varphi(x_1 - x_2) & = & 0
+            \end{eqnarray*}
+
+            por lo que $x_1 - x_2 \in \ker{\varphi}$, lo cual implica que:
+
+            \begin{eqnarray*}
+                x_1 - x_2 & = & 0 \\
+                x_1 & =  & x_2
+            \end{eqnarray*}
+
+            por lo que podemos concluir que $\varphi$ es un monomorfismo.
+        \end{proof}
+
+        \begin{teorema}
+            Si $\varphi$ es un homomorfismo, entonces se satisface que:
+
+            \begin{enumerate}
+                \item $\ker{\varphi} < G$
+                \item $a^{-1} \ker{\varphi} a \subseteq \ker{\varphi} \quad \forall \+ a \in G$
+            \end{enumerate}
+        \end{teorema}
+
+        \begin{proof}
+            Sabemos que $\ker{\varphi} \ne \varnothing$, ya que existe un $e \in G$ tal que $\varphi(e) = e'$.
+            Por lo que pasamos a comprobar que $\ker{\varphi}$ es un grupo, ya que por definición $\ker{\varphi} \subset G$.
+            Para comprobar que $\ker{\varphi}$ definimos dos elementos $x, y \in \ker{\varphi}$, por lo que al operarlos entre si tenemos:
+
+            \begin{equation*}
+                \varphi(x y) = \varphi(x) \varphi(y) = e' e' = e'
+            \end{equation*}
+
+            por lo que $xy \in \ker{\varphi}$.
+
+            Por otro lado, para un elemento $x \in \ker{\varphi}$, para el cual $\varphi(x) = e'$, tenemos que:
+
+            \begin{equation*}
+                \varphi(x^{-1}) = \varphi(x^{-1}) e' = \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) = e'
+            \end{equation*}
+
+            por lo que podemos ver que existe un inverso $x^{-1} \in \ker{\varphi}$ y por lo tanto conlcuir que $\ker{\varphi} < G$.
+
+            Para comprobar la segunda proposición tomamos un elemento $a \in G$ y un elemento $g \in \ker{\varphi}$, para el cual $\varphi(g) = e'$, por lo que queremos verificar que:
+
+            \begin{equation*}
+                a^{-1} g a \in \ker{\varphi} \quad \forall \+ g \in \ker{\varphi}
+            \end{equation*}
+
+            Sabemos que cualquier elemento en $\ker{\varphi}$, al evaluarlo en $\varphi$, obtendremos la identidad, por lo que procederemos a tratar de obtenerla:
+
+            \begin{eqnarray*}
+                \varphi(a^{-1} g a) & = & \varphi(a^{-1}) \varphi(g) \varphi(a) = \varphi(a^{-1}) e' \varphi(a) \\
+                & = & \varphi(a^{-1}) \varphi(a) = \varphi(a^{-1} a) = \varphi(e) = e'
+            \end{eqnarray*}
+
+            por lo que podemos concluir que:
+
+            \begin{equation*}
+                \varphi(a^{-1} g a) \in \ker{\varphi}
+            \end{equation*}
+        \end{proof}
+
+        \begin{observacion}
+            $\ker{\varphi}$ es un subgrupo normal de $G$.
+        \end{observacion}
+
+        \begin{ejercicio}
+            Sea $\varphi$ definida como:
+
+            \begin{eqnarray*}
+                \varphi \colon \mathbb{Z} & \to & \left\{ -1, 1 \right\} \\
+                n & \to &
+                \begin{cases}
+                    -1 & \text{si } n \text{ es par} \\
+                    1 & \text{si } n \text{ es impar}
+                    \end{cases} \quad \forall \+ n \in G
+            \end{eqnarray*}
+
+            Verificar si $\varphi$ es monomorfismo.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $\varphi$ definida como:
+
+            \begin{eqnarray*}
+                \varphi \colon \mathbb{C}^* & \to & \mathbb{C}^* \\
+                z & \to & |z|
+            \end{eqnarray*}
+
+            ¿Será $\varphi$ un monomorfismo?
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Sea $G$ un grupo y $N$ un subgrupo normal de $G$.
+            Existe un epimorfismo $\varphi \colon G \to \sfrac{G}{N}$ cuyo nucleo es $N$.
+        \end{proposicion}
+
+        \begin{proof}
+            Sea $\varphi$ definida como:
+
+            \begin{eqnarray*}
+                \varphi \colon G & \to & \sfrac{G}{N} \\
+                a & \to & [a]
+            \end{eqnarray*}
+
+            sean $a, b \in G$ tales que al operarlos tenemos que:
+
+            \begin{equation*}
+                \varphi(ab) = [ab] = [a][b] = \varphi(a)\varphi(b)
+            \end{equation*}
+
+            por lo que podemos concluir que $\varphi$ es un homomorfismo.
+            Ahora, como $\varphi$ es sobre por construcción, sabemos que $\varphi$ es un epimorfismo, es decir, si $[a] \in \sfrac{G}{N}$ existe un $a \in G$ tal que $\varphi(a) = [a]$.
+            Si ahora tenemos un elemento $a \in \ker{\varphi}$, esto implica que $\varphi(a) = [e]$, es decir:
+
+            \begin{equation*}
+                a \cong e \mod N
+            \end{equation*}
+
+            lo cual implica:
+
+            \begin{eqnarray*}
+                a e^{-1} & \in & N \\
+                a e & \in & N \\
+                a & \in & N
+            \end{eqnarray*}
+
+            por lo que podemos concluir que $\ker{\varphi} \subseteq N$.
+        \end{proof}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Teoremas de isomorfismos}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
