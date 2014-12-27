@@ -1391,7 +1391,7 @@
             \end{equation*}
         \end{proof}
 
-        \marginnote{Aqui se empezará a omitir la notación para el producto usual, sin que por eso se entienda que nos referimos a otra operación.}
+        \marginnote{Aqui se empezará a omitir la notación para el producto usual cuando sea pertinente, sin que por eso se entienda que nos referimos a otra operación.}
 
 %-------------------------------------------------------------------------------
 
@@ -1406,11 +1406,275 @@
             \end{eqnarray}
         \end{definicion}
 
+        \begin{definicion}
+            Sea $\varphi \colon R \to R'$ homomorfismo de anillos, a parte se dice que es:
+
+            \begin{description}
+                \item[Monomorfismo] si $\varphi$ es inyectivo (1 - 1).
+                \item[Epimorfismo] si $\varphi$ es suprayectivo (sobre).
+                \item[Isomorfismo] si $\varphi$ es biyectivo (1 - 1 y sobre).
+            \end{description}
+        \end{definicion}
+
+        \begin{definicion}
+            El nucleo de $\varphi$ es:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ x \in R \mid \varphi(x) = 0 \right\}
+            \end{equation}
+        \end{definicion}
+
+        \begin{proposicion}
+            Sea $\varphi$ un homomorfismo de anillos, entonces:
+
+            \begin{enumerate}
+                \item $\ker{\varphi}$ es un subgrupo aditivo
+                \item Dados $k \in \ker{\varphi}$ y $r \in R$ se cumple que $rk, kr, \in \ker{\varphi}$.
+            \end{enumerate}
+        \end{proposicion}
+
+        \begin{proof}
+            Sean $k \in \ker{\varphi}$ y $r \in R$, entonces tenemos que:
+
+            \begin{eqnarray*}
+                \varphi(rk) = \varphi(r) \varphi(k) = \varphi(r) \cdot 0 & = & 0 \\
+                \varphi(kr) = \varphi(k) \varphi(r) = 0 \cdot \varphi(r) & = & 0
+            \end{eqnarray*}
+
+            por lo que podemos concluir que:
+
+            \begin{equation*}
+                kr, rk \in \ker{\varphi}
+            \end{equation*}
+        \end{proof}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Ideales}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Sea $R$ un anillo e $I$ un subconjunto de $R$, se dice que $I$ es un ideal de $R$ si:
+
+            \begin{enumerate}
+                \item $I$ es un subgrupo aditivo de $R$
+                \item Dados $r \in R$ y $a \in I$, tenemos que se cumple $ra, ar \in I$. A esto se le conoce como la propiedad de absorción.
+            \end{enumerate}
+        \end{definicion}
+
+        \begin{corolario}
+            Si $\varphi \colon R \to R'$ es un homomorfismo, entonces $K = \ker{\varphi}$ es un ideal de $R$.
+        \end{corolario}
+
+        \begin{definicion}
+            Sea $R$ un anillo e $I$ un ideal de $R$, entonces $\sfrac{R}{I}$ es llamado anillo cociente y es un grupo, con la suma de clases de equivalencia:
+
+            \begin{equation}
+                (a + I) + (b + I) = (a + b) + I
+            \end{equation}
+
+            para $a, b \in R$.
+        \end{definicion}
+
+        \begin{definicion}
+            Definimos el producto como:
+
+            \begin{equation}
+                (a + I)(b + I) = ab + I
+            \end{equation}
+
+            para $a, b \in I$
+        \end{definicion}
+
+        \begin{observacion}
+            Sea $R$ un anillo, tenemos que $\{0\}$ y $R$ mismo son ideales triviales de $R$.
+        \end{observacion}
+
+        \begin{definicion}
+            Si $I$ es un ideal de $R$ e $I \ne R$, decimos que $I$ es un ideal propio.
+        \end{definicion}
+
+        \begin{proposicion}
+            Sea $R$ un anillo con identidad e $I$ un ideal de $R$ tal que $1 \in I$, entonces $I = R$.
+        \end{proposicion}
+
+        \begin{proof}
+            Para demostrar que $I = R$ primero tenemos que demostrar que $I \subseteq R$ y despues que $R \subseteq I$.
+            Por definición $I \subseteq R$, por lo que solo resta demostrar $R \subseteq I$.
+
+            Empecemos con un elemento general $a \in R$, entonces se cumple que:
+
+            \begin{equation*}
+                a = a \cdot 1
+            \end{equation*}
+
+            en donde $1 \in I$ y $a \in R$, por lo que por la propiedad de absorción de un ideal podemos decir que $a \in I$.
+            Y como $a$ es un elemento general de $R$, podemos concluir que:
+
+            \begin{equation*}
+                R \subseteq I
+            \end{equation*}
+        \end{proof}
+
+        \begin{ejemplo}
+            Sea $R$ un anillo conmutativo con identidad.
+            Dado un elemento $a \in R$ tenemos que:
+
+            \begin{equation*}
+                (a) = \left\{ ax \mid x \in R \right\}
+            \end{equation*}
+
+            Verificar que $(a)$ es un ideal.
+
+            Primero notamos que $(a)$ es no vacio, ya que al menos existe un elemento:
+
+            \begin{equation*}
+                a \cdot 0 = 0 \in (a)
+            \end{equation*}
+
+            Ahora, para comprobar la cerradura con respecto a $(+)$ tenemos que tomar dos elementos $ax_1, ax_2 \in (a)$ y operarlos, con lo que obtenemos:
+
+            \begin{equation*}
+                ax_1 + ax_2 = a(x_1 + x_2)
+            \end{equation*}
+
+            y ya que $x_1 + x_2 \in R$, sabemos que el resultado esta en $(a)$.
+
+            Para comprobar la existencia del inverso, tenemos que:
+
+            \begin{equation*}
+                -ax_1 + ax_1 = a(-x_1 + x_1) = a \cdot 0 = 0
+            \end{equation*}
+
+            por lo que se cumple la existencia del inverso, por lo que concluimos que $(a)$ es un subgrupo con respecto a $(+)$.
+            Ahora solo nos queda por comprobar la propiedad de absorción del ideal.
+
+            Si tomamos un elemento $ax \in (a)$ y un elemento $y \in R$ tendremos que:
+
+            \begin{equation*}
+                ax y = a(xy) = y ax
+            \end{equation*}
+
+            pero $xy \in R$, por lo que concluimos que la operación sigue estando en $(a)$, por lo que tenemos que $(a)$ es un ideal.
+        \end{ejemplo}
+
+        \begin{definicion}
+            Sea $R$ anillo conmutativo con identidad, un ideal principal es un ideal de la forma $(a)$ para algun $a \in R$.
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un dominio entero, diremos que $R$ es un dominio de ideales principales, si todos los ideales de $R$ son principales.
+        \end{definicion}
+
+        \begin{definicion}
+            Sean $I, J$ ideales del anillo $R$, definimos las operaciones de ideales como:
+
+            \begin{eqnarray}
+                I + J & = & \left\{ a + b \mid a \in I, b \in J \right\} \\
+                IJ & = & \left\{ \sum_{i=1}^n a_i b_i \mid n \in \mathbb{N}, a \in I, b \in J \right\}
+            \end{eqnarray}
+        \end{definicion}
+
+        \begin{ejercicio}
+            Verificar que $I + J$ es un ideal dado que $I \cap J$ es un ideal de $R$.
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Tenemos que $\sfrac{R}{I}$ es un anillo con la suma y productos correspondientes:
+
+            \begin{eqnarray*}
+                (a + I) + (b + I) & \colon = & (a + b) + I \\
+                (a + I) (b + I) & \colon = & ab + I
+            \end{eqnarray*}
+
+            entonces la función:
+
+            \begin{eqnarray*}
+                \varphi \colon R & \to & \sfrac{R}{I} \\
+                a & \to & a + I
+            \end{eqnarray*}
+
+            es un epimorfismo.
+        \end{proposicion}
+
+        \begin{proof}
+            Primero debemos verificar que $\varphi$ es un homomorfismo:
+
+            \begin{eqnarray*}
+                \varphi(a + b) & = & a + b + I = (a + I) + (b + I)  = \varphi(a) + \varphi(b) \\
+                \varphi(ab) & = & (a + I)(b + I) = \varphi(a) \varphi(b)
+            \end{eqnarray*}
+
+            Tambien notamos que $\varphi$ es sobre por construcción, por lo que podemos concluir que es un epimorfismo.
+        \end{proof}
+
+        \begin{ejercicio}
+            Verificar que el nucleo de $\varphi$ definido como:
+
+            \begin{equation*}
+                \ker{\varphi} = \left\{ a \in R \mid \varphi(a) = 0 + I \right\}
+            \end{equation*}
+
+            coincide con el ideal $I$.
+        \end{ejercicio}
+
+%-------------------------------------------------------------------------------
+
+    \subsection{Teoremas de isomorfismos}
+
+        \begin{teorema}
+            Sea $\varphi \colon R \to R'$ un epimorfismo de anillos, y $K = \ker{\varphi}$, entonces $\sfrac{R}{K}$ es isomorfo con $R'$, es decir:
+
+            \begin{equation}
+                \sfrac{R}{K} \cong R'
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sea $R$ anillo, sean $A$ un subconjunto de $R$ ($A$ subanillo de $R$) y $B$ un ideal de $R$, entonces $A + B$ es un subanillo de $R$ y un ideal de $A$, ademas:
+
+            \begin{equation}
+                \sfrac{A + B}{B} \cong \sfrac{A}{A \cap B}
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sean $I, J$ ideales del anillo $R$, con $I \subseteq J$, entonces $\sfrac{J}{I}$ es ideal de $\sfrac{R}{I}$, ademas:
+
+            \begin{equation}
+                \sfrac{\sfrac{R}{I}}{\sfrac{J}{I}} \cong \sfrac{R}{J}
+            \end{equation}
+        \end{teorema}
+
+        \begin{ejemplo}
+            Sea $n \in \mathbb{N}$, con $n > 1$ tenemos la aplicación:
+
+            \begin{eqnarray*}
+                \varphi \colon \mathbb{Z} & \to & \mathbb{Z}' \\
+                 a & \to & [a]
+            \end{eqnarray*}
+
+            por lo que $\varphi$ es un epimorfismo con:
+
+            \begin{eqnarray*}
+                [a + b] & = & [a] + [b] \\[0cm]
+                [ab] & = & [a] [b]
+            \end{eqnarray*}
+
+            y su nucleo es:
+
+            \begin{eqnarray*}
+                \ker{\varphi} & = & \left\{ a \in \mathbb{Z} \mid \varphi(a) = [a] = [0] \right\} \\
+                & = & \left\{ a \in \mathbb{Z} \mid a \cong 0 \mod{n} \right\} \\
+                & = & \left\{ a \in \mathbb{Z} \mid \sfrac{n}{a} \right\} \\
+                & = & \left\{ a \in \mathbb{Z} \mid a = n z, z \in \mathbb{Z} \right\} = n \mathbb{Z}
+            \end{eqnarray*}
+
+            por lo que podemos aplicar el primer teorema de isomorfismos y decir que:
+
+            \begin{equation*}
+                \sfrac{\mathbb{Z}}{n \mathbb{Z}} \cong \mathbb{Z}'
+            \end{equation*}
+        \end{ejemplo}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
