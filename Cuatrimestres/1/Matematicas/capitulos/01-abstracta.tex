@@ -1676,6 +1676,69 @@
             \end{equation*}
         \end{ejemplo}
 
+        \begin{ejemplo}
+            Sea $F$ un campo, es decir, un anillo conmutativo con división, entonces $\{0\}$ es un ideal de $F$.
+
+            Sea $I$ un ideal diferente a $\{0\}$.
+            Tenemos un elemento $a \in I$, con $a \ne 0$, entonces $1 = a^{-1} a$ con $a^{-1} \in F$ y $a \in I$, por lo que:
+
+            \begin{equation*}
+                1 = a^{-1} a \in I
+            \end{equation*}
+
+            Si ahora tomamos un elemento cualquiera $r \in F$, el cual obviamente puede ser escrito como $r = 1 \cdot r$, con $1 \in I$ y $r \in F$ tenemos que:
+
+            \begin{equation*}
+                r = 1 \cdot r \in I
+            \end{equation*}
+
+            y por lo tanto:
+
+            \begin{equation*}
+                F \subseteq I
+            \end{equation*}
+
+            y por definición sabemos que $I \subseteq F$, por lo que este ideal es el mismo que el campo.
+
+            \begin{equation*}
+                F = I
+            \end{equation*}
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Sea $R$ definido como:
+
+            \begin{equation*}
+                R = \left\{ f \colon [0, 1] \to R \mid f \text{ es continua} \right\}
+            \end{equation*}
+
+            con las operaciones definidas como:
+
+            \begin{eqnarray*}
+                (f + g)(x) & = & f(x) + g(x) \\
+                (f \cdot g)(x) & = & f(x) g(x) 
+            \end{eqnarray*}
+
+            ¿Es $R$ un anillo con identidad?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Si definimos el nucleo como:
+
+            \begin{equation*}
+                I = \left\{ f \in R \mid f \left( \frac{1}{2} \right) = 0 \right\}
+            \end{equation*}
+
+            y definimos una función $\varphi$ como:
+
+            \begin{eqnarray*}
+                \varphi \colon R & \to & R \\
+                f & \to & f \left( \frac{1}{2} \right)
+            \end{eqnarray*}
+
+            ¿Podemos decir que $\sfrac{R}{I}$ y $R$ son isomorfos?
+        \end{ejercicio}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
@@ -1687,7 +1750,19 @@
 
     \subsection{Definiciones}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Se dice que $a \in \mathbb{Z}$ divide a $b \in \mathbb{Z}$ si existe un $q \in \mathbb{Z}$ tal que:
+
+            \begin{equation}
+                b = q a
+            \end{equation}
+
+            y se denota por $\sfrac{a}{b}$
+        \end{definicion}
+
+        \begin{teorema}
+            Si $\sfrac{a}{b}$ y $\sfrac{a}{c}$, entonces $\sfrac{a}{bx + cy} \quad \forall \+ x, y \in \mathbb{Z}$.
+        \end{teorema}
 
 %-------------------------------------------------------------------------------
 
