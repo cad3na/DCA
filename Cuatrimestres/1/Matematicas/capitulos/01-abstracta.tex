@@ -1110,7 +1110,108 @@
 
     \subsection{Teoremas de isomorfismos}
 
-        
+        \begin{teorema}
+            Sea $\varphi$ definido por:
+
+            \begin{eqnarray*}
+                \varphi \colon G & \to & G' \\
+                g & \to & \varphi(g)
+            \end{eqnarray*}
+
+            un epimorfismo con nucleo $K$, entonces:
+
+            \begin{equation}
+                \sfrac{G}{K} \cong G'
+            \end{equation}
+        \end{teorema}
+
+        \begin{proof}
+            Para demostrar que $\sfrac{G}{K}$ y $G'$ son isomorfos, debemos demostrar que existe un isomorfismo entre los dos grupos. Empezamos definiendo un mapeo $\bar{\varphi}$ definido por:
+
+            \begin{eqnarray*}
+                \bar{\varphi} \colon \sfrac{G}{K} & \to & G' \\
+                Kg & \to & \varphi(g)
+            \end{eqnarray*}
+
+            es decir $\bar{\varphi}(Kg) = \varphi(g)$.
+
+            Para demostrar que es un isomorfismo, debemos demostrar que es 1 - 1 y sobre.
+            Para demostrar su inyectividad tomamos dos elementos $g_1, g_2 \in G$ y al evaluarlos e igualarlos, tenemos que:
+
+            \begin{equation*}
+                \bar{\varphi}(Kg_1) = \bar{\varphi}(Kg_2) \implies \varphi(g_1) = \varphi(g_2)
+            \end{equation*}
+
+            Por otro lado, si operamos $g_1 g_2^{-1}$ tenemos que:
+
+            \begin{equation*}
+                \varphi(g_1 g_2^{-1}) = \varphi(g_1) \varphi(g_2^{-1}) = \varphi(g_2) \varphi(g_2^{-1}) = \varphi(g_2 g_2^{-1}) = \varphi(e) = e'
+            \end{equation*}
+
+            Esto es equivalente a decir que $g_1 g_2^{-1} \in K$, lo cual implica que:
+
+            \begin{eqnarray*}
+                g_1 & \cong & g_2 \mod K \\
+                g_2 & \cong & g_1 \mod K
+            \end{eqnarray*}
+
+            es decir:
+
+            \begin{eqnarray*}
+                [g_1] & = & [g_2] \\
+                Kg_1 & = & Kg_2
+            \end{eqnarray*}
+
+            por lo que podemos concluir que $\bar{\varphi}$ es inyectiva.
+
+            Por otro lado, $\bar{\varphi}$ es sobre por construcción, por lo que podemos afirmar que es una biyección.
+        \end{proof}
+
+        \begin{ejercicio}
+            Verificar que $\varphi$ es un homomorfismo, es decir:
+
+            \begin{equation*}
+                \bar{\varphi}(Kg_1 Kg_2) = \bar{\varphi}(Kg_1) \bar{\varphi}(Kg_2)
+            \end{equation*}
+        \end{ejercicio}
+
+        \begin{teorema}
+            Sea $G$ un grupo y $H < G$ y $N \bigtriangleup G$, entonces:
+
+            \begin{eqnarray}
+                HN & < & G \\
+                H \cap N & \bigtriangleup & H \\
+                N & \bigtriangleup & HN
+            \end{eqnarray}
+
+            y ademas:
+
+            \begin{equation}
+                \sfrac{HN}{N} \cong \sfrac{H}{H \cap N}
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sea $G$ un grupo, $N \bigtriangleup G$ y $K < N$ con $K \bigtriangleup G$, entonces:
+
+            \begin{equation}
+                \sfrac{\sfrac{G}{K}}{\sfrac{N}{K}} \cong \sfrac{G}{N}
+            \end{equation}
+
+            Sea $G_1, G_2, \dots, G_n$ grupos. Su producto directo o externo denotado por:
+
+            \begin{equation}
+                G_1 \times G_2 \times \dots \times G_n
+            \end{equation}
+
+            es el conjunto de n-adas $(a_1, a_2, \dots, a_n)$, donde cada $a_i \in G_i$ para todo $i \in \mathbb{N}$ y la operación en $G_1 \times G_2 \times \dots \times G_n$ se define componente a componente:
+
+            \begin{equation}
+                \left( a_1, a_2, \dots, a_n \right) \left( b_1, b_2, \dots, b_n \right) = \left( a_1 b_1, a_2 b_2, \dots, a_n b_n \right)
+            \end{equation}
+
+            Tenemos que $G = G_1 \times G_2 \times \dots \times G_n$ es un grupo, cuyo elemento identidad es $(e_1, e_2, \dots, e_n)$ y el inverso de $(a_1, a_2, \dots, a_n)$ es $(a_1^{-1}, a_2^{-1}, \dots, a_n^{-1})$.
+        \end{teorema}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -1123,13 +1224,187 @@
 
     \subsection{Definiciones}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Un conjunto no vacio $R$ es un anillo si tiene definidas dos operaciones $(+, \cdot)$, tales que se cumplen las siguientes propiedades:
+
+            \begin{description}
+                \item[Cerradura] $a + b \in R \quad \forall \+ a, b \in R$
+                \item[Asociatividad] $a + (b + c) = (a + b) + c \quad \forall \+ a, b, c \in R$
+                \item[Conmutatividad] $a + b = b + a \quad \forall \+ a, b \in R$
+                \item[Identidad] $\exists \+ 0 \in R \ni a + 0 = a \quad \forall \+ a \in R$
+                \item[Inverso] $\exists \+ b \in R \ni a + b = 0 \quad \forall \+ a \in R$
+            \end{description}
+
+            De estas propiedades podemos concluir que $R$ es un grupo abeliano con respecto a $(+)$, pero aun tenemos lo siguiente:
+
+            \begin{description}
+                \item[Cerradura] $a \cdot b \in R \quad \forall \+ a, b \in R$
+                \item[Asociatividad] $a \cdot (b \cdot c) = (a \cdot b) \cdot c$ 
+            \end{description}
+
+            De estas propiedades podemos concluir que $R$ es un semigrupo con respecto a $(\cdot)$ y ademas:
+
+            \begin{description}
+                \item[Distributividad] $a \cdot (b + c) = a \cdot b + a \cdot c \quad \forall \+ a, b, c \in R$
+            \end{description}
+        \end{definicion}
+
+        \begin{definicion}
+            Diremos que un anillo $R$ es un anillo con identidad si existe un $1 \in R$ diferente de $0$ tal que:
+
+            \begin{equation}
+                a \cdot 1 = 1 \cdot a \quad \forall \+ a \in R
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Un anillo $R$ es un anillo conmutativo si:
+
+            \begin{equation}
+                a \cdot b = b \cdot a \forall \+ a, b \in R
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un anillo y $a \in R$ con $a \ne 0$; diremos que $a$ es divisor de cero si existe un $b \in R$ con $b \ne 0$ tal que:
+
+            \begin{equation}
+                a \cdot b = 0
+            \end{equation}
+
+            a este se le llama divisor por la derecha, o bien si existe un $c \in R$ con $c \ne 0$ tal que:
+
+            \begin{equation}
+                c \cdot a = 0
+            \end{equation}
+
+            al que se le llama divisor por la izquierda.
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un anillo con identidad. Diremos que $R$ es un anillo con división si para todo $a \in R$ existe un $b \in R$ tal que:
+
+            \begin{equation}
+                a \cdot b = b \cdot a = 1
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Un campo es un anillo con división, que además es conmutativo.
+            Un campo es un grupo abeliano con respecto a la suma y a la multiplicación.
+        \end{definicion}
+
+        \begin{definicion}
+            Un anillo conmutativo con identidad es un dominio entero si:
+
+            \begin{equation}
+                a \cdot b = 0 \implies a = 0 \text{ o } b = 0
+            \end{equation}
+
+            es decir, no existen divisores de cero en el anillo.
+        \end{definicion}
+
+        \begin{observacion}
+            Si $p$ es primo, entonces $\mathbb{Z}_p$ es campo.
+        \end{observacion}
+
+        \begin{ejercicio}
+            Sea $\mathcal{M}_{2 \times 2}(\mathbb{R})$ definido como:
+
+            \begin{equation}
+                \mathcal{M}_{2 \times 2}(\mathbb{R}) = \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \mid a, b, c, d \in \mathbb{R} \right\}
+            \end{equation}
+
+            Verificar que $\mathcal{M}_{2 \times 2}(\mathbb{R})$ es un anillo con identidad no conmutativo y ademas no es dominio entero.
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Sea $R$ un anillo y sean $a, b \in R$, entonces se cumplen las siguientes propiedades:
+
+            \begin{enumerate}
+                \item $a \cdot 0 = 0 \cdot a = 0$
+                \item $a \cdot (-b) = (-a) \cdot b = -(a \cdot b)$
+                \item $(-a) \cdot (-b) = (-(-a)) \cdot b = ab$
+                \item Si $1 \in R \implies (-1) \cdot a = -a$
+            \end{enumerate}
+        \end{proposicion}
+
+        \begin{proof}
+            Para la verificación de la primer proposición tenemos que:
+
+            \begin{equation*}
+                a \cdot 0 + 0 = a \cdot 0 = a \cdot (0 + 0) = a \cdot 0  + a \cdot 0
+            \end{equation*}
+
+            y cancelando $a \cdot 0$ de ambos lados:
+
+            \begin{equation*}
+                0 = a \cdot 0
+            \end{equation*}
+
+            Para la verificación de la segunda proposición tenemos que:
+
+            \begin{equation*}
+                a \cdot (-b) + a \cdot b = a \cdot (-b + b) = a \cdot (0) = 0
+            \end{equation*}
+
+            si conservamos los extremos de este procedimiento y despejamos el segundo termino del lado izquierdo, tenemos:
+
+            \begin{equation*}
+                a \cdot (-b) = - (a \cdot b)
+            \end{equation*}
+
+            Para la verificación de la tercer proposición tenemos que:
+
+            \begin{equation*}
+                (-a) \cdot (-b) + (-a) \cdot (b) = (-a) \cdot (-b + b) = (-a) \cdot (0) = 0
+            \end{equation*}
+
+            de nuevo, despejando el segundo termino del lado izquierdo, tenemos:
+
+            \begin{equation*}
+                (-a) \cdot (-b) = -(-a) \cdot (b) = (-(-a)) \cdot (b)
+            \end{equation*}
+
+            al operar de nuevo con el mismo termino tenemos:
+
+            \begin{equation*}
+                (-(-a)) \cdot (b) - (a) \cdot (b) = (b) \cdot (-a - (-a)) = (b) \cdot (0) = 0
+            \end{equation*}
+
+            lo cual nos da que:
+
+            \begin{equation*}
+                (-(-a)) \cdot (b) = (a) \cdot (b) = (a \cdot b)
+            \end{equation*}
+
+            Para la ultima proposición tenemos que:
+
+            \begin{equation*}
+                (-1) \cdot a + (1) \cdot a = a \cdot (1 - 1) = a \cdot (0) = 0 
+            \end{equation*}
+
+            por lo que tenemos que:
+
+            \begin{equation*}
+                (-1) \cdot a = -(1) \cdot a = -a
+            \end{equation*}
+        \end{proof}
+
+        \marginnote{Aqui se empezará a omitir la notación para el producto usual, sin que por eso se entienda que nos referimos a otra operación.}
 
 %-------------------------------------------------------------------------------
 
     \subsection{Homomorfismos de anillo}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Una función $\varphi \colon R \to R'$ es un homomorfismo si:
+
+            \begin{eqnarray}
+                \varphi(a) + \varphi(b) & = & \varphi(a + b) \\
+                \varphi(a) \varphi(b) & = & \varphi(ab)
+            \end{eqnarray}
+        \end{definicion}
 
 %-------------------------------------------------------------------------------
 

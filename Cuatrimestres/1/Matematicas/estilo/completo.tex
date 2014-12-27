@@ -62,28 +62,32 @@
 \newtheorem{ejemplo}{Ejemplo}[section]
 \newtheorem{ejercicio}{Ejercicio}[section]
 % Opciones para colores en teoremas
-\tcbuselibrary{skins}
+\tcbuselibrary{skins, breakable}
 % Ambiente con colores para teoremas de estilo plano
 \tcolorboxenvironment{lema}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{teorema}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{corolario}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{proposicion}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
@@ -91,12 +95,14 @@
 % Ambiente con colores para teoremas de estilo anotacion
 \tcolorboxenvironment{nota}
     {blanker,
+    breakable,
     left=5mm,
     before skip=10pt,
     after skip=10pt,
     borderline west={1mm}{0pt}{Orchid}}
 \tcolorboxenvironment{observacion}
     {blanker,
+    breakable,
     left=5mm,
     before skip=10pt,
     after skip=10pt,
@@ -104,6 +110,7 @@
 % Ambiente con colores para teoremas de estilo definicion
 \tcolorboxenvironment{definicion}
     {frame empty,
+    breakable,
     colback=OliveGreen!10!White,
     grow to left by=6pt,
     grow to right by=6pt,
