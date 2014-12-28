@@ -1764,17 +1764,101 @@
             Si $\sfrac{a}{b}$ y $\sfrac{a}{c}$, entonces $\sfrac{a}{bx + cy} \quad \forall \+ x, y \in \mathbb{Z}$.
         \end{teorema}
 
+        \begin{proof}
+            Como $\sfrac{a}{b}$ sabemos que existe un $q \in \mathbb{Z}$ tal que $b = aq$ y como $\sfrac{a}{c}$ sabemos que existe un $q' \in \mathbb{Z}$ tal que $c = aq'$.
+            Dados $x, y \in \mathbb{Z}$ generales, al multiplicar estos enteros por las relaciones anteriores obtenemos:
+
+            \begin{eqnarray*}
+                bx & = & aqx \\
+                cy & = & aq'y
+            \end{eqnarray*}
+
+            y si sumamos ambas relaciones obtendremos:
+
+            \begin{equation*}
+                bx + cy = aqx + aq'y = a(qx + q'y)
+            \end{equation*}
+
+            y como $x, y, q, q' \in \mathbb{Z}$, podemos establecer la siguiente relación:
+
+            \begin{equation*}
+                bx + cy = a \bar{q} \quad \+ \bar{q} \in \mathbb{Z}
+            \end{equation*}
+
+            por lo que es inmediato que:
+
+            \begin{equation*}
+                \sfrac{a}{bx + cy}
+            \end{equation*}
+        \end{proof}
+
+        \begin{definicion}
+            Un entero $p \ne 0$ se dice primo si y solo si sus únicos divisores son $\pm 1$ y $\pm p$
+        \end{definicion}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Máximo Común Divisor}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Si $\sfrac{a}{b}$ y $\sfrac{a}{c}$ se dice que $a$ es divisor común de $b$ y $c$.
+
+            Si además, todo divisor común de $b$ y $c$ también es divisor de $a$, se dice que $a$ es el máximo común divisor de $b$ y $c$, es decir:
+
+            \begin{equation}
+                a = (b, c)
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            Calcular el máximo común divisor de $24$ y $60$, es decir $(24, 60)$.
+
+            \begin{center}
+                    \begin{tabular}{r c | l}
+                    $24$ & $60$ & $2$ \\
+                    \hline
+                    $12$ & $30$ & $2$ \\
+                    $6$ & $15$ & $3$ \\
+                    $2$ & $5$ & 
+                \end{tabular}
+            \end{center}
+
+            \begin{equation*}
+                (24, 60) = 12
+            \end{equation*}
+        \end{ejemplo}
 
 %-------------------------------------------------------------------------------
 
     \subsection{mínimo común multiplo}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Aprovechando la definición dada del Máximo Común Divisor, simplemente damos una definición de la siguiente forma para el mínimo cumún multiplo:
+
+            \begin{equation}
+                \frac{ab}{(a, b)}
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            Calcular el mínimo común multiplo de $24$ y $60$.
+
+            \begin{equation*}
+                \frac{24 \cdot 60}{12} = 120
+            \end{equation*}
+
+            \begin{center}
+                    \begin{tabular}{r c | l}
+                    $24$ & $60$ & $2$ \\
+                    \hline
+                    $12$ & $30$ & $2$ \\
+                    $6$ & $15$ & $3$ \\
+                    $2$ & $5$ & $2$ \\
+                    $1$ & $5$ & $5$ \\
+                    $1$ & $1$ & 
+                \end{tabular}
+            \end{center}
+        \end{ejemplo}
 
 %-------------------------------------------------------------------------------
 
