@@ -1860,8 +1860,80 @@
             \end{center}
         \end{ejemplo}
 
+        \begin{ejercicio}
+            Calcular $(0, c)$ con $c \ne 0$, $c \in \mathbb{Z}$.
+        \end{ejercicio}
+
 %-------------------------------------------------------------------------------
 
     \subsection{Algoritmo de la división de Euclides}
 
-        \faltante{Falta escribir apunte}
+        \begin{definicion}
+            Para cualesquiera enteros no nulos $a, b$ existen $q, r$ únicos, denominados cociente y residuo respectivamente, tales que:
+
+            \begin{equation}
+                a = b q + r
+            \end{equation}
+
+            Si $\sfrac{b}{a}$, entonces $r = 0$, de lo contrario $0 < r < |b|$.
+        \end{definicion}
+
+        \begin{proposicion}
+            Se puede verificar que un divisor común de $a$ y $b$ divide a $r$ y un divisor común de $b$ y $r$ divide a $a$, es decir:
+
+            \begin{equation}
+                (a, b) = (b, r)
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Si $b$ no divide a $a$, entonces tenemos que:
+
+            \begin{equation*}
+                a = bq + r \quad 0 < r < |b|
+            \end{equation*}
+
+            Primero demostraremos la primera afirmación de la proposición, para lo que decimos que existe un divisor común para $a$ y $b$, al cual llamamos $c$, esto es equivalente a decir que $\sfrac{c}{a}$ y $\sfrac{c}{b}$, lo cual implica que existen $\bar{q}, q' \in \mathbb{Z}$ tales que:
+
+            \begin{eqnarray*}
+                a & = & c \bar{q} \\
+                b & = & c q'
+            \end{eqnarray*}
+
+            lo cual implica que nuestro residuo se escribe como:
+
+            \begin{equation*}
+                r = a - bq = c \bar{q} - c q' q = c (\bar{q} - q' q)
+            \end{equation*}
+
+            en donde $\bar{q} - q' q \in \mathbb{Z}$, por lo que podemos concluir que $\sfrac{c}{r}$.
+
+            Para demostrar la segunda afirmación, tenemos un divisor común de $b$ y de $r$ al que llamamos $l$, es decir, $\sfrac{l}{b}$ y $\sfrac{l}{r}$, lo cual implica que existen $\bar{m}, m' \in \mathbb{Z}$ tales que:
+
+            \begin{eqnarray*}
+                b & = & l \bar{m} \\
+                r & = & l m'
+            \end{eqnarray*}
+
+            lo cual implica que la ecuación original puede ser escrita como:
+
+            \begin{equation*}
+                a = bq + r = l \bar{m} q + lm' = l (\bar{m}q  + m')
+            \end{equation*}
+
+            en donde $\bar{m}q  + m' \in \mathbb{Z}$, por lo que podemos concluir que $\sfrac{l}{a}$, y por lo tanto:
+
+            \begin{equation*}
+                (a, b) = (b, r)
+            \end{equation*}
+        \end{proof}
+
+        \begin{teorema}
+            Para dos enteros no nulos $(a, b)$ existen dos enteros únicos $q, r$ tales que:
+
+            \begin{equation}
+                a = bq + r \quad 0 \leq r < |b|
+            \end{equation}
+
+            A este teorema se le conoce como el agoritmo de la división de Euclides.
+        \end{teorema}
