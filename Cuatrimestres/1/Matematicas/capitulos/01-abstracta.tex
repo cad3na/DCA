@@ -1860,6 +1860,14 @@
             \end{center}
         \end{ejemplo}
 
+        \begin{ejemplo}
+            \faltante{Falta escribir ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            \faltante{Falta escribir ejemplo}
+        \end{ejemplo}
+
         \begin{ejercicio}
             Calcular $(0, c)$ con $c \ne 0$, $c \in \mathbb{Z}$.
         \end{ejercicio}
@@ -1937,3 +1945,140 @@
 
             A este teorema se le conoce como el agoritmo de la división de Euclides.
         \end{teorema}
+
+        \begin{proof}
+            Definimos un conjunto de la forma:
+
+            \begin{equation}
+                S = \left\{ a - bx \mid x \in \mathbb{Z} \right\}
+            \end{equation}
+
+            es decir, el conjunto de los residuos en esta ecuación. Primero queremos verificar que este residuo $r = a - bx \geq 0$, lo que es equivalente a decir:
+
+            \begin{equation*}
+                S \subset \mathbb{Z}^+ \cup \{0\}
+            \end{equation*}
+
+            \begin{enumerate}
+                \item Si $b$ es negativo $(b < 0)$, entonces $b \leq -1$
+
+                \begin{equation*}
+                    b|a| \leq - |a| \leq a
+                \end{equation*}
+
+                \begin{equation*}
+                    a - b|a| \geq 0
+                \end{equation*}
+
+                \item Si $b$ es positivo $(b > 0)$, entonces $b \geq 1$
+
+                \begin{equation*}
+                    b(-|a|) \leq -|a| \leq a
+                \end{equation*}
+
+                \begin{equation*}
+                    a - b(-|a|) \geq 0
+                \end{equation*}
+            \end{enumerate}
+
+            por lo que podemos concluir que $S \subset \mathbb{Z}^+ \cup \{0\}$ y por lo tanto que $r = a - bx \geq 0$.
+            Ahora demostraremos que $r < |b|$.
+
+            Supongamos que $r$ es el menor de estos enteros no negativos y $r \in S$, ademas supongamos que $r \geq |b|$, o bien:
+
+            \begin{equation*}
+                r - |b| \geq 0
+            \end{equation*}
+
+            Como $r \in S$, existe un $x = q \in \mathbb{Z}$ tal que $r = a - bq$, por lo que tenemos que:
+
+            \begin{equation*}
+                r - |b| = a - bq - |b| =
+                \begin{cases}
+                    a - b (q - 1) & \text{ Si } b < 0 \\
+                    a - b (q + 1) & \text{ Si } b > 0 
+                \end{cases}
+            \end{equation*}
+
+            Por otro lado, sabemos que los valores de $r - |b|$ son:
+
+            \begin{eqnarray*}
+                r - |b| & = & r - b < r \text{ para } b > 0 \\
+                r - |b| & = & r + b < r \text{ para } b < 0
+            \end{eqnarray*}
+
+            pero asumimos que $r$ es el menor de los enteros positivos en $S$, por lo que llegamos a una contradicción y por lo tanto:
+
+            \begin{equation*}
+                r < |b|
+            \end{equation*}
+
+            Si bien hemos demostrado la veracidad de esta ecuación, aun no hemos demostrdo que $q$ y $r$ sean únicos, por lo que ahora procederemos demostrando esto.
+
+            Empezaremos suponiendo que existen $q'$ y $r'$ enteros, ademas de $q$ y $r$ tales que:
+
+            \begin{eqnarray*}
+                a & = & bq + r \\
+                a & = & bq' + r'
+            \end{eqnarray*}
+
+            en donde $0 \leq r < |b|$ y $0 \leq r' < |b|$.
+            Si estas expresiones las restamos entre si, obtendremos:
+
+            \begin{equation*}
+                b(q - q') = r' - r
+            \end{equation*}
+
+            lo cual implica que $\sfrac{b}{r' - r}$, es decir, existe un $t \in \mathbb{Z}$, tal que:
+
+            \begin{equation*}
+                r' - r = bt
+            \end{equation*}
+
+            Por otro lado, la expresión $b(q - q') = r' - r$ puede ser expresada como:
+
+            \begin{eqnarray*}
+                b(q - q') + (r - r') & = & 0 \\
+                b(q' - q) + (r' - r) & = & 0
+            \end{eqnarray*}
+
+            lo cual, ya hemos comprobado que implica:
+
+            \begin{equation*}
+                |r - r'| \leq |b|
+            \end{equation*}
+
+            o bien:
+
+            \begin{equation*}
+                |bt| \leq |b|
+            \end{equation*}
+
+            Si tomamos en cuenta los valores que puede tomar $t$, nos daremos cuenta que:
+
+            \begin{enumerate}
+                \item Si $t = 0$
+
+                \begin{equation*}
+                    r' = r \implies q' = q
+                \end{equation*}
+
+                \item Si $t = -1$
+
+                \begin{equation*}
+                    |-b| \leq |b| \implies r' - r = -b \implies r' = r - b \geq 0 \implies r \geq b
+                \end{equation*}
+
+                lo cual es falso, por lo que $t \ne -1$
+
+                \item Si $t = 1$
+
+                \begin{equation*}
+                    |b| \leq |b| \implies r' - r = b \implies r = r' - b \geq 0 \implies r' \geq b
+                \end{equation*}
+
+                lo cual es falso, por lo que $t \ne 1$
+            \end{enumerate}
+
+            y como el caso en que $t = 0$ es el único cierto, concluimos que $q, r$ deben ser únicos.
+        \end{proof}
