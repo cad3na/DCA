@@ -2082,3 +2082,225 @@
 
             y como el caso en que $t = 0$ es el único cierto, concluimos que $q, r$ deben ser únicos.
         \end{proof}
+
+    \subsection{Procedimiento para hallar el Máximo Común Divisor de $a$ y $b$}
+
+        A continuación se describe un procedimiento iterativo para encontrar el Máximo Común Divisor de un par $a, b$.
+        Primero empezaremos asumiendo que $b$ no divide a $a$, por lo que tendremos que:
+
+        \begin{equation} \label{eq:mcd1}
+            a = bq + r \quad 0 \leq r < |b|
+        \end{equation}
+
+        El caso contrario es trivial, dado que si $\sfrac{b}{a}$, claramente
+
+        \begin{equation*}
+            (a, b) = b
+        \end{equation*}
+
+        Si ahora nos concentramos en $r$, tenemos dos casos; si $\sfrac{r}{b}$, sabemos que $b = r q_1$ y $a = r q_1 q + r = r(q_1 q + 1)$, por lo que:
+
+        \begin{equation*}
+            (a, b) = r
+        \end{equation*}
+
+        Si $r$ no divide a $b$ tenemos que:
+
+        \begin{equation} \label{eq:mcd2}
+            b = q_1 r + r_1 \quad 0 \leq r_1 < |r|
+        \end{equation}
+
+        Por lo que ahora revisamos a $r_1$; si $\sfrac{r_1}{r}$, sabemos que $r = r_1 q_2$ por lo que:
+
+        \begin{equation*}
+            (b, r) = r_1
+        \end{equation*}
+
+        Si $r_1$ no divide a $r$ tenemos que:
+
+        \begin{equation} \label{eq:mcd3}
+            r = q_2 r_1 + r_2
+        \end{equation}
+
+        Si proseguimos con estas iteraciones $k$ veces, obtendremos:
+
+        \begin{equation*}
+            r_k = q_{k+2} r_{k+1} + r_{k+2} \quad 0 \leq r_{k+2} < |r_{k+1}|
+        \end{equation*}
+
+        Supongamos ahora que esta ultima iteración es donde tenemos que $\sfrac{r_{k+2}}{r_{k+1}}$, es decir:
+
+        \begin{equation*}
+            r_{k+2} = (r_{k+1}, r_k) = \dots = (r_1, r) = (r, b) = (b, a)
+        \end{equation*}
+
+        Por lo que hemos encontrado el Máximo Común Divisor del par original.
+
+        Si ahora despejamos a $r$ de la ecuación~\ref{eq:mcd1} tendremos:
+
+        \begin{equation*}
+            r = a - bq = (1)a + (-q)b = m_1 a + n_1 b
+        \end{equation*}
+
+        y lo sustituimos en la ecuación~\ref{eq:mcd2}
+
+        \begin{eqnarray*}
+            r_1 & = & b - q_1 r = b - q_1 (m_1 a + n_1 b) \\
+            & = & (-m_1 q_1) a + (1 - n_1 q_1) b = m_2 a + n_2 b
+        \end{eqnarray*}
+
+        y lo sustituimos en la ecuación~\ref{eq:mcd3}
+
+        \begin{eqnarray*}
+            r_2 & = & r - q_2 r_1 = (m_1 a + n_1 b) - q_2 (m_2 a + n_2 b) \\
+            & = & (m_1 - m_2 q_2) a + (n_1 - n_2 q_2) b = m_3 a + n_3 b
+        \end{eqnarray*}
+
+        En general
+
+        \begin{equation}
+            r_k = m_{k+1} a + n_{k+1} b
+        \end{equation}
+
+        \begin{teorema}
+            Si $d = (a, b)$, entonces existen $m, n \in \mathbb{Z}$ tales que:
+
+            \begin{equation}
+                d = (a, b) = ma + nb
+            \end{equation}
+
+            A esto se le conoce como la identidad de Bezout.
+        \end{teorema}
+
+        \begin{ejemplo}
+            Calcular $(-2805, 119)$
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Calcular $(726, 275)$
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Expresar $(726, 275) = 11$, en terminos de $726$ y $275$.
+        \end{ejemplo}
+
+        \begin{definicion}
+            Dos enteros $a$ y $b$, para los cuales $(a, b) = 1$ se dicen primos relativos.
+        \end{definicion}
+
+        \begin{teorema}
+            Todo entero $a > 1$ tiene una factorización única en producto de primos positicos, es decir:
+
+            \begin{equation}
+                a = p_1^{\alpha_1} \cdot p_2^{\alpha_2} \cdot \dots \cdot p_n^{\alpha_n} \quad \alpha_i \geq 1 \quad 1 \leq i \leq n
+            \end{equation}
+
+            y los $p_i$ son primos positivos distintos.
+        \end{teorema}
+
+        \begin{ejemplo}
+            Hallar una factorización única para $2241756$.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Hallar una factorización única para $8566074$.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Hallar $(2241756, 8566074)$ a partir de sus factorizaciones únicas.
+        \end{ejemplo}
+
+    \subsection{El anillo de los polinomios}
+
+        \begin{definicion}
+            Sea $F$ un campo, definimos el anillo de los polinomios:
+
+            \begin{equation}
+                F[x] = \left\{ p(x) = a_0 + a_1 x + \dots + a_n x^n \mid n \in \mathbb{Z}, n \geq 0, a_i \in F \right\}
+            \end{equation}
+
+            En donde para dos elementos $p(x)$ y $q(x)$ de la forma:
+
+            \begin{eqnarray*}
+                p(x) & = & a_0 + a_1 x + \dots + a_n x^n \\
+                q(x) & = & b_0 + b_1 x + \dots + b_m x^m 
+            \end{eqnarray*}
+
+            definimos la suma como:
+
+            \begin{equation}
+                p(x) + q(x) = (a_0 + b_0) + (a_1 + b_1) x + \dots (a_s + b_s) x^s
+            \end{equation}
+
+            en donde $s = \max{(m, n)}$. Y para el producto tenemos:
+
+            \begin{equation}
+                p(x)q(x) = c_0 + c_1 x + \dots + c_l x^l \quad 0 \leq k \leq l
+            \end{equation}
+
+            y los $c_k$ son de la forma:
+
+            \begin{equation}
+                c_k = \sum_{i+j = k} a_i + b_j = a_0 b_k + a_1 b_{k-1} + \dots + a_k b_0
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $f(x) = a_0 + a_1 x + \dots + a_n x^n \in F[x]$ con $a_n \ne 0$, el grado de $f(x)$ esta dado por:
+
+            \begin{equation}
+                \grado{f(x)} = n
+            \end{equation}
+
+            Además, si $a_n = 1$, $f(x)$ se dice mónico.
+
+            Para $p(x), q(x) \in F[x]$, algunas propiedades notables de esta función $\grado$, son:
+
+            \begin{enumerate}
+                \item $\grado{p(x) + q(x)} \leq \max{\grado{p(x)}, \grado{q(x)}}$
+                \item $\grado{p(x)q(x)} = \grado{p(x)} + \grado{q(x)}$
+            \end{enumerate}
+        \end{definicion}
+
+        \begin{observacion}
+            Dados los polinomios $f(x), g(x) \in F[x]$, con $g(x) \ne 0$, existen dos polinomios únicos $q(x), r(x) \in F[x]$ tales que:
+
+            \begin{equation}
+                f(x) = q(x) g(x) + r(x) \quad \grado{r(x)} < \grado{g(x)}
+            \end{equation}
+
+            Si además, $\sfrac{g(x)}{f(x)}$ entonces $r(x) = 0$.
+
+            Como en el caso de los enteros, puede definirse divisibilidad, Máximo Común Divisor y usar el algoritmo de la división de Euclides para encontrar el Máximo Común Divisor de $f(x)$ y $g(x)$.
+
+            Cualquiera de los polinomios dados se puede dividir por un factor que no divida al otro polinomio.
+            Ese factor, por no ser común de ambos polinomios, no forma parte del Máximo Común Divisor.
+            Entonces el residuo de cualquier división se puede dividir por un factor que no divida a los polinomios dados.
+        \end{observacion}
+
+        \begin{ejemplo}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{eqnarray*}
+                f(x) & = & 2 x^3 - 11 x^2 + 10 x + 8 \\
+                g(x) & = & 2 x^3 + x^2 - 8 x - 4
+            \end{eqnarray*}
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{eqnarray*}
+                f(x) & = & 12 x^3 - 26 x^2 + 20 x - 12 \\
+                g(x) & = & 2 x^3 - x^2 - 3 x
+            \end{eqnarray*}
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{eqnarray*}
+                f(x) & = & x^3 - 6 x + 7 \\
+                g(x) & = & x + 4
+            \end{eqnarray*}
+        \end{ejercicio}
