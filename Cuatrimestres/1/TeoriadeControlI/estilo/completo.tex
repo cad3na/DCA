@@ -69,6 +69,7 @@
 \newtheorem{corolario}{Corolario}[chapter]
 \theoremstyle{remark}
 \newtheorem{nota}{Nota}[chapter]
+\newtheorem{resultado}{Resultado}[chapter]
 \theoremstyle{definition}
 \newtheorem{definicion}{Definición}[chapter]
 \newtheorem{problema}{Problema}[chapter]
@@ -98,6 +99,13 @@
     after skip=10pt}
 % Ambiente con colores para teoremas de estilo anotacion
 \tcolorboxenvironment{nota}
+    {blanker,
+    breakable,
+    left=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{Orchid}}
+\tcolorboxenvironment{resultado}
     {blanker,
     breakable,
     left=5mm,
