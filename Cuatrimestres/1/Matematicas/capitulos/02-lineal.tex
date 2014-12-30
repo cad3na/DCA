@@ -66,26 +66,26 @@
 			Definimos el espacio vectorial $\mathbb{F}^n$ como:
 
 			\begin{equation}
-				\mathbb{F}^n = \left\{ (x_1, x_2, \dots, x_n) \mid x_i \in \mathbb{F} \right\}
+				\mathbb{F}^n = \left\{ \begin{pmatrix} x_1 & x_2 & \dots & x_n \end{pmatrix} \mid x_i \in \mathbb{F} \right\}
 			\end{equation}
 
 			Dados los elementos $\alpha, \beta \in \mathbb{F}^n$ de la forma:
 
 			\begin{eqnarray*}
-				\alpha & = & (x_1, x_2, \dots, x_n) \\
-				\beta  & = & (y_1, y_2, \dots, y_n)
+				\alpha & = & \begin{pmatrix} x_1 & x_2 & \dots & x_n \end{pmatrix} \\
+				\beta  & = & \begin{pmatrix} y_1 & y_2 & \dots & y_n \end{pmatrix} \\
 			\end{eqnarray*}
 
 			podemos definir la suma como:
 
 			\begin{equation}
-				\alpha + \beta = (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n)
+				\alpha + \beta = \begin{pmatrix} x_1 + y_1 & x_2 + y_2 & \dots & x_n + y_n \end{pmatrix}
 			\end{equation}
 
 			y la multiplicación por escalar como:
 
 			\begin{equation}
-				c \alpha = (c x_1, c x_2, \dots, c x_n) \quad \forall \+ c \in \mathbb{F}
+				c \alpha = \begin{pmatrix} c x_1 & c x_2 & \dots & c x_n \end{pmatrix} \quad \forall \+ c \in \mathbb{F}
 			\end{equation}
 		\end{definicion}
 
@@ -180,20 +180,20 @@
 			Por ejemplo, si en $\mathbb{R}^2$ definimos:
 
 			\begin{eqnarray*}
-				W_1 = \left\{ (x_1, 0) \mid x_1 \in \mathbb{R} \right\} \subset \mathbb{R} \\
-				W_2 = \left\{ (0, x_2) \mid x_2 \in \mathbb{R} \right\} \subset \mathbb{R}
+				W_1 = \left\{ \begin{pmatrix} x_1 & 0 \end{pmatrix} \mid x_1 \in \mathbb{R} \right\} \subset \mathbb{R} \\
+				W_2 = \left\{ \begin{pmatrix} 0 & x_2 \end{pmatrix} \mid x_2 \in \mathbb{R} \right\} \subset \mathbb{R}
 			\end{eqnarray*}
 
 			La union de estos subespacios vectoriales sería:
 
 			\begin{equation*}
-				W_1 \cup W_2 = \left\{ (x_1, 0), (0, x_2) \mid x_1, x_2 \in \mathbb{R} \right\}
+				W_1 \cup W_2 = \left\{ \begin{pmatrix} x_1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & x_2 \end{pmatrix} \mid x_1, x_2 \in \mathbb{R} \right\}
 			\end{equation*}
 
 			por lo que si tomamos un elemento de cada subespacio vectorial y los sumamos, obtendremos:
 
 			\begin{equation*}
-				(x_1, 0) + (0, x_2) = (x_1, x_2) \notin W_1 \cup W_2
+				\begin{pmatrix} x_1 & 0 \end{pmatrix} + \begin{pmatrix} 0 & x_2 \end{pmatrix} = \begin{pmatrix} x_1 & x_2 \end{pmatrix} \notin W_1 \cup W_2
 			\end{equation*}
 		\end{observacion}
 
@@ -264,19 +264,19 @@
 			Sea $A$ una matriz $m \times n$ con entradas en $\mathbb{F}$, los vectores fila de $A$ son:
 
 			\begin{eqnarray*}
-				\alpha_1 & = & (a_{11}, a_{12}, \dots, a_{1n}) \\
-				\alpha_2 & = & (a_{21}, a_{22}, \dots, a_{2n}) \\
+				\alpha_1 & = & \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \end{pmatrix} \\
+				\alpha_2 & = & \begin{pmatrix} a_{21} & a_{22} & \dots & a_{2n} \end{pmatrix} \\
 				& \vdots & \\
-				\alpha_m & = & (a_{m1}, a_{m2}, \dots, a_{mn})
+				\alpha_m & = & \begin{pmatrix} a_{m1} & a_{m2} & \dots & a_{mn} \end{pmatrix}
 			\end{eqnarray*}
 
 			y los vectores columna son:
 
 			\begin{eqnarray*}
-				\beta_1 & = & (a_{11}, a_{21}, \dots, a_{m1})^T \\
-				\beta_2 & = & (a_{12}, a_{22}, \dots, a_{m2})^T \\
+				\beta_1 & = & \begin{pmatrix} a_{11} & a_{21} & \dots & a_{m1} \end{pmatrix}^T \\
+				\beta_2 & = & \begin{pmatrix} a_{12} & a_{22} & \dots & a_{m2} \end{pmatrix}^T \\
 				& \vdots & \\
-				\beta_n & = & (a_{1n}, a_{2n}, \dots, a_{mn})^T
+				\beta_n & = & \begin{pmatrix} a_{1n} & a_{2n} & \dots & a_{mn} \end{pmatrix}^T
 			\end{eqnarray*}
 
 			es decir:
@@ -326,20 +326,20 @@
 		\end{observacion}
 
 		\begin{ejemplo}
-			Verificar si $\{(1, 2), (2, 9), (0, 3)\}$ es linealmente dependiente o independiente.
+			Verificar si $\left\{ \begin{pmatrix} 1 & 2 \end{pmatrix}, \begin{pmatrix} 2 & 9 \end{pmatrix}, \begin{pmatrix} 0 & 3 \end{pmatrix} \right\}$ es linealmente dependiente o independiente.
 			\faltante{Falta desarrollar ejemplo}
 		\end{ejemplo}
 
 		\begin{ejercicio}
-			Verificar si $\{(20, 3), (0, 0)\}$ es linealmente dependiente o independiente en $\mathbb{R}^2$
+			Verificar si $\left\{ \begin{pmatrix} 20 & 3 \end{pmatrix}, \begin{pmatrix} 0 & 0 \end{pmatrix} \right\}$ es linealmente dependiente o independiente en $\mathbb{R}^2$
 		\end{ejercicio}
 
 		\begin{ejercicio}
-			Verificar si $\{(0, 0, 0)\}$ es linealmente dependiente o independiente en $\mathbb{R}^3$.
+			Verificar si $\left\{ \begin{pmatrix} 0 & 0 & 0 \end{pmatrix} \right\}$ es linealmente dependiente o independiente en $\mathbb{R}^3$.
 		\end{ejercicio}
 
 		\begin{ejercicio}
-			Verificar si $\{e_1, e_2, e_3\}$ es linealmente dependiente o independiente en $\mathbb{R}^4$.
+			Verificar si $\left\{ e_1, e_2, e_3 \right\}$ es linealmente dependiente o independiente en $\mathbb{R}^4$.
 		\end{ejercicio}
 
 		\begin{proposicion}
@@ -399,7 +399,7 @@
 		\end{definicion}
 
 		\begin{ejercicio}
-			Encontrar una base para $\mathbb{R}^3$ que incluya a $(1, 1, 0)$ y $(0, 1, 0)$.
+			Encontrar una base para $\mathbb{R}^3$ que incluya a $\begin{pmatrix} 1 & 1 & 0 \end{pmatrix}$ y $\begin{pmatrix} 0 & 1 & 0 \end{pmatrix}$.
 		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
@@ -419,11 +419,174 @@
 			\end{enumerate}
 		\end{definicion}
 
+		\begin{proposicion}
+			El isomorfismo entre espacios vectoriales es una relación de equivalencia.
+		\end{proposicion}
+
+		\begin{teorema}
+			Todo espacio vectorial $V$ sobre $\mathbb{F}$ de dimensión $n > 0 $ es isomorfo a $\mathbb{F}^n$, es decir:
+
+			\begin{equation}
+				V \cong \mathbb{F}^n
+			\end{equation}
+		\end{teorema}
+
+		\begin{proof}
+			Sea $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$ una base de $V$. Dado $\alpha \in V$, este tiene la forma:
+
+			\begin{equation*}
+				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
+			\end{equation*}
+
+			Ahora, si definimos una función $\varphi$ tal que:
+
+			\begin{equation*}
+				\varphi(\alpha) =
+				\begin{pmatrix}
+					a_1 & a_2 & \dots & a_n
+				\end{pmatrix}
+			\end{equation*}
+
+			es decir:
+
+			\begin{eqnarray*}
+				\varphi \colon V & \to & \mathbb{F}^n \\
+				\alpha & \to & \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix}
+			\end{eqnarray*}
+
+			Por lo que tenemos que demostrar, es que esta función es isomorfismo.
+			Para empezar, demostraremos que esta función es inyectiva.
+
+			Para esto tomamos dos elementos $\alpha, \beta \in V$, tales que:
+
+			\begin{eqnarray*}
+				\alpha & = & a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
+				\beta & = & b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
+			\end{eqnarray*}
+
+			Por lo que si asumimos que $\varphi(\alpha) = \varphi(\beta)$, es decir:
+
+			\begin{equation}
+				\begin{pmatrix}
+					a_1 & a_2 & \dots & a_n
+				\end{pmatrix} =
+				\begin{pmatrix}
+					b_1 & b_2 & \dots & b_n
+				\end{pmatrix}
+			\end{equation}
+
+			tenemos que esto implica que:
+
+			\begin{eqnarray*}
+				a_1 & = & b_1 \\
+				a_2 & = & b_2 \\
+				& \vdots & \\
+				a_n & = & b_n
+			\end{eqnarray*}
+
+			y por lo tanto $\alpha = \beta$, por lo que $\varphi$ es inyectiva.
+
+			Por otro lado, sabemos que $\varphi$ es suprayectiva por construcción.
+
+			Ahora tomamos dos elementos $\alpha, \beta \in V$ y los operamos, por lo que tendremos que:
+
+			\begin{eqnarray*}
+				\varphi(\alpha + \beta) & = & \varphi(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
+				& = & \varphi((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
+				& = & \begin{pmatrix} a_1 + b_1 & a_2 + b_2 & \dots & a_n + b_n \end{pmatrix} \\
+				& = & \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} + \begin{pmatrix} b_1 & b_2 & \dots & b_n \end{pmatrix} \\
+				& = & \varphi(\alpha) + \varphi(\beta)
+			\end{eqnarray*}
+
+			Por otro lado, si tomamos un elemento $r \in \mathbb{F}$ y un elemento $\alpha \in V$, tendremos que:
+
+			\begin{eqnarray*}
+				\varphi(r \alpha) & = & \varphi(r (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
+				& = & \varphi(r a_1 \alpha_1 + r a_2 \alpha_2 + \dots + r a_n \alpha_n) \\
+				& = & \begin{pmatrix} r a_1 & r a_2 & \dots & r a_n \end{pmatrix} \\
+				& = & r \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} = r \varphi(\alpha)
+			\end{eqnarray*}
+
+			Por lo que queda demostrado que $\varphi$ es un isomorfismo y por lo tanto:
+
+			\begin{equation*}
+				V \cong \mathbb{F}^n
+			\end{equation*}
+		\end{proof}
+
+		\begin{ejercicio}
+			Sea un espacio vectorial $V$ definido como:
+
+			\begin{equation*}
+				V = \left\{ p(x) = a_0 + a_1 x \mid \grado{p(x)} = 1 \right\}
+			\end{equation*}
+
+			Verfiicar que $V \cong \mathbb{R}^2$ dada la siguiente función:
+
+			\begin{eqnarray*}
+				\varphi \colon V & \to & \mathbb{R}^2 \\
+				\alpha & \to & \begin{pmatrix} a_0 & a_1 \end{pmatrix}
+			\end{eqnarray*}
+		\end{ejercicio}
+
+		\begin{proposicion}
+			Si $S$ y $T$ son subespacios vectoriales de un espacio vectorial de dimensión finita, entonces tenemos que:
+
+			\begin{equation}
+				\dim{(S + T)} + \dim{(S \cap T)} = \dim{S} + \dim{T}
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proof}
+			Sea $\{\alpha_1, \alpha_2, \dots, \alpha_k\}$ una base de $S \cap T$, podemos completar con $\{\beta_1, \beta_2, \dots, \beta_{r-k}\}$ a una base de $S$, por lo que la dimensión de $S$ sería:
+
+			\begin{equation*}
+				\dim{S} = k + (r - k) = r
+			\end{equation*}
+
+			Similarmente podemos completar a una base de $T$ con $\{\gamma_1, \gamma_2, \dots, \gamma_{m-k}\}$, por lo que su dimensión es:
+
+			\begin{equation*}
+				\dim{T} = k + (m - k) = m
+			\end{equation*}
+
+			Veamos que:
+
+			\begin{equation*}
+				\{ \underbrace{\overbrace{\alpha_1, \alpha_2, \dots, \alpha_k}^k, \overbrace{\beta_1, \beta_2, \dots, \beta_{r-k}}^{r-k}}_{r}, \overbrace{\gamma_1, \gamma_2, \dots, \gamma_{m-k}}^{m-k} \}
+			\end{equation*}
+
+			es una base de $S + T$, por lo que:
+
+			\begin{eqnarray*}
+				\dim{(S + T)} & = & r + m - k \\
+				\dim{(S + T)} & = & \dim{S} + \dim{T} - \dim{(S \cap T)}
+			\end{eqnarray*}
+
+			Aqui aun falta verificar que esta base es linealmente independiente y que genera a $S + T$, pero puede verse inmediatamente el resultado final.
+		\end{proof}
+
+		\begin{ejercicio}
+			Verificar que en $\mathbb{R}^3$ la suma de dos subespacios de dimensción igual a dos, tiene dimensiones no cero.
+		\end{ejercicio}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
 \section{Transformaciones lineales}
+
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Sean $V, W$, espacios vectoriales sobre un campo $\mathbb{F}$, con una función $T \colon V \to W$.
+			Se dice que $T$ es una transformación lineal de $V$ a $W$ si:
+
+			\begin{enumerate}
+				\item $T(\alpha + \beta) = T(\alpha) + T(\beta) \quad \forall \+ \alpha, \beta \in V$
+				\item $T(c \alpha) = c T(\alpha) \quad \forall \+ c \in \mathbb{F} \quad \forall \+ \alpha \in V$
+			\end{enumerate}
+		\end{definicion}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
