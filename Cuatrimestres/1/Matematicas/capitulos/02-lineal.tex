@@ -259,10 +259,148 @@
 				s' & = & s
 			\end{eqnarray*}
 		\end{proof}
+
+		\begin{definicion}
+			Sea $A$ una matriz $m \times n$ con entradas en $\mathbb{F}$, los vectores fila de $A$ son:
+
+			\begin{eqnarray*}
+				\alpha_1 & = & (a_{11}, a_{12}, \dots, a_{1n}) \\
+				\alpha_2 & = & (a_{21}, a_{22}, \dots, a_{2n}) \\
+				& \vdots & \\
+				\alpha_m & = & (a_{m1}, a_{m2}, \dots, a_{mn})
+			\end{eqnarray*}
+
+			y los vectores columna son:
+
+			\begin{eqnarray*}
+				\beta_1 & = & (a_{11}, a_{21}, \dots, a_{m1})^T \\
+				\beta_2 & = & (a_{12}, a_{22}, \dots, a_{m2})^T \\
+				& \vdots & \\
+				\beta_n & = & (a_{1n}, a_{2n}, \dots, a_{mn})^T
+			\end{eqnarray*}
+
+			es decir:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					a_{11} & a_{12} & \dots & a_{1n} \\
+					a_{21} & a_{22} & \dots & a_{2n} \\
+					\vdots & \vdots & & \vdots \\
+					a_{m1} & a_{m2} & \dots & a_{mn}
+				\end{pmatrix}
+			\end{equation*}
+
+			El subespacio de $\mathbb{F}^m$ generado por $\alpha_1, \alpha_2, \dots, \alpha_m$ se denomina espacio fila de $A$.
+			El subespacio de $\mathbb{F}^n$ generado por $\beta_1, \beta_2, \dots, \beta_n$ se denomina espacio columna de $A$.
+		\end{definicion}
+
+		\begin{definicion}
+			Si $A$ y $B$ son matrices equivalentes (por filas, mediante operaciones elementales), entonces el espacio fila de $A$ coincide con el espacio fila de $B$.
+		\end{definicion}
  
 %-------------------------------------------------------------------------------
 
 	\subsection{Dependencia e independencia lineal}
+
+		\begin{definicion}
+			Los vectores $\alpha_1, \alpha_2, \dots, \alpha_k$ se dicen linealmente dependientes si existen escalares $a_1, a_2, \dots, a_k$ no todos cero, tales que:
+
+			\begin{equation}
+				\sum_{i=1}^k a_i \alpha_i = 0
+			\end{equation}
+
+			Los vectores $\alpha_1, \alpha_2, \dots, \alpha_k$ se dicen linealmente independientes si no son linealmente dependientes.
+		\end{definicion}
+
+		\begin{definicion}
+			Un conjunto $A$ de vectores se dice linealmente independiente si cualquier subconjunto finito de $A$ es linealmente independiente.
+		\end{definicion}
+
+		\begin{definicion}
+			Un conjunto $A$ de vectores se dice linealmente dependiente si existe un subconjunto finito de $A$ no vacio que sea linealmente dependiente.
+		\end{definicion}
+
+		\begin{observacion}
+			Por convención, el conjunto $\varnothing$ es linealmente independiente.
+		\end{observacion}
+
+		\begin{ejemplo}
+			Verificar si $\{(1, 2), (2, 9), (0, 3)\}$ es linealmente dependiente o independiente.
+			\faltante{Falta desarrollar ejemplo}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Verificar si $\{(20, 3), (0, 0)\}$ es linealmente dependiente o independiente en $\mathbb{R}^2$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar si $\{(0, 0, 0)\}$ es linealmente dependiente o independiente en $\mathbb{R}^3$.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar si $\{e_1, e_2, e_3\}$ es linealmente dependiente o independiente en $\mathbb{R}^4$.
+		\end{ejercicio}
+
+		\begin{proposicion}
+			Un conjunto de vectores $\{\alpha_1, \alpha_2, \dots, \alpha_n\}$, con $\alpha_i \ne 0$ para $1 \leq i \leq n$ es linealmente dependiente si y solo si algún $\alpha_k$ es combinación lineal de los vectores que le proceden, con $1 \leq k \leq n$.
+		\end{proposicion}
+
+		\begin{proposicion}
+			Si $\alpha_1, \alpha_2, \dots, \alpha_k$ con $\alpha_i \ne 0$ para $1 \leq i \leq k$ son vectores que generan a un espacio vectorial $V$, entonces existe un subconjunto linealmente independiente de estos generadores que tambien generan a $V$.
+		\end{proposicion}
+
+		\begin{proof}
+			Para demostrar la proposición anterior, debemos tomar un subconjunto de los vectores originales y eliminar cualquier vector linealmente dependiente, para lograr que sea linealmente independiente, y que siga generando al espacio vectorial.
+
+			Primero debemos de tomar el primer vector $\alpha_1$ \footnote{Realmente no importa el orden que tengan los vectores, ya que si un par es linealmente dependiente, tan solo debemos elimnar a uno de ellos.} y revisar si es linealmente dependiente con el siguiente vector $\alpha_2$, si es cierto esto, se procede a eliminar el vector $\alpha_2$ y se toma el siguiente vector, y asi hasta terminar con el conjunto.
+
+			Al finalizar este proceso, tendremos un subconjunto $\{ \alpha_1, \alpha_{n_1}, \dots, \alpha_{n_j}\}$ que es linealmente independiente por construcción y que sigue generando al espacio vectorial.
+		\end{proof}
+
+		\begin{ejercicio}
+			Sea $V$ un espacio vectorial, y sean $\alpha_1, \alpha_2, \alpha_3 \in V$ tales que:
+
+			\begin{equation*}
+				\alpha_1 + \alpha_2 + \alpha_3 = 0
+			\end{equation*}
+
+			Verificar que:
+
+			\begin{equation*}
+				\mathcal{L}\{ \alpha_1, \alpha_2 \} = \mathcal{L}\{ \alpha_2, \alpha_3 \}
+			\end{equation*}
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Sea el conjunto $A$ definido por:
+
+			\begin{equation*}
+				A = \left\{ x \in \mathbb{R} \mid x = a \sqrt{1} + b \sqrt{s} + c \sqrt{3}, a, b, c \in \mathbb{Q} \right\}
+			\end{equation*}
+
+			Verificar que $A$ es un espacio vectorial sobre $\mathbb{Q}$.
+
+			Verificar que $\sqrt{1}, \sqrt{2}, \sqrt{3}$ son linealmente independientes y generan a $A$.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que:
+
+			\begin{equation*}
+				\left\{ 1, 1 + x, 1 + x + x^2, \dots, 1 + x + x^2 + \dots + x^n \right\}
+			\end{equation*}
+
+			es un conjunto con elementos linealmente independientes.
+		\end{ejercicio}
+
+		\begin{definicion}
+			Sea $V$ un espacio vectorial de dimensión $n$, un conjunto de $n$ vectores forma una base para $V$ si es linealmente independiente y genera a $V$.
+		\end{definicion}
+
+		\begin{ejercicio}
+			Encontrar una base para $\mathbb{R}^3$ que incluya a $(1, 1, 0)$ y $(0, 1, 0)$.
+		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -270,23 +408,34 @@
 
 \section{Isomorfismos}
 
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Sean $V$ y $V'$ espacios vectoriales sobre un campo $\mathbb{F}$, se dice que $V$ y $V'$ son isomorfos, si existe una función $\varphi \colon V \to V'$ inyectiva y suprayectiva, tal que:
+
+			\begin{enumerate}
+				\item $\varphi(\alpha + \beta) = \varphi(\alpha) + \varphi(\beta) \quad \forall \+ \alpha, \beta \in V$
+				\item $\varphi(r \alpha) = r \varphi(\alpha) \quad \forall \+ r \in \mathbb{F} \quad \forall \+ \alpha \in V$
+			\end{enumerate}
+		\end{definicion}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
-\section{Transformaciones lineal}
+\section{Transformaciones lineales}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
-\section{Operadores lineal}
+\section{Operadores lineales}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
-\section{Funcionales lineal}
+\section{Funcionales lineales}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
