@@ -588,6 +588,94 @@
 			\end{enumerate}
 		\end{definicion}
 
+		\begin{proposicion}
+			Sea $T \colon V \to W$ una transformación lineal, sean $c_1, c_2, \dots, c_k \in \mathbb{F}$ y $\alpha_1, \alpha_2, \dots, \alpha_k \in V$, entonces:
+
+			\begin{equation*}
+				T(c_1 \alpha_1 + c_2 \alpha_2 + \dots + c_n \alpha_n) = c_1 T(\alpha_1) + c_2 T(\alpha_2) + \dots + c_n T(\alpha_n)
+			\end{equation*}
+
+			es decir:
+
+			\begin{equation}
+				T \left( \sum_{i=1}^n c_i \alpha_i \right) = \sum_{i=1}^n c_i T(\alpha_i) \quad n \in \mathbb{N}
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proposicion}
+			Si $T \colon V \to W$ es una transformación lineal, entonces:
+
+			\begin{equation}
+				T(0_V) = 0_W
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proof}
+			Si sumamos $0_W$ a $T(0_V)$, tendremos.
+
+			\begin{equation*}
+				0_W + T(0_V) = T(0_V) = T(0_V + 0_V) = T(0_V) + T(0_V)
+			\end{equation*}
+
+			y cancelando un $T(0_V)$ en ambos lados de esta ecuación, tenemos:
+
+			\begin{equation*}
+				0_W = T(0_V)
+			\end{equation*}
+		\end{proof}
+
+		\begin{ejercicio}
+			Dada la función:
+
+			\begin{eqnarray*}
+				0 \colon V & \to & V \\
+				\alpha & \to & 0
+			\end{eqnarray*}
+
+			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la función:
+
+			\begin{eqnarray*}
+				T \colon \mathbb{R} & \to & \mathbb{R} \\
+				x & \to & x^2
+			\end{eqnarray*}
+
+			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la función:
+
+			\begin{eqnarray*}
+				T \colon \mathbb{R}^3 & \to & \mathbb{R}^2 \\
+				\begin{pmatrix} x_1 & x_2 & x_3 \end{pmatrix} & \to & \begin{pmatrix} x_1 & x_3 \end{pmatrix}
+			\end{eqnarray*}
+
+			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la función:
+
+			\begin{eqnarray*}
+				T \colon \mathbb{R}^2 & \to & \mathbb{R}^3 \\
+				\begin{pmatrix} x_1 & x_2 \end{pmatrix} & \to & \begin{pmatrix} 0 & x_1 & x_2 \end{pmatrix}
+			\end{eqnarray*}
+
+			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
+		\end{ejercicio}
+
+		\begin{teorema}
+			Sea $V, W$ espacios vectoriales sobre un campo $\mathbb{F}$, $\{\alpha_1, \alpha_2, \dots, \alpha_n\}$ una base de $V$ y $\{w_1, w_2, \dots, w_n\}$ una base de $W$, existe una única transformación lineal $T \colon V \to W$ tal que:
+
+			\begin{equation}
+				T(\alpha_i) = w_i \quad 1 \leq i \leq n
+			\end{equation}
+		\end{teorema}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
