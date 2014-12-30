@@ -1,0 +1,319 @@
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Espacios vectoriales}
+
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Un espacio vectorial $V$ consta de lo siguiente:
+
+			\begin{enumerate}
+				\item Un campo $\mathbb{F}$ de escalares
+				\item Un conjunto no vacio de objetos denominados vectores
+				\item Una operación denominada suma o adición que asocia a cada par de vectores $\alpha, \beta \in V$, un vector $\alpha + \beta \in V$ llamado suma de $\alpha$ y $\beta$, que cumple lo siguiente
+				\begin{enumerate}
+					\item $\alpha + \beta = \beta + \alpha \quad \forall \+ \alpha, \beta \in V$
+					\item $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \quad \forall \+ \alpha, \beta, \gamma \in V$
+					\item $\exists \+ ! \vec{0} \ni \alpha + \vec{0} = \alpha$
+					\item $\exists \+ ! - \alpha \in V \ni \alpha + (-\alpha) = \vec{0} \quad \forall \+ \alpha \in V$
+				\end{enumerate}
+				\item Una operación denominada multiplicación por escalares, que asocia a cada escalar $c \in \mathbb{F}$ un vector $c \alpha \in V$, de manera que:
+				\begin{enumerate}
+					\item $(c_1 c_2) \alpha = c_1 (c_2 \alpha) \quad \forall \+ c_1, c_2 \in \mathbb{F} \quad \forall \+ \alpha \in V$
+					\item $c(\alpha + \beta) = c \alpha + c \beta \quad \forall \+ c \in \mathbb{F} \quad \forall \+ \alpha, \beta \in V$
+					\item $(c_1 + c_2) \alpha = c_1 \alpha + c_2 \alpha \quad \forall \+ c_1, c_2 \in \mathbb{F} \quad \forall \+ \alpha \in V$
+					\item $1 \cdot \alpha = \alpha \quad \forall \+ \alpha \in V$
+				\end{enumerate}
+			\end{enumerate}
+		\end{definicion}
+
+		\begin{ejercicio}
+			Verificar que un campo $\mathbb{F}$ es un espacio vectorial sobre si mismo.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{R}$ es un espacio vectorial sobre $\mathbb{R}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{Q}$ es un espacio vectorial sobre $\mathbb{Q}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{C}$ es un espacio vectorial sobre $\mathbb{C}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{R}$ es un espacio vectorial sobre $\mathbb{Q}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{C}$ es un espacio vectorial sobre $\mathbb{Q}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{Q}$ es un espacio vectorial sobre $\mathbb{R}$
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{R}$ es un espacio vectorial sobre $\mathbb{C}$
+		\end{ejercicio}
+
+		\begin{definicion}
+			Sea $\mathbb{F}$ un campo y sea $n \in \mathbb{N}$.
+			Definimos el espacio vectorial $\mathbb{F}^n$ como:
+
+			\begin{equation}
+				\mathbb{F}^n = \left\{ (x_1, x_2, \dots, x_n) \mid x_i \in \mathbb{F} \right\}
+			\end{equation}
+
+			Dados los elementos $\alpha, \beta \in \mathbb{F}^n$ de la forma:
+
+			\begin{eqnarray*}
+				\alpha & = & (x_1, x_2, \dots, x_n) \\
+				\beta  & = & (y_1, y_2, \dots, y_n)
+			\end{eqnarray*}
+
+			podemos definir la suma como:
+
+			\begin{equation}
+				\alpha + \beta = (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n)
+			\end{equation}
+
+			y la multiplicación por escalar como:
+
+			\begin{equation}
+				c \alpha = (c x_1, c x_2, \dots, c x_n) \quad \forall \+ c \in \mathbb{F}
+			\end{equation}
+		\end{definicion}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Verificar que $\mathbb{F}^n$ es un espacio vectorial sobre $\mathbb{F}$, en particular si $\mathbb{F} = \mathbb{R}$ y $n = 2$.
+		\end{ejercicio}
+
+		\begin{proposicion}
+			Sea $V$ un espacio vectorial sobre $\mathbb{F}$, entonces se tiene que:
+
+			\begin{equation}
+				0 \cdot \alpha = \vec{0} \quad \forall \+ \alpha \in V
+			\end{equation}
+		\end{proposicion}
+
+		\begin{definicion}
+			Se dice que $\beta \in V$ es una combinación lineal de vectores $\alpha_1, \alpha_2, \dots, \alpha_n$ si existen $c_1, c_2, \dots, c_n \in \mathbb{F}$ tales que:
+
+			\begin{equation}
+				\beta = \sum_{i=1}^n c_i \alpha_i
+			\end{equation}
+		\end{definicion}
+
+%-------------------------------------------------------------------------------
+
+	\subsection{Subespacios vectoriales}
+
+		\begin{definicion}
+			Un subespacio de un espacio vectorial $V$, es un subconjunto $W$ de $V$ que con las operaciones heredadas de $V$, es un espacio vectorial sobre $\mathbb{F}$ 
+		\end{definicion}
+
+		\begin{observacion}
+			Si $V$ es un espacio vectorial, $V$ y $\{\vec{0}\}$ se denominan los subespacios triviales de $V$.
+		\end{observacion}
+
+		\begin{proposicion}
+			Un subconjunto no vacio $W$ de $V$, es un subespacio vectorial si y solo si $W$ es cerrado con respecto a las operaciones de $V$.
+		\end{proposicion}
+
+		\begin{definicion}
+			Sean $\alpha_1, \alpha_2, \dots, \alpha_k \in V$, definimos:
+
+			\begin{equation}
+				\mathcal{L}(\alpha_1, \alpha_2, \dots, \alpha_k) = \left\{ v \mid v \text{ es combinación lineal de } \alpha_1, \alpha_2, \dots, \alpha_k \right\}
+			\end{equation}
+
+			es decir, es un subespacio vectorial de $V$ y se llama subespacio generado por $\alpha_i$ con $1 \leq i \leq k$, o bien se dice que $\alpha_1, \alpha_2, \dots, \alpha_k$ generan a $\mathcal{L}(\alpha_1, \alpha_2, \dots, \alpha_k)$.
+
+			En general, si $A \ne 0$ y si $A \subset V$, entonces
+
+			\begin{equation}
+				\mathcal{L}(A) = \left\{ v \mid v \text{ es combinacion lineal de los elementos de } A \right\}
+			\end{equation}
+		\end{definicion}
+
+		\begin{proposicion}
+			La intersección de cualquier colección de subespacios vectoriales de $V$ es un subespacio vectorial de $V$.
+		\end{proposicion}
+
+		\begin{proof}
+			Sea $W a = \left\{ w a \mid a \in I \right\}$ y sea $W = \cap W a$.
+
+			En primer lugar notamos que $W$ es no vacio, ya que $\vec{0} \in W a$ para todo $a \in I$.
+
+			Despues tomamos dos elementos $\alpha, \beta \in W$, los cuales estan tambien en $W a$ para todo $a \in I$.
+			Si los operamos entre si, sabemos que $\alpha + \beta \in W a$ para todo $a \in I$, por lo que sigue que tambien $\alpha + \beta \in W$.
+
+			Por ultimo, si tomamos un elemento $\beta \in W$ y un elemento $r \in \mathbb{F}$, sabemos que $r \beta \in W a$ para todo $a \in I$, por lo que se sigue que $r \beta \in W$.
+
+			Por lo que concluimos que $W$ es un subespacio vectorial.
+		\end{proof}
+
+		\begin{observacion}
+			La union de subespacios vectoriales, no necesariamente es un subespacio vectorial.
+
+			Por ejemplo, si en $\mathbb{R}^2$ definimos:
+
+			\begin{eqnarray*}
+				W_1 = \left\{ (x_1, 0) \mid x_1 \in \mathbb{R} \right\} \subset \mathbb{R} \\
+				W_2 = \left\{ (0, x_2) \mid x_2 \in \mathbb{R} \right\} \subset \mathbb{R}
+			\end{eqnarray*}
+
+			La union de estos subespacios vectoriales sería:
+
+			\begin{equation*}
+				W_1 \cup W_2 = \left\{ (x_1, 0), (0, x_2) \mid x_1, x_2 \in \mathbb{R} \right\}
+			\end{equation*}
+
+			por lo que si tomamos un elemento de cada subespacio vectorial y los sumamos, obtendremos:
+
+			\begin{equation*}
+				(x_1, 0) + (0, x_2) = (x_1, x_2) \notin W_1 \cup W_2
+			\end{equation*}
+		\end{observacion}
+
+		\begin{definicion}
+			Sean $S, T$ subespacios vectoriales de $V$, definimos la suma de $S$ y $T$ como:
+
+			\begin{equation}
+				S + T = \left\{ s + t \mid s \in S, t \in T \right\}
+			\end{equation}
+		\end{definicion}
+
+		\begin{proposicion}
+			Si $S$ y $T$ son subespacios vectoriales de $V$, entonces $S + T$ es un subespacio de $V$.
+		\end{proposicion}
+
+		\begin{definicion}
+			Si $S$ y $T$ son subespacios vectoriales de $V$, tales que $V = S + T$ y $S \cap T = \{0\}$, decimos que $V$ es la suma directa de $S$ y $T$, y la denotamos por:
+
+			\begin{equation}
+				V = S \oplus T 
+			\end{equation}
+		\end{definicion}
+
+		\begin{proposicion}
+			Si $V = S \oplus T$, entonces existen únicos $s$ y $t$ tales que:
+
+			\begin{equation}
+				\alpha = s + t \quad \forall \+ \alpha \in V
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proof}
+			Sean $s, s' \in S$ y $t, t' \in T$ elementos para los que se cumple que un $\alpha \in V$, tenga la siguiente forma:
+
+			\begin{equation*}
+				\alpha = s + t = s' + t'
+			\end{equation*}
+
+			Si a los dos ultimos terminos de esta ecuación les restamos $s + t'$, tendremos:
+
+			\begin{equation*}
+				s + t - s - t' = s' + t' - s - t'
+			\end{equation*}
+
+			es decir:
+
+			\begin{equation*}
+				t - t' = s' - s
+			\end{equation*}
+
+			pero el lado izquierdo de la ecuación es algo que está en $T$ y el segundo termino es algo que está en $S$, es decir, estamos preguntando que elementos hay en común en $S$ y $T$.
+			Como $V = S \oplus T$, sabemos que la intersección entre $S$ y $T$ es $\{0\}$, por lo que nos quedan las siguientes relaciones:
+
+			\begin{eqnarray*}
+				t - t' & = & 0 \\
+				s' - s & = & 0
+			\end{eqnarray*}
+
+			lo cual implica que:
+
+			\begin{eqnarray*}
+				t & = & t' \\
+				s' & = & s
+			\end{eqnarray*}
+		\end{proof}
+ 
+%-------------------------------------------------------------------------------
+
+	\subsection{Dependencia e independencia lineal}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Isomorfismos}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Transformaciones lineal}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Operadores lineal}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Funcionales lineal}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Espacio dual}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Teorema de Cayley - Hamilton}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Diagonalización}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Forma canónica de Jordan}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Vectores propios generalizados}
