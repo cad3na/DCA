@@ -676,6 +676,200 @@
 			\end{equation}
 		\end{teorema}
 
+		\begin{proof}
+			Sea $\alpha \in V$, entonces $\alpha$ se escribe de manera única como:
+
+			\begin{equation*}
+				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
+			\end{equation*}
+
+			y definimos $T$ como:
+
+			\begin{eqnarray*}
+				T \colon V & \to & W \\
+				\alpha & \to & a_1 w_1 + a_2 w_2 + \dots + a_n w_n
+			\end{eqnarray*}
+
+			en particular tenemos que:
+
+			\begin{eqnarray*}
+				\alpha_i & = & 0 \alpha_1 + 0 \alpha_2 + \dots  + \alpha_i + \dots + 0 \alpha_n \\
+				w_i & = & 0 w_1 + 0 w_2 + \dots  + w_i + \dots + 0 w_n
+			\end{eqnarray*}
+
+			tal que:
+
+			\begin{equation*}
+				T(\alpha_i) = w_i \in W \quad 1 \leq i \leq n
+			\end{equation*}
+
+			por lo que $T$ es lineal.
+
+			Si ahora tenemos dos elementos $\alpha, \beta \in V$ de la forma:
+
+			\begin{eqnarray*}
+				\alpha & = & a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
+				\beta & = & b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
+			\end{eqnarray*}
+
+			por lo que tenemos que:
+
+			\begin{eqnarray*}
+				T(\alpha + \beta) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
+				& = & T((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
+				& = & (a_1 + b_1) w_1 + (a_2 + b_2) w_2 + \dots + (a_n + b_n) w_n \\
+				& = & a_1 w_1 + a_2 w_2 + \dots + a_n w_n + b_1 w_1 + b_2 w_2 + \dots + b_n w_n \\
+				& = & T(\alpha) + T(\beta)
+			\end{eqnarray*}
+
+			y dado un $c \in \mathbb{F}$, tenemos que:
+
+			\begin{eqnarray*}
+				T(c \alpha) & = & T(c (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
+				& = & T(c a_1 \alpha_1 + c a_2 \alpha_2 + \dots + c a_n \alpha_n) \\
+				& = & c a_1 w_1 + c a_2 w_2 + \dots + c a_n w_n \\
+				& = & c T(\alpha)
+			\end{eqnarray*}
+		\end{proof}
+
+		\begin{definicion}
+			Sea $T \colon V \to W$ una transformación lineal, definimos el nucleo de $T$ como:
+
+			\begin{equation}
+				\ker{T} = \left\{ v \in V \mid T(v) = 0 \right\} \subset V
+			\end{equation}
+
+			y definimos la imagen de $T$ como:
+
+			\begin{equation}
+				\imagen{T} = \left\{ T(v) \mid v \in V \right\} \subset W
+			\end{equation}
+		\end{definicion}
+
+		\begin{proposicion}
+			Si $T \colon V \to W$ es una transformación lineal y $\ker{T}$y $\imagen{T}$ son subespacios vectoriales de $V$ y $W$ respectivamente.
+		\end{proposicion}
+
+		\begin{proposicion}
+			Sea $T \colon V \to W$ una transformación lineal donde $V$ es un espacio vectorial de dimensión finita y $W$ un espacio vectorial.
+			Entonces, si $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$ es una base de $V$ tenemos que:
+
+			\begin{equation}
+				\mathcal{L} \left\{ T(\alpha_1), T(\alpha_2), \dots, T(\alpha_n) \right\} = \imagen{T} \subset W
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proof}
+			Dado un $\beta \in \imagen{T}$ existe un $\alpha \in V$ tal que $T(\alpha) = \beta$.
+
+			Tenemos pues un $\alpha \in V$ de la forma:
+
+			\begin{equation*}
+				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \quad a_i \in \mathbb{F} \quad 1 \leq i \leq n
+			\end{equation*}
+
+			por lo que $\beta$ tiene la forma:
+
+			\begin{eqnarray*}
+				\beta = T(\alpha) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
+				& = & a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_n T(\alpha_n)
+			\end{eqnarray*}
+
+			por lo que podemos ver que:
+
+			\begin{equation*}
+				\beta \in \mathcal{L} \left\{ T(\alpha_1), T(\alpha_2), \dots, T(\alpha_n) \right\}
+			\end{equation*}
+		\end{proof}
+
+		\begin{definicion}
+			Sean $V, W$ espacios vectoriales sobre $\mathbb{F}$ y sean $T_1 \colon V \to W$ y $T_2 \colon W \to U$ transformaciones lineales.
+
+			Definimos la composicion $\circ$ como:
+
+			\begin{eqnarray}
+				T_2 \circ T_1 \colon V & \to & U \nonumber \\
+				v & \to & T_2(T_1(v))
+			\end{eqnarray}
+		\end{definicion}
+
+		\begin{proposicion}
+			Si $T_1 \colon V \to W$ y $T_2 \colon W \to U$ son transformaciones lineales, entonces:
+
+			\begin{equation}
+				T_2 \circ T_1 = \mathcal{L}(V, U)
+			\end{equation}
+		\end{proposicion}
+
+		\begin{teorema}
+			Sea $T \colon V \to W$ una transformación lineal con $V$ espacio de dimensión finita y $W$ es un espacio vectorial, entonces:
+
+			\begin{equation}
+				\dim{V} = \dim{\ker{T}} + \dim{\imagen{T}}
+			\end{equation}
+		\end{teorema}
+
+		\begin{proof}
+			Para demostrar este teorema, vamos a considerar 3 posibilidades acerca de la $\dim{\ker{T}}$, empezaremos con el caso en que $\dim{\ker{T}}$, lo cual implica que $\ker{T} = \{0\}$.
+
+			Sea $\alpha_1, \alpha_2, \dots, \alpha_n$ una base de $V$.
+
+			Sabemos que:
+
+			\begin{equation*}
+				\mathcal{L} \left\{ T(\alpha_1), T(\alpha_2), \dots, T(\alpha_n) \right\} = \imagen{T}
+			\end{equation*}
+
+			Ahora veamos que $T(\alpha_1), T(\alpha_2), \dots, T(\alpha_n)$ son linealmente independientes.
+			Supongamos que $c_1 T(\alpha_1) + c_2 T(\alpha_2) + \dots + c_n T(\alpha_n) = 0$. Esto, ya que $T$ es lineal, nos da que:
+
+			\begin{equation*}
+				T(c_1 \alpha_1 + c_2 \alpha_2 + \dots + c_n \alpha_n) = 0
+			\end{equation*}
+
+			lo cual implica que:
+
+			\begin{equation*}
+				c_1 \alpha_1 + c_2 \alpha_2 + \dots + c_n \alpha_n \in \ker{T} = \{0\}
+			\end{equation*}
+
+			es decir:
+
+			\begin{equation*}
+				c_1 \alpha_1 + c_2 \alpha_2 + \dots + c_n \alpha_n = 0
+			\end{equation*}
+
+			y como $\{\alpha_1, \alpha_2, \dots, \alpha_n\}$ es una base de $V$, tenemos que:
+
+			\begin{equation*}
+				c_i = 0 \quad 1 \leq i \leq n
+			\end{equation*}
+
+			lo cual implica que tambien los $T(\alpha_i)$ son linealmente independientes, esto nos dice que:
+
+			\begin{equation*}
+				\dim{\imagen{T}} = n
+			\end{equation*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				\dim{V} = n = 0 + n = \dim{\ker{T}} + \dim{\imagen{T}}
+			\end{equation*}
+
+			Si ahora consideramos el caso en que $\ker{T} = V$ tenemos que:
+
+			\begin{equation*}
+				\ker{T} = \left\{ \alpha \in V \mid T(\alpha) = 0 \right\} = V
+			\end{equation*}
+
+			Si analizamos la imagen, tendremos:
+
+			\begin{eqnarray*}
+				\imagen{T} = \left\{ T(\alpha) \right\}
+			\end{eqnarray*}
+		\end{proof}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
