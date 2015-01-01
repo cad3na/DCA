@@ -866,9 +866,161 @@
 			Si analizamos la imagen, tendremos:
 
 			\begin{eqnarray*}
-				\imagen{T} = \left\{ T(\alpha) \right\}
+				\imagen{T} & = & \left\{ T(\alpha) \mid \alpha \in V \right\} \\
+				& = & \left\{ T(\alpha) = 0 \mid \alpha \in V \right\} = \{0\}
 			\end{eqnarray*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				\dim{V} = n = n + 0 = \dim{\ker{T}} + \dim{\imagen{T}}
+			\end{equation*}
+
+			Si por ultimo, ahora consideramos que $0 < \dim{\ker{T}} < n$.
+			Sea $\alpha_1, \alpha_2, \dots, \alpha_k$ una base de $\ker{T}$ la cual podemos completar a $\alpha_1, \alpha_2, \dots, \alpha_k, \alpha_{k+1}, \dots, \alpha_n$ para hacer una base de $V$.
+			Por lo que resta por ver que $T(\alpha_{k+1}), \dots, T(\alpha_n)$ es una base de $\imagen{T}$.
+			Veamos pues que estos generan.
+
+			Si $\beta \in \imagen{T}$, entonces existe un $\alpha \in V$ tal que:
+
+			\begin{equation*}
+				T(\alpha) = \beta
+			\end{equation*}
+
+			con $\alpha$ de la forma:
+
+			\begin{equation*}
+				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k + a_{k+1} \alpha_{k+1} + \dots + a_n \alpha_n \quad a_i \in \mathbb{F} \quad 1 \leq i \leq n
+			\end{equation*}
+
+			por lo que $\beta$ queda de la forma:
+
+			\begin{eqnarray*}
+				\beta = T(\alpha) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k + a_{k+1} \alpha_{k+1} + \dots + a_n \alpha_n) \\
+				& = & a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_k T(\alpha_k) + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
+			\end{eqnarray*}
+
+			pero $a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k$ esta en el nucleo, por lo que:
+
+			\begin{eqnarray*}
+				\beta = T(\alpha) & = & 0 + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n) \\
+				& = & a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
+			\end{eqnarray*}
+
+			por lo que $T(\alpha_{k+1}), \dots, T(\alpha_n)$ genera a $\imagen{T}$.
+
+			Veamos ahora que son linealmente independientes.
+			Supongamos que $c_{k+1} T(\alpha_{k+1}) + \dots + c_n T(\alpha_n) = 0$, por lo que se sigue que:
+
+			\begin{equation*}
+				T(c_{k+1} \alpha_{k+1} + \dots + c_n \alpha_n) = 0
+			\end{equation*}
+
+			por lo que podemos ver que:
+
+			\begin{equation*}
+				c_{k+1} \alpha_{k+1} + \dots + c_n \alpha_n \in \ker{T}
+			\end{equation*}
+
+			Luego entonces, se puede escribir esto en terminos de:
+
+			\begin{equation*}
+				c_{k+1} \alpha_{k+1} + \dots + c_n \alpha_n = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k
+			\end{equation*}
+
+			es decir:
+
+			\begin{equation*}
+				-a_1 \alpha_1 - a_2 \alpha_2 - \dots - a_k \alpha_k + c_{k+1} \alpha_{k+1} + \dots + c_n \alpha_n = 0
+			\end{equation*}
+
+			del cual, ya sabemos que los coeficientes deben ser todos nulos, por lo que demostramos que $\alpha_{k+1}, \dots, \alpha_n$ son linealmente independientes.
+			Luego entonces:
+
+			\begin{equation*}
+				\dim{\imagen{T}} = n - k
+			\end{equation*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				\dim{V} = n = k + n - k = \dim{\ker{T}} + \dim{\imagen{T}}
+			\end{equation*}
 		\end{proof}
+
+	\subsection{Ejemplo en un sistema físico}
+
+		Sea el sistema:
+
+		\begin{eqnarray*}
+			\dot{x} & = & A x + B u \\
+			y & = & C x
+		\end{eqnarray*}
+
+		con $x(t_0) = x_0$ y $x \in \mathbb{R}^n$, $u \in \mathbb{R}^m$ y las matrices $A$, $B$ y $C$ son de tamaño apropiado.
+
+		Si tomamos como ejemplo el movimiento de un cuerpo en el espacio sometido a una fuerza externa, tendremos que:
+
+		\begin{equation*}
+			F = m \frac{d^2 y}{dt^2}
+		\end{equation*}
+
+		Si ademas tomamos en cuenta que la masa del cuerpo es unitaria, tenemos que:
+
+		\begin{equation*}
+			F = \frac{d^2 y}{dt^2}
+		\end{equation*}
+
+		Podemos darnos cuenta que esta fuerza, es nuestro medio de interacción con la dinámica del sistema, por lo que nos conviene definir:
+
+		\begin{equation*}
+			u = F = \frac{d^2 y}{dt^2}
+		\end{equation*}
+
+		y la manera en que medimos la respuesta del sistema es por la posición $r$ de la masa.
+		De esta manera tenemos una realización de estado:
+
+		\begin{eqnarray*}
+			x_1 & = & r \\
+			x_2 & = & \dot{r}
+		\end{eqnarray*}
+
+		y por lo tanto
+
+		\begin{eqnarray*}
+			\dot{x}_1 & = & x_2 \\
+			\dot{x}_2 & = & u
+		\end{eqnarray*}
+
+		lo que nos deja con la siguiente representación matricial del sistema:
+
+		\begin{eqnarray*}
+			\dot{x} & = &
+			\begin{pmatrix}
+				\dot{x}_1 \\
+				\dot{x}_2
+			\end{pmatrix} =
+			\begin{pmatrix}
+				0 & 1 \\
+				0 & 0
+			\end{pmatrix}
+			\begin{pmatrix}
+				x_1 \\
+				x_2
+			\end{pmatrix} +
+			\begin{pmatrix}
+				0 \\
+				1
+			\end{pmatrix} u \\
+			y & = & x_1 =
+			\begin{pmatrix}
+				1 & 0
+			\end{pmatrix}
+			\begin{pmatrix}
+				x_1 \\
+				x_2
+			\end{pmatrix}
+		\end{eqnarray*}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
