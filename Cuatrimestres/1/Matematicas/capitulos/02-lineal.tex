@@ -746,6 +746,8 @@
 			\end{equation}
 		\end{definicion}
 
+	\subsection{Propiedades}
+
 		\begin{proposicion}
 			Si $T \colon V \to W$ es una transformación lineal y $\ker{T}$y $\imagen{T}$ son subespacios vectoriales de $V$ y $W$ respectivamente.
 		\end{proposicion}
@@ -810,7 +812,7 @@
 		\end{teorema}
 
 		\begin{proof}
-			Para demostrar este teorema, vamos a considerar 3 posibilidades acerca de la $\dim{\ker{T}}$, empezaremos con el caso en que $\dim{\ker{T}}$, lo cual implica que $\ker{T} = \{0\}$.
+			Para demostrar este teorema, vamos a considerar tres posibilidades acerca de la $\dim{\ker{T}}$, empezaremos con el caso en que $\dim{\ker{T}}$, lo cual implica que $\ker{T} = \{0\}$.
 
 			Sea $\alpha_1, \alpha_2, \dots, \alpha_n$ una base de $V$.
 
@@ -962,19 +964,19 @@
 		Si tomamos como ejemplo el movimiento de un cuerpo en el espacio sometido a una fuerza externa, tendremos que:
 
 		\begin{equation*}
-			F = m \frac{d^2 y}{dt^2}
+			F = m \frac{d^2 r}{dt^2}
 		\end{equation*}
 
 		Si ademas tomamos en cuenta que la masa del cuerpo es unitaria, tenemos que:
 
 		\begin{equation*}
-			F = \frac{d^2 y}{dt^2}
+			F = \frac{d^2 r}{dt^2}
 		\end{equation*}
 
 		Podemos darnos cuenta que esta fuerza, es nuestro medio de interacción con la dinámica del sistema, por lo que nos conviene definir:
 
 		\begin{equation*}
-			u = F = \frac{d^2 y}{dt^2}
+			u = F = \frac{d^2 r}{dt^2}
 		\end{equation*}
 
 		y la manera en que medimos la respuesta del sistema es por la posición $r$ de la masa.
@@ -1022,11 +1024,293 @@
 			\end{pmatrix}
 		\end{eqnarray*}
 
+		Definimos pues las matrices de controlabilidad y observabilidad como:
+
+		\begin{eqnarray*}
+			Co & = &
+			\begin{pmatrix}
+				B & AB & \dots & A^{n-1}B
+			\end{pmatrix} \\
+			Ob & = &
+			\begin{pmatrix}
+				C \\
+				CA \\
+				\vdots \\
+				CA^{n-1}
+			\end{pmatrix}
+		\end{eqnarray*}
+
+		las cuales, para nuetro sistema, quedan de la forma:
+
+		\begin{eqnarray*}
+			\rango{Co} & = & \rango{\begin{pmatrix} B & AB \end{pmatrix}} = \rango{\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}} = 2\\
+			\rango{Ob} & = & \rango{\begin{pmatrix} C \\ CA \end{pmatrix}} = \rango{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}} = 2
+		\end{eqnarray*}
+
+		Por otro lado, si definimos un sistema auxiliar:
+
+		\begin{eqnarray*}
+			\dot{\hat{x}} & = & A \hat{x} + B u + k (y - \hat{y}) \\
+			\hat{y} & = & C \hat{x}
+		\end{eqnarray*}
+
+		en donde el error de este sistema auxiliar estará dado por:
+
+		\begin{equation*}
+			e = x - \hat{x}
+		\end{equation*}
+
+		y la derivada del error es:
+
+		\begin{eqnarray*}
+			\dot{e} & = & \dot{x} - \dot{\hat{x}} = A(x - \hat{x}) - k (Cx - C\hat{x}) \\
+			& = & (A - k C) e = \tilde{A} e
+		\end{eqnarray*}
+
+		En donde hemos definido un nuevo sistema para el error del sistema auxiliar.
+		Para que este error tienda a ser cero, pediremos que:
+
+		\begin{equation*}
+			\Re{\lambda(\tilde{A})} < 0
+		\end{equation*}
+
+		por lo que procederemos a investigar los valores propios de este nuevo sistema.
+
+		\begin{equation*}
+			|\tilde{A} - \lambda I| = P(\lambda) = (\lambda - \lambda_1) (\lambda - \lambda_2)
+		\end{equation*}
+
+		en donde $\lambda_1$ y $\lambda_2$ son los valores propios del sistema del error.
+		Cabe mencionar que dado un sistems $2 \times 2$, es facil ver que el desarrollo de este polinomio es:
+
+		\begin{equation*}
+			\lambda - (\overbrace{\lambda_1 + \lambda_2}^{\traza{\tilde{A}}}) \lambda + \overbrace{\lambda_1 \lambda_2}^{\det{\tilde{A}}}
+		\end{equation*}
+
+		y la matriz $\tilde{A}$ tiene la forma:
+
+		\begin{equation*}
+			\tilde{A} =
+			\begin{pmatrix}
+				\lambda_1 & 0 \\
+				0 & \lambda_2
+			\end{pmatrix}
+		\end{equation*}
+
+		\begin{definicion}
+			Dos estados iniciales $x_1$ y $x_2$ son distinguibles por una entrada $u$ si las salidas producidas por los dos estados iniciales, son diferentes.
+
+			Si no son distinguibles, se dice que son indistinguibles. La indistinguibilidad es una relación de equivalencia.
+		\end{definicion}
+
+		\missingfigure{Grafica de dos salidas de un sistema bajo estados distinguibles.}
+
+		\begin{teorema}
+			Un sistema es completamente observable si y solamente si, la matriz de observabilidad:
+
+			\begin{equation}
+				Ob =
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix}
+			\end{equation}
+
+			tiene rango igual a la dimensión del espacio de estado.
+		\end{teorema}
+
+		\begin{proof}
+			Supongamos que el sistema no es completamente observable, entonces existen $x_1$ y $x_2$ estados diferentes ($x_1 \ne x_2$) no distinguibles, es decir:
+
+			\begin{equation*}
+				y(x_1, t, u) = y(x_2, t, u) \quad \forall \+ u \quad \forall t \geq 0
+			\end{equation*}
+
+			Dado esto, del sistema original podemos sacar la siguiente conclusión:
+
+			\begin{eqnarray*}
+				\dot{x} & = & A x + B u \\
+				\dot{x} - A x & = & B u \\
+				\exp{(-A t)} (\dot{x} - A x) & = & \exp{(-A t)} B u \\
+				(\exp{(-A t)} x)' & = & \exp{(-A t)} B u \\
+				\exp{(-A t)} x & = & \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \\
+				x & = & \exp{(A t)} \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \exp{(A t)}\\
+				x & = & \int_0^t \exp{A(t - \tau)} B u(\tau) d\tau + \exp{(At)}x_0
+			\end{eqnarray*}
+
+			teniendo que la ecuación de salida es:
+
+			\begin{eqnarray*}
+				y(x_1) & = & C e^{A t} x_1 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau \\
+				y(x_2) & = & C e^{A t} x_2 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau
+			\end{eqnarray*}
+
+			pero tenemos que $y(x_1) = y(x_2)$, por lo que:
+
+			\begin{equation*}
+				C \exp{(A t)} (x_1 - x_0) = 0 \quad x_1 \ne x_0
+			\end{equation*}
+
+			Dada esta ecuación, podemos construir un sistema derivando de la siguiente manera:
+
+			\begin{eqnarray*}
+				C \exp{(A t)} (x_1 - x_0) & = & 0 \\
+				C A \exp{(A t)} (x_1 - x_0) & = & 0 \\
+				& \vdots & \\
+				C A^{n-1} \exp{(A t)} (x_1 - x_0) & = & 0
+			\end{eqnarray*}
+
+			reemplazando a $x_1 - x_0$ simplemente con $x$, tenemos que:
+
+			\begin{equation*}
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix} \exp{(A t)} x = 0
+			\end{equation*}
+
+			y ya que por definición $\exp{(A T)} \ne 0$, tenemos que:
+
+			\begin{equation*}
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix} x = 0
+			\end{equation*}
+
+			es decir:
+
+			\begin{equation*}
+				x \in \ker
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix}
+			\end{equation*}
+
+			y como $x_1 - x_0 = x \ne 0$, sabemos que:
+
+			\begin{equation*}
+				\dim{\ker}
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix} \ne 0
+			\end{equation*}
+
+			Por otro lado, tenemos que:
+
+			\begin{equation*}
+				\dim{Ob} = \dim
+				\begin{pmatrix}
+					C \\
+					CA \\
+					\vdots \\
+					CA^{n-1}
+				\end{pmatrix} = n
+			\end{equation*}
+
+			y dado que:
+
+			\begin{eqnarray*}
+				\dim{Ob} & = & \dim{\ker{Ob}} + \dim{\imagen{Ob}} \\
+				n & = & a + b \\
+			\end{eqnarray*}
+
+			con $a \ne 0$, lo que nos da que $\rango{Ob} < n$, lo cual no es posible si el sistema es completamente observable, luego la hipotesis es falsa y concluimos que para que el sistema sea completamente observable $Ob$ debe ser de rango pleno.
+		\end{proof}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
 \section{Operadores lineales}
+
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Sea $V$ un espacio vectorial con una transformación lineal $T \colon V \to V$.
+			A $T$ se le llama operador lineal.
+		\end{definicion}
+
+		\begin{observacion}
+			Si $T$ es operador lineal en $V$, escribimos:
+
+			\begin{equation}
+				T^2 = T \circ T
+			\end{equation}
+
+			y en general:
+
+			\begin{equation}
+				T^n = \overbrace{T \circ T \circ T \dots \circ T}^{n \text{ veces}}
+			\end{equation}
+
+			o bien:
+
+			\begin{equation}
+				T^n = T^{n-1} \circ T
+			\end{equation}
+
+			para $n \geq 2$.
+		\end{observacion}
+
+		\begin{proposicion}
+			Sea $T \colon V \to W$ una transformación lineal, entonces el hecho de que $T$ se isomorfismo, implica que $T$ sea invertible y bisceversa, es decir:
+
+			\begin{equation}
+				T \text{ es isomorfismo} \iff T \text{ es invertible}
+			\end{equation}
+
+			Recordando que $T$ es invertible si existe una $T^{-1}$ por la izquierda y por la derecha, tal que:
+
+			\begin{eqnarray}
+				T^{-1} \circ T & = & I_V \nonumber \\
+				T \circ T^{-1} & = & I_W
+			\end{eqnarray}
+		\end{proposicion}
+
+		\begin{proof}
+			Para comprobar esta proposición empezaremos asumiendo que $T$ es invertible, esto es existe un $T^{-1}$.
+
+			Supongamos ahora que:
+
+			\begin{equation}
+				T(x_1) = T(x_2) \quad x_1, x_2 \in V
+			\end{equation}
+
+			si componemos con $T^{-1}$ por la izquierda:
+
+			\begin{eqnarray*}
+				T^{-1} \circ T(x_1) & = & T^{-1} \circ T(x_2) \\
+				I_V(x_1) & = & I_V(x_2) \\
+				x_1 & = & x_2
+			\end{eqnarray*}
+
+			por lo que $T$ es inyectiva.
+
+			Si ahora, tenemos un $y \in W$ tal que $x = T^{-1}(y)$, por lo que:
+
+			\begin{equation*}
+				T(x) = T(T^{-1}(y)) = T \circ T^{-1}(y) = I_W(y) = y
+			\end{equation*}
+
+			Por lo que $T$ es suprayectiva, y por lo tanto $T$ es isomorfismo.
+		\end{proof}
+
+		\begin{proposicion}
+			Si $T$ es transformación lineal de $V$ en $W$ y $T$ es invertible, entonces: $T^{-1} \colon W \to V$ es lineal.
+		\end{proposicion}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
