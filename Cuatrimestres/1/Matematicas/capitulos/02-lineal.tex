@@ -1581,6 +1581,74 @@
 
 \section{Diagonalización}
 
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Sea $V$ un espacio vectorial de dimensión finita $n$ y $T \colon V \to V$ un operador lineal, entonces $T$ puede representarse por una matriz $n \times n$ $A$.
+			Por esta razón en algunas ocasiones nos vamos a referir a valores y vectores propios de matrices $n \times n$.
+		\end{definicion}
+
+		\begin{teorema}
+			Sea $A$ una matriz $n \times n$. Entonces $\lambda$ es un valor propio de $A$ si y solo si:
+
+			\begin{equation}
+				p(\lambda) = \det{(A - \lambda I)} = 0
+			\end{equation}
+		\end{teorema}
+
+		\begin{proposicion}
+			Sabemos que $p(\lambda)$ se puede escribir como:
+
+			\begin{equation}
+				p(\lambda) = \lambda^n + a_{n-1} \lambda^{n-1} + \dots + a_1 \lambda + a_0 = 0
+			\end{equation}
+
+			Esta ecuación tiene $n$ raices, varias de las cuales pueden repetirse.
+
+			Si $\lambda_1, \lambda_2, \dots, \lambda_k$ son las diferentes raices de $p(\lambda)$ con multiplicidad $r_1, r_2, \dots, r_k$ respectivamente, entonces $p(\lambda)$ puede factorizarse como:
+
+			\begin{equation}
+				p(\lambda) = (\lambda - \lambda_1)^{r_1} (\lambda - \lambda_2)^{r_2} \dots (\lambda - \lambda_k)^{r_k} = 0
+			\end{equation}
+
+			en donde los numeros $r_1, r_2, \dots, r_k$ se llaman multiplicidades algebraicas de los valores propios $\lambda_1, \lambda_2, \dots, \lambda_k$ respectivamente.
+
+			Sea $\lambda$ un valor propio de $T$ y sea:
+
+			\begin{equation}
+				E_{\lambda} = \left\{ v \colon Tv = \lambda v \right\} = \left\{ v \colon (T - \lambda I) v = 0 \right\}
+			\end{equation}
+
+			El subespacio $E_{\lambda}$ (pues es el nucleo de la transformación lineal $T - \lambda I$) se llama espacio propio de $T$ correspondiente al valor propio $\lambda$.
+
+			Como $E_\lambda$ es un subespacio entonces $0 \in E_{\lambda}$, pero $\dim{E_{\lambda}} > 0$ pues por definición, si $\lambda$ es un valor propio, entonces existe un vector propio diferente de cero correspondiente a $\lambda$.
+		\end{proposicion}
+
+		\begin{teorema}
+			Sea $V$ un espacio vectorial de dimensión finita $n$ y $T \colon V \to V$ un operador lineal y sean $\lambda_1, \lambda_2, \dots, \lambda_n$ valores propios diferentes de $T$ con sus correspondientes vectores propios $v_1, v_2, \dots, v_n$.
+			Entonces $v_1, v_2, \dots, v_n$ son linealmente independientes.
+		\end{teorema}
+
+		\begin{proposicion}
+			Sea $A$ una representación matricial de $T$. Supongamos que $A$ es una matriz de $3 \times 3$.
+
+			\begin{enumerate}
+				\item Si $A$ tiene tres diferentes valores propios $\lambda_1, \lambda_2, \lambda_3$ (cada uno con multiplicidad algebraica uno), entonces, por el primer teorema, sus respectivos vectores propios $v_1, v_2, v_3$ son linealmente independientes.
+				\item Si $A$ tiene dos vectores propios $\lambda_1$ y $\lambda_2$ con multiplicidad algebraica uno y dos respectivamente.
+				Entonces $\dim{E_{\lambda_2}} \leq 2$, porque de otra manera, podriamos tener al menos cuatro vectores linealmente independientes en un espacio de tres dimensiones.
+				Es decir, para $\lambda_2$ puede haber uno o deos vectores propios linealmente independientes.
+				\item Si $A$ tiene un valor propio $\lambda$ con multiplicidad algebraica tres, entonces $\dim{E_{\lambda}} \leq 3$, es decir, puede haber uno, dos o tres vectores propios linealmente independientes.
+			\end{enumerate}
+		\end{proposicion}
+
+		\begin{teorema}
+			Sea $\lambda$ un valor propio para $T$ operador lineal en un espacio vectorial de dimensión finita, entonces:
+
+			\begin{equation}
+				1 \leq \dim{E_{\lambda}} \leq \text{multiplicidad algebraica de } \lambda
+			\end{equation}
+		\end{teorema}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
