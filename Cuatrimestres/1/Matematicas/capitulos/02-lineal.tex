@@ -1318,17 +1318,262 @@
 
 \section{Funcionales lineales}
 
+	\subsection{Definiciones}
+
+		\begin{lema}
+			Sea $\mathbb{F}$ un campo y $V$ un espacio vectorial sobre $\mathbb{F}$.
+
+			$\mathbb{F}$ como espacio vectorial sobre $\mathbb{F}$ tiene dimensión uno.
+		\end{lema}
+
+		\begin{proof}
+			Sea $\{1\}$ un generador y un elemento linealmente independiente.
+
+			\begin{enumerate}
+				\item $k \cdot 1 = 0 \implies k = 0$, por lo que $1$ es linealmente independiente.
+				\item $a \in \mathbb{F}$, $a = a \cdot 1$, por lo que $1$ es generador.
+			\end{enumerate}
+
+			por lo que $1$ es base y $\mathbb{F}$ es de dimensión $1$.
+		\end{proof}
+
+		\begin{definicion}
+			Un funcional lineal de $V$ es una transformación lineal, tal que:
+
+			\begin{equation}
+				f \colon V \to \mathbb{F}
+			\end{equation}
+		\end{definicion}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
 \section{Espacio dual}
 
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			El espacio dual de $V$ es denotado por $V^*$, tal que:
+
+			\begin{equation}
+				V^* = \left\{ f \mid f \text{ es funcional lineal de } V \right\} = \mathcal{L}(V, \mathbb{F})
+			\end{equation}
+		\end{definicion}
+
+		\begin{observacion}
+			Sea $V, W$ espacios vectoriales sobre $\mathbb{F}$, si $\dim{V} = n$ y $\dim{W} = m$.
+
+			\begin{equation}
+				\dim{\mathcal{L}(V, W)} = m \cdot n
+			\end{equation}
+		\end{observacion}
+
+		\begin{observacion}
+			Utilizando la observación anterior, podemos decir que:
+
+			\begin{equation} 
+				\dim{V^*} = \dim{\mathcal{L}(V, \mathbb{F})} = 1 \cdot n = n = \dim{V}
+			\end{equation}
+
+			por lo que $V^*$ es isomorfo a $V$.
+		\end{observacion}
+
+		\begin{definicion}
+			Si $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$ es una base de $V$, consideremos $\{1\}$ una base para $\mathbb{F}$, entonces definimos:
+
+			\begin{equation} \label{eq:func1}
+				f_i(\alpha_k) = \delta_{ik} =
+				\begin{cases}
+					1 & \text{ Si } i = k \\
+					0 & \text{ Si } i \ne k
+				\end{cases}
+			\end{equation}
+		\end{definicion}
+
+		\begin{definicion}
+			Si $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$ es base de $V$, la base $\{ f_1, f_2, \dots, f_n \}$ de $V^*$ dada por~\ref{eq:func1} se llama base dual a la base $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$
+		\end{definicion}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{proposicion}
+			Si $\{f_i\}_{1 \leq i \leq n}$ es la base dual de $V^*$ a la base $\{\alpha_i\}_{1 \leq i \leq n}$ de $V$, entonces tenemos que:
+
+			\begin{enumerate}
+				\item Si $f \in V^*$, entonces $f = \sum_{i=1}^n f(\alpha_i) f_i$
+				\item Si $\alpha \in V$, entonces $\alpha = \sum_{i=1}^n f_i(\alpha) \alpha_i$
+			\end{enumerate}
+		\end{proposicion}
+
+		\begin{proof}
+			Sea $\alpha \in V$ de la forma:
+
+			\begin{equation*}
+				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
+			\end{equation*}
+
+			\begin{eqnarray*}
+				\left[ \sum_{i=1}^n f(\alpha_i) f_i \right] (\alpha) & = & \sum_{i=1}^n f(\alpha_i) f_i(\alpha) \\
+				& = & \sum_{i=1}^n f(\alpha_i) f_i(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
+				& = & \sum_{i=1}^n f_i(\alpha) a_i
+			\end{eqnarray*}
+		\end{proof}
+
+		\begin{ejercicio}
+			Determinar explicitamente la base dual a la base $v_1 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}$, $v_2 = \begin{pmatrix} 0 & 1 & 1 \end{pmatrix}$ y $v_3 = \begin{pmatrix} 0 & 0 & 1 \end{pmatrix}$ de $\mathbb{R}^3$.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Sea $f$ el funcional lineal en $\left( \mathbb{R}^3 \right)^*$ dado por:
+
+			\begin{equation*}
+				f(\begin{pmatrix} x & y & z \end{pmatrix}) = x + y + z
+			\end{equation*}
+
+			Exprese $f$ como combinación lineal de la base dual encontrada en $a$.
+		\end{ejercicio}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
 \section{Teorema de Cayley - Hamilton}
+
+	\begin{definicion}
+		Toda matriz es un cero de su polinomio caracteristico
+	\end{definicion}
+
+	\begin{proof}
+		Sea $A$ una matriz cuadrada arbitraria de tamaño $n \times n$ y $P(\lambda)$ su polinomio caracteristico, es decir:
+
+		\begin{equation*}
+			P(\lambda) = |\lambda I - A| = \lambda^n + \dots + a_1 \lambda + a_0
+		\end{equation*}
+
+		Supongamos ahora que $B(\lambda)$ representa a la adjunta de la matriz $\lambda I - A$, entonces los elementos de $B(\lambda)$ son los cofactores de la matriz $\lambda I - A$ y por lo tanto son polinomios en $\lambda$ de grado no mayor que $n-1$.
+		Por lo tanto $B(\lambda)$ tiene la forma:
+
+		\begin{equation*}
+			B(\lambda) = B_{n-1} \lambda^{n-1} + \dots + B_1 \lambda + B_0
+		\end{equation*}
+
+		donde $B_i$ son matrices $n \times n$ sobre un campo $K$.
+
+		Por la propiedad fundamental de la adjunta:
+
+		\begin{equation*}
+			(\lambda I - A) B(\lambda) = |\lambda I - A| I
+		\end{equation*}
+
+		de aqui tenemos que:
+
+		\begin{equation*}
+			(\lambda I - A) (B_{n-1} \lambda^{n-1} + \dots + B_1 \lambda + B_0) = (\lambda^n + \dots + a_1 \lambda + a_0) I
+		\end{equation*}
+
+		Quitando los parentesis e igualando los coeficientes de las mismas potencias de $\lambda$, tenemos:
+
+		\begin{align*}
+			B_{n-1} & = I \tag{$\lambda^n$} \\
+			B_{n-2} - A B_{n-1} & = a_{n-1} I \tag{$\lambda^{n-1}$} \\
+			B_{n-3} - A B_{n-2} & = a_{n-2} I \tag{$\lambda^{n-2}$} \\
+			& \vdots \\
+			B_0 - A B_1 & = a_1 I \tag{$\lambda^1$} \\
+			- A B_0 & = a_0 I \tag{$\lambda^0$}
+		\end{align*}
+
+		Si ahora multiplicamos estas ecuaciones matriciales por $A^n, A^{n-1}, \dots, A, I$, tendremos:
+
+		\begin{align*}
+			A^n B_{n-1} & = A^n \tag{$\lambda^n$} \\
+			A^{n-1} B_{n-2} - A^n B_{n-1} & = a_{n-1} A^{n-1} \tag{$\lambda^{n-1}$} \\
+			A^{n-2} B_{n-3} - A^{n-1} B_{n-2} & = a_{n-2} A^{n-2} \tag{$\lambda^{n-2}$} \\
+			& \vdots \\
+			A B_0 - A^2 B_1 & = a_1 I \tag{$\lambda^1$} \\
+			- A B_0 & = a_0 I \tag{$\lambda^0$}
+		\end{align*}
+
+		Y al sumar todas las ecuaciones tendremos:
+
+		\begin{equation*}
+			0 = A^n + a_{n-1} A^{n-1} + a_{n-2} A^{n-2} + \dots + a_1 A + a_0 I = P(A)
+		\end{equation*}
+	\end{proof}
+
+	\begin{ejemplo}
+		El polinomio caracteristico de la matriz:
+
+		\begin{equation*}
+			A =
+			\begin{pmatrix}
+				1 & 2 \\
+				3 & 2
+			\end{pmatrix}
+		\end{equation*}
+
+		Obtenemos su polinomio caracteristico:
+
+		\begin{eqnarray*}
+			|\lambda I - A| & = & \det{(\lambda I - A)} = |A - \lambda I| \\
+			& = &
+			\begin{vmatrix}
+				1 - \lambda & 2 \\
+				3 & 2 - \lambda
+			\end{vmatrix} = (1 - \lambda)(2 - \lambda) - 6 \\
+			& = & \lambda^2 - 3 \lambda - 4 = P(\lambda)
+		\end{eqnarray*}
+
+		y podemos ver que $A$ es un cero de $P(\lambda)$.
+
+		\begin{eqnarray*}
+			P(A) & = & A^2 - 3 A - 4I =
+			\begin{pmatrix}
+				1 & 2 \\
+				3 & 2
+			\end{pmatrix}^2 - 3
+			\begin{pmatrix}
+				1 & 2 \\
+				3 & 2
+			\end{pmatrix} - 4
+			\begin{pmatrix}
+				1 & 0 \\
+				0 & 1
+			\end{pmatrix} \\
+			& = &
+			\begin{pmatrix}
+				7 & 6 \\
+				9 & 10
+			\end{pmatrix} -
+			\begin{pmatrix}
+				3 & 6 \\
+				9 & 6
+			\end{pmatrix} -
+			\begin{pmatrix}
+				4 & 0 \\
+				0 & 4
+			\end{pmatrix} \\
+			& = &
+			\begin{pmatrix}
+				0 & 0 \\
+				0 & 0
+			\end{pmatrix}
+		\end{eqnarray*}
+	\end{ejemplo}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
