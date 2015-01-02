@@ -9,10 +9,10 @@
         \begin{definicion}
             Un grupo es un conjunto no vacio $G$ en el que esta definida la operacion $\op$, tal que:
 
-            \begin{eqnarray}
-                \op \colon G, G & \to & G \nonumber \\
-                (a, b) & \to & (a \op b)
-            \end{eqnarray}
+            \begin{align}
+                \op \colon G, G &\to G \nonumber \\
+                (a, b) &\to (a \op b)
+            \end{align}
 
             Existen definiciones parciales de grupo dependiendo de las propiedades que cumple su operación:
 
@@ -102,10 +102,10 @@
 
                 \item Sean $b, c$ inversos de $a$, entonces:
 
-                \begin{eqnarray*}
-                    b \op a & = & e \\
-                    a \op c & = & e
-                \end{eqnarray*}
+                \begin{align*}
+                    b \op a &= e \\
+                    a \op c &= e
+                \end{align*}
 
                 por lo que podemos ver que:
 
@@ -153,16 +153,16 @@
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Reglas de cancelación}
 
         \begin{proposicion}
             Sea $G$ un grupo y $a, b, c \in G$, tendremos que:
 
-            \begin{eqnarray}
-                a \op b = a \op c & \implies & b = c \nonumber \\
-                b \op a = c \op a & \implies & b = c
-            \end{eqnarray}
+            \begin{align}
+                a \op b = a \op c &\implies b = c \nonumber \\
+                b \op a = c \op a &\implies b = c
+            \end{align}
         \end{proposicion}
 
         \begin{proof}
@@ -180,7 +180,7 @@
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Subgrupos}
 
         \begin{definicion}
@@ -218,10 +218,10 @@
 
             Empecemos con dos elementos $a, b \in H$, por lo que tenemos que:
 
-            \begin{eqnarray*}
-                a & = & 2 q \quad q \in \mathbb{Z} \\
-                b & = & 2 q' \quad q' \in \mathbb{Z}
-            \end{eqnarray*}
+            \begin{align*}
+                a &= 2 q \quad q \in \mathbb{Z} \\
+                b &= 2 q' \quad q' \in \mathbb{Z}
+            \end{align*}
 
             y al sumarlos tenemos que:
 
@@ -284,10 +284,10 @@
 
             Ahora tomemos dos elementos $g_1, g_2 \in C(a)$, para los cuales:
 
-            \begin{eqnarray*}
-                g_1 \op a & = & a \op g_1 \\
-                g_2 \op a & = & a \op g_2
-            \end{eqnarray*}
+            \begin{align*}
+                g_1 \op a &= a \op g_1 \\
+                g_2 \op a &= a \op g_2
+            \end{align*}
 
             Ahora, si operamos estos dos elementos tendremos:
 
@@ -355,11 +355,11 @@
 
             al operar este subgrupo tenemos:
 
-            \begin{eqnarray*}
-                e^1 & = & e \\
-                e^2 & = & e \op e = e \\
-                e^3 & = & e \op e \op e = e
-            \end{eqnarray*}
+            \begin{align*}
+                e^1 &= e \\
+                e^2 &= e \op e = e \\
+                e^3 &= e \op e \op e = e
+            \end{align*}
 
             por lo que obtenemos todos los elementos del grupo.
         \end{ejemplo}
@@ -384,10 +384,10 @@
 
             y al operar este subgrupo tenemos:
 
-            \begin{eqnarray*}
-                a^1 & = & a  \\
-                a^2 & = & a \op a = e
-            \end{eqnarray*}
+            \begin{align*}
+                a^1 &= a  \\
+                a^2 &= a \op a = e
+            \end{align*}
 
             y obtenemos todos los elementos del grupo.
         \end{ejemplo}
@@ -513,24 +513,24 @@
         \begin{proof}
             Dado $[a] = Ha$, las clases de equivalencia forman una partición de $G$:
 
-            \begin{eqnarray*}
-                [a_1] \cup [a_2] \cup \dots \cup [a_k] & = & G \\[0cm]
-                [a_i] \cap [a_j] & = & \varnothing \quad i \ne j
-            \end{eqnarray*}
+            \begin{align*}
+                [a_1] \cup [a_2] \cup \dots \cup [a_k] &= G \\[0cm]
+                [a_i] \cap [a_j] &= \varnothing \quad i \ne j
+            \end{align*}
 
             Por otro lado, las clases laterales derechas forman una partición:
 
-            \begin{eqnarray*}
-                H a_1 \cup H a_2 \cup \dots \cup H a_k & = & G \\
-                H a_i \cap H a_j & = & \varnothing \quad i \ne j
-            \end{eqnarray*}
+            \begin{align*}
+                H a_1 \cup H a_2 \cup \dots \cup H a_k &= G \\
+                H a_i \cap H a_j &= \varnothing \quad i \ne j
+            \end{align*}
 
             Establezcamos una biyección:
 
-            \begin{eqnarray*}
-                Ha_i & \to & H \\
-                ha_i & \to & h
-            \end{eqnarray*}
+            \begin{align*}
+                Ha_i &\to H \\
+                ha_i &\to h
+            \end{align*}
 
             es decir, el orden de $Ha_i$ es el orden de $H$
 
@@ -540,11 +540,11 @@
 
             entonces:
 
-            \begin{eqnarray*}
-                |G| & = & |Ha_1| + |Ha_2| + \dots + |Ha_k| \\
-                & = & |H| + |H| + \dots + |H| \\
-                |G| & = & k |H|
-            \end{eqnarray*}
+            \begin{align*}
+                |G| &= |Ha_1| + |Ha_2| + \dots + |Ha_k| \\
+                &= |H| + |H| + \dots + |H| \\
+                |G| &= k |H|
+            \end{align*}
 
             pero $k \in \mathbb{Z}$, entonces:
 
@@ -604,7 +604,7 @@
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Subgrupo Normal}
 
         \begin{definicion}
@@ -698,24 +698,24 @@
         \begin{proof}
             Para demostrar la existencia de identidad primero verificamos que para un elemento $x \in \sfrac{G}{N}$, el elemento tiene la forma $x = Na \quad a \in G$, por lo que podemos ver que:
 
-            \begin{eqnarray*}
-                xNe = xN = Na N = NNa = Na & = & x \\
-                Nex = Nx = NNa = Na & = & x
-            \end{eqnarray*}
+            \begin{align*}
+                xNe = xN = Na N = NNa = Na &= x \\
+                Nex = Nx = NNa = Na &= x
+            \end{align*}
         \end{proof}
 
         Para demostrar la existencia de un inverso definimos un elemento $x \in \sfrac{G}{N}$ y $Na^{-1} \in \sfrac{G}{N}$, y queremos demostrar que $x^{-1} = Na^{-1}$ es el inverso de $x = Na$. Al operar estos elementos por la derecha y la izquierda tenemos:
 
-        \begin{eqnarray*}
-            x x^{-1} = Na Na^{-1} = NNaa^{-1} = Ne & = & N \\
-            x^{-1} x = Na^{-1} Na = NNa^{-1}a = Ne & = & N
-        \end{eqnarray*}
+        \begin{align*}
+            x x^{-1} = Na Na^{-1} = NNaa^{-1} = Ne &= N \\
+            x^{-1} x = Na^{-1} Na = NNa^{-1}a = Ne &= N
+        \end{align*}
 
         por lo tanto $Na^{-1} = x^{-1}$ es el inverso de $x$.
         Por lo tanto, $\sfrac{G}{N}$ es un grupo.
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Homomorfismos de grupo}
 
         \begin{definicion}
@@ -729,10 +729,10 @@
         \begin{ejemplo}
             Sea $G = \mathbb{R}^+ \setminus \{0\}$, bajo el producto usual y sea $\bar{G} = \mathbb{R}$ bajo la adición, definimos $\varphi \colon G \to \bar{G}$ como:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{R}^+ \setminus \{0\} & \to & \mathbb{R} \\
-                r & \to & \ln{r}
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon \mathbb{R}^+ \setminus \{0\} &\to \mathbb{R} \\
+                r &\to \ln{r}
+            \end{align*}
 
             Sean $r_1, r_2 \in \mathbb{R}^+ \setminus \{0\}$ tal que:
 
@@ -746,10 +746,10 @@
         \begin{lema}
             Supongamos que $G$ es un grupo y que $N$ es un subgrupo normal de $G$. Definamos la aplicación:
 
-            \begin{eqnarray*}
-                \varphi \colon G & \to & \sfrac{G}{N} \\
-                x & \to & Nx
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon G &\to \sfrac{G}{N} \\
+                x &\to Nx
+            \end{align*}
 
             entonces $\varphi$ es es un homomorfismo.
         \end{lema}
@@ -794,10 +794,10 @@
 
             Para demostrar la segunda parte, notamos que:
 
-            \begin{eqnarray*}
-                \bar{e} = \varphi(e) & = & \varphi(x \opone x^{-1}) = \varphi(x) \optwo \varphi(x^{-1}) = \bar{e} \\
-                & = & \varphi(x^{-1} \opone x) = \varphi(x^{-1}) \optwo \varphi(x) = \bar{e}
-            \end{eqnarray*}
+            \begin{align*}
+                \bar{e} = \varphi(e) &= \varphi(x \opone x^{-1}) = \varphi(x) \optwo \varphi(x^{-1}) = \bar{e} \\
+                &= \varphi(x^{-1} \opone x) = \varphi(x^{-1}) \optwo \varphi(x) = \bar{e}
+            \end{align*}
 
             por lo que $\varphi(x)^{-1} = \varphi(x^{-1})$.
         \end{proof}
@@ -807,10 +807,10 @@
         \begin{ejercicio}
             Sea $G$ un grupo abeliano, tenemos que:
 
-            \begin{eqnarray*}
-                \varphi \colon G & \to & G \\
-                a & \to & a^2
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon G &\to G \\
+                a &\to a^2
+            \end{align*}
 
             Verificar que $\varphi$ es un homomorfismo.
         \end{ejercicio}
@@ -818,10 +818,10 @@
         \begin{ejercicio}
             Sea $G$ y $G'$ dos grupos y sea $e'$ la identidad en $G'$, entonces:
 
-            \begin{eqnarray*}
-                \varphi \colon G & \to & G' \\
-                g & \to & e'
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon G &\to G' \\
+                g &\to e'
+            \end{align*}
 
             verificar que $\varphi$ rd un homomorfismo.
         \end{ejercicio}
@@ -829,10 +829,10 @@
         \begin{ejercicio}
             La identidad dada por:
 
-            \begin{eqnarray*}
-                \identidad_G \colon G & \to & G \\
-                g & \to & g
-            \end{eqnarray*}
+            \begin{align*}
+                \identidad_G \colon G &\to G \\
+                g &\to g
+            \end{align*}
 
             verificar que $\identidad_G$ es un homomorfismo.
         \end{ejercicio}
@@ -840,14 +840,14 @@
         \begin{ejercicio}
             Sea $G = \mathbb{Z}$ con la suma usual y $G' = \left\{ 1, -1 \right\}$ con el producto usual. Si definimos:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{Z} & \to & \left\{ 1, -1 \right\} \\
-                n & \to &
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \left\{ 1, -1 \right\} \\
+                n &\to
                 \begin{cases}
                     1 & \text{si } n \text{ es par} \\
                     -1 & \text{si } n \text{ es impar}
                 \end{cases} \quad \forall \+ n \in G
-            \end{eqnarray*}
+            \end{align*}
 
             ¿Será $\varphi$ un homomorfismo?
         \end{ejercicio}
@@ -855,10 +855,10 @@
         \begin{ejercicio}
             Sean $G = \mathbb{C}^* = \mathbb{C} \setminus \{0\}$ con el producto correspondiente y $G' = \mathbb{R}^+$ con el producto correspondiente. Entonces definimos:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{C}^* & \to & \mathbb{R}^+ \\
-                z & \to & |z|
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon \mathbb{C}^* &\to \mathbb{R}^+ \\
+                z &\to |z|
+            \end{align*}
 
             ¿Será $\varphi$ un homomorfismo?
         \end{ejercicio}
@@ -866,10 +866,10 @@
         \begin{ejercicio}
             Definimos:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{Z} & \to & \mathbb{Z}_n \\
-                a & \to & [a]
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \mathbb{Z}_n \\
+                a &\to [a]
+            \end{align*}
 
             y sabemos que:
 
@@ -918,10 +918,10 @@
 
             Para demostrar la propiedad de cerradura, tomamos dos elementos $y_1, y_2 \in \imagen{\varphi}$ tales que tienen la forma:
 
-            \begin{eqnarray*}
-                y_1 = \varphi(x_1) \in G' & \quad & x_1 \in G \\
-                y_2 = \varphi(x_2) \in G' & \quad & x_2 \in G
-            \end{eqnarray*}
+            \begin{align*}
+                y_1 = \varphi(x_1) \in G' &\quad x_1 \in G \\
+                y_2 = \varphi(x_2) \in G' &\quad x_2 \in G
+            \end{align*}
 
             por lo que al operarlos entre si tenemos:
 
@@ -931,10 +931,10 @@
 
             Por otro lado, para demostrar la existencia de un inverso, operamos un elemento $y = \varphi(x) \in \imagen{\varphi}$ con el elemento $\varphi(x^{-1})$, el cual queremos demostrar es el inverso.
 
-            \begin{eqnarray*}
-                \varphi(x) \varphi(x^{-1}) = \varphi(x x^{-1}) = \varphi(e) & = & e' \in G' \\
-                \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) & = & e' \in G'
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi(x) \varphi(x^{-1}) = \varphi(x x^{-1}) = \varphi(e) &= e' \in G' \\
+                \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) &= e' \in G'
+            \end{align*}
 
             por lo que se concluye que el inverso es:
 
@@ -974,18 +974,18 @@
         \begin{proof}
             Si suponemos que $\ker{\varphi} = \{0\}$, tenemos que para dos elementos $\varphi(x_1)$ y $\varphi(x_2)$ iguales:
 
-            \begin{eqnarray*}
-                \varphi(x_1) & = & \varphi(x_2) \\
-                \varphi(x_1) - \varphi(x_2) & = & 0 \\
-                \varphi(x_1 - x_2) & = & 0
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi(x_1) &= \varphi(x_2) \\
+                \varphi(x_1) - \varphi(x_2) &= 0 \\
+                \varphi(x_1 - x_2) &= 0
+            \end{align*}
 
             por lo que $x_1 - x_2 \in \ker{\varphi}$, lo cual implica que:
 
-            \begin{eqnarray*}
-                x_1 - x_2 & = & 0 \\
-                x_1 & =  & x_2
-            \end{eqnarray*}
+            \begin{align*}
+                x_1 - x_2 &= 0 \\
+                x_1 &= x_2
+            \end{align*}
 
             por lo que podemos concluir que $\varphi$ es un monomorfismo.
         \end{proof}
@@ -1026,10 +1026,10 @@
 
             Sabemos que cualquier elemento en $\ker{\varphi}$, al evaluarlo en $\varphi$, obtendremos la identidad, por lo que procederemos a tratar de obtenerla:
 
-            \begin{eqnarray*}
-                \varphi(a^{-1} g a) & = & \varphi(a^{-1}) \varphi(g) \varphi(a) = \varphi(a^{-1}) e' \varphi(a) \\
-                & = & \varphi(a^{-1}) \varphi(a) = \varphi(a^{-1} a) = \varphi(e) = e'
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi(a^{-1} g a) &= \varphi(a^{-1}) \varphi(g) \varphi(a) = \varphi(a^{-1}) e' \varphi(a) \\
+                &= \varphi(a^{-1}) \varphi(a) = \varphi(a^{-1} a) = \varphi(e) = e'
+            \end{align*}
 
             por lo que podemos concluir que:
 
@@ -1045,14 +1045,14 @@
         \begin{ejercicio}
             Sea $\varphi$ definida como:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{Z} & \to & \left\{ -1, 1 \right\} \\
-                n & \to &
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \left\{ -1, 1 \right\} \\
+                n &\to
                 \begin{cases}
                     -1 & \text{si } n \text{ es par} \\
                     1 & \text{si } n \text{ es impar}
                     \end{cases} \quad \forall \+ n \in G
-            \end{eqnarray*}
+            \end{align*}
 
             Verificar si $\varphi$ es monomorfismo.
         \end{ejercicio}
@@ -1060,10 +1060,10 @@
         \begin{ejercicio}
             Sea $\varphi$ definida como:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{C}^* & \to & \mathbb{C}^* \\
-                z & \to & |z|
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon \mathbb{C}^* &\to \mathbb{C}^* \\
+                z &\to |z|
+            \end{align*}
 
             ¿Será $\varphi$ un monomorfismo?
         \end{ejercicio}
@@ -1076,10 +1076,10 @@
         \begin{proof}
             Sea $\varphi$ definida como:
 
-            \begin{eqnarray*}
-                \varphi \colon G & \to & \sfrac{G}{N} \\
-                a & \to & [a]
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon G &\to \sfrac{G}{N} \\
+                a &\to [a]
+            \end{align*}
 
             sean $a, b \in G$ tales que al operarlos tenemos que:
 
@@ -1097,26 +1097,26 @@
 
             lo cual implica:
 
-            \begin{eqnarray*}
-                a e^{-1} & \in & N \\
-                a e & \in & N \\
-                a & \in & N
-            \end{eqnarray*}
+            \begin{align*}
+                a e^{-1} &\in N \\
+                a e &\in N \\
+                a &\in N
+            \end{align*}
 
             por lo que podemos concluir que $\ker{\varphi} \subseteq N$.
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Teoremas de isomorfismos}
 
         \begin{teorema}
             Sea $\varphi$ definido por:
 
-            \begin{eqnarray*}
-                \varphi \colon G & \to & G' \\
-                g & \to & \varphi(g)
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon G &\to G' \\
+                g &\to \varphi(g)
+            \end{align*}
 
             un epimorfismo con nucleo $K$, entonces:
 
@@ -1128,10 +1128,10 @@
         \begin{proof}
             Para demostrar que $\sfrac{G}{K}$ y $G'$ son isomorfos, debemos demostrar que existe un isomorfismo entre los dos grupos. Empezamos definiendo un mapeo $\bar{\varphi}$ definido por:
 
-            \begin{eqnarray*}
-                \bar{\varphi} \colon \sfrac{G}{K} & \to & G' \\
-                Kg & \to & \varphi(g)
-            \end{eqnarray*}
+            \begin{align*}
+                \bar{\varphi} \colon \sfrac{G}{K} &\to G' \\
+                Kg &\to \varphi(g)
+            \end{align*}
 
             es decir $\bar{\varphi}(Kg) = \varphi(g)$.
 
@@ -1150,17 +1150,17 @@
 
             Esto es equivalente a decir que $g_1 g_2^{-1} \in K$, lo cual implica que:
 
-            \begin{eqnarray*}
-                g_1 & \cong & g_2 \mod K \\
-                g_2 & \cong & g_1 \mod K
-            \end{eqnarray*}
+            \begin{align*}
+                g_1 &\cong g_2 \mod K \\
+                g_2 &\cong g_1 \mod K
+            \end{align*}
 
             es decir:
 
-            \begin{eqnarray*}
-                [g_1] & = & [g_2] \\
-                Kg_1 & = & Kg_2
-            \end{eqnarray*}
+            \begin{align*}
+                [g_1] &= [g_2] \\
+                Kg_1 &= Kg_2
+            \end{align*}
 
             por lo que podemos concluir que $\bar{\varphi}$ es inyectiva.
 
@@ -1178,11 +1178,11 @@
         \begin{teorema}
             Sea $G$ un grupo y $H < G$ y $N \bigtriangleup G$, entonces:
 
-            \begin{eqnarray}
-                HN & < & G \\
-                H \cap N & \bigtriangleup & H \\
-                N & \bigtriangleup & HN
-            \end{eqnarray}
+            \begin{align}
+                HN &< G \\
+                H \cap N &\bigtriangleup H \\
+                N &\bigtriangleup HN
+            \end{align}
 
             y ademas:
 
@@ -1394,16 +1394,16 @@
         \marginnote{Aqui se empezará a omitir la notación para el producto usual cuando sea pertinente, sin que por eso se entienda que nos referimos a otra operación.}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Homomorfismos de anillo}
 
         \begin{definicion}
             Una función $\varphi \colon R \to R'$ es un homomorfismo si:
 
-            \begin{eqnarray}
-                \varphi(a) + \varphi(b) & = & \varphi(a + b) \\
-                \varphi(a) \varphi(b) & = & \varphi(ab)
-            \end{eqnarray}
+            \begin{align}
+                \varphi(a) + \varphi(b) &= \varphi(a + b) \\
+                \varphi(a) \varphi(b) &= \varphi(ab)
+            \end{align}
         \end{definicion}
 
         \begin{definicion}
@@ -1436,10 +1436,10 @@
         \begin{proof}
             Sean $k \in \ker{\varphi}$ y $r \in R$, entonces tenemos que:
 
-            \begin{eqnarray*}
-                \varphi(rk) = \varphi(r) \varphi(k) = \varphi(r) \cdot 0 & = & 0 \\
-                \varphi(kr) = \varphi(k) \varphi(r) = 0 \cdot \varphi(r) & = & 0
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi(rk) = \varphi(r) \varphi(k) = \varphi(r) \cdot 0 &= 0 \\
+                \varphi(kr) = \varphi(k) \varphi(r) = 0 \cdot \varphi(r) &= 0
+            \end{align*}
 
             por lo que podemos concluir que:
 
@@ -1449,7 +1449,7 @@
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Ideales}
 
         \begin{definicion}
@@ -1568,10 +1568,10 @@
         \begin{definicion}
             Sean $I, J$ ideales del anillo $R$, definimos las operaciones de ideales como:
 
-            \begin{eqnarray}
-                I + J & = & \left\{ a + b \mid a \in I, b \in J \right\} \\
-                IJ & = & \left\{ \sum_{i=1}^n a_i b_i \mid n \in \mathbb{N}, a \in I, b \in J \right\}
-            \end{eqnarray}
+            \begin{align}
+                I + J &= \left\{ a + b \mid a \in I, b \in J \right\} \\
+                IJ &= \left\{ \sum_{i=1}^n a_i b_i \mid n \in \mathbb{N}, a \in I, b \in J \right\}
+            \end{align}
         \end{definicion}
 
         \begin{ejercicio}
@@ -1581,17 +1581,17 @@
         \begin{proposicion}
             Tenemos que $\sfrac{R}{I}$ es un anillo con la suma y productos correspondientes:
 
-            \begin{eqnarray*}
-                (a + I) + (b + I) & \colon = & (a + b) + I \\
-                (a + I) (b + I) & \colon = & ab + I
-            \end{eqnarray*}
+            \begin{align*}
+                (a + I) + (b + I) &\colon = (a + b) + I \\
+                (a + I) (b + I) &\colon = ab + I
+            \end{align*}
 
             entonces la función:
 
-            \begin{eqnarray*}
-                \varphi \colon R & \to & \sfrac{R}{I} \\
-                a & \to & a + I
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon R &\to \sfrac{R}{I} \\
+                a &\to a + I
+            \end{align*}
 
             es un epimorfismo.
         \end{proposicion}
@@ -1599,10 +1599,10 @@
         \begin{proof}
             Primero debemos verificar que $\varphi$ es un homomorfismo:
 
-            \begin{eqnarray*}
-                \varphi(a + b) & = & a + b + I = (a + I) + (b + I)  = \varphi(a) + \varphi(b) \\
-                \varphi(ab) & = & (a + I)(b + I) = \varphi(a) \varphi(b)
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi(a + b) &= a + b + I = (a + I) + (b + I)  = \varphi(a) + \varphi(b) \\
+                \varphi(ab) &= (a + I)(b + I) = \varphi(a) \varphi(b)
+            \end{align*}
 
             Tambien notamos que $\varphi$ es sobre por construcción, por lo que podemos concluir que es un epimorfismo.
         \end{proof}
@@ -1618,7 +1618,7 @@
         \end{ejercicio}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Teoremas de isomorfismos}
 
         \begin{teorema}
@@ -1648,26 +1648,26 @@
         \begin{ejemplo}
             Sea $n \in \mathbb{N}$, con $n > 1$ tenemos la aplicación:
 
-            \begin{eqnarray*}
-                \varphi \colon \mathbb{Z} & \to & \mathbb{Z}' \\
-                 a & \to & [a]
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \mathbb{Z}' \\
+                 a &\to [a]
+            \end{align*}
 
             por lo que $\varphi$ es un epimorfismo con:
 
-            \begin{eqnarray*}
-                [a + b] & = & [a] + [b] \\[0cm]
-                [ab] & = & [a] [b]
-            \end{eqnarray*}
+            \begin{align*}
+                [a + b] &= [a] + [b] \\[0cm]
+                [ab] &= [a] [b]
+            \end{align*}
 
             y su nucleo es:
 
-            \begin{eqnarray*}
-                \ker{\varphi} & = & \left\{ a \in \mathbb{Z} \mid \varphi(a) = [a] = [0] \right\} \\
-                & = & \left\{ a \in \mathbb{Z} \mid a \cong 0 \mod{n} \right\} \\
-                & = & \left\{ a \in \mathbb{Z} \mid \sfrac{n}{a} \right\} \\
-                & = & \left\{ a \in \mathbb{Z} \mid a = n z, z \in \mathbb{Z} \right\} = n \mathbb{Z}
-            \end{eqnarray*}
+            \begin{align*}
+                \ker{\varphi} &= \left\{ a \in \mathbb{Z} \mid \varphi(a) = [a] = [0] \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid a \cong 0 \mod{n} \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid \sfrac{n}{a} \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid a = n z, z \in \mathbb{Z} \right\} = n \mathbb{Z}
+            \end{align*}
 
             por lo que podemos aplicar el primer teorema de isomorfismos y decir que:
 
@@ -1714,10 +1714,10 @@
 
             con las operaciones definidas como:
 
-            \begin{eqnarray*}
-                (f + g)(x) & = & f(x) + g(x) \\
-                (f \cdot g)(x) & = & f(x) g(x) 
-            \end{eqnarray*}
+            \begin{align*}
+                (f + g)(x) &= f(x) + g(x) \\
+                (f \cdot g)(x) &= f(x) g(x) 
+            \end{align*}
 
             ¿Es $R$ un anillo con identidad?
         \end{ejercicio}
@@ -1731,10 +1731,10 @@
 
             y definimos una función $\varphi$ como:
 
-            \begin{eqnarray*}
-                \varphi \colon R & \to & R \\
-                f & \to & f \left( \frac{1}{2} \right)
-            \end{eqnarray*}
+            \begin{align*}
+                \varphi \colon R &\to R \\
+                f &\to f \left( \frac{1}{2} \right)
+            \end{align*}
 
             ¿Podemos decir que $\sfrac{R}{I}$ y $R$ son isomorfos?
         \end{ejercicio}
@@ -1768,10 +1768,10 @@
             Como $\sfrac{a}{b}$ sabemos que existe un $q \in \mathbb{Z}$ tal que $b = aq$ y como $\sfrac{a}{c}$ sabemos que existe un $q' \in \mathbb{Z}$ tal que $c = aq'$.
             Dados $x, y \in \mathbb{Z}$ generales, al multiplicar estos enteros por las relaciones anteriores obtenemos:
 
-            \begin{eqnarray*}
-                bx & = & aqx \\
-                cy & = & aq'y
-            \end{eqnarray*}
+            \begin{align*}
+                bx &= aqx \\
+                cy &= aq'y
+            \end{align*}
 
             y si sumamos ambas relaciones obtendremos:
 
@@ -1797,7 +1797,7 @@
         \end{definicion}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Máximo Común Divisor}
 
         \begin{definicion}
@@ -1829,7 +1829,7 @@
         \end{ejemplo}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{mínimo común multiplo}
 
         \begin{definicion}
@@ -1873,7 +1873,7 @@
         \end{ejercicio}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Algoritmo de la división de Euclides}
 
         \begin{definicion}
@@ -1903,10 +1903,10 @@
 
             Primero demostraremos la primera afirmación de la proposición, para lo que decimos que existe un divisor común para $a$ y $b$, al cual llamamos $c$, esto es equivalente a decir que $\sfrac{c}{a}$ y $\sfrac{c}{b}$, lo cual implica que existen $\bar{q}, q' \in \mathbb{Z}$ tales que:
 
-            \begin{eqnarray*}
-                a & = & c \bar{q} \\
-                b & = & c q'
-            \end{eqnarray*}
+            \begin{align*}
+                a &= c \bar{q} \\
+                b &= c q'
+            \end{align*}
 
             lo cual implica que nuestro residuo se escribe como:
 
@@ -1918,10 +1918,10 @@
 
             Para demostrar la segunda afirmación, tenemos un divisor común de $b$ y de $r$ al que llamamos $l$, es decir, $\sfrac{l}{b}$ y $\sfrac{l}{r}$, lo cual implica que existen $\bar{m}, m' \in \mathbb{Z}$ tales que:
 
-            \begin{eqnarray*}
-                b & = & l \bar{m} \\
-                r & = & l m'
-            \end{eqnarray*}
+            \begin{align*}
+                b &= l \bar{m} \\
+                r &= l m'
+            \end{align*}
 
             lo cual implica que la ecuación original puede ser escrita como:
 
@@ -2002,10 +2002,10 @@
 
             Por otro lado, sabemos que los valores de $r - |b|$ son:
 
-            \begin{eqnarray*}
-                r - |b| & = & r - b < r \text{ para } b > 0 \\
-                r - |b| & = & r + b < r \text{ para } b < 0
-            \end{eqnarray*}
+            \begin{align*}
+                r - |b| &= r - b < r \text{ para } b > 0 \\
+                r - |b| &= r + b < r \text{ para } b < 0
+            \end{align*}
 
             pero asumimos que $r$ es el menor de los enteros positivos en $S$, por lo que llegamos a una contradicción y por lo tanto:
 
@@ -2017,10 +2017,10 @@
 
             Empezaremos suponiendo que existen $q'$ y $r'$ enteros, ademas de $q$ y $r$ tales que:
 
-            \begin{eqnarray*}
-                a & = & bq + r \\
-                a & = & bq' + r'
-            \end{eqnarray*}
+            \begin{align*}
+                a &= bq + r \\
+                a &= bq' + r'
+            \end{align*}
 
             en donde $0 \leq r < |b|$ y $0 \leq r' < |b|$.
             Si estas expresiones las restamos entre si, obtendremos:
@@ -2037,10 +2037,10 @@
 
             Por otro lado, la expresión $b(q - q') = r' - r$ puede ser expresada como:
 
-            \begin{eqnarray*}
-                b(q - q') + (r - r') & = & 0 \\
-                b(q' - q) + (r' - r) & = & 0
-            \end{eqnarray*}
+            \begin{align*}
+                b(q - q') + (r - r') &= 0 \\
+                b(q' - q) + (r' - r) &= 0
+            \end{align*}
 
             lo cual, ya hemos comprobado que implica:
 
@@ -2082,7 +2082,8 @@
 
             y como el caso en que $t = 0$ es el único cierto, concluimos que $q, r$ deben ser únicos.
         \end{proof}
-
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Procedimiento para hallar el Máximo Común Divisor de $a$ y $b$}
 
         A continuación se describe un procedimiento iterativo para encontrar el Máximo Común Divisor de un par $a, b$.
@@ -2144,17 +2145,17 @@
 
         y lo sustituimos en la ecuación~\ref{eq:mcd2}
 
-        \begin{eqnarray*}
-            r_1 & = & b - q_1 r = b - q_1 (m_1 a + n_1 b) \\
-            & = & (-m_1 q_1) a + (1 - n_1 q_1) b = m_2 a + n_2 b
-        \end{eqnarray*}
+        \begin{align*}
+            r_1 &= b - q_1 r = b - q_1 (m_1 a + n_1 b) \\
+            &= (-m_1 q_1) a + (1 - n_1 q_1) b = m_2 a + n_2 b
+        \end{align*}
 
         y lo sustituimos en la ecuación~\ref{eq:mcd3}
 
-        \begin{eqnarray*}
-            r_2 & = & r - q_2 r_1 = (m_1 a + n_1 b) - q_2 (m_2 a + n_2 b) \\
-            & = & (m_1 - m_2 q_2) a + (n_1 - n_2 q_2) b = m_3 a + n_3 b
-        \end{eqnarray*}
+        \begin{align*}
+            r_2 &= r - q_2 r_1 = (m_1 a + n_1 b) - q_2 (m_2 a + n_2 b) \\
+            &= (m_1 - m_2 q_2) a + (n_1 - n_2 q_2) b = m_3 a + n_3 b
+        \end{align*}
 
         En general
 
@@ -2221,7 +2222,8 @@
 
             \faltante{Falta desarrollar ejemplo}
         \end{ejemplo}
-
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{El anillo de los polinomios}
 
         \begin{definicion}
@@ -2233,10 +2235,10 @@
 
             En donde para dos elementos $p(x)$ y $q(x)$ de la forma:
 
-            \begin{eqnarray*}
-                p(x) & = & a_0 + a_1 x + \dots + a_n x^n \\
-                q(x) & = & b_0 + b_1 x + \dots + b_m x^m 
-            \end{eqnarray*}
+            \begin{align*}
+                p(x) &= a_0 + a_1 x + \dots + a_n x^n \\
+                q(x) &= b_0 + b_1 x + \dots + b_m x^m 
+            \end{align*}
 
             definimos la suma como:
 
@@ -2293,10 +2295,10 @@
         \begin{ejemplo}
             Hallar $(f(x), g(x))$ con:
 
-            \begin{eqnarray*}
-                f(x) & = & 2 x^3 - 11 x^2 + 10 x + 8 \\
-                g(x) & = & 2 x^3 + x^2 - 8 x - 4
-            \end{eqnarray*}
+            \begin{align*}
+                f(x) &= 2 x^3 - 11 x^2 + 10 x + 8 \\
+                g(x) &= 2 x^3 + x^2 - 8 x - 4
+            \end{align*}
 
             \faltante{Falta desarrollar ejemplo}
         \end{ejemplo}
@@ -2304,17 +2306,17 @@
         \begin{ejercicio}
             Hallar $(f(x), g(x))$ con:
 
-            \begin{eqnarray*}
-                f(x) & = & 12 x^3 - 26 x^2 + 20 x - 12 \\
-                g(x) & = & 2 x^3 - x^2 - 3 x
-            \end{eqnarray*}
+            \begin{align*}
+                f(x) &= 12 x^3 - 26 x^2 + 20 x - 12 \\
+                g(x) &= 2 x^3 - x^2 - 3 x
+            \end{align*}
         \end{ejercicio}
 
         \begin{ejercicio}
             Hallar $(f(x), g(x))$ con:
 
-            \begin{eqnarray*}
-                f(x) & = & x^3 - 6 x + 7 \\
-                g(x) & = & x + 4
-            \end{eqnarray*}
+            \begin{align*}
+                f(x) &= x^3 - 6 x + 7 \\
+                g(x) &= x + 4
+            \end{align*}
         \end{ejercicio}

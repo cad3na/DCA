@@ -71,10 +71,10 @@
 
 			Dados los elementos $\alpha, \beta \in \mathbb{F}^n$ de la forma:
 
-			\begin{eqnarray*}
-				\alpha & = & \begin{pmatrix} x_1 & x_2 & \dots & x_n \end{pmatrix} \\
-				\beta  & = & \begin{pmatrix} y_1 & y_2 & \dots & y_n \end{pmatrix} \\
-			\end{eqnarray*}
+			\begin{align*}
+				\alpha &= \begin{pmatrix} x_1 & x_2 & \dots & x_n \end{pmatrix} \\
+				\beta  &= \begin{pmatrix} y_1 & y_2 & \dots & y_n \end{pmatrix} \\
+			\end{align*}
 
 			podemos definir la suma como:
 
@@ -126,7 +126,7 @@
 		\end{definicion}
 
 %-------------------------------------------------------------------------------
-
+	\newpage
 	\subsection{Subespacios vectoriales}
 
 		\begin{definicion}
@@ -179,10 +179,10 @@
 
 			Por ejemplo, si en $\mathbb{R}^2$ definimos:
 
-			\begin{eqnarray*}
-				W_1 = \left\{ \begin{pmatrix} x_1 & 0 \end{pmatrix} \mid x_1 \in \mathbb{R} \right\} \subset \mathbb{R} \\
-				W_2 = \left\{ \begin{pmatrix} 0 & x_2 \end{pmatrix} \mid x_2 \in \mathbb{R} \right\} \subset \mathbb{R}
-			\end{eqnarray*}
+			\begin{align*}
+				W_1 &= \left\{ \begin{pmatrix} x_1 & 0 \end{pmatrix} \mid x_1 \in \mathbb{R} \right\} \subset \mathbb{R} \\
+				W_2 &= \left\{ \begin{pmatrix} 0 & x_2 \end{pmatrix} \mid x_2 \in \mathbb{R} \right\} \subset \mathbb{R}
+			\end{align*}
 
 			La union de estos subespacios vectoriales sería:
 
@@ -247,37 +247,37 @@
 			pero el lado izquierdo de la ecuación es algo que está en $T$ y el segundo termino es algo que está en $S$, es decir, estamos preguntando que elementos hay en común en $S$ y $T$.
 			Como $V = S \oplus T$, sabemos que la intersección entre $S$ y $T$ es $\{0\}$, por lo que nos quedan las siguientes relaciones:
 
-			\begin{eqnarray*}
-				t - t' & = & 0 \\
-				s' - s & = & 0
-			\end{eqnarray*}
+			\begin{align*}
+				t - t' &= 0 \\
+				s' - s &= 0
+			\end{align*}
 
 			lo cual implica que:
 
-			\begin{eqnarray*}
-				t & = & t' \\
-				s' & = & s
-			\end{eqnarray*}
+			\begin{align*}
+				t &= t' \\
+				s' &= s
+			\end{align*}
 		\end{proof}
 
 		\begin{definicion}
 			Sea $A$ una matriz $m \times n$ con entradas en $\mathbb{F}$, los vectores fila de $A$ son:
 
-			\begin{eqnarray*}
-				\alpha_1 & = & \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \end{pmatrix} \\
-				\alpha_2 & = & \begin{pmatrix} a_{21} & a_{22} & \dots & a_{2n} \end{pmatrix} \\
-				& \vdots & \\
-				\alpha_m & = & \begin{pmatrix} a_{m1} & a_{m2} & \dots & a_{mn} \end{pmatrix}
-			\end{eqnarray*}
+			\begin{align*}
+				\alpha_1 &= \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \end{pmatrix} \\
+				\alpha_2 &= \begin{pmatrix} a_{21} & a_{22} & \dots & a_{2n} \end{pmatrix} \\
+				&\vdots \\
+				\alpha_m &= \begin{pmatrix} a_{m1} & a_{m2} & \dots & a_{mn} \end{pmatrix}
+			\end{align*}
 
 			y los vectores columna son:
 
-			\begin{eqnarray*}
-				\beta_1 & = & \begin{pmatrix} a_{11} & a_{21} & \dots & a_{m1} \end{pmatrix}^T \\
-				\beta_2 & = & \begin{pmatrix} a_{12} & a_{22} & \dots & a_{m2} \end{pmatrix}^T \\
-				& \vdots & \\
-				\beta_n & = & \begin{pmatrix} a_{1n} & a_{2n} & \dots & a_{mn} \end{pmatrix}^T
-			\end{eqnarray*}
+			\begin{align*}
+				\beta_1 &= \begin{pmatrix} a_{11} & a_{21} & \dots & a_{m1} \end{pmatrix}^T \\
+				\beta_2 &= \begin{pmatrix} a_{12} & a_{22} & \dots & a_{m2} \end{pmatrix}^T \\
+				&\vdots \\
+				\beta_n &= \begin{pmatrix} a_{1n} & a_{2n} & \dots & a_{mn} \end{pmatrix}^T
+			\end{align*}
 
 			es decir:
 
@@ -300,7 +300,7 @@
 		\end{definicion}
  
 %-------------------------------------------------------------------------------
-
+	\newpage
 	\subsection{Dependencia e independencia lineal}
 
 		\begin{definicion}
@@ -405,7 +405,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Isomorfismos}
 
 	\subsection{Definiciones}
@@ -449,20 +449,20 @@
 
 			es decir:
 
-			\begin{eqnarray*}
-				\varphi \colon V & \to & \mathbb{F}^n \\
-				\alpha & \to & \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix}
-			\end{eqnarray*}
+			\begin{align*}
+				\varphi \colon V &\to \mathbb{F}^n \\
+				\alpha &\to \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix}
+			\end{align*}
 
 			Por lo que tenemos que demostrar, es que esta función es isomorfismo.
 			Para empezar, demostraremos que esta función es inyectiva.
 
 			Para esto tomamos dos elementos $\alpha, \beta \in V$, tales que:
 
-			\begin{eqnarray*}
-				\alpha & = & a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
-				\beta & = & b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
-			\end{eqnarray*}
+			\begin{align*}
+				\alpha &= a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
+				\beta &= b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
+			\end{align*}
 
 			Por lo que si asumimos que $\varphi(\alpha) = \varphi(\beta)$, es decir:
 
@@ -477,12 +477,12 @@
 
 			tenemos que esto implica que:
 
-			\begin{eqnarray*}
-				a_1 & = & b_1 \\
-				a_2 & = & b_2 \\
-				& \vdots & \\
-				a_n & = & b_n
-			\end{eqnarray*}
+			\begin{align*}
+				a_1 &= b_1 \\
+				a_2 &= b_2 \\
+				&\vdots \\
+				a_n &= b_n
+			\end{align*}
 
 			y por lo tanto $\alpha = \beta$, por lo que $\varphi$ es inyectiva.
 
@@ -490,22 +490,22 @@
 
 			Ahora tomamos dos elementos $\alpha, \beta \in V$ y los operamos, por lo que tendremos que:
 
-			\begin{eqnarray*}
-				\varphi(\alpha + \beta) & = & \varphi(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
-				& = & \varphi((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
-				& = & \begin{pmatrix} a_1 + b_1 & a_2 + b_2 & \dots & a_n + b_n \end{pmatrix} \\
-				& = & \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} + \begin{pmatrix} b_1 & b_2 & \dots & b_n \end{pmatrix} \\
-				& = & \varphi(\alpha) + \varphi(\beta)
-			\end{eqnarray*}
+			\begin{align*}
+				\varphi(\alpha + \beta) &= \varphi(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
+				&= \varphi((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
+				&= \begin{pmatrix} a_1 + b_1 & a_2 + b_2 & \dots & a_n + b_n \end{pmatrix} \\
+				&= \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} + \begin{pmatrix} b_1 & b_2 & \dots & b_n \end{pmatrix} \\
+				&= \varphi(\alpha) + \varphi(\beta)
+			\end{align*}
 
 			Por otro lado, si tomamos un elemento $r \in \mathbb{F}$ y un elemento $\alpha \in V$, tendremos que:
 
-			\begin{eqnarray*}
-				\varphi(r \alpha) & = & \varphi(r (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
-				& = & \varphi(r a_1 \alpha_1 + r a_2 \alpha_2 + \dots + r a_n \alpha_n) \\
-				& = & \begin{pmatrix} r a_1 & r a_2 & \dots & r a_n \end{pmatrix} \\
-				& = & r \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} = r \varphi(\alpha)
-			\end{eqnarray*}
+			\begin{align*}
+				\varphi(r \alpha) &= \varphi(r (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
+				&= \varphi(r a_1 \alpha_1 + r a_2 \alpha_2 + \dots + r a_n \alpha_n) \\
+				&= \begin{pmatrix} r a_1 & r a_2 & \dots & r a_n \end{pmatrix} \\
+				&= r \begin{pmatrix} a_1 & a_2 & \dots & a_n \end{pmatrix} = r \varphi(\alpha)
+			\end{align*}
 
 			Por lo que queda demostrado que $\varphi$ es un isomorfismo y por lo tanto:
 
@@ -521,12 +521,12 @@
 				V = \left\{ p(x) = a_0 + a_1 x \mid \grado{p(x)} = 1 \right\}
 			\end{equation*}
 
-			Verfiicar que $V \cong \mathbb{R}^2$ dada la siguiente función:
+			Verificar que $V \cong \mathbb{R}^2$ dada la siguiente función:
 
-			\begin{eqnarray*}
-				\varphi \colon V & \to & \mathbb{R}^2 \\
-				\alpha & \to & \begin{pmatrix} a_0 & a_1 \end{pmatrix}
-			\end{eqnarray*}
+			\begin{align*}
+				\varphi \colon V &\to \mathbb{R}^2 \\
+				\alpha &\to \begin{pmatrix} a_0 & a_1 \end{pmatrix}
+			\end{align*}
 		\end{ejercicio}
 
 		\begin{proposicion}
@@ -558,10 +558,10 @@
 
 			es una base de $S + T$, por lo que:
 
-			\begin{eqnarray*}
-				\dim{(S + T)} & = & r + m - k \\
-				\dim{(S + T)} & = & \dim{S} + \dim{T} - \dim{(S \cap T)}
-			\end{eqnarray*}
+			\begin{align*}
+				\dim{(S + T)} &= r + m - k \\
+				\dim{(S + T)} &= \dim{S} + \dim{T} - \dim{(S \cap T)}
+			\end{align*}
 
 			Aqui aun falta verificar que esta base es linealmente independiente y que genera a $S + T$, pero puede verse inmediatamente el resultado final.
 		\end{proof}
@@ -573,7 +573,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Transformaciones lineales}
 
 	\subsection{Definiciones}
@@ -627,10 +627,10 @@
 		\begin{ejercicio}
 			Dada la función:
 
-			\begin{eqnarray*}
-				0 \colon V & \to & V \\
-				\alpha & \to & 0
-			\end{eqnarray*}
+			\begin{align*}
+				0 \colon V &\to V \\
+				\alpha &\to 0
+			\end{align*}
 
 			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
 		\end{ejercicio}
@@ -638,10 +638,10 @@
 		\begin{ejercicio}
 			Dada la función:
 
-			\begin{eqnarray*}
-				T \colon \mathbb{R} & \to & \mathbb{R} \\
-				x & \to & x^2
-			\end{eqnarray*}
+			\begin{align*}
+				T \colon \mathbb{R} &\to \mathbb{R} \\
+				x &\to x^2
+			\end{align*}
 
 			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
 		\end{ejercicio}
@@ -649,10 +649,10 @@
 		\begin{ejercicio}
 			Dada la función:
 
-			\begin{eqnarray*}
-				T \colon \mathbb{R}^3 & \to & \mathbb{R}^2 \\
-				\begin{pmatrix} x_1 & x_2 & x_3 \end{pmatrix} & \to & \begin{pmatrix} x_1 & x_3 \end{pmatrix}
-			\end{eqnarray*}
+			\begin{align*}
+				T \colon \mathbb{R}^3 &\to \mathbb{R}^2 \\
+				\begin{pmatrix} x_1 & x_2 & x_3 \end{pmatrix} &\to \begin{pmatrix} x_1 & x_3 \end{pmatrix}
+			\end{align*}
 
 			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
 		\end{ejercicio}
@@ -660,10 +660,10 @@
 		\begin{ejercicio}
 			Dada la función:
 
-			\begin{eqnarray*}
-				T \colon \mathbb{R}^2 & \to & \mathbb{R}^3 \\
-				\begin{pmatrix} x_1 & x_2 \end{pmatrix} & \to & \begin{pmatrix} 0 & x_1 & x_2 \end{pmatrix}
-			\end{eqnarray*}
+			\begin{align*}
+				T \colon \mathbb{R}^2 &\to \mathbb{R}^3 \\
+				\begin{pmatrix} x_1 & x_2 \end{pmatrix} &\to \begin{pmatrix} 0 & x_1 & x_2 \end{pmatrix}
+			\end{align*}
 
 			Verificar si es transformación lineal, si es inyectiva y si es suprayectiva.
 		\end{ejercicio}
@@ -685,17 +685,17 @@
 
 			y definimos $T$ como:
 
-			\begin{eqnarray*}
-				T \colon V & \to & W \\
-				\alpha & \to & a_1 w_1 + a_2 w_2 + \dots + a_n w_n
-			\end{eqnarray*}
+			\begin{align*}
+				T \colon V &\to W \\
+				\alpha &\to a_1 w_1 + a_2 w_2 + \dots + a_n w_n
+			\end{align*}
 
 			en particular tenemos que:
 
-			\begin{eqnarray*}
-				\alpha_i & = & 0 \alpha_1 + 0 \alpha_2 + \dots  + \alpha_i + \dots + 0 \alpha_n \\
-				w_i & = & 0 w_1 + 0 w_2 + \dots  + w_i + \dots + 0 w_n
-			\end{eqnarray*}
+			\begin{align*}
+				\alpha_i &= 0 \alpha_1 + 0 \alpha_2 + \dots  + \alpha_i + \dots + 0 \alpha_n \\
+				w_i &= 0 w_1 + 0 w_2 + \dots  + w_i + \dots + 0 w_n
+			\end{align*}
 
 			tal que:
 
@@ -707,29 +707,29 @@
 
 			Si ahora tenemos dos elementos $\alpha, \beta \in V$ de la forma:
 
-			\begin{eqnarray*}
-				\alpha & = & a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
-				\beta & = & b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
-			\end{eqnarray*}
+			\begin{align*}
+				\alpha &= a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n \\
+				\beta &= b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n
+			\end{align*}
 
 			por lo que tenemos que:
 
-			\begin{eqnarray*}
-				T(\alpha + \beta) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
-				& = & T((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
-				& = & (a_1 + b_1) w_1 + (a_2 + b_2) w_2 + \dots + (a_n + b_n) w_n \\
-				& = & a_1 w_1 + a_2 w_2 + \dots + a_n w_n + b_1 w_1 + b_2 w_2 + \dots + b_n w_n \\
-				& = & T(\alpha) + T(\beta)
-			\end{eqnarray*}
+			\begin{align*}
+				T(\alpha + \beta) &= T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n + b_1 \alpha_1 + b_2 \alpha_2 + \dots + b_n \alpha_n) \\
+				&= T((a_1 + b_1) \alpha_1 + (a_2 + b_2) \alpha_2 + \dots + (a_n + b_n) \alpha_n) \\
+				&= (a_1 + b_1) w_1 + (a_2 + b_2) w_2 + \dots + (a_n + b_n) w_n \\
+				&= a_1 w_1 + a_2 w_2 + \dots + a_n w_n + b_1 w_1 + b_2 w_2 + \dots + b_n w_n \\
+				&= T(\alpha) + T(\beta)
+			\end{align*}
 
 			y dado un $c \in \mathbb{F}$, tenemos que:
 
-			\begin{eqnarray*}
-				T(c \alpha) & = & T(c (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
-				& = & T(c a_1 \alpha_1 + c a_2 \alpha_2 + \dots + c a_n \alpha_n) \\
-				& = & c a_1 w_1 + c a_2 w_2 + \dots + c a_n w_n \\
-				& = & c T(\alpha)
-			\end{eqnarray*}
+			\begin{align*}
+				T(c \alpha) &= T(c (a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n)) \\
+				&= T(c a_1 \alpha_1 + c a_2 \alpha_2 + \dots + c a_n \alpha_n) \\
+				&= c a_1 w_1 + c a_2 w_2 + \dots + c a_n w_n \\
+				&= c T(\alpha)
+			\end{align*}
 		\end{proof}
 
 		\begin{definicion}
@@ -745,7 +745,8 @@
 				\imagen{T} = \left\{ T(v) \mid v \in V \right\} \subset W
 			\end{equation}
 		\end{definicion}
-
+%-------------------------------------------------------------------------------
+	\newpage
 	\subsection{Propiedades}
 
 		\begin{proposicion}
@@ -772,10 +773,10 @@
 
 			por lo que $\beta$ tiene la forma:
 
-			\begin{eqnarray*}
-				\beta = T(\alpha) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
-				& = & a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_n T(\alpha_n)
-			\end{eqnarray*}
+			\begin{align*}
+				\beta = T(\alpha) &= T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
+				&= a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_n T(\alpha_n)
+			\end{align*}
 
 			por lo que podemos ver que:
 
@@ -789,10 +790,10 @@
 
 			Definimos la composicion $\circ$ como:
 
-			\begin{eqnarray}
-				T_2 \circ T_1 \colon V & \to & U \nonumber \\
-				v & \to & T_2(T_1(v))
-			\end{eqnarray}
+			\begin{align}
+				T_2 \circ T_1 \colon V &\to U \nonumber \\
+				v &\to T_2(T_1(v))
+			\end{align}
 		\end{definicion}
 
 		\begin{proposicion}
@@ -867,10 +868,10 @@
 
 			Si analizamos la imagen, tendremos:
 
-			\begin{eqnarray*}
-				\imagen{T} & = & \left\{ T(\alpha) \mid \alpha \in V \right\} \\
-				& = & \left\{ T(\alpha) = 0 \mid \alpha \in V \right\} = \{0\}
-			\end{eqnarray*}
+			\begin{align*}
+				\imagen{T} &= \left\{ T(\alpha) \mid \alpha \in V \right\} \\
+				&= \left\{ T(\alpha) = 0 \mid \alpha \in V \right\} = \{0\}
+			\end{align*}
 
 			y por lo tanto:
 
@@ -897,17 +898,17 @@
 
 			por lo que $\beta$ queda de la forma:
 
-			\begin{eqnarray*}
-				\beta = T(\alpha) & = & T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k + a_{k+1} \alpha_{k+1} + \dots + a_n \alpha_n) \\
-				& = & a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_k T(\alpha_k) + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
-			\end{eqnarray*}
+			\begin{align*}
+				\beta = T(\alpha) &= T(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k + a_{k+1} \alpha_{k+1} + \dots + a_n \alpha_n) \\
+				&= a_1 T(\alpha_1) + a_2 T(\alpha_2) + \dots + a_k T(\alpha_k) + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
+			\end{align*}
 
 			pero $a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_k \alpha_k$ esta en el nucleo, por lo que:
 
-			\begin{eqnarray*}
-				\beta = T(\alpha) & = & 0 + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n) \\
-				& = & a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
-			\end{eqnarray*}
+			\begin{align*}
+				\beta = T(\alpha) &= 0 + a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n) \\
+				&= a_{k+1} T(\alpha_{k+1}) + \dots + a_n T(\alpha_n)
+			\end{align*}
 
 			por lo que $T(\alpha_{k+1}), \dots, T(\alpha_n)$ genera a $\imagen{T}$.
 
@@ -949,15 +950,16 @@
 				\dim{V} = n = k + n - k = \dim{\ker{T}} + \dim{\imagen{T}}
 			\end{equation*}
 		\end{proof}
-
+%-------------------------------------------------------------------------------
+	\newpage
 	\subsection{Ejemplo en un sistema físico}
 
 		Sea el sistema:
 
-		\begin{eqnarray*}
-			\dot{x} & = & A x + B u \\
-			y & = & C x
-		\end{eqnarray*}
+		\begin{align*}
+			\dot{x} &= A x + B u \\
+			y &= C x
+		\end{align*}
 
 		con $x(t_0) = x_0$ y $x \in \mathbb{R}^n$, $u \in \mathbb{R}^m$ y las matrices $A$, $B$ y $C$ son de tamaño apropiado.
 
@@ -982,22 +984,22 @@
 		y la manera en que medimos la respuesta del sistema es por la posición $r$ de la masa.
 		De esta manera tenemos una realización de estado:
 
-		\begin{eqnarray*}
-			x_1 & = & r \\
-			x_2 & = & \dot{r}
-		\end{eqnarray*}
+		\begin{align*}
+			x_1 &= r \\
+			x_2 &= \dot{r}
+		\end{align*}
 
 		y por lo tanto
 
-		\begin{eqnarray*}
-			\dot{x}_1 & = & x_2 \\
-			\dot{x}_2 & = & u
-		\end{eqnarray*}
+		\begin{align*}
+			\dot{x}_1 &= x_2 \\
+			\dot{x}_2 &= u
+		\end{align*}
 
 		lo que nos deja con la siguiente representación matricial del sistema:
 
-		\begin{eqnarray*}
-			\dot{x} & = &
+		\begin{align*}
+			\dot{x} &=
 			\begin{pmatrix}
 				\dot{x}_1 \\
 				\dot{x}_2
@@ -1014,7 +1016,7 @@
 				0 \\
 				1
 			\end{pmatrix} u \\
-			y & = & x_1 =
+			y &= x_1 =
 			\begin{pmatrix}
 				1 & 0
 			\end{pmatrix}
@@ -1022,37 +1024,37 @@
 				x_1 \\
 				x_2
 			\end{pmatrix}
-		\end{eqnarray*}
+		\end{align*}
 
 		Definimos pues las matrices de controlabilidad y observabilidad como:
 
-		\begin{eqnarray*}
-			Co & = &
+		\begin{align*}
+			Co &=
 			\begin{pmatrix}
 				B & AB & \dots & A^{n-1}B
 			\end{pmatrix} \\
-			Ob & = &
+			Ob &=
 			\begin{pmatrix}
 				C \\
 				CA \\
 				\vdots \\
 				CA^{n-1}
 			\end{pmatrix}
-		\end{eqnarray*}
+		\end{align*}
 
 		las cuales, para nuetro sistema, quedan de la forma:
 
-		\begin{eqnarray*}
-			\rango{Co} & = & \rango{\begin{pmatrix} B & AB \end{pmatrix}} = \rango{\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}} = 2\\
-			\rango{Ob} & = & \rango{\begin{pmatrix} C \\ CA \end{pmatrix}} = \rango{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}} = 2
-		\end{eqnarray*}
+		\begin{align*}
+			\rango{Co} &= \rango{\begin{pmatrix} B & AB \end{pmatrix}} = \rango{\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}} = 2\\
+			\rango{Ob} &= \rango{\begin{pmatrix} C \\ CA \end{pmatrix}} = \rango{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}} = 2
+		\end{align*}
 
 		Por otro lado, si definimos un sistema auxiliar:
 
-		\begin{eqnarray*}
-			\dot{\hat{x}} & = & A \hat{x} + B u + k (y - \hat{y}) \\
-			\hat{y} & = & C \hat{x}
-		\end{eqnarray*}
+		\begin{align*}
+			\dot{\hat{x}} &= A \hat{x} + B u + k (y - \hat{y}) \\
+			\hat{y} &= C \hat{x}
+		\end{align*}
 
 		en donde el error de este sistema auxiliar estará dado por:
 
@@ -1062,10 +1064,10 @@
 
 		y la derivada del error es:
 
-		\begin{eqnarray*}
-			\dot{e} & = & \dot{x} - \dot{\hat{x}} = A(x - \hat{x}) - k (Cx - C\hat{x}) \\
-			& = & (A - k C) e = \tilde{A} e
-		\end{eqnarray*}
+		\begin{align*}
+			\dot{e} &= \dot{x} - \dot{\hat{x}} = A(x - \hat{x}) - k (Cx - C\hat{x}) \\
+			&= (A - k C) e = \tilde{A} e
+		\end{align*}
 
 		En donde hemos definido un nuevo sistema para el error del sistema auxiliar.
 		Para que este error tienda a ser cero, pediremos que:
@@ -1130,22 +1132,22 @@
 
 			Dado esto, del sistema original podemos sacar la siguiente conclusión:
 
-			\begin{eqnarray*}
-				\dot{x} & = & A x + B u \\
-				\dot{x} - A x & = & B u \\
-				\exp{(-A t)} (\dot{x} - A x) & = & \exp{(-A t)} B u \\
-				(\exp{(-A t)} x)' & = & \exp{(-A t)} B u \\
-				\exp{(-A t)} x & = & \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \\
-				x & = & \exp{(A t)} \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \exp{(A t)}\\
-				x & = & \int_0^t \exp{A(t - \tau)} B u(\tau) d\tau + \exp{(At)}x_0
-			\end{eqnarray*}
+			\begin{align*}
+				\dot{x} &= A x + B u \\
+				\dot{x} - A x &= B u \\
+				\exp{(-A t)} (\dot{x} - A x) &= \exp{(-A t)} B u \\
+				(\exp{(-A t)} x)' &= \exp{(-A t)} B u \\
+				\exp{(-A t)} x &= \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \\
+				x &= \exp{(A t)} \int_0^t \exp{(-A \tau)} B u(\tau) d\tau + k \exp{(A t)}\\
+				x &= \int_0^t \exp{A(t - \tau)} B u(\tau) d\tau + \exp{(At)}x_0
+			\end{align*}
 
 			teniendo que la ecuación de salida es:
 
-			\begin{eqnarray*}
-				y(x_1) & = & C e^{A t} x_1 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau \\
-				y(x_2) & = & C e^{A t} x_2 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau
-			\end{eqnarray*}
+			\begin{align*}
+				y(x_1) &= C e^{A t} x_1 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau \\
+				y(x_2) &= C e^{A t} x_2 + \int_0^t e^{A(t - \tau)} B u(\tau) d\tau
+			\end{align*}
 
 			pero tenemos que $y(x_1) = y(x_2)$, por lo que:
 
@@ -1155,12 +1157,12 @@
 
 			Dada esta ecuación, podemos construir un sistema derivando de la siguiente manera:
 
-			\begin{eqnarray*}
-				C \exp{(A t)} (x_1 - x_0) & = & 0 \\
-				C A \exp{(A t)} (x_1 - x_0) & = & 0 \\
-				& \vdots & \\
-				C A^{n-1} \exp{(A t)} (x_1 - x_0) & = & 0
-			\end{eqnarray*}
+			\begin{align*}
+				C \exp{(A t)} (x_1 - x_0) &= 0 \\
+				C A \exp{(A t)} (x_1 - x_0) &= 0 \\
+				&\vdots \\
+				C A^{n-1} \exp{(A t)} (x_1 - x_0) &= 0
+			\end{align*}
 
 			reemplazando a $x_1 - x_0$ simplemente con $x$, tenemos que:
 
@@ -1222,10 +1224,10 @@
 
 			y dado que:
 
-			\begin{eqnarray*}
-				\dim{Ob} & = & \dim{\ker{Ob}} + \dim{\imagen{Ob}} \\
-				n & = & a + b \\
-			\end{eqnarray*}
+			\begin{align*}
+				\dim{Ob} &= \dim{\ker{Ob}} + \dim{\imagen{Ob}} \\
+				n &= a + b \\
+			\end{align*}
 
 			con $a \ne 0$, lo que nos da que $\rango{Ob} < n$, lo cual no es posible si el sistema es completamente observable, luego la hipotesis es falsa y concluimos que para que el sistema sea completamente observable $Ob$ debe ser de rango pleno.
 		\end{proof}
@@ -1233,7 +1235,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Operadores lineales}
 
 	\subsection{Definiciones}
@@ -1274,10 +1276,10 @@
 
 			Recordando que $T$ es invertible si existe una $T^{-1}$ por la izquierda y por la derecha, tal que:
 
-			\begin{eqnarray}
-				T^{-1} \circ T & = & I_V \nonumber \\
-				T \circ T^{-1} & = & I_W
-			\end{eqnarray}
+			\begin{align}
+				T^{-1} \circ T &= I_V \nonumber \\
+				T \circ T^{-1} &= I_W
+			\end{align}
 		\end{proposicion}
 
 		\begin{proof}
@@ -1291,11 +1293,11 @@
 
 			si componemos con $T^{-1}$ por la izquierda:
 
-			\begin{eqnarray*}
-				T^{-1} \circ T(x_1) & = & T^{-1} \circ T(x_2) \\
-				I_V(x_1) & = & I_V(x_2) \\
-				x_1 & = & x_2
-			\end{eqnarray*}
+			\begin{align*}
+				T^{-1} \circ T(x_1) &= T^{-1} \circ T(x_2) \\
+				I_V(x_1) &= I_V(x_2) \\
+				x_1 &= x_2
+			\end{align*}
 
 			por lo que $T$ es inyectiva.
 
@@ -1315,7 +1317,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Funcionales lineales}
 
 	\subsection{Definiciones}
@@ -1348,7 +1350,7 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Espacio dual}
 
 	\subsection{Definiciones}
@@ -1427,11 +1429,11 @@
 				\alpha = a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n
 			\end{equation*}
 
-			\begin{eqnarray*}
-				\left[ \sum_{i=1}^n f(\alpha_i) f_i \right] (\alpha) & = & \sum_{i=1}^n f(\alpha_i) f_i(\alpha) \\
-				& = & \sum_{i=1}^n f(\alpha_i) f_i(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
-				& = & \sum_{i=1}^n f_i(\alpha) a_i
-			\end{eqnarray*}
+			\begin{align*}
+				\left[ \sum_{i=1}^n f(\alpha_i) f_i \right] (\alpha) &= \sum_{i=1}^n f(\alpha_i) f_i(\alpha) \\
+				&= \sum_{i=1}^n f(\alpha_i) f_i(a_1 \alpha_1 + a_2 \alpha_2 + \dots + a_n \alpha_n) \\
+				&= \sum_{i=1}^n f_i(\alpha) a_i
+			\end{align*}
 		\end{proof}
 
 		\begin{ejercicio}
@@ -1489,23 +1491,23 @@
 		Quitando los parentesis e igualando los coeficientes de las mismas potencias de $\lambda$, tenemos:
 
 		\begin{align*}
-			B_{n-1} & = I \tag{$\lambda^n$} \\
-			B_{n-2} - A B_{n-1} & = a_{n-1} I \tag{$\lambda^{n-1}$} \\
-			B_{n-3} - A B_{n-2} & = a_{n-2} I \tag{$\lambda^{n-2}$} \\
-			& \vdots \\
-			B_0 - A B_1 & = a_1 I \tag{$\lambda^1$} \\
-			- A B_0 & = a_0 I \tag{$\lambda^0$}
+			B_{n-1} &= I \tag{$\lambda^n$} \\
+			B_{n-2} - A B_{n-1} &= a_{n-1} I \tag{$\lambda^{n-1}$} \\
+			B_{n-3} - A B_{n-2} &= a_{n-2} I \tag{$\lambda^{n-2}$} \\
+			&\vdots \\
+			B_0 - A B_1 &= a_1 I \tag{$\lambda^1$} \\
+			- A B_0 &= a_0 I \tag{$\lambda^0$}
 		\end{align*}
 
 		Si ahora multiplicamos estas ecuaciones matriciales por $A^n, A^{n-1}, \dots, A, I$, tendremos:
 
 		\begin{align*}
-			A^n B_{n-1} & = A^n \tag{$\lambda^n$} \\
-			A^{n-1} B_{n-2} - A^n B_{n-1} & = a_{n-1} A^{n-1} \tag{$\lambda^{n-1}$} \\
-			A^{n-2} B_{n-3} - A^{n-1} B_{n-2} & = a_{n-2} A^{n-2} \tag{$\lambda^{n-2}$} \\
-			& \vdots \\
-			A B_0 - A^2 B_1 & = a_1 I \tag{$\lambda^1$} \\
-			- A B_0 & = a_0 I \tag{$\lambda^0$}
+			A^n B_{n-1} &= A^n \tag{$\lambda^n$} \\
+			A^{n-1} B_{n-2} - A^n B_{n-1} &= a_{n-1} A^{n-1} \tag{$\lambda^{n-1}$} \\
+			A^{n-2} B_{n-3} - A^{n-1} B_{n-2} &= a_{n-2} A^{n-2} \tag{$\lambda^{n-2}$} \\
+			&\vdots \\
+			A B_0 - A^2 B_1 &= a_1 I \tag{$\lambda^1$} \\
+			- A B_0 &= a_0 I \tag{$\lambda^0$}
 		\end{align*}
 
 		Y al sumar todas las ecuaciones tendremos:
@@ -1528,20 +1530,20 @@
 
 		Obtenemos su polinomio caracteristico:
 
-		\begin{eqnarray*}
-			|\lambda I - A| & = & \det{(\lambda I - A)} = |A - \lambda I| \\
-			& = &
+		\begin{align*}
+			|\lambda I - A| &= \det{(\lambda I - A)} = |A - \lambda I| \\
+			&=
 			\begin{vmatrix}
 				1 - \lambda & 2 \\
 				3 & 2 - \lambda
 			\end{vmatrix} = (1 - \lambda)(2 - \lambda) - 6 \\
-			& = & \lambda^2 - 3 \lambda - 4 = P(\lambda)
-		\end{eqnarray*}
+			&= \lambda^2 - 3 \lambda - 4 = P(\lambda)
+		\end{align*}
 
 		y podemos ver que $A$ es un cero de $P(\lambda)$.
 
-		\begin{eqnarray*}
-			P(A) & = & A^2 - 3 A - 4I =
+		\begin{align*}
+			P(A) &= A^2 - 3 A - 4I =
 			\begin{pmatrix}
 				1 & 2 \\
 				3 & 2
@@ -1554,7 +1556,7 @@
 				1 & 0 \\
 				0 & 1
 			\end{pmatrix} \\
-			& = &
+			&=
 			\begin{pmatrix}
 				7 & 6 \\
 				9 & 10
@@ -1567,18 +1569,18 @@
 				4 & 0 \\
 				0 & 4
 			\end{pmatrix} \\
-			& = &
+			&=
 			\begin{pmatrix}
 				0 & 0 \\
 				0 & 0
 			\end{pmatrix}
-		\end{eqnarray*}
+		\end{align*}
 	\end{ejemplo}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Diagonalización}
 
 	\subsection{Definiciones}
@@ -1680,11 +1682,11 @@
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Forma canónica de Jordan}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Vectores propios generalizados}
