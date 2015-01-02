@@ -1649,6 +1649,34 @@
 			\end{equation}
 		\end{teorema}
 
+		\begin{ejemplo}
+			Sea $A$:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					-3 & 3 & -2 \\
+					-7 & 6 & -3 \\
+					1 & -1 & 2
+				\end{pmatrix}
+			\end{equation*}
+
+			por lo que el determinante de $A - \lambda I$ es:
+
+			\begin{equation*}
+				\det{(A - \lambda I)} = (\lambda - 2)^2 (\lambda - 1)
+			\end{equation*}
+
+			y los valores propios de $A$ son $\lambda_1 = 2$ con multiplicidad algebraica dos y $\lambda_2 = 1$ con multiplicidad algebraica uno.
+
+			Tenemos pues, el subespacio $E_{\lambda_1}$:
+
+			\begin{align*}
+				E_{\lambda_1} &= \ker{(A - \lambda_1 I)} = \ker{(A - 2I)} \\
+				&= \left\{ \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} \colon \begin{pmatrix} -5 & 3 & -2 \\ -7 & 4 & -3 \\ 1 & -1 & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \right\}
+			\end{align*}
+		\end{ejemplo}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
