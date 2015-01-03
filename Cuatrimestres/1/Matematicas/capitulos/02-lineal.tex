@@ -2110,3 +2110,53 @@
 %-------------------------------------------------------------------------------
 \newpage
 \section{Vectores propios generalizados}
+
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Sea $T$ un operador lineal en un espacio vectorial $V$ de dimensión de dimensión $n$. Un elemento no nulo $v \in V$ se llama vector propio generalizado de $T$ si existe un escalar $\lambda$ tal que:
+
+			\begin{equation}
+				(T - \lambda I)^p(v) = 0
+			\end{equation}
+
+			para algun $p \in \mathbb{Z}^+$.
+
+			Se dice que $v$ es un vector propio generalizado correspondiente a $\lambda$.
+		\end{definicion}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{definicion}
+			Sea $T$ un operador lineal en un espacio vectorial $V$.
+			Un subespacio $W$ de $V$ se llama subespacio $T$ - ciclico, si existe un elemento $v \in W$ tal que $W$ es igual al subespacio generado por $\{v, T(v), T^2(v), \dots\}$.
+
+			En este caso decimos que $W$ es generado por $v$.
+		\end{definicion}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{definicion}
+			Sea $T$ y $V$ como en la definicion anterior y sea $v$ un vector propio generalizado de $T$ correspondiente al valor propio $\lambda$.
+			Si $p$ es el entero positivo mas pequeño tal que:
+
+			\begin{equation}
+				(T - \lambda I)^p(v) = 0
+			\end{equation}
+
+			entonces el conjunto:
+
+			\begin{equation}
+				\left\{ (T - \lambda I)^{p-1}, (T - \lambda I)^{p-2}, \dots, (T - \lambda I)(v), v \right\}
+			\end{equation}
+
+			se llama un ciclo de vectores propios generalizados de $T$ que corresponden a $\lambda$.
+
+			Los elementos $(T - \lambda I)^{p-1}$ y $v$ se llaman vector inicial y vector terminal del ciclo respectivamente.
+
+			Se dice que la longitud del ciclo es $p$.
+		\end{definicion}
