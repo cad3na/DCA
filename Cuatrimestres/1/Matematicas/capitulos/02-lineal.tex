@@ -1638,7 +1638,7 @@
 				\item Si $A$ tiene tres diferentes valores propios $\lambda_1, \lambda_2, \lambda_3$ (cada uno con multiplicidad algebraica uno), entonces, por el primer teorema, sus respectivos vectores propios $v_1, v_2, v_3$ son linealmente independientes.
 				\item Si $A$ tiene dos vectores propios $\lambda_1$ y $\lambda_2$ con multiplicidad algebraica uno y dos respectivamente.
 				Entonces $\dim{E_{\lambda_2}} \leq 2$, porque de otra manera, podriamos tener al menos cuatro vectores linealmente independientes en un espacio de tres dimensiones.
-				Es decir, para $\lambda_2$ puede haber uno o deos vectores propios linealmente independientes.
+				Es decir, para $\lambda_2$ puede haber uno o dos vectores propios linealmente independientes.
 				\item Si $A$ tiene un valor propio $\lambda$ con multiplicidad algebraica tres, entonces $\dim{E_{\lambda}} \leq 3$, es decir, puede haber uno, dos o tres vectores propios linealmente independientes.
 			\end{enumerate}
 		\end{proposicion}
@@ -1677,6 +1677,249 @@
 				E_{\lambda_1} &= \ker{(A - \lambda_1 I)} = \ker{(A - 2I)} \\
 				&= \left\{ \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} \colon \begin{pmatrix} -5 & 3 & -2 \\ -7 & 4 & -3 \\ 1 & -1 & 0 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \right\}
 			\end{align*}
+
+			Resolviendo este sistema, se obtiene el único vector propio linealmente independiente $v_1 = \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}$, por lo que:
+
+			\begin{equation*}
+				E_{\lambda_1} = \mathcal{L} \left\{ \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix} \right\}
+			\end{equation*}
+
+			y por lo tanto $\dim{E_{\lambda_1}} = 1$
+
+			Ahora, para $E_{\lambda_2}$ tenemos:
+
+			\begin{align*}
+				E_{\lambda_2} &= \ker{(A - \lambda_2 I)} = \ker{(A - I)} \\
+				&= \left\{ \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} \colon \begin{pmatrix} -4 & 3 & -2 \\ -7 & 5 & -3 \\ 1 & -1 & 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \right\}
+			\end{align*}
+
+			y tenemos que el vector propio linealmente independiente asociado a $\lambda_2$ es $v_2 = \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$, por lo que:
+
+			\begin{equation*}
+				E_{\lambda_2} = \mathcal{L} \left\{ \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} \right\}
+			\end{equation*}
+
+			y por lo tanto $\dim{E_{\lambda_2}} = 1$.
+		\end{ejemplo}
+
+		\begin{definicion}
+			Dos matrices $A$ y $B$ de $n \times n$ se llaman equivalentes si existe una matriz invertible $Q$ de $n \times n$ tal que:
+
+			\begin{equation}
+				B = Q^{-1} A Q
+			\end{equation}
+
+			en donde $Q$ se llama matriz de transformación.
+		\end{definicion}
+
+		\begin{teorema}
+			Si $A$ y $B$ son matrices equivalentes de $n \times n$, $A$ y $B$ tienen el mismo polinomio caracteristico y por consiguiente tienen los mismos valores propios.
+		\end{teorema}
+
+		\begin{definicion}
+			Una matriz $A$ de $n times n$ es diagonalizable si existe una matriz diagonal $D$ tal que $A$ es equivalente a $D$, es decir:
+
+			\begin{equation}
+				D = Q^{-1} A Q
+			\end{equation}
+
+			donde $Q$ es una matriz invertible.
+		\end{definicion}
+
+		\begin{observacion}
+			Si $D$ es una matriz diagonal, entonces sus valores propios son las componentes de su diagonal.
+		\end{observacion}
+
+		\begin{observacion}
+			Si $A$ es equivalente a $D$ tenemos los mismos valores propios, debido al teorema 2.8.4.
+		\end{observacion}
+
+		\begin{observacion}
+			Englobando estos dos ultimos resultados, observamos que si $A$ es diagonalizable, entonces $A$ es equivalente a una matriz diagonal y las componentes de la diagonal son los valores propios de $A$.
+		\end{observacion}
+
+		\begin{teorema}
+			Una matriz $A$ de $n \times n$ es diagonalizable si y solo si tiene $n$ vectores propios linealmente independientes.
+
+			En este caso, la matriz diagonal $D$ equivalente a la matriz $A$ esta dada por:
+
+			\begin{equation}
+				D =
+				\begin{pmatrix}
+					\lambda_1 & 0 & 0 & \dots 0 \\
+					0 & \lambda_2 & 0 & \dots 0 \\
+					0 & 0 & \lambda_3 & \dots 0 \\
+					\vdots & \vdots & \vdots & & \vdots \\
+					0 & 0 & 0 & \dots & \lambda_n
+				\end{pmatrix}
+			\end{equation}
+
+			donde $\lambda_1, \lambda_2, \dots, \lambda_n$ son los valores propios de $A$.
+			Además, si $Q$ es una matriz cuyas columnas son vectores propios linealmente independientes de $A$, entonces:
+
+			\begin{equation}
+				D = Q^{-1} A Q
+			\end{equation}
+		\end{teorema}
+
+		\begin{corolario}
+			Si la matriz $A$ de $n \times n$ tiene $n$ valores propios diferentes, entonces $A$ esdiagonalizable.
+		\end{corolario}
+
+		\begin{ejemplo}
+			Sea $A$:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					1 & -1 & 4 \\
+					3 & 2 & -1 \\
+					2 & 1 & -1
+				\end{pmatrix}
+			\end{equation*}
+
+			por lo que tenemos que:
+
+			\begin{equation*}
+				\det{(A - \lambda I)} = - (\lambda - 1)(\lambda + 2)(\lambda - 3)
+			\end{equation*}
+
+			por lo que sus valores propios son $\lambda_1 = 1$, $\lambda_2 = -2$ y $\lambda_3 = 3$.
+
+			Como son tres valores propios diferentes, entonces por el teorema 2.8.2, tenemos que hay tres vectores propios linealmente independientes, que pueden ser:
+
+			\begin{align*}
+				v_1 &= \begin{pmatrix} -1 \\ 4 \\ 1 \end{pmatrix} \\
+				v_1 &= \begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix} \\
+				v_1 &= \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}
+			\end{align*}
+
+			entonces, por el teorema 2.8.5, $A$ es diagonalizable y la matriz de transformación $Q$ es:
+
+			\begin{equation*}
+				Q =
+				\begin{pmatrix}
+					-1 & 1 & 1 \\
+					4 & -1 & 2 \\
+					1 & -1 & 1
+				\end{pmatrix}
+			\end{equation*}
+
+			y podemos ver que:
+
+			\begin{align*}
+				Q^{-1} A Q &= -\frac{1}{6}
+				\begin{pmatrix}
+					1 & -2 & 3 \\
+					-2 & -2 & 6 \\
+					-3 & 0 & -3
+				\end{pmatrix}
+				\begin{pmatrix}
+					1 & -1 & 4 \\
+					3 & 2 & -1 \\
+					2 & 1 & -1
+				\end{pmatrix}
+				\begin{pmatrix}
+					-1 & 1 & 1 \\
+					4 & -1 & 2 \\
+					1 & -1 & 1
+				\end{pmatrix} \\
+				&=
+				\begin{pmatrix}
+					1 & 0 & 0 \\
+					0 & -2 & 0 \\
+					0 & 0 & 3
+				\end{pmatrix} = D
+			\end{align*}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Sea $A$:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					3 & 2 & 4 \\
+					2 & 0 & 2 \\
+					4 & 2 & 3
+				\end{pmatrix}
+			\end{equation*}
+
+			por lo que tenemos que:
+
+			\begin{equation*}
+				\det{(A - \lambda I)} = -(\lambda + 1)^2(\lambda - 8) = 0
+			\end{equation*}
+
+			Entonces los valores propios son $\lambda_1 = -1$ con multiplicidad algebraica dos y $\lambda_2 = 8$ con multiplicidad algebraica uno.
+
+			Para $\lambda_2$ se obtiene un vector propio linealmente independiente:
+
+			\begin{equation*}
+				v_1 =
+				\begin{pmatrix}
+					2 \\
+					1 \\
+					2
+				\end{pmatrix}
+			\end{equation*}
+
+			y para $\lambda_1$ se tienen dos vectores propios linealmente independientes:
+
+			\begin{align*}
+				v_2 &= \begin{pmatrix} 1 & -2 & 0 \end{pmatrix} \\
+				v_3 &= \begin{pmatrix} 0 & -2 & 1 \end{pmatrix}
+			\end{align*}
+
+			por lo que, por el teorema 2.8.5, tenemos que $A$ es diagonalizable, y la matriz $Q$ es:
+
+			\begin{equation*}
+				Q =
+				\begin{pmatrix}
+					2 & 1 & 0 \\
+					1 & -2 & -2 \\
+					2 & 0 & 1
+				\end{pmatrix}
+			\end{equation*}
+
+			y tenemos que:
+
+			\begin{align*}
+				Q^{-1} A Q &= -\frac{1}{9}
+				\begin{pmatrix}
+					-2 & -1 & -2 \\
+					-5 & 2 & 4 \\
+					4 & 2 & -5
+				\end{pmatrix}
+				\begin{pmatrix}
+					3 & 2 & 4 \\
+					2 & 0 & 2 \\
+					4 & 2 & 3
+				\end{pmatrix}
+				\begin{pmatrix}
+					2 & 1 & 0 \\
+					1 & -2 & -2 \\
+					2 & 0 & 1
+				\end{pmatrix} \\
+				&=
+				\begin{pmatrix}
+					8 & 0 & 0 \\
+					0 & -1 & 0 \\
+					0 & 0 & -1
+				\end{pmatrix} = D
+			\end{align*}
+
+			Este ejemplo ilustra que $A$ es diagonalizable aun cuando sus valores propios no son diferentes.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			En el ejemplo 2.8.1, la matriz $A$ de $3 \times 3$ tiene solo dos vectores propios linealmente independientes, entonces no es posible hallar la matriz de transformación $Q$, por tanto, por el teorema 2.8.5, la matriz $A$ no es diagonalizable.
+
+			Las matrices de $n \times n$ con $n$ vectores propios linealmente independientes pueden ser llevados a una matriz diagonal mediante una transformación de equivalencia.
+
+			Como la mayoria de los polinmios  tienen diferentes raices, la mayoria de las matrices tendrán diferentes valores propios y por tanto son diagonalizables.
+
+			Las matrices que no son diagonalizables (esto es, que no tienen $n$ vectores propios linealmente independientes) aparecen en ciertas aplicaciones. En este caso todavia es posible mostrar que la matriz es equivalente a otra matriz mas simple, pero la nueva matriz ya no es diagonal y la matriz de transformación $Q$ es mas dificil de obtener.
 		\end{ejemplo}
 
 %-------------------------------------------------------------------------------
@@ -1684,6 +1927,183 @@
 %-------------------------------------------------------------------------------
 \newpage
 \section{Forma canónica de Jordan}
+	\subsection{Definiciones}
+
+		\begin{definicion}
+			Aun cuando no todo operador $T$ es lineal es diagonalizable, es posible hallar una base $\beta$ para el espacio vectorial $V$ de dimensión $n$ tal que la representación matricial de $A$ de $n \times n$ de $T$ es equivalente a:
+
+			\begin{equation}
+				J =
+				\begin{pmatrix}
+					J_1 & 0 & \dots 0 \\
+					0 & J_2 & \dots 0 \\
+					\vdots & \vdots & & \vdots \\
+					0 & 0 & \dots & J_n
+				\end{pmatrix}
+			\end{equation}
+
+			donde $J_i$ es una matriz diagonal de la forma $(\lambda_i)$, o bien de la forma:
+
+			\begin{equation*}
+				J_i =
+				\begin{pmatrix}
+					\lambda_i & 1 & 0 & \dots & 0 & 0 \\
+					0 & \lambda_i & 1 & \dots & 0 & 0 \\
+					0 & 0 & \lambda_i & \dots & 0 & 0 \\
+					\vdots & \vdots & \vdots & & \vdots & \vdots \\
+					0 & 0 & 0 & \dots & \lambda_i & 1 \\
+					0 & 0 & 0 & \dots & 0 & \lambda_i \\
+				\end{pmatrix}
+			\end{equation*}
+
+			para algun valor propio $\lambda_i$ de $A$.
+
+			A $J_i$ le llamamos bloque de Jordan correspondiente a $\lambda_i$.
+			$\beta_i$ es la base correspondiente al bloque $J_i$.
+			$J$ se le llama forma canónica de Jordan de $A$.
+			$\beta$ se llama base canónica de Jordan.
+		\end{definicion}
+
+		\begin{observacion}
+			Cada bloque de Jordan $J_i$ es casi una matriz diagonal, de hecho $J$ es una matriz diagonal si y solo si, cada $J_i$ es de la forma $(\lambda_i)$.
+		\end{observacion}
+
+		\begin{ejemplo}
+			Sea $A$:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					4 & \vdots & 0 & 0 & 0 & \vdots & 0 \\
+					\dots & & \dots & \dots & \dots & & \dots \\
+					0 & \vdots & -3 & 1 & 0 & \vdots & 0 \\
+					0 & \vdots & 0 & -3 & 1 & \vdots & 0 \\
+					0 & \vdots & 0 & 0 & -3 & \vdots & 0 \\
+					\dots & & \dots & \dots & \dots & & \dots \\
+					0 & \vdots & 0 & 0 & 0 & \vdots & 7 
+				\end{pmatrix}
+			\end{equation*}
+
+			Los bloques de Jordan están marcados por las lineas punteadas.
+			La multiplicidad algebraica de cada valor propio $\lambda_i$ es el numero de veces que el valor propio aparece en la diagonal de $J_i$.
+		\end{ejemplo}
+
+		\begin{proposicion}
+			Sea $\lambda_i$ un valor propio de $A$ tal que $\dim{E_{\lambda_i}} = s_i$, entonces el numero de unos arriba de la diagonal de la forma canónica de Jordan es:
+
+			\begin{equation}
+				n - \sum_{i=1}^k s_i
+			\end{equation}
+
+			donde $k$ es el numero de valores propios.
+		\end{proposicion}
+
+		\begin{ejemplo}
+			Si el polinomio caracteristico de $A$ es $(\lambda - 2)^3(\lambda + 3)$, entonces $\lambda_1 = 2$ con multiplicidad algebraica tres, entonces $E_{\lambda_1} \leq 3$, y $\lambda_2 = -3$ con multiplicidad algebraica uno, entonces $\dim{E_{\lambda_2}} = 1$.
+
+			Como $\dim{E_{\lambda_1}} \leq 3$, entonces pueden haber uno, dos o tres vectores propios linealmene independientes para $\lambda_1$.
+			Para $\lambda_2$ siempre hay un vector propio independiente.
+
+			Por tanto las posibles formas canónicas de Jordan de $A$ son:
+
+			\begin{enumerate}
+				\item Supongamos que $\dim{E_{\lambda_1}} = 1$, entonces:
+				\begin{equation*}
+					J =
+					\begin{pmatrix}
+						2 & 1 & 0 & 0 \\
+						0 & 2 & 1 & 0 \\
+						0 & 0 & 2 & 0 \\
+						0 & 0 & 0 & -3
+					\end{pmatrix}
+				\end{equation*}
+				\item Supongamos que $\dim{E_{\lambda_1}} = 2$, entonces:
+				\begin{equation*}
+					J =
+					\begin{pmatrix}
+						2 & 1 & 0 & 0 \\
+						0 & 2 & 0 & 0 \\
+						0 & 0 & 2 & 0 \\
+						0 & 0 & 0 & -3
+					\end{pmatrix}
+				\end{equation*}
+				\item Supongamos que $\dim{E_{\lambda_1}} = 3$, entonces:
+				\begin{equation*}
+					J =
+					\begin{pmatrix}
+						2 & 0 & 0 & 0 \\
+						0 & 2 & 0 & 0 \\
+						0 & 0 & 2 & 0 \\
+						0 & 0 & 0 & -3
+					\end{pmatrix}
+				\end{equation*}
+			\end{enumerate}
+
+			En las columnas donde aparecen los unos arriba del valor propio indica que hay vectores que no son propios.
+			Por ejemplo en el inciso 1, las columnas $2$ y $3$ indican que para $\lambda_1$ hay dos vectores que no son propios, mientras que en el inciso 3, todos los vectores son propios.
+		\end{ejemplo}
+
+		\begin{teorema}
+			Sea $A$ una matriz de $n \times n$, entonces existe una matriz invertible $Q$ de $n \times n$ tal que:
+
+			\begin{equation}
+				Q^{-1} A Q = J
+			\end{equation}
+
+			donde $J$ es una matriz de Jordan cuyos elementos diagonales son valores propios de $A$.
+
+			$J$ es unica excepto por el orden en que aparecen los bloques de Jordan.
+		\end{teorema}
+
+		\begin{ejemplo}
+			Del ejemplo 2.9.2, si $A$ es equivalente a $J$, entonces $A$ tambien es equivalente a:
+
+			\begin{equation*}
+				J =
+				\begin{pmatrix}
+					-3 & 0 & 0 & 0 \\
+					0 & 2 & 1 & 0 \\
+					0 & 0 & 2 & 1 \\
+					0 & 0 & 0 & 2
+				\end{pmatrix}
+			\end{equation*}
+
+			Esto es, los bloques de Jordan son los mismos, pero se puede cambiar el orden en que se escriben.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Sea $p_2(\mathbb{R})$ el conjunto de los polinomios de segundo grado y sea $\beta$ una base para $p_2(\mathbb{R})$ definida como:
+
+			\begin{equation*}
+				\beta = \left\{ x_1, x_2, x_3 \right\} = \left\{ 1, x, x^2 \right\}
+			\end{equation*}
+
+			Definamos $T$ como:
+
+			\begin{align*}
+				T \colon p_2(\mathbb{R}) &\to p_2(\mathbb{R}) \\
+				f &\to f'
+			\end{align*}
+
+			Calculamos la representación matricial $A$ de $T$ mediante:
+
+			\begin{align*}
+				T(1) &= 0 = 0 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
+				T(x) &= 1 = 1 \cdot 1 + 0 \cdot x + 0 \cdot x^2 \\
+				T(x^2) &= 2x = 0 \cdot 1 + 2 \cdot x + 0 \cdot x^2
+			\end{align*}
+
+			Entonces $A$ se define como:
+
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+					0 & 1 & 0 \\
+					0 & 0 & 2 \\
+					0 & 0 & 0
+				\end{pmatrix}
+			\end{equation*}
+		\end{ejemplo}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
