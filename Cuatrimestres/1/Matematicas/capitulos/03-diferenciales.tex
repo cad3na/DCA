@@ -2,22 +2,871 @@
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
+\section{Motivación}
+
+	Si tomamos como ejemplo el movimiento de un cuerpo en caida libre tendremos que:
+
+	\begin{equation*}
+		F = mg = ma = m \frac{d^2 y}{dt^2}
+	\end{equation*}
+
+	Si ademas tomamos en cuenta que la masa del cuerpo es unitaria, tenemos que:
+
+	\begin{equation*}
+		g = \frac{d^2y}{dt^2} = \frac{dv}{dt}
+	\end{equation*}
+
+	por lo que tendremos que la velocidad es:
+
+	\begin{equation*}
+		v = \int dv = g \int dt = gt + c
+	\end{equation*}
+
+	pero la velocidad tambien puede ser vista como:
+
+	\begin{equation*}
+		\frac{dy}{dt} = v = gt + c	
+	\end{equation*}
+
+	por lo que:
+
+	\begin{align*}
+		y &= \int dy = g \int t dt + \int c dt \\
+		y &= \frac{1}{2} gt^2 + ct + d
+	\end{align*}
+
+	y por ultimo sabemos las condiciones iniciales del sistema, por lo que podemos saber las constantes involucradas:
+
+	\begin{align*}
+		y(0) = 0 &\implies d = 0 \\
+		y'(0) = 0 &\implies c = 0
+	\end{align*}
+
+	y se reduce a:
+
+	\begin{equation*}
+		y = \frac{1}{2} gt^2
+	\end{equation*}
+
+	Por otro lado, si consideramos la fricción viscosa del aire tenemos que:
+
+	\begin{align*}
+		mg - F_f &= m \frac{d^2 y}{dt^2} \\
+		mg - \eta k v &= m \frac{d^2 y}{dt^2} \\
+		mg - \bar{k} \frac{dy}{dt} &= m \frac{d^2 y}{dt^2} \quad \bar{k} = \eta k
+	\end{align*}
+
+	Se vuelve imposible el simplemente despejar e integrar, por lo que necesitamos una herramienta mas poderosa para resolver este tipo de problemas que aparecen de manera cotidiana en la naturaleza.
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+\section{Definiciones}
+	
+	\begin{definicion}
+		Una ecuación diferencial de orden $n$ es una relación de la forma:
+
+		\begin{equation} \label{eq:dif1}
+			F(y^{(n)}, y^{(n-1)}, \dots, y', y, x) = 0
+		\end{equation}
+	\end{definicion}
+
+	\begin{definicion}
+		Se dice que $f(a, b) \to \mathbb{R}$ con derivada hasta de orden $n$, es una solución de la ecuación~\ref{eq:dif1} si para todo $x \in (a, b)$, se tiene que:
+
+		\begin{equation}
+			F(f^{(n)}(x), f^{(n-1)}(x), \dots, f'(x), f(x), x) = 0
+		\end{equation}
+	\end{definicion}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{ejemplo}
+		\faltante{Falta escribir ejemplo}
+	\end{ejemplo}
+
+	\begin{definicion}
+		Para el caso general de una ecuación diferencial tenemos:
+
+		\begin{equation}
+			f(x) = a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y
+		\end{equation}
+
+		La cual podemos ver como un arreglo de variables auxiliares:
+
+		\begin{align}
+			x_1 &= y \nonumber\\
+			x_2 &= y' \nonumber\\
+			& \vdots \nonumber\\
+			x_{n-1} &= y^{(n-2)} \nonumber\\
+			x_n &= y^{(n-1)}
+		\end{align}
+
+		lo cual implica que:
+
+		\begin{align}
+			x_1' &= y' = x_2 \nonumber\\
+			x_2' &= y'' = x_3 \nonumber\\
+			& \vdots \nonumber\\
+			x_{n-1}'' &= y^{(n-1)} = x_n \nonumber\\
+			x_n' &= y^{(n)}
+		\end{align}
+
+		en donde:
+
+		\begin{align*}
+			y^{(n)} &= \frac{1}{a_n} \left( f(x) - a_{n-1} y^{n-1} - \dots - a_1 y' - a_0 y \right) \\
+			&= \frac{1}{a_n} \left( f(x) - a_{n-1} x_n - \dots - a_1 x_2 - a_0 x_1 \right) \\
+			&= \frac{1}{a_n} F(x_1, x_2, \dots, x_n, f(x))
+		\end{align*}
+
+		lo cual nos deja a nuestras variables auxiliares como:
+
+		\begin{align}
+			x_1' &= y' = x_2 \nonumber\\
+			x_2' &= y'' = x_3 \nonumber\\
+			& \vdots \nonumber\\
+			x_{n-1}'' &= y^{(n-1)} = x_n \nonumber\\
+			x_n' &= \frac{1}{a_n} F(x_1, x_2, \dots, x_n, f(x))
+		\end{align}
+
+		Si juntamos a todas esta variables en un vector $X$ tenemos que:
+
+		\begin{equation*}
+			\dot{X} = A X + f(x)
+		\end{equation*}
+
+		o bien, de forma explicita:
+
+		\begin{equation}
+			\dot{X} =
+			\begin{pmatrix}
+				0 & 1 & 0 & \dots & 0 \\
+				0 & 0 & 1 & \dots & 0 \\
+				0 & 0 & 0 & \dots & 0 \\
+				\vdots & \vdots & \vdots & \dots & \vdots \\
+				0 & 0 & 0 & \dots & 0 \\
+			\end{pmatrix} X +
+			\begin{pmatrix}
+				0 \\
+				0 \\
+				0 \\
+				\vdots \\
+				\frac{1}{a_n} F(x_1, x_2, \dots, x_n, f(x))
+			\end{pmatrix}
+		\end{equation}
+
+		A esta forma de escribir la ecuación diferencial se le conoce como realización de estado.
+	\end{definicion}
+
+%-------------------------------------------------------------------------------
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+\newpage
 \section{Solución de una ecuación diferencial}
+	
+	\subsection{Ecuaciones diferenciales de primer orden $F(y', y, x) = 0$}
+
+		\begin{definicion}
+			La ecuación $F(y', y, x) = 0$ se denomina normal, si se puede despejar la primera derivada, esto es:
+
+			\begin{equation}
+				\frac{dy}{dx} = y' = f(x, y)
+			\end{equation}
+		\end{definicion}
+
+		\begin{definicion}
+			La ecuacion $y' = f(x, y)$ se denomina de variables separables, si:
+
+			\begin{equation}
+				f(x, y) = \frac{g(x)}{h(y)}
+			\end{equation}
+
+			y en este caso la ecuación diferencial se escribe:
+
+			\begin{equation}
+				h(y) dy = g(x) dx
+			\end{equation}
+		\end{definicion}
+
+		\begin{ejemplo}
+			La ecuación diferencial:
+
+			\begin{equation*}
+				x dx - y dy = 0
+			\end{equation*}
+
+			puede ser escrita tambien como:
+
+			\begin{equation*}
+				x dx = y dy
+			\end{equation*}
+
+			por lo que:
+
+			\begin{equation*}
+				\frac{x^2}{2} = \frac{y^2}{2} + c
+			\end{equation*}
+
+			y por lo tanto $y$ es de la forma:
+
+			\begin{equation*}
+				y = \pm \sqrt{x^2 + c}
+			\end{equation*}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				x (1 + y^2) dx - y (1 + x^2) dy = 0
+			\end{equation*}
+
+			tenemos que:
+
+			\begin{align*}
+				\frac{x (1 + y^2)}{y (1 + x^2)} &= \frac{dy}{dx} \\
+				\frac{x}{1 + x^2}dx &= \frac{y}{1 + y^2}dy \\
+				\int \frac{x}{1 + x^2}dx &= \int \frac{y}{1 + y^2}dy \\
+				\frac{1}{2} \ln{|1 + x^2|} + c &= \frac{1}{2} \ln{|1 + y^2|} \\
+				e^{\ln{|1 + x^2|} + c} &= e^{\frac{1}{2} \ln{|1 + y^2|}} \\
+				|1 + x^2| e^{\bar{c}} &= |1 + y^2| \\
+				|1 + x^2| \tilde{c} &= |1 + y^2|
+			\end{align*}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				\frac{dy}{dx} = \cos^2{y} \sin{x}
+			\end{equation*}
+
+			Determinar si es de variables separables y resolverla.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				\frac{dy}{dx} + y^2 e^x = y^2
+			\end{equation*}
+
+			Determinar si es de variables separables y resolverla.
+		\end{ejercicio}
+
+		\begin{definicion}
+			Una función $f(x, y)$ se dice homogenea de grado $n$ con $n \in \{0, 1, \dots\}$, si para todo $t > 0$ se tiene que:
+
+			\begin{equation}
+				f(tx, ty) = t^n f(x, y)
+			\end{equation}
+		\end{definicion}
+
+		\begin{ejemplo}
+			Dada la función $f(x, y) = x^3 + x y^2$, tenemos que:
+
+			\begin{align*}
+				f(tx, ty) &= (tx)^3 + (tx) (ty)^2 \\
+				&= t^3 (x^3 + xy^2) \\
+				&= t^3 f(x, y)
+			\end{align*}
+
+			por lo que $f(x, y)$ es homogenea de grado $3$.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la función $f(x, y) = 1 + \sin{\frac{x}{y}}$, tenemos que:
+
+			\begin{align*}
+				f(tx, ty) &= 1 + \sin{\frac{tx}{ty}} \\
+				&= 1 + \sin{\frac{x}{y}} \\
+				&= t^0 (1 + \sin{\frac{x}{y}}) \\
+				&= t^0 f(x, y)
+			\end{align*}
+
+			por lo que $f(x, y)$ es homogenea de grado $0$.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la función $f(x, y) = x + \sqrt{x^2 + y^2}$, tenemos que:
+
+			\begin{align*}
+				f(tx, ty) &= tx + \sqrt{(tx)^2 + (ty)^2} \\
+				&= t (x + \sqrt{x^2 + y^2}) \\
+				&= t^1 f(x, y)
+			\end{align*}
+
+			por lo que $f(x, y)$ es homogenea de grado $1$.
+		\end{ejemplo}
+
+		\begin{definicion}
+			Una ecuación $\frac{dy}{dx} = f(x, y)$ se dice homogenea si $f$ es homogenea de grado cero.
+		\end{definicion}
+
+		\begin{ejemplo}
+			Dada la ecuación $\frac{dy}{dx} = \frac{x + y}{3x - 2y}$, tenemos que:
+
+			\begin{align*}
+				f(tx, ty) &= \frac{tx + ty}{3tx - 2ty} \\
+				&= \frac{t(x + y)}{t (3x - 2y)} \\
+				&= \frac{x + y}{3x - 2y} \\
+				&= t^0 f(x, y)
+			\end{align*}
+
+			por lo que $f(x, y)$ es homogenea de grado $0$ y por lo tanto esta ecuación es homogenea.
+		\end{ejemplo}
+
+		\begin{proposicion}
+			Si $M(x, y)$ y $N(x, y)$ son homogeneas del mismo grado $n$, entonces la ecuación diferencial $M(x, y) dx + N(x, y) dy = 0$ es homogenea.
+		\end{proposicion}
+
+		\begin{proposicion}
+			Si $f(x, y)$ es homogenea de grado cero, entonces podemos establecer la siguiente relacion:
+
+			\begin{equation}
+				f(tx, ty) = f(x, y)
+			\end{equation}
+
+			Si además $t = \frac{1}{x}$ con $x \ne 0$, tenemos que:
+
+			\begin{equation*}
+				f(1, \frac{y}{x}) = f(x, y)
+			\end{equation*}
+
+			dadas estas condiciones, tenemos que nuestra ecuación diferencial homogenea queda:
+
+			\begin{equation}
+				\frac{dy}{dx} = f(1, \frac{y}{x})
+			\end{equation}
+
+			y dado el cambio de variable $z = \frac{y}{x}$, es decir $zx = y$. Esto nos deja con una ecuación diferencial homogenea:
+
+			\begin{equation*}
+				\frac{dy}{dx} = \frac{d}{dx}(zx) = x \frac{dz}{dx} + z \frac{dx}{dx} = x \frac{dz}{dx} + z = f(1, z)
+			\end{equation*}
+
+			por lo que podemos ver que:
+
+			\begin{equation*}
+				\frac{dz}{dx} = \frac{f(1, z) - z}{x}
+			\end{equation*}
+
+			y por lo tanto, se puede separar las variables:
+
+			\begin{equation}
+				\frac{dz}{f(1, z) - z} = \frac{dx}{x}
+			\end{equation}
+		\end{proposicion}
+
+		\begin{ejemplo}
+			Dada la ecuación $y' = \frac{2x + y}{x}$, podemos ver que con el cambio de variables $z  =\frac{y}{x}$, nos queda:
+
+			\begin{align*}
+				x \frac{dz}{dx} + z &= 2 + z \\
+				dz &= \frac{2dx}{x} \\
+				z = \int dz &= 2 \int \frac{dx}{x} = 2 \ln{x} + c \\
+				z &= 2 \ln{x} + c = \frac{y}{x} \\
+			\end{align*}
+
+			por lo que la solución de esta ecuación diferencial es:
+
+			\begin{equation*}
+				y = 2 x \ln{x} + c x
+			\end{equation*}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Dada la ecuación diferencial homogenea $\frac{dy}{dx} = \frac{x + y}{x - y}$, encontrar una solución.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación diferencial homogenea $\sqrt{x^2 + y^2} dx = y dy$, encontrar una solución.
+		\end{ejercicio}
+
+		\begin{definicion}
+			Sea $F(x, y)$ tal que:
+
+			\begin{equation}
+				dF = \frac{\partial F}{\partial x} dx + \frac{\partial F}{\partial y} dy
+			\end{equation}
+
+			Consideremos pues a una ecuación de la forma:
+
+			\begin{equation}
+				M(x, y) dx + N(x, y)dy = 0
+			\end{equation}
+
+			Ahora, si consideramos a $F$ constante, podemos ver que dado:
+
+			\begin{align*}
+				\frac{\partial F}{\partial x} &= M(x, y) \\
+				\frac{\partial F}{\partial y} &= N(x, y)
+			\end{align*}
+
+			la ecuación diferencial se considerará exacta si existe un $F(x, y)$ tal que:
+
+			\begin{align*}
+				M(x, y) &= \frac{\partial F(x, y)}{\partial x} \\
+				N(x, y) &= \frac{\partial F(x, y)}{\partial y}
+			\end{align*}
+
+			en este caso la ecuación se puede escribir como:
+
+			\begin{equation}
+				dF = M(x, y) dx + N(x, y) dy = 0
+			\end{equation}
+		\end{definicion}
+
+		\begin{ejemplo}
+			Dada la ecuación diferencial $y e^x dx + (e^x + 2y) dy = 0$, tenemos que una función $F(x, y)$ de la forma:
+
+			\begin{equation}
+			 	F(x, y) = y e^x + y^2 = c
+			\end{equation}
+
+			entonces tenemos que:
+
+			\begin{align*}
+				\frac{\partial F}{\partial x} &= y e^x \\
+				\frac{\partial F}{\partial y} &= e^x + 2y
+			\end{align*}
+		\end{ejemplo}
+
+		\begin{proposicion}
+			Supongase una ecuación:
+
+			\begin{equation}
+				M(x, y) dx + N(x, y) dy
+			\end{equation}
+
+			esta ecuación es exacta si y solo si:
+
+			\begin{equation}
+				\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
+			\end{equation}
+		\end{proposicion}
+
+		Supongase la ecuación $M(x, y) dx + N(x, y) dy$ es exacta, entonces existe un $F(x, y)$ tal que:
+
+			\begin{equation*}
+				M = \frac{\partial F}{\partial x}
+			\end{equation*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				F = \int M dx + g(y)
+			\end{equation*}
+
+			Por otro lado:
+
+			\begin{equation*}
+				N = \frac{\partial F}{\partial y}
+			\end{equation*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				N = \frac{\partial F}{\partial y} = \frac{\partial}{\partial y} \left[ \int M dx \right] + g'(y)
+			\end{equation*}
+
+			por lo que $g(y)$ será de la forma:
+
+			\begin{align*}
+				g'(y) &= N - \frac{\partial}{\partial y} \left[ \int M dx \right] \\
+				g(y) &= \int \left\{ N - \frac{\partial}{\partial y} \left[ \int M dx \right] \right\} dy
+			\end{align*}
+
+			entonces tenemos que $F(x, y)$ queda de la forma:
+
+			\begin{equation*}
+				F(x, y) = \int M dx + \int \left\{ N - \frac{\partial}{\partial y} \left[ \int M dx \right] \right\} dy
+			\end{equation*}
+
+		\begin{ejemplo}
+			Dada la ecuación $y e^x dx + (e^x + 2 y) dy = 0$, por lo que tenemos que:
+
+			\begin{align*}
+				M &= y e^x \\
+				N &= e^x + 2 y
+			\end{align*}
+
+			y al derivar estas ecuaciones tenemos:
+
+			\begin{align*}
+				\frac{\partial M}{\partial y} &= e^x \\
+				\frac{\partial N}{\partial x} &= e^x
+			\end{align*}
+
+			por lo que esta ecuación es exacta, entonces, tenemos que $F(x, y)$ queda:
+
+			\begin{equation*}
+				F(x, y) = \int y e^x dx + g(y) = y e^x + g(y)
+			\end{equation*}
+
+			si ahora derivamos con respecto a $y$, obtendremos a $N$:
+
+			\begin{equation*}
+				\frac{\partial F}{\partial y} = e^x + g'(y) = N = e^x + 2 y
+			\end{equation*}
+
+			por lo que:
+
+			\begin{equation*}
+				g'(y) = 2 y
+			\end{equation*}
+
+			y calculamos $g(y)$:
+
+			\begin{equation*}
+				g(y) = \int g'(y) dy = \int 2y dy = y^2 + c
+			\end{equation*}
+
+			por lo que $F(x, y)$ queda:
+
+			\begin{equation*}
+				F(x, y) = y e^x + y^2 + c
+			\end{equation*}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la ecuación $(y + y\cos{(xy)})dx + (x + x\cos{(xy)})dy = 0$ podemos simplificarla de la siguiente manera:
+
+			\begin{align*}
+				(y + y\cos{(xy)})dx &+ (x + x\cos{(xy)})dy = 0 \\
+				y(1 + \cos{(xy)})dx &+ x(1 + \cos{(xy)})dy = 0 \\
+				(y dx + x dy)&(1 + \cos{(xy)}) = 0
+			\end{align*}
+
+			Y si asumimos que $1 + \cos{(xy)} \ne 0$, tendremos que $y dx + x dy = 0$, sin embargo asi obtendremos un conjunto reducido de las soluciones de esta ecuación, por lo que procederemos de manera distinta.
+
+			Si asumimos que es de la forma $M dx + N dy = 0$ y derivamos ambas funciones obtendremos:
+
+			\begin{align*}
+				\frac{\partial M}{\partial y} &= 1 + \cos{x} \\
+				\frac{\partial N}{\partial x} &= 1 + \cos{x} 
+			\end{align*}
+
+			por lo que tenemos que es una ecuación exacta y por lo tanto:
+
+			\begin{align*}
+				F(x, y) &= \int (y + y \cos{(xy)}) dx + g(y) \\
+				&= yx + \sin{(xy)} + g(y)
+			\end{align*}
+
+			Si ahora derivamos esto obtendremos $N$:
+
+			\begin{equation*}
+				\frac{\partial F}{\partial y} = x + x \cos{(xy)} + g'(y) = x + x \cos{(xy)}
+			\end{equation*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				g'(x) = 0
+			\end{equation*}
+
+			por lo que si ahora integramos esto, podremos obtener $g(y)$:
+
+			\begin{equation*}
+				g(y) = \int g'(y) dy = \int 0 \cdot dy = c
+			\end{equation*}
+
+			y por lo tanto, $F(x, y)$ nos queda:
+
+			\begin{equation*}
+				F(x, y) = yx + \sin{(xy)} + c
+			\end{equation*}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Dada la ecuación $e^x dx + (x e^y + 2y) dy = 0$, investigar si es exacta y obtener su solución.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $(2 y^2 - 4 x + 5) dx = (4 - 2 x + 4 x y) dy$, investigar si es exacta y obtener su solución.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $(\sin{x} \sin{y} - x e^y) dy = (e^y + \cos{x} \cos{y}) dx$, investigar si es exacta y obtener su solución.
+		\end{ejercicio}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Ecuaciones lineales}
+
+		\begin{definicion}
+			Una ecuación diferencial de orden $n$, se dice que es lineal, si es de la forma:
+
+			\begin{equation}
+				a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \dots + a_1(x) y' + a_0(x) y = f(x)
+			\end{equation}
+		\end{definicion}
+
+		\begin{definicion}
+			Una ecuación diferencial lineal se dice homogenea si $f(x) = 0$ para todo $x$.
+		\end{definicion}
+
+		\begin{definicion}
+			Una ecuacion diferencial lineal se dice con coeficientes constantes, si $a_n(x), a_{n-1}(x), \dots + a_1(x), a_0(x)$ son funciones constantes.
+		\end{definicion}
+
+		\begin{ejemplo}
+			La ecuación $2x y'' - x y' = 2$ es una ecuacion lineal de orden dos, con coeficientes variables, no homogenea.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			La ecuación $y'' + \lambda^2 y = \cos{(\omega x)}$ es una ecuacion lineal de orden dos, con coeficientes constantes, no homogenea.
+		\end{ejemplo}
+
+		Dada una ecuación diferencial lineal, se pueden identificar tres casos para los cuales daremos soluciones con diferentes métodos.
+
+		\begin{enumerate}
+			\item Para una ecuación diferencial lineal de la forma:
+
+			\begin{equation}
+				a y' + b y = 0
+			\end{equation}
+
+			con $a$ y $b$ constantes y $a \ne 0$.
+
+			Dada esta ecuación, podemos ver que:
+
+			\begin{align*}
+				a \frac{dy}{dx} &= -b y \\
+				\frac{dy}{y} &= -\frac{b}{a} dx \\
+				\ln{y} &= -\frac{b}{a} x + c \\
+				y &= C e^{-\frac{b}{a} x}
+			\end{align*}
+
+			\item Para una ecuación diferencial lineal de la forma:
+
+			\begin{equation}
+				a y' + b y = f(x)
+			\end{equation}
+
+			con $a$ y $b$ constantes y $a \ne 0$.
+
+			Dada esta ecuación, podemos ver que:
+
+			\begin{align*}
+				a y' + b y &= f(x) \\
+				y' + \frac{b}{a} y &= \frac{f(x)}{a} \\
+				y' + \lambda y &= h(x)
+			\end{align*}
+
+			en donde $\lambda = \frac{b}{a}$ y $h(x) = \frac{f(x)}{a}$.
+			Por otro lado tenemos que:
+
+			\begin{equation*}
+				(e^{\lambda x} y)' = e^{\lambda x} y' + \lambda e^{\lambda x} y = e^{\lambda x} (y' + \lambda y)
+			\end{equation*}
+
+			Asi pues, si multiplicamos ambos lados de la ecuación que teniamos por $e^{\lambda x}$, tendremos:
+
+			\begin{align*}
+				e^{\lambda x} (y' + \lambda y) &= e^{\lambda x} h(x) \\
+				(e^{\lambda x} y)' &= e^{\lambda x} h(x) \\
+				e^{\lambda x} y &= \int e^{\lambda x} h(x) dx + c \\
+				y &= e^{-\lambda x} \int e^{\lambda x} h(x) dx + e^{-\lambda x}c
+			\end{align*}
+
+			\begin{ejemplo}
+				Dada la ecuación $y' + 2y = e^{5x}$, tenemos que multiplicando ambos lados por:
+
+				\begin{align*}
+					e^{2x}(y' + 2y) &= e^{7x} \\
+					(e^{2x} y)' &= e^{7x} \\
+					e^{2x} y &= \frac{1}{7} e^{7x} + c \\
+					y &= \frac{1}{7} e^{5x} + e^{-2x} c
+				\end{align*}
+			\end{ejemplo}
+
+			\begin{ejercicio}
+				Dada la ecuación $y' + y = x$, obtener el valor de $y$.
+			\end{ejercicio}
+
+			\item Para una ecuación lineal de la forma:
+
+			\begin{equation*}
+				y' + b(x) y = f(x)
+			\end{equation*}
+
+			Podemos proponer una simplificación de la forma:
+
+			\begin{equation*}
+				(e^{B(x)} y)' = e^{B(x)}(y' + B'(x) y)
+			\end{equation*}
+
+			en donde:
+
+			\begin{equation*}
+				B'(x) = b(x)
+			\end{equation*}
+
+			por lo que multiplicando ambas partes de la ecuación, por $e^{B(x)}$ se obtiene:
+
+			\begin{align*}
+				e^{B(x)}(y' + b(x) y) &= e^{B(x)}f(x) \\
+				(e^{B(x)} y)' &= e^{B(x)} f(x) \\
+				e^{B(x)} y &= \int e^{B(x)} f(x) dx + c \\
+				y &= e^{-B(x)} \int e^{B(x)} f(x) dx + e^{-B(x)}c
+			\end{align*}
+
+			\begin{ejemplo}
+				Dada la ecuación $y' + \sin{x} y = \sin{x}$, en donde $B(x) = \int \sin{x} dx = - \cos{x}$, por lo que multiplicando ambos lados de la ecuación por $e^{-\cos{x}}$, obtenemos:
+
+				\begin{align*}
+					e^{-\cos{x}}(y' + \sin{x} y) &= e^{-\cos{x}} \sin{x} \\
+					(e^{-\cos{x}} y)' &= e^{-\cos{x}} \sin{x} \\
+					e^{-\cos{x}} y &= \int e^{-\cos{x}} \sin{x} dx \\
+					e^{-\cos{x}} y &= e^{-\cos{x}} + c \\
+					y &= 1 + Ce^{\cos{x}}
+				\end{align*}
+			\end{ejemplo}
+
+			\begin{ejercicio}
+				Dada la ecuación $y' + xy = x^2$, encontrar el valor de $y$.
+			\end{ejercicio}
+		\end{enumerate}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Ecuaciones lineales homogeneas de segundo orden con coeficientes constantes}
+
+		Dada la ecuación:
+
+		\begin{equation}
+			y'' + a_1 y' + a_0 y = 0
+		\end{equation}
+
+		Supongase que $y = e^{\lambda x}$ es una solución de esta ecuación, por lo que tenemos que: 
+
+		\begin{align*}
+			y' &= \lambda e^{\lambda x} \\
+			y'' &= \lambda^2 e^{\lambda x}
+		\end{align*}
+
+		y sustituyendo en la ecuación tenemos:
+
+		\begin{align*}
+			\lambda^2 e^{\lambda x} + a_1 \lambda e^{\lambda x} + a_0 e^{\lambda x} &= 0 \\
+			e^{\lambda x} (\lambda^2 + a_1 \lambda + a_0) &= 0
+		\end{align*}
+
+		Por lo que para que $e^{\lambda x}$ sea una solución de esta ecuación, $\lambda$ debe cumplir:
+
+		\begin{equation*}
+			\lambda^2 + a_1 \lambda + a_0 = 0
+		\end{equation*}
+
+		\begin{definicion}
+			Al polinomio $P(\lambda) = \lambda^2 + a_1 \lambda + a_0$ se le llama polinomio característico de la ecuación diferencial y a sus raices se les denomina raices caracteristicas.
+		\end{definicion}
+
+		\begin{ejemplo}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				y'' - 3 y' + 2 y = 0
+			\end{equation*}
+
+			tenemos que su polinomio caracteristico es:
+
+			\begin{align*}
+				\lambda^2 - 3\lambda + 2 &= 0 \\
+				(\lambda - 1)(\lambda - 2) &= 0
+			\end{align*}
+
+			por lo que sus raices caracteristicas son $\lambda_1 = 1$ y $\lambda_2 = 2$ y por lo tanto:
+
+			\begin{align*}
+				y_1 &= e^x \\
+				y_2 &= e^{2x}
+			\end{align*}
+
+			son soluciones de la ecuación.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				y'' - y = 0
+			\end{equation*}
+
+			tenemos que su polinomio caracteristico es:
+
+			\begin{align*}
+				\lambda^2 - 1 &= 0 \\
+				(\lambda - 1)(\lambda + 1) &= 0
+			\end{align*}
+
+			por lo que sus raices caracteristicas son $\lambda_1 = 1$ y $\lambda_2 = -1$ y por lo tanto:
+
+			\begin{align*}
+				y_1 &= e^x \\
+				y_2 &= e^{-x}
+			\end{align*}
+
+			son soluciones de la ecuación.
+		\end{ejemplo}
+
+		\begin{teorema}
+			Consideremos la ecuación $y'' + a_1 y' + a_0 y = 0$ con $a_1, a_0$ constantes.
+			Sean $r_1, r_2$ raices de la ecuación caracteristica $\lambda^2 + a_1 \lambda + a_0 = 0$.
+			Si $r_1$ es distinto de $r_2$ definimos:
+
+			\begin{align*}
+				\varphi_1(x) &= e^{r_1 x} \\
+				\varphi_2(x) &= e^{r_2 x}
+			\end{align*}
+
+			Si $r_1 = r_2 = r$ definimos:
+
+			\begin{align*}
+				\varphi_1(x) &= e^{rx} \\
+				\varphi_2(x) &= x e^{rx}
+			\end{align*}
+
+			Entonces, en cualquiera de los casos que definimos, las funciones $\varphi_1, \varphi_2$ son soluciones de la ecuación diferencial.
+			Además, cualquier solución $\varphi$ de la ecuación es de la forma:
+
+			\begin{equation}
+				y(x) = c_1 \varphi_1(x) + c_2 \varphi_2(x)
+			\end{equation}
+
+			con $c_1$ y $c_2$ constantes.
+		\end{teorema}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
-\section{Existencia y unicidad de las soluciones de una ecuación diferencial}
-
-%-------------------------------------------------------------------------------
-%	EMPIEZA SECCION
-%-------------------------------------------------------------------------------
-
+\newpage
 \section{Soluciones aproximadas}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
-
+\newpage
 \section{Relación entre soluciones aproximadas y exactas}
