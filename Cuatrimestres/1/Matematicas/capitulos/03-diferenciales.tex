@@ -859,6 +859,96 @@
 			con $c_1$ y $c_2$ constantes.
 		\end{teorema}
 
+		\begin{proof}
+			Supongase que las raices de la ecuación $\lambda^2 + a_1 \lambda + a_0 = 0$ son iguales, es decir, $r_1 = r_2 = r$.
+			Sea $\varphi_2(x) = x e^{rx}$, verifiquiemos que $\varphi_2$ es solución de la ecuación.
+
+			\begin{align*}
+				\varphi_2'(x) &= (rx + 1) e^{rx} \\
+				\varphi_2''(x) &= r(rx + 2) e^{rx}
+			\end{align*}
+
+			por lo que sustituyendo en la ecuación diferencial, tenemos:
+
+			\begin{align*}
+				r (rx + 2) e^{rx} + a_1 (rx + 1) e^{rx} + a_0 x e^{rx} &= 0 \\
+				e^{rx} (r (rx + 2) + a_1 (rx + 1) + a_0 x) &= 0 \\
+				e^{rx} (x(r^2 + a_1 r + a_0) + (2r + a_1)) &= 0
+			\end{align*}
+
+			y como $r$ es raiz, tenemos que:
+
+			\begin{equation*}
+				e^{rx} (2r + a_1) = 0
+			\end{equation*}
+
+			y como $r$ es raiz doble tenemos que $r = -\frac{a_1}{2}$, lo cual concuerda con el resultado que obtenemos de aqui:
+
+			\begin{align*}
+				2r + a_1 &= 0 \\
+				2r &= -a_1 \\
+				r &= -\frac{a_1}{2}
+			\end{align*}
+
+			Ahora verifiquemos que si $\varphi_1$ y $\varphi_2$ son soluciones de la ecuación, entonces $y = c_1 \varphi_1 + c_2 \varphi_2$ es solución de la ecuación.
+
+			\begin{align*}
+				(c_1 \varphi_1'' + c_2 \varphi_2'') + a_1 (c_1 \varphi_1' + c_2 \varphi_2') + a_0 (c_1 \varphi_1 + c_2 \varphi_2) &= 0 \\
+				c_1 (\varphi_1'' + a_1 \varphi_1' + a_0 \varphi_1) + c_2 (\varphi_2'' + a_1 \varphi_2' + a_0 \varphi_2) &= 0 \\
+				c_1 (0) + c_2 (0) &= 0
+			\end{align*}
+
+			por lo tanto, la combinación lineal es solución.
+		\end{proof}
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' - 4 y' + 4 y = 0$ su polinomio caracteristico es:
+
+			\begin{align*}
+				\lambda^2 - 4 \lambda + 4 &= 0 \\
+				(\lambda - 2)^2 &= 0
+			\end{align*}
+
+			por lo que las raices caracteristicas $\lambda_1 = \lambda_2 = 2$, y por lo tanto las soluciones para esta ecuación son:
+
+			\begin{align*}
+				\varphi_1(x) &= x e^{2x} \\
+				\varphi_2(x) &= e^{2x}
+			\end{align*}
+
+			mas aun, la solución general es $\varphi(x) = c_1 x e^{2x} + c_2 e^{2x}$.
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' - 4 y' + 5 y = 0$, encontrar la solución general.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 2 y' + y = 0$, encontrar la solución general.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 8 y = 0$, encontrar la solución general.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' - 9 y' + 20 y = 0$, encontrar la solución general.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $2 y'' + 2 y' + 3 y = 0$, encontrar la solución general.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Verifique que la derivada de cualquier solución de la ecuación:
+
+			\begin{equation*}
+				y'' + a_1 y' + a_0 y = 0
+			\end{equation*}
+
+			es tambien una solución de esta.
+		\end{ejercicio}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
