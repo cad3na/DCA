@@ -1135,12 +1135,231 @@
 		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
-	\newpage
+%	EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+\newpage
+\section{Existencia y unicidad de las soluciones de una ecuación diferencial}
+
 	\subsection{Problemas con condiciones iniciales}
+
+		\begin{teorema}
+			Dados $x_0, \alpha, \beta \in \mathbb{R}$, existen las constantes únicas $c_1$ y $c_2$, tales que la función:
+
+			\begin{equation}
+				\varphi(x) = c_1 \varphi_1 + c_2 \varphi_2
+			\end{equation}
+
+			satisfacen $\varphi(x_0) = \alpha$ y $\varphi'(x_0) = \beta$ y las funciones $\varphi_1$ y $\varphi_2$ estan dadas por:
+
+			\begin{enumerate}
+				\item $\varphi_1(x) = e^{r_1 x}$ y $\varphi_2(x) = e^{r_2 x}$ para $r_1 \ne r_2$.
+				\item $\varphi_1(x) = e^{rx}$ y $\varphi_2(x) = x e^{rx}$ para $r_1 = r_2 = r$.
+			\end{enumerate}
+		\end{teorema}
+
+		\begin{proof}
+			Se requiere que $c_1$ y $c_2$ sean tales que:
+
+			\begin{align*}
+				c_1 \varphi_1(x_0) + c_2 \varphi_2(x_0) = \alpha &= \varphi(x_0) \\
+				c_1 \varphi_1'(x_0) + c_2 \varphi_2'(x_0) = \beta &= \varphi(x_0)
+			\end{align*}
+
+			Este sistema tiene solución, pues su determinante es diferente de cero en cualquiera de los dos casos.
+			En efecto:
+
+			\begin{equation*}
+				A =
+				\begin{vmatrix}
+					\varphi_1(x_0) & \varphi_2(x_0) \\
+					\varphi_1'(x_0) & \varphi_2'(x_0)
+				\end{vmatrix} = \varphi_1(x_0) \varphi_2'(x_0) - \varphi_2(x_0) \varphi_1'(x_0)
+			\end{equation*}
+
+			Consideremos ahora cada uno de los casos.
+			Para el caso en que $r_1 \ne r_2$ tenemos que:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) =
+				\begin{vmatrix}
+					e^{r_1 x} & e^{r_2 x} \\
+					r_1 e^{r_1 x} & r_2 e^{r_2 x}
+				\end{vmatrix} = (r_2 - r_1) e^{(r_1 + r_2) x} \ne 0
+			\end{equation*}
+
+			Y para el caso en que $r_1 = r_2 = r$:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) =
+				\begin{vmatrix}
+					e^{r x} & x e^{r x} \\
+					r e^{r x} & (1 + x) e^{r x}
+				\end{vmatrix} = e^{2 r x} \ne 0
+			\end{equation*}
+
+			De aqui, que la solución es única para $c_1$ y $c_2$ en:
+
+			\begin{equation*}
+				\varphi = c_1 \varphi_1 + c_2 \varphi_2
+			\end{equation*}
+		\end{proof}
+
+		\begin{proposicion}
+			Si $\varphi_1$ y $\varphi_2$ son soluciones de la ecuación $y'' + a_1 y' + a_0 y = 0$, entonces existe $A$, tal que:
+
+			\begin{equation}
+				W(\varphi_1, \varphi_2) = A e^{-a_1 x}
+			\end{equation}
+		\end{proposicion}
+
+		\begin{proof}
+			Por hipotesis, tenemos que:
+
+			\begin{align*}
+				\varphi_1'' + a_1 \varphi_1' + a_0 \varphi_1 &= 0 \\
+				\varphi_2'' + a_1 \varphi_2' + a_0 \varphi_2 &= 0
+			\end{align*}
+
+			Si a la primer ecuación la multiplicamos por $\varphi_2$ y la primera por $\varphi_1$, la resta de estas dos nos dará:
+
+			\begin{equation*}
+				(\varphi_1 \varphi_2'' - \varphi_2 \varphi_1'') + a_1 (\varphi_1 \varphi_2' - \varphi_2 \varphi_1') = 0
+			\end{equation*}
+
+			Por otro lado, el Wronskiano nos da:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) =
+				\begin{vmatrix}
+					\varphi_1 & \varphi_2 \\
+					\varphi_1' & \varphi_2'
+				\end{vmatrix} = \varphi_1 \varphi_2' - \varphi_2 \varphi_1'
+			\end{equation*}
+
+			y este tiene una derivada de la forma:
+
+			\begin{align*}
+				\frac{d W}{dx} &= (\varphi_1 \varphi_2'' + \varphi_2' \varphi_1') - (\varphi_2 \varphi_1'' + \varphi_2' \varphi_1') \\
+				&= \varphi_1 \varphi_2'' - \varphi_2 \varphi_1''
+			\end{align*}
+
+			por lo que tenemos que:
+
+			\begin{equation*}
+				\frac{dW}{dx} + a_1 W = 0
+			\end{equation*}
+
+			lo cual escrito de manera diferente es:
+
+			\begin{align*}
+				\frac{dW}{W} &= - a_1 dx \\
+				\ln{W} &= -a_1 x + c \\
+				W &= e^{-a_1 x + c} \\
+				W &= A e^{-a_1 x}
+			\end{align*}
+
+			en donde $A = e^{c}$
+		\end{proof}
+
+		\begin{observacion}
+			Considerese la ecuación $y'' + a_1 y' + a_0 y = 0$, si la raices caracteristicas son complejas, es decir $r_1 = a + b i$ y $r_2 = a - b i$, con $b \ne 0$, entonces la solución general de la ecuación diferencial se pueden simplificar a la forma:
+
+			\begin{equation*}
+				\varphi(x) = A e^{a x} \cos{(b x)} + B e^{a x} \sin{(b x)}
+			\end{equation*}
+		\end{observacion}
+
+		\begin{proof}
+			Podemos sustituir las soluciones complejas generales en la solución general para esta ecuación y verificar que:
+
+			\begin{align*}
+				\varphi(x) &= c_1 e^{r_1 x} + c_2 e^{r_2 x} \\
+				\varphi(x) &= c_1 e^{(a + b i) x} + c_2 e^{(a - b i) x} \\
+				\varphi(x) &= c_1 e^{a x} e^{bi x} + c_2 e^{a x} e^{-bi x} \\
+				\varphi(x) &= e^{ax} (c_1 e^{bi x} + c_2 e^{-bi x}) \\
+				\varphi(x) &= e^{ax} \left[ c_1 (\cos{(bx)} + i \sin{(bx)}) + c_2 (\cos{(bx)} - i \sin{(bx)}) \right] \\
+				\varphi(x) &= e^{ax} \left[ (c_1 + c_2) \cos{(bx)} + (c_1 - c_2) i \sin{(bx)} \right] \\
+			\end{align*}
+
+			Si definimos ahora $A = c_1 + c_2$ y $B = i(c_1 - c_2)$ podremos escribir a $\varphi(x)$ como:
+
+			\begin{equation*}
+				\varphi(x) = A e^{ax} \cos{(b x)} + B e^{a x} \sin{(b x)}
+			\end{equation*}
+
+			En particular, tenemos las siguientes soluciones:
+
+			\begin{align*}
+				\varphi_1(x) &= e^{ax} \cos{(b x)} \\
+				\varphi_2(x) &= e^{ax} \sin{(b x)}
+			\end{align*}
+
+			Por lo que el determinante del sistema queda:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) =
+				\begin{vmatrix}
+					e^{a x} \cos{(b x)} & e^{a x} \sin{(b x)} \\
+					e^{a x} (a\cos{(b x)} - b \sin{(b x)}) & e^{a x} ((a\sin{(b x)} - b \cos{(b x)}))
+				\end{vmatrix} = b e^{2 a x} \ne 0
+			\end{equation*}
+
+			Por lo que el sistema tiene soluciones únicas.
+		\end{proof}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Verificar que la ecuación diferencial:
+
+			\begin{equation*}
+				y' + P(x) y = Q(x) y^n
+			\end{equation*}
+
+			puede ser reducida a una ecuación diferencial lineal mediante la sustitución:
+
+			\begin{equation*}
+				z = y^{-(n-1)}
+			\end{equation*}
+
+			y dar la solución general.
+		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
 	\newpage
 	\subsection{Soluciones particulares de ecuaciones lineales de segundo orden con coeficientes constantes}
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' + 2 y' + y = 5$, tenemos que $y = 5$ es una solución particular.
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' + y' - y = 3x$, tenemos que $y = -3x - 3$ es una solución particular.
+		\end{ejemplo}
+		
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' + 5 y' + 2 y = 2 x$, econtremos una solución particular, proponiendo una solucion de la forma $\varphi(x) = a x + b$, con lo que $\varphi'(x) = a$ y $\varphi''(x) = 0$, sustituyendo tenemos:
+
+			\begin{equation*}
+				0 + 5 (a) + 2 (a x + b) = 2 x
+			\end{equation*}
+
+			por lo que tenemos el sistema:
+
+			\begin{align*}
+				2a &= 2 \\
+				5a + 2b &= 0
+			\end{align*}
+
+			por lo que tenemos que $a = 1$ y $b = - \frac{5}{2}$, es decir la solución particular es:
+
+			\begin{equation*}
+				\varphi(x) = x - \frac{5}{2}
+			\end{equation*}
+		\end{ejemplo}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
