@@ -950,13 +950,218 @@
 		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Ecuaciones lineales no homogeneas de segundo orden con coeficientes constantes}
+
+		\begin{definicion}
+			Sea la ecuación:
+
+			\begin{equation} \label{eq:lin1}
+				y'' + a_1 y' + a_0 y = b(x)
+			\end{equation}
+
+			una ecuación diferencial lineal no homogenea de segundo orden con coeficientes constantes.
+		\end{definicion}
+
+		\begin{teorema}
+			Si $\varphi_1$ y $\varphi_2$ son soluciones de la ecuación~\ref{eq:lin1}, $\varphi_p$ es cualquier solución de la ecuación~\ref{eq:lin1}, es decir, es solución particular de la ecuación\ref{eq:lin1}.
+
+			Entonces la solución general esta dada por:
+
+			\begin{equation}
+				\varphi(x) = c_1 \varphi_1(x) + c_2 \varphi_2(x) + \varphi_p(x)
+			\end{equation}
+		\end{teorema}
+
+		Se reemplazan las constantes $c_1$ y $c_2$ por funciones $\mu_1(x)$ y $\mu_2(x)$ y se trata de determinar $\mu_1$ y $\mu_2$ de tal modo que $y = \mu_1 \varphi_1 + \mu_2 \varphi_2$ es una solución de la ecuación.
+
+		El objetivo es hallar $\mu_1$ y $\mu_2$ tales que $\mu_1 \varphi_1 + \mu_2 \varphi_2$ es solución de la ecuación no homogenea.
+
+		Sea $y = \mu_1 \varphi_1 + \mu_2 \varphi_2$, entonces:
+
+		\begin{align*}
+			y' &= \mu_1 \varphi_1' + \mu_1' \varphi_1 + \mu_2 \varphi_2' + \mu_2' \varphi_2 \\
+			y'' &= \mu_1 \varphi_1'' + \mu_1' \varphi_1' + \mu_1' \varphi_1' + \mu_1'' \varphi_1 + \mu_2 \varphi_2'' + \mu_2' \varphi_2' + \mu_2' \varphi_2' + \mu_2'' \varphi_2
+		\end{align*}
+
+		y sustituyendo en la ecuación, tenemos:
+
+		\begin{multline*}
+			\mu_1 \varphi_1'' + \mu_1' \varphi_1' + \mu_1' \varphi_1' + \mu_1'' \varphi_1 + \mu_2 \varphi_2'' + \mu_2' \varphi_2' + \mu_2' \varphi_2' + \mu_2'' \varphi_2 \\
+			+ a_1 \mu_1 \varphi_1' + a_1 \mu_1' \varphi_1 + a_1 \mu_2 \varphi_2' + a_1 \mu_2' \varphi_2 \\
+			+ a_0 \mu_1 \varphi_1 + a_0 \mu_2 \varphi_2 = b(x)
+		\end{multline*}
+
+		y recolectando los terminos con respecto a los $\mu$, tenemos que:
+
+		\begin{multline*}
+			\mu_1 (\varphi_1'' + a_1 \varphi_1' + a_0 \varphi_1) + \mu_2 (\varphi_2'' + a_1 \varphi_2' + a_0 \varphi_2) \\
+			+ \mu_1' \varphi_1' + \mu_1' \varphi_1' + \mu_1'' \varphi_1 + \mu_2' \varphi_2' + \mu_2' \varphi_2' + \mu_2'' \varphi_2 \\
+			+ a_1 \mu_1' \varphi_1 + a_1 \mu_2' \varphi_2 = b(x)
+		\end{multline*}
+
+		y ya que $\varphi_1$ y $\varphi_2$ son soluciones del sistema, esta ecuación se reduce a:
+
+		\begin{multline*}
+			\mu_1' \varphi_1' + \mu_1' \varphi_1' + \mu_1'' \varphi_1 + \mu_2' \varphi_2' + \mu_2' \varphi_2' + \mu_2'' \varphi_2 \\
+			+ a_1 \mu_1' \varphi_1 + a_1 \mu_2' \varphi_2 = b(x)
+		\end{multline*}
+
+		Por otro lado, notamos que:
+
+		\begin{equation*}
+			(\mu_1' \varphi_1 + \mu_2' \varphi_2)' = \mu_1' \varphi_1' + \mu_1'' \varphi_1 + mu_2' \varphi_2' + \mu_2'' \varphi_2
+		\end{equation*}
+
+		por lo que podemos plantear una realización de estado:
+
+		\begin{align*}
+			\mu_1' \varphi_1 + \mu_2' \varphi_2 &= 0 \\
+			\mu_1' \varphi_1' + \mu_1'' \varphi_1 + mu_2' \varphi_2' + \mu_2'' \varphi_2 &= b(x)
+		\end{align*}
+
+		para resolver con respecto a $\mu_1'$ y $\mu_2'$ por lo que podemos plantear que obteniendo el Wronskiano, podemos saber si el sistema tiene solución.
+
+		\begin{equation}
+			W(\varphi_1, \varphi_2) =
+			\begin{vmatrix}
+				\varphi_1 & \varphi_2 \\
+				\varphi_1' & \varphi_2'
+			\end{vmatrix} = \varphi_1 \varphi_2' - \varphi_2 \varphi_1' \ne 0
+		\end{equation}
+
+		teniendo este Wronskiano, o determinante del sistema, podemos obtener $\mu_1$ y $\mu_2$:
+
+		\begin{align*}
+			\mu_1' &= \frac{\begin{vmatrix} 0 & \varphi_2 \\ b(x) & \varphi_2' \end{vmatrix}}{W(\varphi_1, \varphi_2)} = -\frac{b(x) \varphi_2}{W(\varphi_1, \varphi_2)} \\
+			\mu_2' &= \frac{\begin{vmatrix} \varphi_1 & 0 \\ \varphi_1' & b(x) \end{vmatrix}}{W(\varphi_1, \varphi_2)} = \frac{b(x) \varphi_1}{W(\varphi_1, \varphi_2)}
+		\end{align*}
+
+		y por lo tanto:
+
+		\begin{align*}
+			\mu_1 &= - \int \frac{b(x) \varphi_2}{W(\varphi_1, \varphi_2)} dx \\
+			\mu_2 &= \int \frac{b(x) \varphi_1}{W(\varphi_1, \varphi_2)} dx
+		\end{align*}
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' - 2 y' + y = 2x$ su polinomio caracteristico es $\lambda^2 - 2 \lambda + 1 = 0$, por lo que tenemos que las raices caracteristicas son $\lambda_1 = \lambda_2 = 1$ y las soluciones $\varphi_1$ y $\varphi_2$ son:
+
+			\begin{align*}
+				\varphi_1 &= e^x \\
+				\varphi_2 &= x e^x
+			\end{align*}
+
+			y derivando ambas soluciones tenemos:
+
+			\begin{align*}
+				\varphi_1' &= e^x \\
+				\varphi_2' &= (1 + x) e^x
+			\end{align*}
+
+			Calculando el determinante del sistema, tenemos:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) = (1 + x) e^x e^x - x e^x e^x = e^{2x} \ne 0
+			\end{equation*}
+
+			y tenemos que las $\mu$ son:
+
+			\begin{align*}
+				\mu_1 &= - \int \frac{x e^x 2x}{e^{2x}} dx = 2 e^{-x} (x^2 + 2 x + 2) \\
+				\mu_2 &= \int \frac{e^x 2x}{e^{2x}} dx = -2 e^{-x}(x + 1)
+			\end{align*}
+
+			y sustituyendo en la forma de la solución general $y = \mu_1 \varphi_1 + \mu_2 \varphi_2$, tenemos:
+
+			\begin{align*}
+				y &= (2 e^{-x} (x^2 + 2 x + 2)) e^x + (-2 e^{-x}(x + 1)) x e^x \\
+				&= (2 x^2 + 4 x + 4) + (-2 x^2 - 2 x) \\
+				&= 2 (x + 2)
+			\end{align*}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			Dada la ecuación $y'' - y' - 6 y = e^{-x}$ su polinomio caracteristico  es $\lambda^2 - \lambda - 6 = 0$, por lo que tenemos que las raices caracteristicas son $\lambda_1 = 3$ y $\lambda_2 = -2$ y las soluciones $\varphi_1$ y $\varphi_2$ son:
+
+			\begin{align*}
+				\varphi_1 &= e^{3x} \\
+				\varphi_2 &= e^{-2x}
+			\end{align*}
+
+			y derivando ambas soluciones tenemos:
+
+			\begin{align*}
+				\varphi_1' &= 3e^{3x} \\
+				\varphi_2' &= -2e^{-2x}
+			\end{align*}
+
+			Calculando el determinante del sistema, tenemos:
+
+			\begin{equation*}
+				W(\varphi_1, \varphi_2) = -2 e^{3x} e^{-2x} - 3 e^{3x} e^{-2x} = -5 e^{x} \ne 0
+			\end{equation*}
+
+			y tenemos que las $\mu$ son:
+
+			\begin{align*}
+				\mu_1 &= - \int \frac{e^{-x} e^{-2x}}{-5 e^{x}} dx = - \frac{1}{20} e^{-4x} \\
+				\mu_2 &= \int \frac{e^{-x} e^{3x}}{-5 e^{x}} dx = - \frac{1}{5} e^x
+			\end{align*}
+
+			y sustituyendo en la forma de la solución general $y = \mu_1 \varphi_1 + \mu_2 \varphi_2$, tenemos:
+
+			\begin{align*}
+				y &= (- \frac{1}{20} e^{-4x}) e^{3x} + (- \frac{1}{5} e^x) e^{-2x} \\
+				&= -\frac{1}{20} e^{-x} - \frac{1}{5} e^{-x} \\
+				&= -\frac{1}{4} e^{-x}
+			\end{align*}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 4 y = \tan{2x}$, obtener la solución general a la ecuación.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 2 y' + y = e^{-x} \ln{x}$, obtener la solución general a la ecuación.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' - 2 y' - 3 y = x e^{-x}$, obtener la solución general a la ecuación.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 2 y' + 5 y = e^{-x} \sec{2x}$, obtener la solución general a la ecuación.
+		\end{ejercicio}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Problemas con condiciones iniciales}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Soluciones particulares de ecuaciones lineales de segundo orden con coeficientes constantes}
+
+%-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 \newpage
 \section{Soluciones aproximadas}
+
+	\subsection{Series de potencias}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Criterio de Cauchy}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Método de Picard}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 \newpage
 \section{Relación entre soluciones aproximadas y exactas}
+
+	\subsection{Convergencia de iteraciones del método de Picard}
