@@ -1591,7 +1591,98 @@
 
 %-------------------------------------------------------------------------------
 	\newpage
+	\subsection{Solución de series de ecuaciones de primer orden}
+
+		Dada la ecuación:
+
+		\begin{equation*}
+			y' = y
+		\end{equation*}
+
+		en donde $y = a_0 + a_1 x + \dots + a_n x^n$ que converge para $|x| < R$, $R > 0$.
+
+		Podemos ver que la derivada de $y$ es:
+
+		\begin{equation*}
+			y' = a_1 + 2 a_2 x + 3 a_3 x^2 + \dots + (n + 1) a_{n+1} x^n
+		\end{equation*}
+
+		por lo que igualando terminos en ambos lados, tenemos:
+
+		\begin{align*}
+			a_1 &= a_0 \\
+			2 a_2 &= a_1 \implies a_2 = \frac{a_0}{2!} \\
+			3 a_3 &= a_2 \implies a_3 = \frac{a_0}{3!} \\
+			&\vdots \\
+			(n+1) a_{n+1} &= a_n \implies a_{n+1} = \frac{a_0}{(n+1)!}
+		\end{align*}
+
+		por lo que podemos ver que la solución, es de la forma:
+
+		\begin{equation*}
+			y = a_0 (1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!} + \dots) = a_0 e^x
+		\end{equation*}
+
+		\begin{ejercicio}
+			Dada la ecuación diferencial:
+
+			\begin{equation*}
+				(1 + x) y' = p y
+			\end{equation*}
+
+			con la condicion inicial $y(0) = 1$.
+			Se propone a $y = a_0 + a_1 x + \dots + a_n x^n$ como solución con $|x| < R$ y convergente, es decir $R > 0$.
+			Si $y(0) = 1$, verificar que $a_0 = 1$ y la solución tendrá la forma de $y = (1 + x)^p$.
+		\end{ejercicio}
+
+%-------------------------------------------------------------------------------
+	\newpage
 	\subsection{Método de Picard}
+
+		Sea el problema de valor inicial:
+
+		\begin{equation} \label{eq:pic1}
+			y' = f(t, y)
+		\end{equation}
+
+		entonces se puede escribir de la forma especial, integrando ambos lados de la ecuación~\ref{eq:pic1} con respecto a $t$, concretamente si $y(t)$ satisface a la ecuación~\ref{eq:pic1} se tiene que:
+
+		\begin{equation*}
+			\int_{t_0}^t \frac{dy(s)}{ds} ds = \int_{t_0}^t f(s, y(s)) ds
+		\end{equation*}
+
+		de tal modo que:
+
+		\begin{equation} \label{eq:pic2}
+			y(t) = y_0 + \int_{t_0}^t f(s, y(s)) ds
+		\end{equation}
+
+		Esto sugiere el siguiente método para obtener una sucesión de soluciones aproximadas $y_n(t)$ de la ecuación~\ref{eq:pic2}; la elección mas sencilla es $y_0(t) = y_0$.
+		Para comprobar si $y_0(t)$ es una solución de~\ref{eq:pic2} se calcula:
+
+		\begin{equation*}
+			y_1(t) = y_0 + \int_{t_0}^t f(s, y_0(s)) ds
+		\end{equation*}
+
+		Se utiliza $y_1(t)$ como segunda opción, si $y_1(t) = y_0$, entonces $y(t) = y_0$, de lo contrario utilizamos $y_1$ como siguiente aproximación.
+
+		De esta manera se define una sucesión de funciones $y_1, y_2, \dots, y_n$, en donde:
+
+		\begin{equation}
+			y_{n+1}(t) = y_n(t) + \int_{t_0}^t f(s, y_n(s)) ds
+		\end{equation}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejercicio}
+			Calcular las iteraciones de Picard para el problema:
+
+			\begin{equation*}
+				y' = 1 + y^3 \quad y(1) = 1
+			\end{equation*}
+		\end{ejercicio}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -1600,3 +1691,80 @@
 \section{Relación entre soluciones aproximadas y exactas}
 
 	\subsection{Convergencia de iteraciones del método de Picard}
+
+		\begin{lema}
+			Elijase dos números positivos cuales quiera $a$ y $b$ y considerese el rectangulo $R \colon t_0 \leq t \leq t_0 + a$ con $|y -y0| \leq b$.
+			Sea $M = \max{|f(t, y)|}$ con $t, y \in \mathbb{R}$ y $\alpha = \min{(a, \frac{b}{M})}$.
+			Entonces, tenemos que:
+
+			\begin{equation}
+				|y_n(t) - y_0| \leq M (t - t_0) \quad t_0 \leq t \leq t_0 + \alpha
+			\end{equation}
+		\end{lema}
+
+		\missingfigure{Grafica de dos soluciones aproximadas limite acotadas por un rectangulo $R$}
+
+		\begin{proof}
+			\begin{align*}
+				|y_n(t) - y_0| &= \left| \int_{t_0}^t f(s, y_{n-1}(s) ds) \right| \leq \int_{t_0}^t \left| f(s, y_{n-1}(s)) ds \right| \leq M \int_{t_0}^t ds \\
+				|y_n(t) - y_0| &\leq M(t - t_0)
+			\end{align*}
+		\end{proof}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Constante de Lipschitz}
+
+		\begin{definicion}
+			Una función $f(x, y)$ definida en un dominio $D$ se dice que satisface la condición de Lipschitz con respecto a $y$, si para cada $x, y_1, y_2$ tales que $(x, y_1), (x, y_2) \in D$ se cumple que:
+
+			\begin{equation}
+				|f(x, y_1) - f(x, y_2)| \leq k |y_1 - y_2|
+			\end{equation}
+		\end{definicion}
+
+		\begin{proof}
+			Del teorema del valor medio obtenemos que:
+
+			\begin{equation}
+				|f(x, y_1) - f(x, y_2)| = \left| \frac{\partial f(x, \xi)}{\partial y} (y_2 - y_1) \right| \leq \max{\frac{\partial f(x, \xi)}{\partial y} |y_2 - y_1|}
+			\end{equation}
+
+			para un $\xi \in D$.
+		\end{proof}
+
+		\begin{teorema}
+			Sea $x_0, y_0 \in \mathbb{R}$, con una función $f(x, y)$ continua y que satisface la condición de Lipschitz con una constante de Lipschitz $k$.
+			Sean dos soluciones aproximadas $y_1, y_2$ de la ecuación diferencial $y' = f(x, y)$, definidas para $|x - x_0| \leq h$ con errores $\epsilon_1$ y $\epsilon_2$ respectivamente.
+			Definimos $P(x) = y_1(x) - y_2(x)$, $\epsilon = \epsilon_1 + \epsilon_2$, entonces:
+
+			\begin{equation}
+				\left| P(x) \right| \leq e^{k|x - x_0|} \left| P(x) \right| + \frac{\epsilon}{k} \left[ e^{k(x - x_0)} - 1 \right]
+			\end{equation}
+		\end{teorema}
+
+		\begin{proof}
+			La desigualdad $|x - x_0| \leq h$ define el intervalo $[x_0 - h, x_0 + h]$, aunque usaremos $[x_0, x_0 + h]$ sin que por esto se pierda generalidad en la verificación.
+
+			Las soluciones cumplen:
+
+			\begin{align*}
+				\left| \frac{d y_1}{dx} - f(x, y_1) \right| &\leq \epsilon_1 \\
+				\left| \frac{d y_2}{dx} - f(x, y_2) \right| &\leq \epsilon_2
+			\end{align*}
+
+			Ahora notemos que:
+
+			\begin{align*}
+				\left| P'(x) \right| &= \left| \frac{d y_1}{dx} - \frac{d y_2}{dx} \right| \\
+				&= \left| \frac{d y_1}{dx} - \frac{d y_2}{dx} + f(x, y_1) - f(x, y_1) + f(x, y_2) - f(x, y_2) \right| \\
+				&= \left| \underbrace{\frac{d y_1}{dx} - f(x, y_1)}_{\leq \epsilon_1} - \underbrace{\frac{d y_2}{dx} + f(x, y_2)}_{\leq \epsilon_2} + \underbrace{f(x, y_1) - f(x, y_2)}_{\leq k|y_1 - y_2|} \right| \\
+				\left| P'(x) \right| &\leq \epsilon_1 + \epsilon_2 + k|y_1 - y_2|
+			\end{align*}
+
+			lo cual implica que:
+
+			\begin{equation*}
+				\left| P'(x) \right| \leq k \left| P(x) \right| + \epsilon
+			\end{equation*}
+		\end{proof}
