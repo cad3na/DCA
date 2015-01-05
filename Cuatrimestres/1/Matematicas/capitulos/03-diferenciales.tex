@@ -1338,7 +1338,6 @@
 		\begin{ejemplo}
 			Dada la ecuación $y'' + y' - y = 3x$, tenemos que $y = -3x - 3$ es una solución particular.
 		\end{ejemplo}
-		
 
 		\begin{ejemplo}
 			Dada la ecuación $y'' + 5 y' + 2 y = 2 x$, econtremos una solución particular, proponiendo una solucion de la forma $\varphi(x) = a x + b$, con lo que $\varphi'(x) = a$ y $\varphi''(x) = 0$, sustituyendo tenemos:
@@ -1361,6 +1360,67 @@
 			\end{equation*}
 		\end{ejemplo}
 
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 6 y = 2 x^2 + x - 3$, encontrar la solución particular de esta ecuación.
+		\end{ejercicio}
+
+		\begin{ejercicio}
+			Dada la ecuación $y'' + 2 y' + y = \sin{x}$, encontrar la solución particular de esta ecuación.
+		\end{ejercicio}
+
+		\begin{observacion}
+			Supongamos la ecuación:
+
+			\begin{equation}
+				y'' + a_1 y' + a_0 y = b(x)
+			\end{equation}
+
+			Para obtener la solución particular de una ecuación debemos determinar el tipo de función que utilizaremos como propuesta de solución.
+
+			\begin{enumerate}
+				\item Si $b(x) = a_n x^n + \dots + a_1 x + a_0$ se propone un polinomio del mismo grado y se determinan los coeficientes $\alpha_i$, entonces:
+
+				\begin{equation*}
+					\varphi_p = \alpha_n x^n + \dots + \alpha_1 x + \alpha_0
+				\end{equation*}
+
+				\item Si $b(x) = A \sin{(\omega x)} + B \cos{(\omega x)}$ se propone una solución:
+
+				\begin{equation*}
+					\varphi_p = \alpha \sin{(\omega x)} + \beta \cos{\omega x}
+				\end{equation*}
+
+				aun si $A$ o $B$ son cero.
+
+				\item Si $b(x) = a e^{kx}$, se propone un $\varphi_p = A e^{kx}$ y se tiene que:
+				
+				\begin{align*}
+					\varphi_p(x) &= A e^{kx} \\
+					\varphi_p'(x) &= Ak e^{kx} \\
+					\varphi_p''(x) &= Ak^2 e^{kx} \\
+				\end{align*}
+
+				y por lo tanto, al sustituir en la ecuación original, tenemos que:
+
+				\begin{align*}
+					A (k^2 + a_1 k + a_0) e^{kx} &= a e^{kx} \\
+					A &= \frac{a}{(k^2 + a_1 k + a_0)}
+				\end{align*}
+			\end{enumerate}
+		\end{observacion}
+
+		\begin{observacion}
+			Considerese la ecuación:
+
+			\begin{equation}
+				y'' + a_1 y' + a_0 y = b(x)
+			\end{equation}
+
+			Para aplicar el método, $b(x)$ debe satisfacer lo siguiente:
+
+			Existen $b_1, b_2, \dots, b_n$ tal que cualquiers derivada $b^{(k)}(x)$ debe poderse escribir como combinación lineal de ellas, la manera de darse cuenta de este hecho, es derivando $b(x)$ un número suficientemente grande de veces y observando que despues de un cierto orden de la derivada todos los terminos que aparecen son repetidos.
+		\end{observacion}
+
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
 %-------------------------------------------------------------------------------
@@ -1369,9 +1429,165 @@
 
 	\subsection{Series de potencias}
 
+		\begin{definicion}
+			Dada una sucesión $(a_n)_{n=1}^{\infty}$ la serie termino general $a_n$ es la sucesión $(s_n)_{n=1}^{\infty}$ definida por:
+
+			\begin{align*}
+				s_1 &= a_1 \\
+				s_2 &= a_1 + a_2 \\
+				s_n &= a_1 + a_2 + \dots + a_n \\
+				(s_n) &= \sum_{k=1}^n a_k \\
+				(s_n)_{n=1}^{\infty} &= \left( \sum_{k=1}^{n} a_k \right)_{n=1}^{\infty}
+			\end{align*}
+
+			Esta sucesión tambien será denotada por $\sum a_n$.
+			Si el indice de los $a_n$ comienza desde $n_0$, es decir se tiene la sucesion $(a_n)_{n=n_0}^{\infty}$, escribimos $\sum_{n=n_0} a_n$ en lugar de $\sum a_n$.
+
+			A los terminos de la serie $\sum a_n$ ($s_1, s_2, \dots$) se les llama sumas parciales de la serie y se dice que $\sum a_n$ converge si la sucesión $a_1, a_1 + a_2,  a_1 + a_2 + \dots + a_n$ converge.
+		\end{definicion}
+
 %-------------------------------------------------------------------------------
 	\newpage
 	\subsection{Criterio de Cauchy}
+
+		Si una serie converge, denotaremos a su limite por:
+
+		\begin{equation}
+			\sum_{n=1}^{\infty} a_n
+		\end{equation}
+
+		o mas generalmente:
+
+		\begin{equation}
+			\sum_{n=n_0}^{\infty} a_n
+		\end{equation}
+
+		$(s_n)$ converge si y solo si para cada $\epsilon > 0$ existe un $n_0$ tal que $n, m < n_0$ implica que:
+
+		\begin{equation}
+			|s_n - s_m| < \epsilon
+		\end{equation}
+
+		Otra formulación para el criterio de Cauchy es la siguiente:
+
+		Una suceción $(s_n)$ converge si y solamente si existe un $n_0$ tal que $n \geq n_0$ y $p \geq 1$ tales que:
+
+		\begin{equation*}
+			|s_{n+p} - s_n| \leq \epsilon
+		\end{equation*}
+
+		es decir:
+
+		\begin{equation*}
+			\left( \sum_{k=1}^{n+p} a_k - \sum_{k=1}^{n} a_k \right) = \sum_{k=n+1}^{n+p} a_k = \sum_{k=1}^{p} a_{n+k} \leq \epsilon
+		\end{equation*}
+
+		Una serie $\sum a_n$ converge si y solamente si para cada $\epsilon > 0$, existe un $n_0$ tal que $n \geq n_0$, $p \geq 1$, tales que:
+
+		\begin{equation}
+			\left| \sum_{k=1}^{p} a_{n+k} \right| < \epsilon
+		\end{equation}
+
+%-------------------------------------------------------------------------------
+	\newpage
+	\subsection{Criterio de la razon para la convergencia de una serie}
+
+		\begin{teorema}
+			Suponga una serie $\sum a_n$ con $a_n \ne 0$ para toda $n$ tal que existe el limite:
+
+			\begin{equation}
+				\lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \alpha
+			\end{equation}
+
+			Podemos ver los siguientes casos:
+
+			\begin{enumerate}
+				\item Si $\alpha < 1$ la serie converge.
+				\item Si $\alpha > 1$ la serie diverge.
+				\item Si $\alpha = 1$ no se puede decir nada acerca de la serie.
+			\end{enumerate}
+		\end{teorema}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{definicion}
+			Sea $a_n$ una sucesión y $x_0 \in \mathbb{R}$ para cada $x \in \mathbb{R}$ definamos la serie $\sum a_n (x - x_0)^n$.
+		\end{definicion}
+
+		\begin{teorema}
+			Considerese la serie de potencias $\sum a_n(x - x_0)^n$, entonces existe $R$, con $0 \leq R \leq \infty$ tal que la serie $\sum a_n (x - x_0)^n$.
+
+			Entonces se puede decir lo siguiente de esta serie:
+
+			\begin{enumerate}
+				\item Converge si $|x - x_0| < R$.
+				\item Diverge si $|x - x_0| > R$.
+			\end{enumerate}
+
+			Por otro lado podemos decir lo siguiente con respecto $R$:
+
+			\begin{enumerate}
+				\item Si $R = 0$ la serie converge solamente en $x = x_0$.
+				\item Si $R = \infty$ la serie converge para todo $x$.
+			\end{enumerate}
+
+			Si ahora utilizamos el teorema de Cauchy, podemos ver que:
+
+			\begin{align*}
+				\alpha &= \lim_{n \to \infty} \left| \frac{a_{n+1}(x - x_0)^{n+1}}{a_n (x - x_0)^n} \right| \\
+				&= \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| |x - x_0| \\
+				&= |x - x_0| \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| \\
+				&= |x - x_0| k \quad k = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|
+			\end{align*}
+
+			entonces la serie converge si $|x - x_0|k < 1$, es decir:
+
+			\begin{equation*}
+				|x - x_0| < \frac{1}{k} = R
+			\end{equation*}
+
+			es decir, si $|x - x_0| < R$, donde $R$ es:
+
+			\begin{equation*}
+				R = \frac{1}{\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|} = \lim_{n \to \infty} \left| \frac{a_{n}}{a_{n+1}} \right|
+			\end{equation*}
+		\end{teorema}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{ejemplo}
+			\faltante{Falta escribir ejemplo}
+		\end{ejemplo}
+
+		\begin{observacion}
+			Suponga una función $f(x)$ de la forma:
+
+			\begin{equation}
+				f(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + \dots
+			\end{equation}
+
+			tenemos que sus derivadas son de la forma:
+
+			\begin{align*}
+				f'(x) &= \sum_{n=1}^{\infty} n a_n x^{n-1} = a_1 + 2 a_2 x + 3 a_3 x^2 + \dots \\
+				f''(x) &= \sum_{n=2}^{\infty} n (n-1) a_n x^{n-2} = 2 a_2 + (3)(2) a_3 x + \dots \\
+				f^{(n)}(x) &= \sum n (n-1) \dots a_n x^{n-n} = n! a_n
+			\end{align*}
+
+			y por lo tanto:
+
+			\begin{equation*}
+				a_n = \frac{f^{(n)}(0)}{n!}
+			\end{equation*}
+		\end{observacion}
 
 %-------------------------------------------------------------------------------
 	\newpage
