@@ -13,10 +13,10 @@
         Consideremos el siguiente conjunto
 
         \begin{equation}
-            \left\{ F(s) \in \mathbbm{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbbm{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbbm{C} - \mathbbm{C}_+ \right\}
+            \left\{ F(s) \in \mathbb{R}(s) \mid F(s) = \frac{N(s)}{M(s)} : N(s), M(s) \in \mathbb{R}[s], \lim_{s \to \infty} \frac{N(s)}{M(s)} < \infty, F^{-1}(\bar{s}) = 0 \implies \bar{s} \in \mathbb{C} \setminus \mathbb{C}_+ \right\}
         \end{equation}
 
-        en donde $\mathbbm{C}_+ = \left\{ s \in \mathbbm{C} \mid \Re{s} \ge 0 \right\}$.
+        en donde $\mathbb{C}_+ = \left\{ s \in \mathbb{C} \mid \Re{s} \ge 0 \right\}$.
 
         Es decir, $RH_{\infty}$ es el conjunto de funciones de transferencia propias Hurwitz estable.
 
@@ -25,13 +25,13 @@
         \end{definicion}
 
         \begin{definicion}
-            Existe una función grado $\delta: RH_{\infty} \to \mathbbm{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces
+            Existe una función grado $\delta: RH_{\infty} \to \mathbb{Z}^+$ tal que si $F(s) \in RH_{\infty} - {0}$, entonces
 
             \begin{equation}
-                \delta(F) = \cardinalidad{\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
+                \delta(F) = \cardinalidad{\left\{ s \in \mathbb{C}_+ : F(s) = 0 \right\}} + \grado{F(s)}
             \end{equation}
 
-            En donde a $\left\{ s \in \mathbbm{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbbm{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
+            En donde a $\left\{ s \in \mathbb{C}_+ : F(s) = 0 \right\}$ les llamamos ceros finitos en $\mathbb{C}_+$ y a $F(s)$ les llamamos ceros al infinito.
         \end{definicion}
 
         Dado que $RH_{\infty}$ es un anillo conmutativo euclidiano podemos aplicar
@@ -48,7 +48,7 @@
             La norma de $RH_{\infty}$ esta definida de la siguiente manera
 
             \begin{equation}
-                ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbbm{R}, F \in RH_{\infty}
+                ||F||_{\infty} = \supremo{|F(j\omega)|} \quad \omega \in \mathbb{R}, F \in RH_{\infty}
             \end{equation}
 
             $RH_{\infty}$ bajo esta norma forma un espacio de Banach.
@@ -67,7 +67,7 @@
         Sea $F(s)$ una función de transferencia propia, es decir
 
         \begin{equation*}
-            F(s) \in \mathbbm{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
+            F(s) \in \mathbb{R}(s) \quad \lim_{s \to \infty} F(s) < \infty
         \end{equation*}
 
         Una factorización coprima de $F$ en $RH_{\infty}$, es la descomposición de $F$ en fracciones coprimas en $RH_{\infty}$, es decir
@@ -98,13 +98,13 @@
         Sea el diagrama de bloques de la figura, la representación de un sistema con función de transferencia estrictamente propia, es decir
 
         \begin{equation*}
-            G(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} G(s) = 0
+            G(s) \in \mathbb{R}[s] \quad \lim_{s \to \infty} G(s) = 0
         \end{equation*}
 
         y controlado por un controlador representado por una función de transferencia propia, es decir
 
         \begin{equation*}
-            K(s) \in \mathbbm{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
+            K(s) \in \mathbb{R}[s] \quad \lim_{s \to \infty} K(s) < \infty
         \end{equation*}
 
         \missingfigure{Diagrama de bloques en donde $u$ es la señal de control, $y$ es la salida y $v_1$ y $v_2$ con señales exógenas (consignas, perturbaciones, ruidos, etc.).}
@@ -162,7 +162,7 @@
             \end{pmatrix}
         \end{equation*}
 
-        y esta solución es propia para todo $K(s) \in \mathbbm{R}(s)$ con $\lim_{s \to \infty} K(s) < \infty$.
+        y esta solución es propia para todo $K(s) \in \mathbb{R}(s)$ con $\lim_{s \to \infty} K(s) < \infty$.
         Por lo que las cuatro funciones de transferencia del sistema en lazo cerrado del sistema son propias.
 
         Diremos que $K(s)$ estabiliza a $G(s)$ si sus cuatro funciones de transferencia son estables, esto es, si
@@ -175,7 +175,7 @@
 
         Sean $M, N$ y $V, U$ factorizaciones coprimas de $RH_\infty$ de $G(s)$ y $K(s)$ respectivamente, es decir
 
-        \begin{eqnarray}
+        \begin{eqnarray} \label{eq:robus0}
             G(s) & = & \frac{N(s)}{M(s)} \quad N, M \in RH_{\infty} \quad (M, N) = 1 \\
             K(s) & = & \frac{U(s)}{V(s)} \quad U, V \in RH_{\infty} \quad (U, V) = 1
         \end{eqnarray}
@@ -196,17 +196,17 @@
         De estas ecuaciones se deduce que la estabilidad del par $\xi, \eta$ implica la estabilidad $y, u$.
         Por otro lado, dado que $(M, N) = 1$ sabemos que existen $X, Y \in RH_{\infty}$ tal que
 
-        \begin{equation}
+        \begin{equation} \label{eq:robus2}
             X M + Y N = 1
         \end{equation}
 
         lo cual implica que
 
-        \begin{equation} \label{eq:robus2}
+        \begin{equation} \label{eq:robus3}
             X M \xi + Y N \xi = \xi
         \end{equation}
 
-        por lo que de la ecuación~\ref{eq:robus1} y la ecuación~\ref{eq:robus2} podemos obtener que
+        por lo que de la ecuación~\ref{eq:robus1} y la ecuación~\ref{eq:robus3} podemos obtener que
 
         \begin{eqnarray}
             X u + Y (y - v_2) & = & \xi \nonumber \\
@@ -217,7 +217,7 @@
 
         Similarmente para $\eta$, tenemos que $(U, V) = 1$, por lo que existen $\hat{X}, \hat{Y} \in RH_{\infty}$ tales que
 
-        \begin{eqnarray}
+        \begin{eqnarray} \label{eq:robus4}
             \hat{X} V + \hat{Y} U & = & 1 \nonumber \\
             \hat{X} V \eta + \hat{Y} U \eta & = & \eta \nonumber \\
             \hat{X} y + \hat{Y} (u - v_1) & = & 1 \nonumber \\
@@ -227,14 +227,18 @@
         por lo que la estabilidad del par $u, y$ implica la estabilidad de $\eta$.
 
         Esto es, las cuatro funciones de transferencia de $u, y$ contra $v_1, v_2$ pertenecen a $RH_{\infty}$ si y solamente si las cuatro funciones de transferencia de $\xi, \eta$ contra $v_1, v_2$ pertenecen a $RH_{\infty}$.
-        Por lo que podemos ver el siguiente resultado, $K$ estabiliza a $G$ si
+        Por lo que podemos ver el siguiente resultado:
 
-        \begin{equation}
-            \begin{pmatrix}
-                M & U \\
-                N & V
-            \end{pmatrix}^{-1} \in RH_{\infty}
-        \end{equation}
+        \begin{resultado}
+            $K$ estabiliza a $G$ si
+
+            \begin{equation}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix}^{-1} \in RH_{\infty}
+            \end{equation}
+        \end{resultado}
 
         En efecto, notamos primero que
 
@@ -271,7 +275,7 @@
             \begin{pmatrix}
                 M & U \\
                 N & V
-            \end{pmatrix}^{-1} \in \mathbbm{R}(s)
+            \end{pmatrix}^{-1} \in \mathbb{R}(s)
         \end{equation*}
 
         es decir, la inversa de esta matriz existe.
@@ -300,3 +304,240 @@
                 N & V
             \end{pmatrix}^{-1} \in RH_{\infty}
         \end{equation*}
+
+    \section{Parametrización de Youla}
+
+        \begin{teorema}
+            Sea el sistema de la figura, sean $M, N$ y $V, U$ factorizaciones coprimas en $RH_{\infty}$ de $G(s)$ y $K(s)$ respectivamente.
+
+            Sean $X, Y$ y $\hat{X}, \hat{Y}$, soluciones de las identidades de Bezout en las ecuaciones~\ref{eq:robus2} y~\ref{eq:robus4} respectivamente, entonces el conjunto de todos los controladores propios $K(s) \in \mathbb{R}(s)$ que estabilizan a la planta estan parametrizados de la siguiente manera:
+
+            \begin{equation} \label{eq:robus5}
+                K(s) = - \frac{Y(s) - M(s) Q(s)}{X(s) - N(s)Q(s)}
+            \end{equation}
+
+            en donde $Q(s) \in RH_{\infty}$.
+        \end{teorema}
+
+        \begin{proof}
+            De la ecuación~\ref{eq:robus2} se tiene la siguiente igualdad no trivial:
+
+            \begin{equation} \label{eq:robus6}
+                \begin{pmatrix}
+                    X(s) & Y(s) \\
+                    N(s) & -M(s)
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M(s) & Y(s) \\
+                    N(s) & -X(s)
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1 & 0 \\
+                    0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+            lo cual implica que:
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & Q(s) \\
+                    0 & 1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    X(s) & Y(s) \\
+                    N(s) & -M(s)
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M(s) & Y(s) \\
+                    N(s) & -X(s)
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & -Q(s) \\
+                    0 & 1
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1 & Q(s) \\
+                    0 & 1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & -Q(s) \\
+                    0 & 1
+                \end{pmatrix}
+            \end{equation*}
+
+            es decir:
+
+            \begin{equation} \label{eq:robus7}
+                \begin{pmatrix}
+                    X + NQ & Y- MQ \\
+                    N & -M
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M & Y - MQ \\
+                    N & -(x + NQ)
+                \end{pmatrix} = I
+            \end{equation}
+
+            definiendo ahora:
+
+            \begin{eqnarray} \label{eq:robus8}
+                U & = & Y - MQ \in RH_{\infty} \nonumber \\
+                V & = & -(X + NQ) \in RH_{\infty}
+            \end{eqnarray}
+
+            la ecuación~\ref{eq:robus7} queda:
+
+            \begin{equation} \label{eq:robus9}
+                \begin{pmatrix}
+                    -V & U \\
+                    N & -M
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix} = I
+            \end{equation}
+
+            y de la ecuación~\ref{eq:robus9} se concluye que:
+
+            \begin{equation*}
+                V(s)(-M(s)) + U(s)N(s) = 1
+            \end{equation*}
+
+            por lo que $(U, V) = 1$, tambien se concluye que la inversa de la matriz en la ecuación~\ref{eq:robus9} existe y es:
+
+            \begin{equation}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix}^{-1} =
+                \begin{pmatrix}
+                    -V & U \\
+                    N & -M
+                \end{pmatrix} \in RH_{\infty}
+            \end{equation}
+
+            Por lo que del resultado 18.1 se sigue que el controlador $K(s) \in \mathbb{R}(s)$ estabiliza a $G(s)$.
+
+            Note tambien que las ecuaciones ~\ref{eq:robus0},~\ref{eq:robus2} y~\ref{eq:robus5} implican:
+
+            \begin{eqnarray*}
+                K(s) & = & \frac{Y - MQ}{X + NQ} =\frac{(Y - MQ)M}{XM + NQM} = - \frac{(Y - MQ)M}{1 - YN + MNQ} \\
+                 & = & - \frac{(Y - MQ)M}{1 + (MQ - Y)N} = - \frac{Y - MQ}{\frac{1}{M} + (MQ - Y)G}
+            \end{eqnarray*}
+
+            y reocordando la condición de propiedad del controlador, tenemos:
+
+            \begin{equation*}
+                \lim_{s \to \infty} K(s) = - \lim_{s \to \infty} (Y - MQ) M < \infty
+            \end{equation*}
+
+            es decir $K$ es un controlador propio, que estabiliza a la planta.
+
+            Por otro lado, si definimos $D = NU - VM \in RH_{\infty}$, de la ecuación~\ref{eq:robus2} se obtiene:
+
+            \begin{equation} \label{eq:robus10}
+                \begin{pmatrix}
+                    X & Y \\
+                    N & -M
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1 & XU + YV \\
+                    0 & D
+                \end{pmatrix}
+            \end{equation}
+
+            Notemos que la ecuación~\ref{eq:robus6} implica la invertibilidad de la primer matriz y dado que $K$ estabiliza a $G$, sabemos que el producto tendrá inversa en $RH_{\infty}$.
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & XU + YV \\
+                    0 & D
+                \end{pmatrix}^{-1} \in RH_{\infty}
+            \end{equation*}
+
+            por lo que $D^{-1} \in RH_{\infty}$ y se puede definir:
+
+            \begin{equation}
+                Q = - (XU + YV) D^{-1} \in RH_{\infty}
+            \end{equation}
+
+            y podemos reescribir la ecuación~\ref{eq:robus10} como:
+
+            \begin{equation} \label{eq:robus11}
+                \begin{pmatrix}
+                    X & Y \\
+                    N & -M
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1 & -QD \\
+                    0 & D
+                \end{pmatrix}
+            \end{equation}
+
+            Premultiplicando $\begin{pmatrix} M & Y \\ N & -X \end{pmatrix}$ a la ecuación\label{eq:robus11} y aplicando la identidad de Bezout en los terminos adecuados, obtenemos:
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    M & Y \\
+                    N & -X
+                \end{pmatrix}
+                \begin{pmatrix}
+                    X & Y \\
+                    N & -M
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    M & Y \\
+                    N & -X
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & -QD \\
+                    0 & D
+                \end{pmatrix}
+            \end{equation*}
+
+            \begin{equation*}
+                \begin{pmatrix}
+                    M & U \\
+                    N & V
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    M & (Y - MQ)D \\
+                    N & -(X + NQ)D
+                \end{pmatrix}
+            \end{equation*}
+
+            lo cual implica que:
+
+            \begin{eqnarray*}
+                U & = & (Y - MQ)D \\
+                V & = & -(X + NQ)D
+            \end{eqnarray*}
+
+            y recordando que, tanto $D$ como $D^{-1}$ estan en $RH_{\infty}$, tenemos que el controlador queda:
+
+            \begin{eqnarray*}
+                K(s) = \frac{U(s)}{V(s)} = - \frac{(Y - MQ)D}{(X + NQ)D} = - \frac{Y(s) - M(s) Q(s)}{X(s) + N(s) Q(s)}
+            \end{eqnarray*}
+        \end{proof}
+
+        Note que la función de transferencia en lazo cerrado es:
+
+        \missingfigure{Diagrama de bloques de planta $G(s) \in RH_{\infty}$ con controlador $K(s) \in RH_{\infty}$.}
+
+        \faltante{Falta desarrollo algebraico}
+
+        La parametrización de Youla nos proporciona el conjunto de controladores estabilizadores de $G$ con un parametro libre $Q \in RH_{\infty}$, que es utilizado para minimizar el indice de desempeño predeterminado.

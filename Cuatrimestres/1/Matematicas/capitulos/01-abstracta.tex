@@ -9,18 +9,18 @@
         \begin{definicion}
             Un grupo es un conjunto no vacio $G$ en el que esta definida la operacion $\op$, tal que:
 
-            \begin{eqnarray*}
-                \op \colon G, G & \to & G \\
-                (a, b) & \to & (a \op b)
-            \end{eqnarray*}
+            \begin{align}
+                \op \colon G, G &\to G \nonumber \\
+                (a, b) &\to (a \op b)
+            \end{align}
 
             Existen definiciones parciales de grupo dependiendo de las propiedades que cumple su operación:
 
             \begin{description}
-                \item [Cerradura] $a \op b \in G \quad \forall a, b \in G$
-                \item [Asociatividad] $a \op (b \op c) = (a \op b) \op c \quad \forall a, b, c, \in G$
-                \item [Identidad] $\exists\+ e \in G \ni a \op e = e \op a = a \quad \forall a \in G$
-                \item [Inverso] $\exists\+ b \in G \ni a \op b = b \op a = e \quad \forall a \in G$
+                \item [Cerradura] $a \op b \in G \quad \forall \+ a, b \in G$
+                \item [Asociatividad] $a \op (b \op c) = (a \op b) \op c \quad \forall \+ a, b, c, \in G$
+                \item [Identidad] $\exists\+ e \in G \ni a \op e = e \op a = a \quad \forall \+ a \in G$
+                \item [Inverso] $\exists\+ b \in G \ni a \op b = b \op a = e \quad \forall \+ a \in G$
             \end{description}
 
             Cuando se cumplen las propiedades de \emph{cerradura} y \emph{asociatividad} se le llama \emph{semigrupo}; si adicionalmente se cumple la propiedad de \emph{existencia de identidad} se le llama \emph{monoide}; si adicionalmente se cumple la propiedad de \emph{existencia de inverso} se le llama \emph{grupo}.
@@ -29,12 +29,12 @@
         \begin{ejercicio}
             Demostrar que el grupo cimpuesto por las matrices de la forma:
 
-            \begin{equation}
+            \begin{equation*}
                 \begin{pmatrix}
                     \cos{\theta} & \sin{\theta} \\
                     -\sin{\theta} & \cos{\theta}
-                \end{pmatrix}, \quad \forall\+ \theta \in \mathbbm{R}
-            \end{equation}
+                \end{pmatrix}, \quad \forall\+ \theta \in \mathbb{R}
+            \end{equation*}
 
             es un grupo.
         \end{ejercicio}
@@ -48,19 +48,19 @@
         \end{definicion}
 
         \begin{ejemplo}
-            El conjunto $\sfrac{\mathbbm{Z}}{n\mathbbm{Z}}$
-        \end{ejemplo}
+            El conjunto $\sfrac{\mathbb{Z}}{n\mathbb{Z}}$
+        \end{ejemplo} \faltante{Falta escribir ejemplo}
 
         \begin{ejercicio}
-            Consideremos a $\mathbbm{Z}$ con el producto usual ¿Es este un grupo?
+            Consideremos a $\mathbb{Z}$ con el producto usual ¿Es este un grupo?
         \end{ejercicio}
 
         \begin{ejercicio}
-            Consideremos a $\mathbbm{Z}^+$ con el producto usual ¿Es este un grupo?
+            Consideremos a $\mathbb{Z}^+$ con el producto usual ¿Es este un grupo?
         \end{ejercicio}
 
         \begin{ejercicio}
-            Sea $G = \mathbbm{R} \setminus \{0\}$. Si definimos $a \op b = a^2 b$ ¿G es un grupo?
+            Sea $G = \mathbb{R} \setminus \{0\}$. Si definimos $a \op b = a^2 b$ ¿G es un grupo?
         \end{ejercicio}
 
         \begin{definicion}
@@ -74,7 +74,7 @@
         \end{ejemplo}
 
         \begin{ejemplo}
-            El orden del conjunto de numeros reales es infinito $\left| \mathbbm{R} \right| = \infty$.
+            El orden del conjunto de numeros reales es infinito $\left| \mathbb{R} \right| = \infty$.
         \end{ejemplo}
 
         \begin{proposicion}
@@ -102,10 +102,10 @@
 
                 \item Sean $b, c$ inversos de $a$, entonces:
 
-                \begin{eqnarray*}
-                    b \op a & = & e \\
-                    a \op c & = & e
-                \end{eqnarray*}
+                \begin{align*}
+                    b \op a &= e \\
+                    a \op c &= e
+                \end{align*}
 
                 por lo que podemos ver que:
 
@@ -152,19 +152,17 @@
             \end{enumerate}
         \end{proof}
 
-        \tarea{Demostrar el caso general del inverso de la operacion de elementos.}
-
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Reglas de cancelación}
 
         \begin{proposicion}
             Sea $G$ un grupo y $a, b, c \in G$, tendremos que:
 
-            \begin{eqnarray}
-                a \op b = a \op c & \implies & b = c \nonumber \\
-                b \op a = c \op a & \implies & b = c
-            \end{eqnarray}
+            \begin{align}
+                a \op b = a \op c &\implies b = c \nonumber \\
+                b \op a = c \op a &\implies b = c
+            \end{align}
         \end{proposicion}
 
         \begin{proof}
@@ -182,16 +180,1038 @@
         \end{proof}
 
 %-------------------------------------------------------------------------------
-
+    \newpage
     \subsection{Subgrupos}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Un subconjunto no vacio $H$ de un grupo $G$ se llama subgrupo si $H$ mismo forma un grupo respecto a la operación de $G$.
 
+            Cuando $H$ es subgrupo de $G$ se denota $H < G$ o $G > H$.
+        \end{definicion}
+
+        \begin{observacion}
+            Todo grupo $G$ tiene automaticamente dos subconjuntos triviales, el mismo $G$ y la identidad $\{e\}$.
+        \end{observacion}
+
+        \begin{proposicion}
+            Un subconjunto no vacio $H \subset G$ es un subgrupo de $G$ si y solo si $H$ es cerrado respecto a la operación de $G$ y $a \in H \implies a^{-1} \in H$.
+        \end{proposicion}
+
+        \begin{proof}
+            Teniendo que $H$ es un subgrupo de $G$ tenemos que $H$ es un grupo, por lo que automaticamente se cumple la cerradura y la existencia del inverso dentro del subgrupo.
+
+            Teniendo que $H$ es cerrado, no vacio y $a^{-1} \in H \quad \forall \+ a \in H$.
+            Sabemos que $a^{-1} \op a  = e \in H$ debido a que $H$ es cerrado.
+            Ademas para $a, b, c \in H$ sabemos que $a \op (b \op c) = (a \op b) \op c$ debido a que se cumple en $G$ y $H$ hereda esta propiedad.
+
+            Por lo que $H$ es un grupo, y por lo tanto subgrupo de $G$.
+        \end{proof}
+
+        \begin{ejemplo}
+            Sea $G = \mathbb{Z}$ con la suma usual y sea $H$ el conjunto de los enteros pares, es decir:
+
+            \begin{equation*}
+                H = \left\{ 2n | n \in \mathbb{Z} \right\}
+            \end{equation*}
+
+            ¿Es $H$ un subgrupo de $G$?
+
+            Empecemos con dos elementos $a, b \in H$, por lo que tenemos que:
+
+            \begin{align*}
+                a &= 2 q \quad q \in \mathbb{Z} \\
+                b &= 2 q' \quad q' \in \mathbb{Z}
+            \end{align*}
+
+            y al sumarlos tenemos que:
+
+            \begin{equation*}
+                a + b = 2q + 2q' = 2(q + q') = 2q'' \quad q'' \in \mathbb{Z}
+            \end{equation*}
+
+            por lo que $a + b \in H$.
+
+            Por otro lado, para $a \in H$ existe un $q \in \mathbb{Z}$ tal que $a = 2q$.
+            Su inverso será:
+
+            \begin{equation*}
+                -a = -2 q = 2(-q)
+            \end{equation*}
+
+            por lo que existe $q' = -q \in \mathbb{Z}$ tal que:
+
+            \begin{equation*}
+                2 q' = -a \in H
+            \end{equation*}
+
+            y por lo tanto $H < \mathbb{Z}$.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Consideremos $G = \mathbb{C}^* = \mathbb{C} \setminus \{ 0 \}$ con el producto usual, y un subconjunto $\mathcal{U}$
+
+            \begin{equation*}
+                \mathcal{U} = \left\{ z \in \mathbb{C}^* \mid |z| = 1 \right\}
+            \end{equation*}
+
+            ¿Es $\mathcal{U}$ un subgrupo de $G$?
+
+            Dados dos elementos $z_1, z_2 \in \mathcal{U}$ sabemos que $|z_1| = |z_2| = 1$, por lo tanto:
+
+            \begin{equation*}
+                |z_1 z_2| = |z_1| |z_2| = 1
+            \end{equation*}
+
+            por lo que $z_1 z_2 \in \mathcal{U}$.
+
+            Por otro lado, para $z \in \mathcal{U}$ tenemos que $|z| = 1$, y por lo tanto:
+
+            \begin{equation*}
+                |z^{-1}| = |z|^{-1} = \frac{a}{|z|} = 1
+            \end{equation*}
+
+            por lo que $z^{-1} \in \mathcal{U}$ y $\mathcal{U} < \mathbb{C}^*$
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Sea $G$ un grupo, $a$ un elemento del grupo y $C(a) = \left\{ g \in G \mid g \op a = a \op g \right\}$ ¿Es $C(a)$ subgrupo de $G$?
+
+            Primero notamos que $C(a)$ es no vacio debido a que al menos tiene a la identidad.
+
+            \begin{equation*}
+                e \op a = a \op e \implies e \in C(a)
+            \end{equation*}
+
+            Ahora tomemos dos elementos $g_1, g_2 \in C(a)$, para los cuales:
+
+            \begin{align*}
+                g_1 \op a &= a \op g_1 \\
+                g_2 \op a &= a \op g_2
+            \end{align*}
+
+            Ahora, si operamos estos dos elementos tendremos:
+
+            \begin{equation*}
+                (g_1 \op g_2) \op a = g_1 \op (g_2 \op a) = g_1 \op (a \op g_2) = (g_1 \op a) \op g_2 = (a \op g_1) \op g_2 = a \op (g_1 \op g_2)
+            \end{equation*}
+
+            por lo que $g_1 \op g_2 \in C(a)$.
+
+            Por ultimo, podemos ver que:
+
+            \begin{equation*}
+                a = a \op e = a \op \left( g \op g^{-1} \right) = (g \op a) \op g^{-1}
+            \end{equation*}
+
+            En donde para que el elemento inverso exista en $C(a)$, se debe de cumplir que $g^{-1} \op a = a \op g^{-1}$:
+
+            \begin{equation*}
+                g^{-1} \op a = g^{-1} \op \left( (g \op a) \op g^{-1} \right) = g^{-1} \op (g \op a) \op g^{-1} = g^{-1} \op g \op a \op g^{-1} = e \op a \op g^{-1} = a \op g^{-1}
+            \end{equation*}
+
+            Por lo que $C(a) < G$.
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Sea $X$ un conjunto no vacio. Consideremos $G = \delta X$. Sea $a \in X$, $H(a) = \left\{ f \in \delta X \mid f(a) = a \right\}$. Verificar que $H \subset G$ es un subgrupo bajo la composición de funciones. Note que $H(a)$ es no vacio, debido a que $\identidad_X \in H(a)$.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Sea $G$ un grupo y $a \in G$. El conjunto
+
+            \begin{equation}
+                A = \langle a \rangle = \left\{ a^i \mid i \in \mathbb{Z} \right\}
+            \end{equation}
+
+            es un subgrupo de $G$.
+
+            A es no vacio, puesto que $a^0 = e \in A$.
+
+            Por otro lado, para dos elementos $a^i, a^j \in A$ tenemos que:
+
+            \begin{equation*}
+                a^i a^j = a^{i+j} \in A
+            \end{equation*}
+
+            y para un elemento $a^i \in A$, tenemos que:
+
+            \begin{equation*}
+                a^{-i} = \left( a^i \right)^{-1} = \left( a^{-1} \right)^i \in A
+            \end{equation*}
+
+            por lo que $\langle a \rangle$ es un subgrupo. A este se le llama subgrupo cíclico de $G$ generado por $a$.
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $G$ un grupo, decimos que $G$ es cíclico si $G = \langle a \rangle$ para algun $a \in G$.
+        \end{definicion}
+
+        \begin{ejemplo}
+            Dado el grupo $G = \{e\}$, tenemos que el subgrupo cíclico generador de $G$ es:
+
+            \begin{equation*}
+                \langle e \rangle = \left\{ e^i \in G \mid i \in \mathbb{Z} \right\}
+            \end{equation*}
+
+            al operar este subgrupo tenemos:
+
+            \begin{align*}
+                e^1 &= e \\
+                e^2 &= e \op e = e \\
+                e^3 &= e \op e \op e = e
+            \end{align*}
+
+            por lo que obtenemos todos los elementos del grupo.
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Dado el grupo $G = \{a, e\}$, y la siguiente tabla para la operación del grupo:
+
+            \begin{center}
+                \begin{tabular}{l | c r}
+                    $\op$ & e & a \\
+                    \hline
+                    e & e & a \\
+                    a & a & e
+                \end{tabular}
+            \end{center}
+
+            con esto, tenemos que el subgrupo ciclico generador de $G$ es:
+
+            \begin{equation*}
+                \langle a \rangle = \left\{ a^i \in G \mid i \in \mathbb{Z} \right\}
+            \end{equation*}
+
+            y al operar este subgrupo tenemos:
+
+            \begin{align*}
+                a^1 &= a  \\
+                a^2 &= a \op a = e
+            \end{align*}
+
+            y obtenemos todos los elementos del grupo.
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Dado el grupo $G = \{e, a, b\}$ y la operación:
+
+            \begin{center}
+                \begin{tabular}{l | c c r}
+                    $\op$ & e & a & b \\
+                    \hline
+                    e & e & a & b \\
+                    a & a & b & e \\
+                    b & b & e & a
+                \end{tabular}
+            \end{center}
+
+            Encontrar el subgrupo cíclico generador.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Dado el grupo $\sfrac{\mathbb{Z}}{2\mathbb{Z}} = \mathbb{Z}_2 = \left\{ [0], [1] \right\}$ con la operación $[a] + [b]$; encontrar el subgrupo cíclico generador.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $G$ un grupo en el que $x^2 = e$ para todo $x \in G$. Verificar que $G$ es abeliano, es decir $a \op b = b \op a$.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Sea $G$ un grupo, $H$ un subgrupo de $G$ ($H < G$), para $a, b \in G$, decimos que $a$ es congruente con $b \mod H$, denotado por:
+
+            \begin{equation}
+                a \cong b \mod H
+            \end{equation}
+
+            si
+
+            \begin{equation}
+                a \op b^{-1} \in H
+            \end{equation}
+        \end{definicion}
+
+        \marginnote{De aqui en adelante se deja la notación de la operación $\op$ para la operación genérica del grupo, sin que por esto se entienda que la operación es siempre el producto usual.}
+
+        \begin{ejercicio}
+            Demostrar que $\cong$ es una relación de equivalencia.
+        \end{ejercicio}
+
+        \begin{definicion}
+            Si $H$ es un subgrupo de $G$ y $a \in G$, entonces
+
+            \begin{equation}
+                Ha = \left\{ ha \mid h \in H \right\}
+            \end{equation}
+
+            se llama clase lateral derecha de $H$ en $G$.
+        \end{definicion}
+
+        \begin{lema}
+            Para todo $a \in G$ se tiene que:
+
+            \begin{equation}
+                Ha = \left\{ x \in G \mid a \cong x \mod H \right\}
+            \end{equation}
+        \end{lema}
+
+        \begin{proof}
+            Sea un conjunto definido como $[a] = \left\{ x \in G \mid a \cong x \mod H \right\}$, por verificar que $Ha = [a]$. Para verficar esto, tenemos que verificar que $Ha \subseteq [a]$ y despues que $[a] \subseteq Ha$.
+
+            Para verificar que $Ha \subseteq [a]$ definimos un elemento $h \in H$ y $ha \in Ha$, si ahora operamos $a$ con $(ha)^{-1}$ y verificamos que esta en $H$, podemos decir que $a \cong ha \mod H$:
+
+            \begin{equation*}
+                a(ha)^{-1} = a(a^{-1}h^{-1}) = (a a^{-1})h^{-1} = h^{-1} \in H
+            \end{equation*}
+
+            por lo que podemos concluir que $a \cong ha \mod H$, lo que implica que $ha \in [a]$; pero como $ha$ es un elemento arbitrario de $Ha$, tenemos que:
+
+            \begin{equation*}
+                Ha \subseteq [a]
+            \end{equation*}
+
+            Para verificar que $[a] \subseteq Ha$ empezamos con un elemento $x \in [a]$, es decir $a \cong x \mod H$, lo cual implica $a x^{-1} \in H$, en particular nos interesa:
+
+            \begin{equation*}
+                (a x^{-1})^{-1} = x a^{-1} \in H
+            \end{equation*}
+
+            Por otro lado, sea $h = x a^{-1} \in H$, entonces tenemos que:
+
+            \begin{equation*}
+                ha = (x a^{-1})a = x (a^{-1} a) = x \in Ha
+            \end{equation*}
+
+            por lo que podemos decir que:
+
+            \begin{equation*}
+                [a] \subseteq Ha
+            \end{equation*}
+
+            y por lo tanto
+
+            \begin{equation*}
+                [a] = Ha
+            \end{equation*}
+        \end{proof}
+
+        \begin{teorema}
+            Sea $G$ un grupo finito y $H \subset G$, entonces el orden de $H$ divide al orden de $G$
+
+            \begin{equation}
+                \sfrac{|H|}{|G|}
+            \end{equation}
+
+            y esto implica que existe una $k \in \mathbb{Z}$ tal que:
+
+            \begin{equation}
+                |G| = k |H|
+            \end{equation}
+
+            A esto se le conoce como Teorema de Lagrange.
+        \end{teorema}
+
+        \begin{proof}
+            Dado $[a] = Ha$, las clases de equivalencia forman una partición de $G$:
+
+            \begin{align*}
+                [a_1] \cup [a_2] \cup \dots \cup [a_k] &= G \\[0cm]
+                [a_i] \cap [a_j] &= \varnothing \quad i \ne j
+            \end{align*}
+
+            Por otro lado, las clases laterales derechas forman una partición:
+
+            \begin{align*}
+                H a_1 \cup H a_2 \cup \dots \cup H a_k &= G \\
+                H a_i \cap H a_j &= \varnothing \quad i \ne j
+            \end{align*}
+
+            Establezcamos una biyección:
+
+            \begin{align*}
+                Ha_i &\to H \\
+                ha_i &\to h
+            \end{align*}
+
+            es decir, el orden de $Ha_i$ es el orden de $H$
+
+            \begin{equation*}
+                |Ha_i| = |H| \quad \forall \+ 1 \le i \le k
+            \end{equation*}
+
+            entonces:
+
+            \begin{align*}
+                |G| &= |Ha_1| + |Ha_2| + \dots + |Ha_k| \\
+                &= |H| + |H| + \dots + |H| \\
+                |G| &= k |H|
+            \end{align*}
+
+            pero $k \in \mathbb{Z}$, entonces:
+
+            \begin{equation*}
+                \sfrac{|H|}{|G|}
+            \end{equation*}
+        \end{proof}
+
+        \begin{definicion}
+            Si $G$ es finito y $H$ es un subgrupo de $G$ lllamamos $\frac{|G|}{|H|}$ el indice de $H$ en $G$ y lo denotamos por $i_G(H)$.
+        \end{definicion}
+
+        \begin{definicion}
+            Si $G$ es finito y $a \in G$, llamamos orden de $a$ al mínimo entero positivo $n$ tal que $a^n = e$ y lo denotamos por $O(a)$, por lo que se sigue que:
+
+            \begin{equation}
+                a^{O(a)} = e
+            \end{equation}
+        \end{definicion}
+
+        \begin{proposicion}
+            Si $G$ es finito y $a \in G$, entonces el orden de $a$ divide al orden de $G$:
+
+            \begin{equation}
+                \sfrac{O(a)}{|G|}
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Supongamos $H = \langle a \rangle$, entonces $O(a) = |H|$. Podemos ver ahora, por el teorema de Lagrange:
+
+            \begin{equation*}
+                \sfrac{|H|}{|G|} \implies \sfrac{O(a)}{|G|}
+            \end{equation*}
+        \end{proof}
+
+        \begin{corolario}
+            Si $G$ es un grupo finito de orden $n$, entonces:
+
+            \begin{equation}
+                a^n = e \quad \forall \+ a \in G
+            \end{equation}
+        \end{corolario}
+
+        \begin{proof}
+            Por la proposición anterior tenemos que:
+
+            \begin{equation*}
+                \sfrac{O(a)}{|G|} = \sfrac{O(a)}{n}
+            \end{equation*}
+
+            esto equivale a decir que existe un $k \in \mathbb{Z}$, tal que $n = k O(a)$, entonces podemos decir:
+
+            \begin{equation*}
+                a^n = a^{k O(a)} = \left( a^{O(a)} \right)^k = e^k = e \quad \forall \+ a \in G
+            \end{equation*}
+        \end{proof}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Subgrupo Normal}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Un grupo $N$ de $G$ se dice que es un subgrupo normal de $G$ denotado por $N \bigtriangleup G$, si para todo $g \in G$ y para todo $n \in N$ se tiene que:
 
+            \begin{equation}
+                g n g^{-1} \in N
+            \end{equation}
+        \end{definicion}
+
+        \begin{lema}
+            $N$ es un subgrupo normal de $G$ si y solo si:
+
+            \begin{equation}
+                gNg^{-1} = N \quad \forall \+ g \in G
+            \end{equation}
+        \end{lema}
+
+        \begin{proof}
+            Si $gNg^{-1} = N \quad \forall \+ g \in G$, entonces en particular tenemos que:
+
+            \begin{equation*}
+                gNg^{-1} \subseteq N
+            \end{equation*}
+
+            por lo que se tiene que $gng^{-1} \in N \quad \forall \+ n \in N$, por lo tanto  $N \bigtriangleup G$.
+
+            Por otro lado, si $N$ es un subgrupo normal de $G$, entonces tenemos que:
+
+            \begin{equation*}
+                gng^{-1} \in N
+            \end{equation*}
+
+            para todo $g \in G$ y para todo $n \in N$, esto implica que:
+
+            \begin{equation*}
+                gNg^{-1} \subseteq N
+            \end{equation*}
+
+            Por ultimo, podemos ver que $g^{-1} N g = g^{-1} N \left( g^{-1} \right)^{-1} \subseteq N$, ademas:
+
+            \begin{equation*}
+                N = e N e = g \left( g^{-1} N g \right) g^{-1} \subseteq g N g^{-1}
+            \end{equation*}
+
+            por lo tanto, podemos concluir que $gNg^{-1} = N$
+        \end{proof}
+
+        \begin{lema}
+            El subgrupo $N$ de $G$, es un subgrupo normal de $G$ ($N \bigtriangleup G$), si y solo si toda clase lateral izquierda de $N$ en $G$ es una clase lateral derecha de $N$ en $G$.
+        \end{lema}
+
+        \begin{proof}
+            Sea $aH = \left\{ ah \mid h \in H \right\}$ la clase lateral izquierda de $H$.
+
+            Si $N$ es un subgrupo normal de $G$, para todo $g \in G$ y para todo $n \in N$, tenemos que:
+
+            \begin{equation*}
+                gNg^{-1} = N
+            \end{equation*}
+
+            entonces tenemos que:
+
+            \begin{equation*}
+                gN = gNe = gN \left( g^{1} g \right) = \left( gNg^{-1} \right) g = N g
+            \end{equation*}
+
+            por lo que toda clase lateral izquierda coincide con la clase lateral derecha.
+
+            Por otro lado, si ahora suponemos que las clases laterales coinciden, entonces:
+
+            \begin{equation*}
+                gNg^{-1} = \left( gN \right) g^{-1} = Ng g^{-1} = N
+            \end{equation*}
+
+            por lo que podemos concluir que se trata de un subgrupo normal.
+        \end{proof}
+
+        \begin{definicion}
+            Denotamos $\sfrac{G}{N}$ a la colección de las clases laterales derechas de $N$ en $G$.
+
+            \begin{equation}
+                \sfrac{G}{N} = \left\{ Na \mid a \in G \right\}
+            \end{equation}
+        \end{definicion}
+
+        \begin{teorema}
+            Si $G$ es un grupo y $N$ es un subgrupo normal de $G$, entonces $\sfrac{G}{N}$ es tambien un grupo y se denomina grupo cociente.
+        \end{teorema}
+
+        \begin{proof}
+            Para demostrar la existencia de identidad primero verificamos que para un elemento $x \in \sfrac{G}{N}$, el elemento tiene la forma $x = Na \quad a \in G$, por lo que podemos ver que:
+
+            \begin{align*}
+                xNe = xN = Na N = NNa = Na &= x \\
+                Nex = Nx = NNa = Na &= x
+            \end{align*}
+        \end{proof}
+
+        Para demostrar la existencia de un inverso definimos un elemento $x \in \sfrac{G}{N}$ y $Na^{-1} \in \sfrac{G}{N}$, y queremos demostrar que $x^{-1} = Na^{-1}$ es el inverso de $x = Na$. Al operar estos elementos por la derecha y la izquierda tenemos:
+
+        \begin{align*}
+            x x^{-1} = Na Na^{-1} = NNaa^{-1} = Ne &= N \\
+            x^{-1} x = Na^{-1} Na = NNa^{-1}a = Ne &= N
+        \end{align*}
+
+        por lo tanto $Na^{-1} = x^{-1}$ es el inverso de $x$.
+        Por lo tanto, $\sfrac{G}{N}$ es un grupo.
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Homomorfismos de grupo}
+
+        \begin{definicion}
+            Sea una aplicación $\varphi \colon G \to \bar{G}$, $G$ un grupo con operacion $\opone$ y $\bar{G}$ un grupo con operación $\optwo$. Se dice que $\varphi$ es un homomorfismo si para $a, b \in G$ cualesquiera se tiene que:
+
+            \begin{equation}
+                \varphi(a \opone b) = \varphi(a) \optwo \varphi(b)
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            Sea $G = \mathbb{R}^+ \setminus \{0\}$, bajo el producto usual y sea $\bar{G} = \mathbb{R}$ bajo la adición, definimos $\varphi \colon G \to \bar{G}$ como:
+
+            \begin{align*}
+                \varphi \colon \mathbb{R}^+ \setminus \{0\} &\to \mathbb{R} \\
+                r &\to \ln{r}
+            \end{align*}
+
+            Sean $r_1, r_2 \in \mathbb{R}^+ \setminus \{0\}$ tal que:
+
+            \begin{equation*}
+                \varphi(r_1 \cdot r_2) = \ln{(r_1 \cdot r_2)} = \ln{r_1} + \ln{r_2} = \varphi(r_1) + \varphi(r_2)
+            \end{equation*}
+
+            por lo que podemos asegurar que $\varphi$ es un homomorfismo.
+        \end{ejemplo}
+
+        \begin{lema}
+            Supongamos que $G$ es un grupo y que $N$ es un subgrupo normal de $G$. Definamos la aplicación:
+
+            \begin{align*}
+                \varphi \colon G &\to \sfrac{G}{N} \\
+                x &\to Nx
+            \end{align*}
+
+            entonces $\varphi$ es es un homomorfismo.
+        \end{lema}
+
+        \begin{proof}
+            Sean $x, y \in G$, entonces $\varphi(x) = Nx$ y $\varphi(y) = Ny$, por lo que podemos ver que:
+
+            \begin{equation*}
+                \varphi(x \opone y) = Nxy = NNxy = NxNy = \varphi(x) \optwo \varphi(y)
+            \end{equation*}
+
+            por lo que $\varphi$ es un homomorfismo.
+        \end{proof}
+
+        \begin{definicion}
+            Si $\varphi$ es un homomorfismo de $G$ en $\bar{G}$, el nucleo de $\varphi$, denominado $\ker{\varphi}$ se define:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ x \in G \mid \varphi(x) = \bar{e} \right\}
+            \end{equation}
+
+            donde $\bar{e}$ es la identidad de $\bar{G}$.
+        \end{definicion}
+
+        \begin{lema}
+            Si $\varphi$ es un homomorfismo de $G$ es $\bar{G}$, entonces:
+
+            \begin{enumerate}
+                \item $\varphi(e) = \bar{e}$
+                \item $\varphi(x^{-1}) = \varphi(x)^{-1} \quad \forall \+ x \in G$
+            \end{enumerate}
+        \end{lema}
+
+        \begin{proof}
+            Para demostrar la primera parte tenemos un elemento $x \in G$, por lo que:
+
+            \begin{equation*}
+                \varphi(x) \optwo \bar{e} = \varphi(x) = \varphi(x \opone e) = \varphi(x) \optwo \varphi(e)
+            \end{equation*}
+
+            por lo que $\bar{e} = \varphi(e)$
+
+            Para demostrar la segunda parte, notamos que:
+
+            \begin{align*}
+                \bar{e} = \varphi(e) &= \varphi(x \opone x^{-1}) = \varphi(x) \optwo \varphi(x^{-1}) = \bar{e} \\
+                &= \varphi(x^{-1} \opone x) = \varphi(x^{-1}) \optwo \varphi(x) = \bar{e}
+            \end{align*}
+
+            por lo que $\varphi(x)^{-1} = \varphi(x^{-1})$.
+        \end{proof}
+
+        \marginnote{De nuevo, se dejará la notación de $\opone$ y $\optwo$ para los operadores de grupos, sin que por eso se entienda que la operación es la misma en ambos grupos, es decir, se deberá entender por el contexto, la operación indicada.}
+
+        \begin{ejercicio}
+            Sea $G$ un grupo abeliano, tenemos que:
+
+            \begin{align*}
+                \varphi \colon G &\to G \\
+                a &\to a^2
+            \end{align*}
+
+            Verificar que $\varphi$ es un homomorfismo.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $G$ y $G'$ dos grupos y sea $e'$ la identidad en $G'$, entonces:
+
+            \begin{align*}
+                \varphi \colon G &\to G' \\
+                g &\to e'
+            \end{align*}
+
+            verificar que $\varphi$ rd un homomorfismo.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            La identidad dada por:
+
+            \begin{align*}
+                \identidad_G \colon G &\to G \\
+                g &\to g
+            \end{align*}
+
+            verificar que $\identidad_G$ es un homomorfismo.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $G = \mathbb{Z}$ con la suma usual y $G' = \left\{ 1, -1 \right\}$ con el producto usual. Si definimos:
+
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \left\{ 1, -1 \right\} \\
+                n &\to
+                \begin{cases}
+                    1 & \text{si } n \text{ es par} \\
+                    -1 & \text{si } n \text{ es impar}
+                \end{cases} \quad \forall \+ n \in G
+            \end{align*}
+
+            ¿Será $\varphi$ un homomorfismo?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sean $G = \mathbb{C}^* = \mathbb{C} \setminus \{0\}$ con el producto correspondiente y $G' = \mathbb{R}^+$ con el producto correspondiente. Entonces definimos:
+
+            \begin{align*}
+                \varphi \colon \mathbb{C}^* &\to \mathbb{R}^+ \\
+                z &\to |z|
+            \end{align*}
+
+            ¿Será $\varphi$ un homomorfismo?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Definimos:
+
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \mathbb{Z}_n \\
+                a &\to [a]
+            \end{align*}
+
+            y sabemos que:
+
+            \begin{equation*}
+                [a + b] = [a] + [b]
+            \end{equation*}
+
+            ¿Será $\varphi$ un homomorfismo?
+        \end{ejercicio}
+
+        \begin{definicion}
+            Un homomorfismo $\varphi \colon G \to G'$ se dice que es:
+
+            \begin{description}
+                \item[Monomorfismo] si es inyectivo (1 - 1).
+                \item[Epimorfismo] si es suprayectivo (sobre).
+                \item[Isomorfismo] si es biyectivo (1 - 1 y sobre).
+            \end{description}
+        \end{definicion}
+
+        \begin{definicion}
+            Si $\varphi \colon G \to G'$ es un isomorfismo, decimos que $G$ y $G'$ son isomorfos y escribimos:
+
+            \begin{equation}
+                G \cong G'
+            \end{equation}
+        \end{definicion}
+
+        \begin{proposicion}
+            Si $\varphi \colon G \to G'$ es un homomorfismo, entonces:
+
+            \begin{equation}
+                \imagen{\varphi} < G'
+            \end{equation}
+
+            donde:
+
+            \begin{equation}
+                \imagen{\varphi} = \left\{ x \in G, y \in G' \mid \varphi(x) = y \right\} \subset G'
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Para demostrar que $\imagen{\varphi}$ es un subgrupo de $G'$, tenemos que demostrar que esta contenido en $G'$ y que es grupo, pero por definición sabemos que $\imagen{\varphi} \subset G'$, por lo que solo nos queda demostrar que es un grupo.
+            Para demostrar que es un grupo, pasamos a verificar la cerradura y la existencia de un inverso.
+
+            Para demostrar la propiedad de cerradura, tomamos dos elementos $y_1, y_2 \in \imagen{\varphi}$ tales que tienen la forma:
+
+            \begin{align*}
+                y_1 = \varphi(x_1) \in G' &\quad x_1 \in G \\
+                y_2 = \varphi(x_2) \in G' &\quad x_2 \in G
+            \end{align*}
+
+            por lo que al operarlos entre si tenemos:
+
+            \begin{equation*}
+                y_1 y_2 = \varphi(x_1) \varphi(x_2) = \varphi(x_1 x_2) = y_1 y_2 \in \imagen{\varphi}
+            \end{equation*}
+
+            Por otro lado, para demostrar la existencia de un inverso, operamos un elemento $y = \varphi(x) \in \imagen{\varphi}$ con el elemento $\varphi(x^{-1})$, el cual queremos demostrar es el inverso.
+
+            \begin{align*}
+                \varphi(x) \varphi(x^{-1}) = \varphi(x x^{-1}) = \varphi(e) &= e' \in G' \\
+                \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) &= e' \in G'
+            \end{align*}
+
+            por lo que se concluye que el inverso es:
+
+            \begin{equation*}
+                \varphi(x)^{-1} = \varphi(x^{-1})
+            \end{equation*}
+
+            y por lo tanto $\imagen{\varphi}$ es subgrupo de $G'$.
+        \end{proof}
+
+        \begin{definicion}
+            Sea $\varphi \colon G \to G'$ un homomorfismo, el nucleo de $\varphi$ es:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ a \in G \mid \varphi(a) = e' \right\} \subset G
+            \end{equation}
+        \end{definicion}
+
+        \begin{observacion}
+            \begin{equation}
+                \ker{\varphi} = \left\{ \varphi^{-1}(e') \mid a = \varphi^{-1}(e'), a \in G \right\}
+            \end{equation}
+
+            son las preimagenes de $e'$.
+        \end{observacion}
+
+        \begin{proposicion}
+            Sea $\varphi \colon G \to G'$ un homomorfismo. Entonces $\varphi$ es un monomorfismo, si y solo si:
+
+            \begin{equation}
+                \ker{\varphi} = \{0\}
+            \end{equation}
+
+            es decir $e = 0 \in G$.
+        \end{proposicion}
+
+        \begin{proof}
+            Si suponemos que $\ker{\varphi} = \{0\}$, tenemos que para dos elementos $\varphi(x_1)$ y $\varphi(x_2)$ iguales:
+
+            \begin{align*}
+                \varphi(x_1) &= \varphi(x_2) \\
+                \varphi(x_1) - \varphi(x_2) &= 0 \\
+                \varphi(x_1 - x_2) &= 0
+            \end{align*}
+
+            por lo que $x_1 - x_2 \in \ker{\varphi}$, lo cual implica que:
+
+            \begin{align*}
+                x_1 - x_2 &= 0 \\
+                x_1 &= x_2
+            \end{align*}
+
+            por lo que podemos concluir que $\varphi$ es un monomorfismo.
+        \end{proof}
+
+        \begin{teorema}
+            Si $\varphi$ es un homomorfismo, entonces se satisface que:
+
+            \begin{enumerate}
+                \item $\ker{\varphi} < G$
+                \item $a^{-1} \ker{\varphi} a \subseteq \ker{\varphi} \quad \forall \+ a \in G$
+            \end{enumerate}
+        \end{teorema}
+
+        \begin{proof}
+            Sabemos que $\ker{\varphi} \ne \varnothing$, ya que existe un $e \in G$ tal que $\varphi(e) = e'$.
+            Por lo que pasamos a comprobar que $\ker{\varphi}$ es un grupo, ya que por definición $\ker{\varphi} \subset G$.
+            Para comprobar que $\ker{\varphi}$ definimos dos elementos $x, y \in \ker{\varphi}$, por lo que al operarlos entre si tenemos:
+
+            \begin{equation*}
+                \varphi(x y) = \varphi(x) \varphi(y) = e' e' = e'
+            \end{equation*}
+
+            por lo que $xy \in \ker{\varphi}$.
+
+            Por otro lado, para un elemento $x \in \ker{\varphi}$, para el cual $\varphi(x) = e'$, tenemos que:
+
+            \begin{equation*}
+                \varphi(x^{-1}) = \varphi(x^{-1}) e' = \varphi(x^{-1}) \varphi(x) = \varphi(x^{-1} x) = \varphi(e) = e'
+            \end{equation*}
+
+            por lo que podemos ver que existe un inverso $x^{-1} \in \ker{\varphi}$ y por lo tanto conlcuir que $\ker{\varphi} < G$.
+
+            Para comprobar la segunda proposición tomamos un elemento $a \in G$ y un elemento $g \in \ker{\varphi}$, para el cual $\varphi(g) = e'$, por lo que queremos verificar que:
+
+            \begin{equation*}
+                a^{-1} g a \in \ker{\varphi} \quad \forall \+ g \in \ker{\varphi}
+            \end{equation*}
+
+            Sabemos que cualquier elemento en $\ker{\varphi}$, al evaluarlo en $\varphi$, obtendremos la identidad, por lo que procederemos a tratar de obtenerla:
+
+            \begin{align*}
+                \varphi(a^{-1} g a) &= \varphi(a^{-1}) \varphi(g) \varphi(a) = \varphi(a^{-1}) e' \varphi(a) \\
+                &= \varphi(a^{-1}) \varphi(a) = \varphi(a^{-1} a) = \varphi(e) = e'
+            \end{align*}
+
+            por lo que podemos concluir que:
+
+            \begin{equation*}
+                \varphi(a^{-1} g a) \in \ker{\varphi}
+            \end{equation*}
+        \end{proof}
+
+        \begin{observacion}
+            $\ker{\varphi}$ es un subgrupo normal de $G$.
+        \end{observacion}
+
+        \begin{ejercicio}
+            Sea $\varphi$ definida como:
+
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \left\{ -1, 1 \right\} \\
+                n &\to
+                \begin{cases}
+                    -1 & \text{si } n \text{ es par} \\
+                    1 & \text{si } n \text{ es impar}
+                    \end{cases} \quad \forall \+ n \in G
+            \end{align*}
+
+            Verificar si $\varphi$ es monomorfismo.
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Sea $\varphi$ definida como:
+
+            \begin{align*}
+                \varphi \colon \mathbb{C}^* &\to \mathbb{C}^* \\
+                z &\to |z|
+            \end{align*}
+
+            ¿Será $\varphi$ un monomorfismo?
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Sea $G$ un grupo y $N$ un subgrupo normal de $G$.
+            Existe un epimorfismo $\varphi \colon G \to \sfrac{G}{N}$ cuyo nucleo es $N$.
+        \end{proposicion}
+
+        \begin{proof}
+            Sea $\varphi$ definida como:
+
+            \begin{align*}
+                \varphi \colon G &\to \sfrac{G}{N} \\
+                a &\to [a]
+            \end{align*}
+
+            sean $a, b \in G$ tales que al operarlos tenemos que:
+
+            \begin{equation*}
+                \varphi(ab) = [ab] = [a][b] = \varphi(a)\varphi(b)
+            \end{equation*}
+
+            por lo que podemos concluir que $\varphi$ es un homomorfismo.
+            Ahora, como $\varphi$ es sobre por construcción, sabemos que $\varphi$ es un epimorfismo, es decir, si $[a] \in \sfrac{G}{N}$ existe un $a \in G$ tal que $\varphi(a) = [a]$.
+            Si ahora tenemos un elemento $a \in \ker{\varphi}$, esto implica que $\varphi(a) = [e]$, es decir:
+
+            \begin{equation*}
+                a \cong e \mod N
+            \end{equation*}
+
+            lo cual implica:
+
+            \begin{align*}
+                a e^{-1} &\in N \\
+                a e &\in N \\
+                a &\in N
+            \end{align*}
+
+            por lo que podemos concluir que $\ker{\varphi} \subseteq N$.
+        \end{proof}
+
+%-------------------------------------------------------------------------------
+    \newpage
+    \subsection{Teoremas de isomorfismos}
+
+        \begin{teorema}
+            Sea $\varphi$ definido por:
+
+            \begin{align*}
+                \varphi \colon G &\to G' \\
+                g &\to \varphi(g)
+            \end{align*}
+
+            un epimorfismo con nucleo $K$, entonces:
+
+            \begin{equation}
+                \sfrac{G}{K} \cong G'
+            \end{equation}
+        \end{teorema}
+
+        \begin{proof}
+            Para demostrar que $\sfrac{G}{K}$ y $G'$ son isomorfos, debemos demostrar que existe un isomorfismo entre los dos grupos. Empezamos definiendo un mapeo $\bar{\varphi}$ definido por:
+
+            \begin{align*}
+                \bar{\varphi} \colon \sfrac{G}{K} &\to G' \\
+                Kg &\to \varphi(g)
+            \end{align*}
+
+            es decir $\bar{\varphi}(Kg) = \varphi(g)$.
+
+            Para demostrar que es un isomorfismo, debemos demostrar que es 1 - 1 y sobre.
+            Para demostrar su inyectividad tomamos dos elementos $g_1, g_2 \in G$ y al evaluarlos e igualarlos, tenemos que:
+
+            \begin{equation*}
+                \bar{\varphi}(Kg_1) = \bar{\varphi}(Kg_2) \implies \varphi(g_1) = \varphi(g_2)
+            \end{equation*}
+
+            Por otro lado, si operamos $g_1 g_2^{-1}$ tenemos que:
+
+            \begin{equation*}
+                \varphi(g_1 g_2^{-1}) = \varphi(g_1) \varphi(g_2^{-1}) = \varphi(g_2) \varphi(g_2^{-1}) = \varphi(g_2 g_2^{-1}) = \varphi(e) = e'
+            \end{equation*}
+
+            Esto es equivalente a decir que $g_1 g_2^{-1} \in K$, lo cual implica que:
+
+            \begin{align*}
+                g_1 &\cong g_2 \mod K \\
+                g_2 &\cong g_1 \mod K
+            \end{align*}
+
+            es decir:
+
+            \begin{align*}
+                [g_1] &= [g_2] \\
+                Kg_1 &= Kg_2
+            \end{align*}
+
+            por lo que podemos concluir que $\bar{\varphi}$ es inyectiva.
+
+            Por otro lado, $\bar{\varphi}$ es sobre por construcción, por lo que podemos afirmar que es una biyección.
+        \end{proof}
+
+        \begin{ejercicio}
+            Verificar que $\varphi$ es un homomorfismo, es decir:
+
+            \begin{equation*}
+                \bar{\varphi}(Kg_1 Kg_2) = \bar{\varphi}(Kg_1) \bar{\varphi}(Kg_2)
+            \end{equation*}
+        \end{ejercicio}
+
+        \begin{teorema}
+            Sea $G$ un grupo y $H < G$ y $N \bigtriangleup G$, entonces:
+
+            \begin{align}
+                HN &< G \\
+                H \cap N &\bigtriangleup H \\
+                N &\bigtriangleup HN
+            \end{align}
+
+            y ademas:
+
+            \begin{equation}
+                \sfrac{HN}{N} \cong \sfrac{H}{H \cap N}
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sea $G$ un grupo, $N \bigtriangleup G$ y $K < N$ con $K \bigtriangleup G$, entonces:
+
+            \begin{equation}
+                \sfrac{\sfrac{G}{K}}{\sfrac{N}{K}} \cong \sfrac{G}{N}
+            \end{equation}
+
+            Sea $G_1, G_2, \dots, G_n$ grupos. Su producto directo o externo denotado por:
+
+            \begin{equation}
+                G_1 \times G_2 \times \dots \times G_n
+            \end{equation}
+
+            es el conjunto de n-adas $(a_1, a_2, \dots, a_n)$, donde cada $a_i \in G_i$ para todo $i \in \mathbb{N}$ y la operación en $G_1 \times G_2 \times \dots \times G_n$ se define componente a componente:
+
+            \begin{equation}
+                \left( a_1, a_2, \dots, a_n \right) \left( b_1, b_2, \dots, b_n \right) = \left( a_1 b_1, a_2 b_2, \dots, a_n b_n \right)
+            \end{equation}
+
+            Tenemos que $G = G_1 \times G_2 \times \dots \times G_n$ es un grupo, cuyo elemento identidad es $(e_1, e_2, \dots, e_n)$ y el inverso de $(a_1, a_2, \dots, a_n)$ es $(a_1^{-1}, a_2^{-1}, \dots, a_n^{-1})$.
+        \end{teorema}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -204,13 +1224,520 @@
 
     \subsection{Definiciones}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Un conjunto no vacio $R$ es un anillo si tiene definidas dos operaciones $(+, \cdot)$, tales que se cumplen las siguientes propiedades:
 
+            \begin{description}
+                \item[Cerradura] $a + b \in R \quad \forall \+ a, b \in R$
+                \item[Asociatividad] $a + (b + c) = (a + b) + c \quad \forall \+ a, b, c \in R$
+                \item[Conmutatividad] $a + b = b + a \quad \forall \+ a, b \in R$
+                \item[Identidad] $\exists \+ 0 \in R \ni a + 0 = a \quad \forall \+ a \in R$
+                \item[Inverso] $\exists \+ b \in R \ni a + b = 0 \quad \forall \+ a \in R$
+            \end{description}
+
+            De estas propiedades podemos concluir que $R$ es un grupo abeliano con respecto a $(+)$, pero aun tenemos lo siguiente:
+
+            \begin{description}
+                \item[Cerradura] $a \cdot b \in R \quad \forall \+ a, b \in R$
+                \item[Asociatividad] $a \cdot (b \cdot c) = (a \cdot b) \cdot c$ 
+            \end{description}
+
+            De estas propiedades podemos concluir que $R$ es un semigrupo con respecto a $(\cdot)$ y ademas:
+
+            \begin{description}
+                \item[Distributividad] $a \cdot (b + c) = a \cdot b + a \cdot c \quad \forall \+ a, b, c \in R$
+            \end{description}
+        \end{definicion}
+
+        \begin{definicion}
+            Diremos que un anillo $R$ es un anillo con identidad si existe un $1 \in R$ diferente de $0$ tal que:
+
+            \begin{equation}
+                a \cdot 1 = 1 \cdot a \quad \forall \+ a \in R
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Un anillo $R$ es un anillo conmutativo si:
+
+            \begin{equation}
+                a \cdot b = b \cdot a \forall \+ a, b \in R
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un anillo y $a \in R$ con $a \ne 0$; diremos que $a$ es divisor de cero si existe un $b \in R$ con $b \ne 0$ tal que:
+
+            \begin{equation}
+                a \cdot b = 0
+            \end{equation}
+
+            a este se le llama divisor por la derecha, o bien si existe un $c \in R$ con $c \ne 0$ tal que:
+
+            \begin{equation}
+                c \cdot a = 0
+            \end{equation}
+
+            al que se le llama divisor por la izquierda.
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un anillo con identidad. Diremos que $R$ es un anillo con división si para todo $a \in R$ existe un $b \in R$ tal que:
+
+            \begin{equation}
+                a \cdot b = b \cdot a = 1
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Un campo es un anillo con división, que además es conmutativo.
+            Un campo es un grupo abeliano con respecto a la suma y a la multiplicación.
+        \end{definicion}
+
+        \begin{definicion}
+            Un anillo conmutativo con identidad es un dominio entero si:
+
+            \begin{equation}
+                a \cdot b = 0 \implies a = 0 \text{ o } b = 0
+            \end{equation}
+
+            es decir, no existen divisores de cero en el anillo.
+        \end{definicion}
+
+        \begin{observacion}
+            Si $p$ es primo, entonces $\mathbb{Z}_p$ es campo.
+        \end{observacion}
+
+        \begin{ejercicio}
+            Sea $\mathcal{M}_{2 \times 2}(\mathbb{R})$ definido como:
+
+            \begin{equation}
+                \mathcal{M}_{2 \times 2}(\mathbb{R}) = \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \mid a, b, c, d \in \mathbb{R} \right\}
+            \end{equation}
+
+            Verificar que $\mathcal{M}_{2 \times 2}(\mathbb{R})$ es un anillo con identidad no conmutativo y ademas no es dominio entero.
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Sea $R$ un anillo y sean $a, b \in R$, entonces se cumplen las siguientes propiedades:
+
+            \begin{enumerate}
+                \item $a \cdot 0 = 0 \cdot a = 0$
+                \item $a \cdot (-b) = (-a) \cdot b = -(a \cdot b)$
+                \item $(-a) \cdot (-b) = (-(-a)) \cdot b = ab$
+                \item Si $1 \in R \implies (-1) \cdot a = -a$
+            \end{enumerate}
+        \end{proposicion}
+
+        \begin{proof}
+            Para la verificación de la primer proposición tenemos que:
+
+            \begin{equation*}
+                a \cdot 0 + 0 = a \cdot 0 = a \cdot (0 + 0) = a \cdot 0  + a \cdot 0
+            \end{equation*}
+
+            y cancelando $a \cdot 0$ de ambos lados:
+
+            \begin{equation*}
+                0 = a \cdot 0
+            \end{equation*}
+
+            Para la verificación de la segunda proposición tenemos que:
+
+            \begin{equation*}
+                a \cdot (-b) + a \cdot b = a \cdot (-b + b) = a \cdot (0) = 0
+            \end{equation*}
+
+            si conservamos los extremos de este procedimiento y despejamos el segundo termino del lado izquierdo, tenemos:
+
+            \begin{equation*}
+                a \cdot (-b) = - (a \cdot b)
+            \end{equation*}
+
+            Para la verificación de la tercer proposición tenemos que:
+
+            \begin{equation*}
+                (-a) \cdot (-b) + (-a) \cdot (b) = (-a) \cdot (-b + b) = (-a) \cdot (0) = 0
+            \end{equation*}
+
+            de nuevo, despejando el segundo termino del lado izquierdo, tenemos:
+
+            \begin{equation*}
+                (-a) \cdot (-b) = -(-a) \cdot (b) = (-(-a)) \cdot (b)
+            \end{equation*}
+
+            al operar de nuevo con el mismo termino tenemos:
+
+            \begin{equation*}
+                (-(-a)) \cdot (b) - (a) \cdot (b) = (b) \cdot (-a - (-a)) = (b) \cdot (0) = 0
+            \end{equation*}
+
+            lo cual nos da que:
+
+            \begin{equation*}
+                (-(-a)) \cdot (b) = (a) \cdot (b) = (a \cdot b)
+            \end{equation*}
+
+            Para la ultima proposición tenemos que:
+
+            \begin{equation*}
+                (-1) \cdot a + (1) \cdot a = a \cdot (1 - 1) = a \cdot (0) = 0 
+            \end{equation*}
+
+            por lo que tenemos que:
+
+            \begin{equation*}
+                (-1) \cdot a = -(1) \cdot a = -a
+            \end{equation*}
+        \end{proof}
+
+        \marginnote{Aqui se empezará a omitir la notación para el producto usual cuando sea pertinente, sin que por eso se entienda que nos referimos a otra operación.}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Homomorfismos de anillo}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Una función $\varphi \colon R \to R'$ es un homomorfismo si:
 
+            \begin{align}
+                \varphi(a) + \varphi(b) &= \varphi(a + b) \\
+                \varphi(a) \varphi(b) &= \varphi(ab)
+            \end{align}
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $\varphi \colon R \to R'$ homomorfismo de anillos, a parte se dice que es:
+
+            \begin{description}
+                \item[Monomorfismo] si $\varphi$ es inyectivo (1 - 1).
+                \item[Epimorfismo] si $\varphi$ es suprayectivo (sobre).
+                \item[Isomorfismo] si $\varphi$ es biyectivo (1 - 1 y sobre).
+            \end{description}
+        \end{definicion}
+
+        \begin{definicion}
+            El nucleo de $\varphi$ es:
+
+            \begin{equation}
+                \ker{\varphi} = \left\{ x \in R \mid \varphi(x) = 0 \right\}
+            \end{equation}
+        \end{definicion}
+
+        \begin{proposicion}
+            Sea $\varphi$ un homomorfismo de anillos, entonces:
+
+            \begin{enumerate}
+                \item $\ker{\varphi}$ es un subgrupo aditivo
+                \item Dados $k \in \ker{\varphi}$ y $r \in R$ se cumple que $rk, kr, \in \ker{\varphi}$.
+            \end{enumerate}
+        \end{proposicion}
+
+        \begin{proof}
+            Sean $k \in \ker{\varphi}$ y $r \in R$, entonces tenemos que:
+
+            \begin{align*}
+                \varphi(rk) = \varphi(r) \varphi(k) = \varphi(r) \cdot 0 &= 0 \\
+                \varphi(kr) = \varphi(k) \varphi(r) = 0 \cdot \varphi(r) &= 0
+            \end{align*}
+
+            por lo que podemos concluir que:
+
+            \begin{equation*}
+                kr, rk \in \ker{\varphi}
+            \end{equation*}
+        \end{proof}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Ideales}
+
+        \begin{definicion}
+            Sea $R$ un anillo e $I$ un subconjunto de $R$, se dice que $I$ es un ideal de $R$ si:
+
+            \begin{enumerate}
+                \item $I$ es un subgrupo aditivo de $R$
+                \item Dados $r \in R$ y $a \in I$, tenemos que se cumple $ra, ar \in I$. A esto se le conoce como la propiedad de absorción.
+            \end{enumerate}
+        \end{definicion}
+
+        \begin{corolario}
+            Si $\varphi \colon R \to R'$ es un homomorfismo, entonces $K = \ker{\varphi}$ es un ideal de $R$.
+        \end{corolario}
+
+        \begin{definicion}
+            Sea $R$ un anillo e $I$ un ideal de $R$, entonces $\sfrac{R}{I}$ es llamado anillo cociente y es un grupo, con la suma de clases de equivalencia:
+
+            \begin{equation}
+                (a + I) + (b + I) = (a + b) + I
+            \end{equation}
+
+            para $a, b \in R$.
+        \end{definicion}
+
+        \begin{definicion}
+            Definimos el producto como:
+
+            \begin{equation}
+                (a + I)(b + I) = ab + I
+            \end{equation}
+
+            para $a, b \in I$
+        \end{definicion}
+
+        \begin{observacion}
+            Sea $R$ un anillo, tenemos que $\{0\}$ y $R$ mismo son ideales triviales de $R$.
+        \end{observacion}
+
+        \begin{definicion}
+            Si $I$ es un ideal de $R$ e $I \ne R$, decimos que $I$ es un ideal propio.
+        \end{definicion}
+
+        \begin{proposicion}
+            Sea $R$ un anillo con identidad e $I$ un ideal de $R$ tal que $1 \in I$, entonces $I = R$.
+        \end{proposicion}
+
+        \begin{proof}
+            Para demostrar que $I = R$ primero tenemos que demostrar que $I \subseteq R$ y despues que $R \subseteq I$.
+            Por definición $I \subseteq R$, por lo que solo resta demostrar $R \subseteq I$.
+
+            Empecemos con un elemento general $a \in R$, entonces se cumple que:
+
+            \begin{equation*}
+                a = a \cdot 1
+            \end{equation*}
+
+            en donde $1 \in I$ y $a \in R$, por lo que por la propiedad de absorción de un ideal podemos decir que $a \in I$.
+            Y como $a$ es un elemento general de $R$, podemos concluir que:
+
+            \begin{equation*}
+                R \subseteq I
+            \end{equation*}
+        \end{proof}
+
+        \begin{ejemplo}
+            Sea $R$ un anillo conmutativo con identidad.
+            Dado un elemento $a \in R$ tenemos que:
+
+            \begin{equation*}
+                (a) = \left\{ ax \mid x \in R \right\}
+            \end{equation*}
+
+            Verificar que $(a)$ es un ideal.
+
+            Primero notamos que $(a)$ es no vacio, ya que al menos existe un elemento:
+
+            \begin{equation*}
+                a \cdot 0 = 0 \in (a)
+            \end{equation*}
+
+            Ahora, para comprobar la cerradura con respecto a $(+)$ tenemos que tomar dos elementos $ax_1, ax_2 \in (a)$ y operarlos, con lo que obtenemos:
+
+            \begin{equation*}
+                ax_1 + ax_2 = a(x_1 + x_2)
+            \end{equation*}
+
+            y ya que $x_1 + x_2 \in R$, sabemos que el resultado esta en $(a)$.
+
+            Para comprobar la existencia del inverso, tenemos que:
+
+            \begin{equation*}
+                -ax_1 + ax_1 = a(-x_1 + x_1) = a \cdot 0 = 0
+            \end{equation*}
+
+            por lo que se cumple la existencia del inverso, por lo que concluimos que $(a)$ es un subgrupo con respecto a $(+)$.
+            Ahora solo nos queda por comprobar la propiedad de absorción del ideal.
+
+            Si tomamos un elemento $ax \in (a)$ y un elemento $y \in R$ tendremos que:
+
+            \begin{equation*}
+                ax y = a(xy) = y ax
+            \end{equation*}
+
+            pero $xy \in R$, por lo que concluimos que la operación sigue estando en $(a)$, por lo que tenemos que $(a)$ es un ideal.
+        \end{ejemplo}
+
+        \begin{definicion}
+            Sea $R$ anillo conmutativo con identidad, un ideal principal es un ideal de la forma $(a)$ para algun $a \in R$.
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $R$ un dominio entero, diremos que $R$ es un dominio de ideales principales, si todos los ideales de $R$ son principales.
+        \end{definicion}
+
+        \begin{definicion}
+            Sean $I, J$ ideales del anillo $R$, definimos las operaciones de ideales como:
+
+            \begin{align}
+                I + J &= \left\{ a + b \mid a \in I, b \in J \right\} \\
+                IJ &= \left\{ \sum_{i=1}^n a_i b_i \mid n \in \mathbb{N}, a \in I, b \in J \right\}
+            \end{align}
+        \end{definicion}
+
+        \begin{ejercicio}
+            Verificar que $I + J$ es un ideal dado que $I \cap J$ es un ideal de $R$.
+        \end{ejercicio}
+
+        \begin{proposicion}
+            Tenemos que $\sfrac{R}{I}$ es un anillo con la suma y productos correspondientes:
+
+            \begin{align*}
+                (a + I) + (b + I) &\colon = (a + b) + I \\
+                (a + I) (b + I) &\colon = ab + I
+            \end{align*}
+
+            entonces la función:
+
+            \begin{align*}
+                \varphi \colon R &\to \sfrac{R}{I} \\
+                a &\to a + I
+            \end{align*}
+
+            es un epimorfismo.
+        \end{proposicion}
+
+        \begin{proof}
+            Primero debemos verificar que $\varphi$ es un homomorfismo:
+
+            \begin{align*}
+                \varphi(a + b) &= a + b + I = (a + I) + (b + I)  = \varphi(a) + \varphi(b) \\
+                \varphi(ab) &= (a + I)(b + I) = \varphi(a) \varphi(b)
+            \end{align*}
+
+            Tambien notamos que $\varphi$ es sobre por construcción, por lo que podemos concluir que es un epimorfismo.
+        \end{proof}
+
+        \begin{ejercicio}
+            Verificar que el nucleo de $\varphi$ definido como:
+
+            \begin{equation*}
+                \ker{\varphi} = \left\{ a \in R \mid \varphi(a) = 0 + I \right\}
+            \end{equation*}
+
+            coincide con el ideal $I$.
+        \end{ejercicio}
+
+%-------------------------------------------------------------------------------
+    \newpage
+    \subsection{Teoremas de isomorfismos}
+
+        \begin{teorema}
+            Sea $\varphi \colon R \to R'$ un epimorfismo de anillos, y $K = \ker{\varphi}$, entonces $\sfrac{R}{K}$ es isomorfo con $R'$, es decir:
+
+            \begin{equation}
+                \sfrac{R}{K} \cong R'
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sea $R$ anillo, sean $A$ un subconjunto de $R$ ($A$ subanillo de $R$) y $B$ un ideal de $R$, entonces $A + B$ es un subanillo de $R$ y un ideal de $A$, ademas:
+
+            \begin{equation}
+                \sfrac{A + B}{B} \cong \sfrac{A}{A \cap B}
+            \end{equation}
+        \end{teorema}
+
+        \begin{teorema}
+            Sean $I, J$ ideales del anillo $R$, con $I \subseteq J$, entonces $\sfrac{J}{I}$ es ideal de $\sfrac{R}{I}$, ademas:
+
+            \begin{equation}
+                \sfrac{\sfrac{R}{I}}{\sfrac{J}{I}} \cong \sfrac{R}{J}
+            \end{equation}
+        \end{teorema}
+
+        \begin{ejemplo}
+            Sea $n \in \mathbb{N}$, con $n > 1$ tenemos la aplicación:
+
+            \begin{align*}
+                \varphi \colon \mathbb{Z} &\to \mathbb{Z}' \\
+                 a &\to [a]
+            \end{align*}
+
+            por lo que $\varphi$ es un epimorfismo con:
+
+            \begin{align*}
+                [a + b] &= [a] + [b] \\[0cm]
+                [ab] &= [a] [b]
+            \end{align*}
+
+            y su nucleo es:
+
+            \begin{align*}
+                \ker{\varphi} &= \left\{ a \in \mathbb{Z} \mid \varphi(a) = [a] = [0] \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid a \cong 0 \mod{n} \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid \sfrac{n}{a} \right\} \\
+                &= \left\{ a \in \mathbb{Z} \mid a = n z, z \in \mathbb{Z} \right\} = n \mathbb{Z}
+            \end{align*}
+
+            por lo que podemos aplicar el primer teorema de isomorfismos y decir que:
+
+            \begin{equation*}
+                \sfrac{\mathbb{Z}}{n \mathbb{Z}} \cong \mathbb{Z}'
+            \end{equation*}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Sea $F$ un campo, es decir, un anillo conmutativo con división, entonces $\{0\}$ es un ideal de $F$.
+
+            Sea $I$ un ideal diferente a $\{0\}$.
+            Tenemos un elemento $a \in I$, con $a \ne 0$, entonces $1 = a^{-1} a$ con $a^{-1} \in F$ y $a \in I$, por lo que:
+
+            \begin{equation*}
+                1 = a^{-1} a \in I
+            \end{equation*}
+
+            Si ahora tomamos un elemento cualquiera $r \in F$, el cual obviamente puede ser escrito como $r = 1 \cdot r$, con $1 \in I$ y $r \in F$ tenemos que:
+
+            \begin{equation*}
+                r = 1 \cdot r \in I
+            \end{equation*}
+
+            y por lo tanto:
+
+            \begin{equation*}
+                F \subseteq I
+            \end{equation*}
+
+            y por definición sabemos que $I \subseteq F$, por lo que este ideal es el mismo que el campo.
+
+            \begin{equation*}
+                F = I
+            \end{equation*}
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Sea $R$ definido como:
+
+            \begin{equation*}
+                R = \left\{ f \colon [0, 1] \to R \mid f \text{ es continua} \right\}
+            \end{equation*}
+
+            con las operaciones definidas como:
+
+            \begin{align*}
+                (f + g)(x) &= f(x) + g(x) \\
+                (f \cdot g)(x) &= f(x) g(x) 
+            \end{align*}
+
+            ¿Es $R$ un anillo con identidad?
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Si definimos el nucleo como:
+
+            \begin{equation*}
+                I = \left\{ f \in R \mid f \left( \frac{1}{2} \right) = 0 \right\}
+            \end{equation*}
+
+            y definimos una función $\varphi$ como:
+
+            \begin{align*}
+                \varphi \colon R &\to R \\
+                f &\to f \left( \frac{1}{2} \right)
+            \end{align*}
+
+            ¿Podemos decir que $\sfrac{R}{I}$ y $R$ son isomorfos?
+        \end{ejercicio}
 
 %-------------------------------------------------------------------------------
 %	EMPIEZA SECCION
@@ -223,14 +1750,573 @@
 
     \subsection{Definiciones}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Se dice que $a \in \mathbb{Z}$ divide a $b \in \mathbb{Z}$ si existe un $q \in \mathbb{Z}$ tal que:
 
+            \begin{equation}
+                b = q a
+            \end{equation}
+
+            y se denota por $\sfrac{a}{b}$
+        \end{definicion}
+
+        \begin{teorema}
+            Si $\sfrac{a}{b}$ y $\sfrac{a}{c}$, entonces $\sfrac{a}{bx + cy} \quad \forall \+ x, y \in \mathbb{Z}$.
+        \end{teorema}
+
+        \begin{proof}
+            Como $\sfrac{a}{b}$ sabemos que existe un $q \in \mathbb{Z}$ tal que $b = aq$ y como $\sfrac{a}{c}$ sabemos que existe un $q' \in \mathbb{Z}$ tal que $c = aq'$.
+            Dados $x, y \in \mathbb{Z}$ generales, al multiplicar estos enteros por las relaciones anteriores obtenemos:
+
+            \begin{align*}
+                bx &= aqx \\
+                cy &= aq'y
+            \end{align*}
+
+            y si sumamos ambas relaciones obtendremos:
+
+            \begin{equation*}
+                bx + cy = aqx + aq'y = a(qx + q'y)
+            \end{equation*}
+
+            y como $x, y, q, q' \in \mathbb{Z}$, podemos establecer la siguiente relación:
+
+            \begin{equation*}
+                bx + cy = a \bar{q} \quad \+ \bar{q} \in \mathbb{Z}
+            \end{equation*}
+
+            por lo que es inmediato que:
+
+            \begin{equation*}
+                \sfrac{a}{bx + cy}
+            \end{equation*}
+        \end{proof}
+
+        \begin{definicion}
+            Un entero $p \ne 0$ se dice primo si y solo si sus únicos divisores son $\pm 1$ y $\pm p$
+        \end{definicion}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Máximo Común Divisor}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Si $\sfrac{a}{b}$ y $\sfrac{a}{c}$ se dice que $a$ es divisor común de $b$ y $c$.
 
+            Si además, todo divisor común de $b$ y $c$ también es divisor de $a$, se dice que $a$ es el máximo común divisor de $b$ y $c$, es decir:
+
+            \begin{equation}
+                a = (b, c)
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            Calcular el máximo común divisor de $24$ y $60$, es decir $(24, 60)$.
+
+            \begin{center}
+                    \begin{tabular}{r c | l}
+                    $24$ & $60$ & $2$ \\
+                    \hline
+                    $12$ & $30$ & $2$ \\
+                    $6$ & $15$ & $3$ \\
+                    $2$ & $5$ & 
+                \end{tabular}
+            \end{center}
+
+            \begin{equation*}
+                (24, 60) = 12
+            \end{equation*}
+        \end{ejemplo}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{mínimo común multiplo}
 
-%-------------------------------------------------------------------------------
+        \begin{definicion}
+            Aprovechando la definición dada del Máximo Común Divisor, simplemente damos una definición de la siguiente forma para el mínimo cumún multiplo:
 
+            \begin{equation}
+                \frac{ab}{(a, b)}
+            \end{equation}
+        \end{definicion}
+
+        \begin{ejemplo}
+            Calcular el mínimo común multiplo de $24$ y $60$.
+
+            \begin{equation*}
+                \frac{24 \cdot 60}{12} = 120
+            \end{equation*}
+
+            \begin{center}
+                    \begin{tabular}{r c | l}
+                    $24$ & $60$ & $2$ \\
+                    \hline
+                    $12$ & $30$ & $2$ \\
+                    $6$ & $15$ & $3$ \\
+                    $2$ & $5$ & $2$ \\
+                    $1$ & $5$ & $5$ \\
+                    $1$ & $1$ & 
+                \end{tabular}
+            \end{center}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            \faltante{Falta escribir ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            \faltante{Falta escribir ejemplo}
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Calcular $(0, c)$ con $c \ne 0$, $c \in \mathbb{Z}$.
+        \end{ejercicio}
+
+%-------------------------------------------------------------------------------
+    \newpage
     \subsection{Algoritmo de la división de Euclides}
+
+        \begin{definicion}
+            Para cualesquiera enteros no nulos $a, b$ existen $q, r$ únicos, denominados cociente y residuo respectivamente, tales que:
+
+            \begin{equation}
+                a = b q + r
+            \end{equation}
+
+            Si $\sfrac{b}{a}$, entonces $r = 0$, de lo contrario $0 < r < |b|$.
+        \end{definicion}
+
+        \begin{proposicion}
+            Se puede verificar que un divisor común de $a$ y $b$ divide a $r$ y un divisor común de $b$ y $r$ divide a $a$, es decir:
+
+            \begin{equation}
+                (a, b) = (b, r)
+            \end{equation}
+        \end{proposicion}
+
+        \begin{proof}
+            Si $b$ no divide a $a$, entonces tenemos que:
+
+            \begin{equation*}
+                a = bq + r \quad 0 < r < |b|
+            \end{equation*}
+
+            Primero demostraremos la primera afirmación de la proposición, para lo que decimos que existe un divisor común para $a$ y $b$, al cual llamamos $c$, esto es equivalente a decir que $\sfrac{c}{a}$ y $\sfrac{c}{b}$, lo cual implica que existen $\bar{q}, q' \in \mathbb{Z}$ tales que:
+
+            \begin{align*}
+                a &= c \bar{q} \\
+                b &= c q'
+            \end{align*}
+
+            lo cual implica que nuestro residuo se escribe como:
+
+            \begin{equation*}
+                r = a - bq = c \bar{q} - c q' q = c (\bar{q} - q' q)
+            \end{equation*}
+
+            en donde $\bar{q} - q' q \in \mathbb{Z}$, por lo que podemos concluir que $\sfrac{c}{r}$.
+
+            Para demostrar la segunda afirmación, tenemos un divisor común de $b$ y de $r$ al que llamamos $l$, es decir, $\sfrac{l}{b}$ y $\sfrac{l}{r}$, lo cual implica que existen $\bar{m}, m' \in \mathbb{Z}$ tales que:
+
+            \begin{align*}
+                b &= l \bar{m} \\
+                r &= l m'
+            \end{align*}
+
+            lo cual implica que la ecuación original puede ser escrita como:
+
+            \begin{equation*}
+                a = bq + r = l \bar{m} q + lm' = l (\bar{m}q  + m')
+            \end{equation*}
+
+            en donde $\bar{m}q  + m' \in \mathbb{Z}$, por lo que podemos concluir que $\sfrac{l}{a}$, y por lo tanto:
+
+            \begin{equation*}
+                (a, b) = (b, r)
+            \end{equation*}
+        \end{proof}
+
+        \begin{teorema}
+            Para dos enteros no nulos $(a, b)$ existen dos enteros únicos $q, r$ tales que:
+
+            \begin{equation}
+                a = bq + r \quad 0 \leq r < |b|
+            \end{equation}
+
+            A este teorema se le conoce como el agoritmo de la división de Euclides.
+        \end{teorema}
+
+        \begin{proof}
+            Definimos un conjunto de la forma:
+
+            \begin{equation}
+                S = \left\{ a - bx \mid x \in \mathbb{Z} \right\}
+            \end{equation}
+
+            es decir, el conjunto de los residuos en esta ecuación. Primero queremos verificar que este residuo $r = a - bx \geq 0$, lo que es equivalente a decir:
+
+            \begin{equation*}
+                S \subset \mathbb{Z}^+ \cup \{0\}
+            \end{equation*}
+
+            \begin{enumerate}
+                \item Si $b$ es negativo $(b < 0)$, entonces $b \leq -1$
+
+                \begin{equation*}
+                    b|a| \leq - |a| \leq a
+                \end{equation*}
+
+                \begin{equation*}
+                    a - b|a| \geq 0
+                \end{equation*}
+
+                \item Si $b$ es positivo $(b > 0)$, entonces $b \geq 1$
+
+                \begin{equation*}
+                    b(-|a|) \leq -|a| \leq a
+                \end{equation*}
+
+                \begin{equation*}
+                    a - b(-|a|) \geq 0
+                \end{equation*}
+            \end{enumerate}
+
+            por lo que podemos concluir que $S \subset \mathbb{Z}^+ \cup \{0\}$ y por lo tanto que $r = a - bx \geq 0$.
+            Ahora demostraremos que $r < |b|$.
+
+            Supongamos que $r$ es el menor de estos enteros no negativos y $r \in S$, ademas supongamos que $r \geq |b|$, o bien:
+
+            \begin{equation*}
+                r - |b| \geq 0
+            \end{equation*}
+
+            Como $r \in S$, existe un $x = q \in \mathbb{Z}$ tal que $r = a - bq$, por lo que tenemos que:
+
+            \begin{equation*}
+                r - |b| = a - bq - |b| =
+                \begin{cases}
+                    a - b (q - 1) & \text{ Si } b < 0 \\
+                    a - b (q + 1) & \text{ Si } b > 0 
+                \end{cases}
+            \end{equation*}
+
+            Por otro lado, sabemos que los valores de $r - |b|$ son:
+
+            \begin{align*}
+                r - |b| &= r - b < r \text{ para } b > 0 \\
+                r - |b| &= r + b < r \text{ para } b < 0
+            \end{align*}
+
+            pero asumimos que $r$ es el menor de los enteros positivos en $S$, por lo que llegamos a una contradicción y por lo tanto:
+
+            \begin{equation*}
+                r < |b|
+            \end{equation*}
+
+            Si bien hemos demostrado la veracidad de esta ecuación, aun no hemos demostrdo que $q$ y $r$ sean únicos, por lo que ahora procederemos demostrando esto.
+
+            Empezaremos suponiendo que existen $q'$ y $r'$ enteros, ademas de $q$ y $r$ tales que:
+
+            \begin{align*}
+                a &= bq + r \\
+                a &= bq' + r'
+            \end{align*}
+
+            en donde $0 \leq r < |b|$ y $0 \leq r' < |b|$.
+            Si estas expresiones las restamos entre si, obtendremos:
+
+            \begin{equation*}
+                b(q - q') = r' - r
+            \end{equation*}
+
+            lo cual implica que $\sfrac{b}{r' - r}$, es decir, existe un $t \in \mathbb{Z}$, tal que:
+
+            \begin{equation*}
+                r' - r = bt
+            \end{equation*}
+
+            Por otro lado, la expresión $b(q - q') = r' - r$ puede ser expresada como:
+
+            \begin{align*}
+                b(q - q') + (r - r') &= 0 \\
+                b(q' - q) + (r' - r) &= 0
+            \end{align*}
+
+            lo cual, ya hemos comprobado que implica:
+
+            \begin{equation*}
+                |r - r'| \leq |b|
+            \end{equation*}
+
+            o bien:
+
+            \begin{equation*}
+                |bt| \leq |b|
+            \end{equation*}
+
+            Si tomamos en cuenta los valores que puede tomar $t$, nos daremos cuenta que:
+
+            \begin{enumerate}
+                \item Si $t = 0$
+
+                \begin{equation*}
+                    r' = r \implies q' = q
+                \end{equation*}
+
+                \item Si $t = -1$
+
+                \begin{equation*}
+                    |-b| \leq |b| \implies r' - r = -b \implies r' = r - b \geq 0 \implies r \geq b
+                \end{equation*}
+
+                lo cual es falso, por lo que $t \ne -1$
+
+                \item Si $t = 1$
+
+                \begin{equation*}
+                    |b| \leq |b| \implies r' - r = b \implies r = r' - b \geq 0 \implies r' \geq b
+                \end{equation*}
+
+                lo cual es falso, por lo que $t \ne 1$
+            \end{enumerate}
+
+            y como el caso en que $t = 0$ es el único cierto, concluimos que $q, r$ deben ser únicos.
+        \end{proof}
+%-------------------------------------------------------------------------------
+    \newpage
+    \subsection{Procedimiento para hallar el Máximo Común Divisor de $a$ y $b$}
+
+        A continuación se describe un procedimiento iterativo para encontrar el Máximo Común Divisor de un par $a, b$.
+        Primero empezaremos asumiendo que $b$ no divide a $a$, por lo que tendremos que:
+
+        \begin{equation} \label{eq:mcd1}
+            a = bq + r \quad 0 \leq r < |b|
+        \end{equation}
+
+        El caso contrario es trivial, dado que si $\sfrac{b}{a}$, claramente
+
+        \begin{equation*}
+            (a, b) = b
+        \end{equation*}
+
+        Si ahora nos concentramos en $r$, tenemos dos casos; si $\sfrac{r}{b}$, sabemos que $b = r q_1$ y $a = r q_1 q + r = r(q_1 q + 1)$, por lo que:
+
+        \begin{equation*}
+            (a, b) = r
+        \end{equation*}
+
+        Si $r$ no divide a $b$ tenemos que:
+
+        \begin{equation} \label{eq:mcd2}
+            b = q_1 r + r_1 \quad 0 \leq r_1 < |r|
+        \end{equation}
+
+        Por lo que ahora revisamos a $r_1$; si $\sfrac{r_1}{r}$, sabemos que $r = r_1 q_2$ por lo que:
+
+        \begin{equation*}
+            (b, r) = r_1
+        \end{equation*}
+
+        Si $r_1$ no divide a $r$ tenemos que:
+
+        \begin{equation} \label{eq:mcd3}
+            r = q_2 r_1 + r_2
+        \end{equation}
+
+        Si proseguimos con estas iteraciones $k$ veces, obtendremos:
+
+        \begin{equation*}
+            r_k = q_{k+2} r_{k+1} + r_{k+2} \quad 0 \leq r_{k+2} < |r_{k+1}|
+        \end{equation*}
+
+        Supongamos ahora que esta ultima iteración es donde tenemos que $\sfrac{r_{k+2}}{r_{k+1}}$, es decir:
+
+        \begin{equation*}
+            r_{k+2} = (r_{k+1}, r_k) = \dots = (r_1, r) = (r, b) = (b, a)
+        \end{equation*}
+
+        Por lo que hemos encontrado el Máximo Común Divisor del par original.
+
+        Si ahora despejamos a $r$ de la ecuación~\ref{eq:mcd1} tendremos:
+
+        \begin{equation*}
+            r = a - bq = (1)a + (-q)b = m_1 a + n_1 b
+        \end{equation*}
+
+        y lo sustituimos en la ecuación~\ref{eq:mcd2}
+
+        \begin{align*}
+            r_1 &= b - q_1 r = b - q_1 (m_1 a + n_1 b) \\
+            &= (-m_1 q_1) a + (1 - n_1 q_1) b = m_2 a + n_2 b
+        \end{align*}
+
+        y lo sustituimos en la ecuación~\ref{eq:mcd3}
+
+        \begin{align*}
+            r_2 &= r - q_2 r_1 = (m_1 a + n_1 b) - q_2 (m_2 a + n_2 b) \\
+            &= (m_1 - m_2 q_2) a + (n_1 - n_2 q_2) b = m_3 a + n_3 b
+        \end{align*}
+
+        En general
+
+        \begin{equation}
+            r_k = m_{k+1} a + n_{k+1} b
+        \end{equation}
+
+        \begin{teorema}
+            Si $d = (a, b)$, entonces existen $m, n \in \mathbb{Z}$ tales que:
+
+            \begin{equation}
+                d = (a, b) = ma + nb
+            \end{equation}
+
+            A esto se le conoce como la identidad de Bezout.
+        \end{teorema}
+
+        \begin{ejemplo}
+            Calcular $(-2805, 119)$
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Calcular $(726, 275)$
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Expresar $(726, 275) = 11$, en terminos de $726$ y $275$.
+            
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{definicion}
+            Dos enteros $a$ y $b$, para los cuales $(a, b) = 1$ se dicen primos relativos.
+        \end{definicion}
+
+        \begin{teorema}
+            Todo entero $a > 1$ tiene una factorización única en producto de primos positicos, es decir:
+
+            \begin{equation}
+                a = p_1^{\alpha_1} \cdot p_2^{\alpha_2} \cdot \dots \cdot p_n^{\alpha_n} \quad \alpha_i \geq 1 \quad 1 \leq i \leq n
+            \end{equation}
+
+            y los $p_i$ son primos positivos distintos.
+        \end{teorema}
+
+        \begin{ejemplo}
+            Hallar una factorización única para $2241756$.
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Hallar una factorización única para $8566074$.
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{ejemplo}
+            Hallar $(2241756, 8566074)$ a partir de sus factorizaciones únicas.
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+%-------------------------------------------------------------------------------
+    \newpage
+    \subsection{El anillo de los polinomios}
+
+        \begin{definicion}
+            Sea $\mathbb{F}$ un campo, definimos el anillo de los polinomios:
+
+            \begin{equation}
+                \mathbb{F}[x] = \left\{ p(x) = a_0 + a_1 x + \dots + a_n x^n \mid n \in \mathbb{Z}, n \geq 0, a_i \in \mathbb{F} \right\}
+            \end{equation}
+
+            En donde para dos elementos $p(x)$ y $q(x)$ de la forma:
+
+            \begin{align*}
+                p(x) &= a_0 + a_1 x + \dots + a_n x^n \\
+                q(x) &= b_0 + b_1 x + \dots + b_m x^m 
+            \end{align*}
+
+            definimos la suma como:
+
+            \begin{equation}
+                p(x) + q(x) = (a_0 + b_0) + (a_1 + b_1) x + \dots (a_s + b_s) x^s
+            \end{equation}
+
+            en donde $s = \max{(m, n)}$. Y para el producto tenemos:
+
+            \begin{equation}
+                p(x)q(x) = c_0 + c_1 x + \dots + c_l x^l \quad 0 \leq k \leq l
+            \end{equation}
+
+            y los $c_k$ son de la forma:
+
+            \begin{equation}
+                c_k = \sum_{i+j = k} a_i + b_j = a_0 b_k + a_1 b_{k-1} + \dots + a_k b_0
+            \end{equation}
+        \end{definicion}
+
+        \begin{definicion}
+            Sea $f(x) = a_0 + a_1 x + \dots + a_n x^n \in \mathbb{F}[x]$ con $a_n \ne 0$, el grado de $f(x)$ esta dado por:
+
+            \begin{equation}
+                \grado{f(x)} = n
+            \end{equation}
+
+            Además, si $a_n = 1$, $f(x)$ se dice mónico.
+
+            Para $p(x), q(x) \in \mathbb{F}[x]$, algunas propiedades notables de esta función $\grado$, son:
+
+            \begin{enumerate}
+                \item $\grado{p(x) + q(x)} \leq \max{\grado{p(x)}, \grado{q(x)}}$
+                \item $\grado{p(x)q(x)} = \grado{p(x)} + \grado{q(x)}$
+            \end{enumerate}
+        \end{definicion}
+
+        \begin{observacion}
+            Dados los polinomios $f(x), g(x) \in \mathbb{F}[x]$, con $g(x) \ne 0$, existen dos polinomios únicos $q(x), r(x) \in \mathbb{F}[x]$ tales que:
+
+            \begin{equation}
+                f(x) = q(x) g(x) + r(x) \quad \grado{r(x)} < \grado{g(x)}
+            \end{equation}
+
+            Si además, $\sfrac{g(x)}{f(x)}$ entonces $r(x) = 0$.
+
+            Como en el caso de los enteros, puede definirse divisibilidad, Máximo Común Divisor y usar el algoritmo de la división de Euclides para encontrar el Máximo Común Divisor de $f(x)$ y $g(x)$.
+
+            Cualquiera de los polinomios dados se puede dividir por un factor que no divida al otro polinomio.
+            Ese factor, por no ser común de ambos polinomios, no forma parte del Máximo Común Divisor.
+            Entonces el residuo de cualquier división se puede dividir por un factor que no divida a los polinomios dados.
+        \end{observacion}
+
+        \begin{ejemplo}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{align*}
+                f(x) &= 2 x^3 - 11 x^2 + 10 x + 8 \\
+                g(x) &= 2 x^3 + x^2 - 8 x - 4
+            \end{align*}
+
+            \faltante{Falta desarrollar ejemplo}
+        \end{ejemplo}
+
+        \begin{ejercicio}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{align*}
+                f(x) &= 12 x^3 - 26 x^2 + 20 x - 12 \\
+                g(x) &= 2 x^3 - x^2 - 3 x
+            \end{align*}
+        \end{ejercicio}
+
+        \begin{ejercicio}
+            Hallar $(f(x), g(x))$ con:
+
+            \begin{align*}
+                f(x) &= x^3 - 6 x + 7 \\
+                g(x) &= x + 4
+            \end{align*}
+        \end{ejercicio}

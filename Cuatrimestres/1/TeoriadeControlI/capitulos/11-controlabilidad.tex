@@ -17,7 +17,7 @@
     y & = & c^T x + d u \nonumber
     \end{eqnarray}
 
-    donde $x \in \mathbbm{R}^n$ y $u,y \in \mathbbm{R}$.
+    donde $x \in \mathbb{R}^n$ y $u,y \in \mathbb{R}$.
 
     \begin{figure}
     \centering
@@ -61,7 +61,7 @@
     Sabemos que:
 
     \begin{description}
-        \item [Polos.] $\left\{ s \in \mathbbm{C} \mid M(s) = 0 \right\} = \left\{ s \in \mathbbm{C} \mid \det{(sI - A)} \right\}$
+        \item [Polos.] $\left\{ s \in \mathbb{C} \mid M(s) = 0 \right\} = \left\{ s \in \mathbb{C} \mid \det{(sI - A)} \right\}$
     \end{description}
 
     Para resolver este problema hay que investigar el concepto estructural de la alcanzabilidad.
@@ -74,13 +74,13 @@
     \section{Alcanzabilidad y Controlabilidad}
 
         \begin{itemize}
-            \item Una representación de estado se dice controlable, si para cualquier condición inicial, $x(0) = x_0 \in \mathbbm{R}^n$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega al origen $\left( x(t_f) = 0 \right)$.
+            \item Una representación de estado se dice controlable, si para cualquier condición inicial, $x(0) = x_0 \in \mathbb{R}^n$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbb{R}$ se llega al origen $\left( x(t_f) = 0 \right)$.
 
             \missingfigure{Trayectoria en plano de estados de condicion inicial general al origen}
 
             \missingfigure{Trayectoria de condicion inicial al origen atraves del tiempo}
 
-            \item Una representación de estado se dice alcanzable, si para cualquier punto $x \in \mathbbm{R}$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbbm{R}$ se llega a un punto cualquiera $\left( x(t_f) = x_f \right)$ desde el origen.
+            \item Una representación de estado se dice alcanzable, si para cualquier punto $x \in \mathbb{R}$, existe una trayectoria, $x(\cdot)$, solución de la ecuación de estado, tal que en tiempo finito $t_f \in \mathbb{R}$ se llega a un punto cualquiera $\left( x(t_f) = x_f \right)$ desde el origen.
         \end{itemize}
 
         En los sistemas lineales estas dos propiedades están mutuamente implicadas, por lo que se les trata indistinguiblemente. Pero en general:
@@ -101,7 +101,7 @@
             \exp{(A t)} = \sum\limits_{i=0}^{\infty} \frac{1}{i!} A^i t^i = \sum\limits_{i=0}^{n-1} \varphi_i(t) A^i
         \end{equation}
 
-        donde $\varphi_i(t) = \sum\limits_{j=0}^{\infty} \varphi_{ij} t^j$, $\varphi_{ij} \in \mathbbm{R}$, $n \in \mathbbm{N}$, $j \in \mathbbm{Z}^+$. Por lo anterior, tenemos:
+        donde $\varphi_i(t) = \sum\limits_{j=0}^{\infty} \varphi_{ij} t^j$, $\varphi_{ij} \in \mathbb{R}$, $n \in \mathbb{N}$, $j \in \mathbb{Z}^+$. Por lo anterior, tenemos:
 
         \begin{eqnarray}
         x(t) & = & \sum\limits_{i=0}^{n-1} \psi_i(t) A^i b \nonumber \\
@@ -119,7 +119,7 @@
 
         donde $\psi_i(t) = \int_0^t \varphi_i (t - \tau) u(\tau) d \tau$.
 
-        Entonces una condición necesaria para que $x(t_f) = x_f \quad \forall x \in \mathbbm{R}, \forall t_f \in \mathbbm{R}, t_f > 0$, es que la matriz de controlabilidad
+        Entonces una condición necesaria para que $x(t_f) = x_f \quad \forall x \in \mathbb{R}, \forall t_f \in \mathbb{R}, t_f > 0$, es que la matriz de controlabilidad
 
         \begin{equation}
             C_{(A,b)} =
@@ -128,7 +128,7 @@
             \end{pmatrix}
         \end{equation}
 
-        sea de rango pleno por filas, de lo contrario existen componentes de $x(t)$ que siempre seran nulos. En nuestro caso particular $\left( y, u \in \mathbbm{R}^n \right)$:
+        sea de rango pleno por filas, de lo contrario existen componentes de $x(t)$ que siempre seran nulos. En nuestro caso particular $\left( y, u \in \mathbb{R}^n \right)$:
 
         \begin{equation}
             \det{C_{(A,b)}} \ne 0
@@ -199,7 +199,7 @@
 
         en donde, por definición, $\alpha_1(A) \ne 0$ y $\alpha_0(A) = 0$.
 
-        Sea $b \ne 0$, un vector en $\mathbbm{R}^n$ tal que su polinomio mínimo coincide con $\alpha(s)$.
+        Sea $b \ne 0$, un vector en $\mathbb{R}^n$ tal que su polinomio mínimo coincide con $\alpha(s)$.
 
         \begin{eqnarray}
         \alpha_i(A) b & \ne & 0 \quad i \in \{ 1, 2, \dots, \kappa \} \nonumber \\

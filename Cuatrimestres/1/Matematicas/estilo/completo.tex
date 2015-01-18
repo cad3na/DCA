@@ -13,9 +13,7 @@
     \usepackage{mathpazo} % Letra: Palatino
     \usepackage{eulervm} % Letra para matematicas: Euler
     \usepackage{wrapfig}
-    \newenvironment{marginfigure} % Definicion complementaria
-        {\begin{wrapfigure}{r}{0.2\textwidth}}
-        {\end{wrapfigure}}
+    \usepackage{sidenotes}
 \else
     \documentclass{tufte-book} % Papel: Letter, Estilo: Tufte
     \AtBeginDocument{\fontsize{11}{15}\selectfont}
@@ -34,8 +32,7 @@
 \usepackage{amsthm}         % Paquete para definir ambientes de teoremas
 \usepackage{amssymb}        % Paquete con simbolos matematicos
 \usepackage{xfrac}          % Paquete para usar fracciones inclinadas
-%\usepackage{graphicx}       % Paquete para incluir imagenes
-\usepackage{bbm}            % Paquete con simbolos de campos
+\usepackage{graphicx}       % Paquete para incluir imagenes
 \usepackage{enumerate}      % Paquete para crear ambientes de listas enumeradas
 %\usepackage{tikz}           % Paquete para crear diagramas
 \usepackage{todonotes}      % Paquete para crear anotaciones
@@ -59,33 +56,38 @@
 \newtheorem{proposicion}{Proposición}[section]
 \theoremstyle{remark}
 \newtheorem{nota}{Nota}[section]
+\newtheorem{observacion}{Observación}[section]
 \theoremstyle{definition}
 \newtheorem{definicion}{Definición}[section]
 \newtheorem{ejemplo}{Ejemplo}[section]
 \newtheorem{ejercicio}{Ejercicio}[section]
 % Opciones para colores en teoremas
-\tcbuselibrary{skins}
+\tcbuselibrary{skins, breakable}
 % Ambiente con colores para teoremas de estilo plano
 \tcolorboxenvironment{lema}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{teorema}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{corolario}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
     after skip=10pt}
 \tcolorboxenvironment{proposicion}
     {enhanced jigsaw,
+    breakable,
     colframe=SkyBlue,
     interior hidden,
     before skip=10pt,
@@ -93,6 +95,14 @@
 % Ambiente con colores para teoremas de estilo anotacion
 \tcolorboxenvironment{nota}
     {blanker,
+    breakable,
+    left=5mm,
+    before skip=10pt,
+    after skip=10pt,
+    borderline west={1mm}{0pt}{Orchid}}
+\tcolorboxenvironment{observacion}
+    {blanker,
+    breakable,
     left=5mm,
     before skip=10pt,
     after skip=10pt,
@@ -100,6 +110,7 @@
 % Ambiente con colores para teoremas de estilo definicion
 \tcolorboxenvironment{definicion}
     {frame empty,
+    breakable,
     colback=OliveGreen!10!White,
     grow to left by=6pt,
     grow to right by=6pt,
@@ -108,12 +119,12 @@
     arc=5pt}
 % Definiciones de operadores
 \DeclareMathOperator{\rango}{rango}
-\DeclareMathOperator{\imagen}{imagen}
-\DeclareMathOperator{\grado}{grado}
+\DeclareMathOperator{\imagen}{im}
+\DeclareMathOperator{\grado}{gr}
 \DeclareMathOperator{\traza}{traza}
-\DeclareMathOperator{\supremo}{supremo}
-\DeclareMathOperator{\cardinalidad}{cardinalidad}
-
+\DeclareMathOperator{\supremo}{sup}
+\DeclareMathOperator{\cardinalidad}{card}
+\DeclareMathOperator{\identidad}{id}
 % Definiciones para recordatorios por hacer
 \newcommand{\tarea}[2][]
     {\todo[
@@ -130,3 +141,5 @@
 
 \newcommand\+{\mkern2mu}
 \newcommand{\op}{\star}
+\newcommand{\opone}{\circ}
+\newcommand{\optwo}{\diamond}
