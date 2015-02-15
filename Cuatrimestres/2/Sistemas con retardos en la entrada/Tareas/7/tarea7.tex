@@ -1,51 +1,71 @@
 \input{../estilo.tex}
 
 \author{Roberto Cadena Vega}
-\title{Tarea 5 - Sistemas con retardos en la entrada}
+\title{Tarea 7 - Sistemas con retardos en la entrada}
 
 \begin{document}
     \maketitle
 
-    \section*{Tarea 5 - Integrales con criterios cuadraticos}
+    \section*{Tarea 7 - Desarrollo de resultados clásicos en sistemas con retardo en la entrada.}
 
-        \subsection*{Integral $\int_{-h}^0 x^T(t + \theta) e^{2 \beta \theta} x(t + \theta) d \theta$}
+        \subsection*{Función de transferencia de predictor de Smith\cite{Abe2003}}
 
-            Dada la integral
+        Dado un sistema con retardo $G(s) e^{-sh}$, en donde $G(s)$ es la parte del sistema sin el retardo $h$, tenemos el siguiente esquema de control:
 
-            \begin{equation}
-                I_1 = \int_{-h}^0 x^T(t + \theta) e^{2 \beta \theta} x(t + \theta) d \theta
-            \end{equation}
+        \begin{figure}[h]
+            \centering
+            \resizebox{\textwidth}{!}{
+                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=5em]
 
-            obtener un cambio de variable para simplificar la obtención de la derivada y el calculo de la cota superior de esta integral.
+                \begin{tikzpicture}[auto, node distance=3.25cm, >=latex']
+                    \node [input, name=pert] {};
+                    \node [input, name=entrada] {};
+                    \node [sum, right of=entrada] (suma1) {$+$};
+                    \node [sum, right of=suma1] (suma2) {$+$};
+                    \node [block, right of=suma2] (control) {$C(s)$};
+                    \node [sum, right of=control, pin={[init]above:$\delta$}] (suma3) {$+$};
+                    \node [block, right of=suma3] (sistema) {$G(s) e^{-sh}$};
+                    \node [output, right of=sistema] (salida) {};
+                    \node [block, below of=sistema] (retro1) {$-1$};
+                    \node [block, above of=control] (retro2) {$\hat{G}(s) \left(1 - e^{-s\hat{h}} \right)$};
 
-            Primero realizamos el cambio de variable $s = t + \theta$, el cual nos implica  $ds = d \theta$ y notamos que $s$ variará desde $t - h$ hasta $t$, por lo que nuestra integral puede ser escrita de la siguiente manera:
+                    \draw [->] (entrada) -- node[name=x] {$r(s)$} (suma1);
+                    \draw [->] (suma1) -- node[name=e1] {$e(s)$} (suma2);
+                    \draw [->] (suma2) -- node[name=e2] {} (control);
+                    \draw [->] (control) -- node[name=u1] {} (suma3);
+                    \draw [->] (suma3) -- node[name=u2] {$u(s)$} (sistema);
+                    \draw [->] (sistema) -- node[name=y] {$y(s)$} (salida);
+                    \draw [->] (y) |- (retro1);
+                    \draw [->] (retro1) -| (suma1);
+                    \draw [->] (u1) |- (retro2);
+                    \draw [->] (retro2) -| (suma2);
+                \end{tikzpicture}}
+        \end{figure}
 
-            \begin{equation*}
-                I_1 = \int_{t - h}^t x^T(s) e^{2 \beta (s - t)} x(s) ds
-            \end{equation*}
+        en donde $\hat{G}(s)$ es una aproximación de $G(s)$, y $\hat{h}$ es una aproximación del retardo $h$.
 
-            Ahora, para obtener la derivada de esta integral, utilizamos la regla de Leibnitz:
+        Podemos obtener la función de transferencia de este sistema bajo el predictor de Smith:
 
-            \begin{equation*}
-                \frac{d I_1}{dt} = x^T(t) e^{2 \beta (t - t)} x(t) \frac{dt}{dt} - x^T(t - h) e^{2 \beta (t - h - t)} x(t - h) \frac{d(t - h)}{dt}
-            \end{equation*}
+        \begin{align*}
+            \frac{y(s)}{r(s)} &= \frac{\frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}}{1 + \frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}} \\
+            &= \frac{\frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}}{1 + \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}} \\
+            &= \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right) + C(s)G(s)e^{-sh}} \\
+            &= \frac{C(s)G(s)e^{-sh}}{1 + C(s) \left[ \hat{G}(s) - \hat{G}(s)e^{-s\hat{h}} + G(s)e^{-sh} \right]}
+        \end{align*}
 
-            Si ahora eliminamos los terminos irrelevantes, tendremos que:
+        Si ahora asumimos que la aproximación $\hat{G}(s)$ es precisa:
 
-            \begin{equation*}
-                \frac{d I_1}{dt} = || x(t) ||^2 - x^T(t - h) e^{2 \beta (h)} x(t - h)
-            \end{equation*}
+        \begin{equation}
+            \frac{y(s)}{r(s)} = \frac{C(s)G(s)e^{-sh}}{1 + C(s) G(s) \left( 1 + e^{-sh} - e^{-s\hat{h}} \right)}
+        \end{equation}
 
-            De aqui podemos notar que si $\beta > 0$, tenemos que el termino $e^{-2 \beta h}$ estara acotado por:
+        Cabe notar que si tambien asumimos una aproximación precisa de $\hat{h}$ tendremos la ecuación que ya teniamos:
 
-            \begin{equation*}
-                1 > e^{-2  \beta h} > 0
-            \end{equation*}
+        \begin{equation}
+            \frac{C(s)G(s)e^{-sh}}{1 + C(s)G(s)}
+        \end{equation}
 
-            por lo que en general, podemos decir que esta expresión tiene ua cota superior:
-
-            \begin{equation}
-                || x(t) ||^2 - || x^T(t - h) ||^2 e^{2 \beta (h)} < || x(t) ||^2
-            \end{equation}
+    \bibliographystyle{ieeetr}
+    \bibliography{bibliografia}
 
 \end{document}
