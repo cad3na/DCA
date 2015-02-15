@@ -1,0 +1,51 @@
+\input{../estilo.tex}
+
+\author{Roberto Cadena Vega}
+\title{Tarea 5 - Sistemas con retardos en la entrada}
+
+\begin{document}
+    \maketitle
+
+    \section*{Tarea 5 - Integrales con criterios cuadraticos}
+
+        \subsection*{Integral $\int_{-h}^0 x^T(t + \theta) e^{2 \beta \theta} x(t + \theta) d \theta$}
+
+            Dada la integral
+
+            \begin{equation}
+                I_1 = \int_{-h}^0 x^T(t + \theta) e^{2 \beta \theta} x(t + \theta) d \theta
+            \end{equation}
+
+            obtener un cambio de variable para simplificar la obtención de la derivada y el calculo de la cota superior de esta integral.
+
+            Primero realizamos el cambio de variable $s = t + \theta$, el cual nos implica  $ds = d \theta$ y notamos que $s$ variará desde $t - h$ hasta $t$, por lo que nuestra integral puede ser escrita de la siguiente manera:
+
+            \begin{equation*}
+                I_1 = \int_{t - h}^t x^T(s) e^{2 \beta (s - t)} x(s) ds
+            \end{equation*}
+
+            Ahora, para obtener la derivada de esta integral, utilizamos la regla de Leibnitz:
+
+            \begin{equation*}
+                \frac{d I_1}{dt} = x^T(t) e^{2 \beta (t - t)} x(t) \frac{dt}{dt} - x^T(t - h) e^{2 \beta (t - h - t)} x(t - h) \frac{d(t - h)}{dt}
+            \end{equation*}
+
+            Si ahora eliminamos los terminos irrelevantes, tendremos que:
+
+            \begin{equation*}
+                \frac{d I_1}{dt} = || x(t) ||^2 - x^T(t - h) e^{2 \beta (h)} x(t - h)
+            \end{equation*}
+
+            De aqui podemos notar que si $\beta > 0$, tenemos que el termino $e^{-2 \beta h}$ estara acotado por:
+
+            \begin{equation*}
+                1 > e^{-2  \beta h} > 0
+            \end{equation*}
+
+            por lo que en general, podemos decir que esta expresión tiene ua cota superior:
+
+            \begin{equation}
+                || x(t) ||^2 - || x^T(t - h) ||^2 e^{2 \beta (h)} < || x(t) ||^2
+            \end{equation}
+
+\end{document}
