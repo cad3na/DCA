@@ -8,62 +8,103 @@
 
     \section*{Tarea 7 - Desarrollo de resultados clásicos en sistemas con retardo en la entrada.}
 
-        \subsection*{Función de transferencia de predictor de Smith\cite{Abe2003}}
+        \subsection*{Función de transferencia de predictor de Smith\cite{Abe2003}.}
 
-        Dado un sistema con retardo $G(s) e^{-sh}$, en donde $G(s)$ es la parte del sistema sin el retardo $h$, tenemos el siguiente esquema de control:
+            Dado un sistema con retardo $G(s) e^{-sh}$, en donde $G(s)$ es la parte del sistema sin el retardo $h$, tenemos el siguiente esquema de control:
 
-        \begin{figure}[h]
-            \centering
-            \resizebox{\textwidth}{!}{
-                \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=5em]
+            \begin{figure}[h]
+                \centering
+                \resizebox{\textwidth}{!}{
+                    \tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=5em]
 
-                \begin{tikzpicture}[auto, node distance=3.25cm, >=latex']
-                    \node [input, name=pert] {};
-                    \node [input, name=entrada] {};
-                    \node [sum, right of=entrada] (suma1) {$+$};
-                    \node [sum, right of=suma1] (suma2) {$+$};
-                    \node [block, right of=suma2] (control) {$C(s)$};
-                    \node [sum, right of=control, pin={[init]above:$\delta$}] (suma3) {$+$};
-                    \node [block, right of=suma3] (sistema) {$G(s) e^{-sh}$};
-                    \node [output, right of=sistema] (salida) {};
-                    \node [block, below of=sistema] (retro1) {$-1$};
-                    \node [block, above of=control] (retro2) {$\hat{G}(s) \left(1 - e^{-s\hat{h}} \right)$};
+                    \begin{tikzpicture}[auto, node distance=3.25cm, >=latex']
+                        \node [input, name=pert] {};
+                        \node [input, name=entrada] {};
+                        \node [sum, right of=entrada] (suma1) {$+$};
+                        \node [sum, right of=suma1] (suma2) {$+$};
+                        \node [block, right of=suma2] (control) {$C(s)$};
+                        \node [sum, right of=control, pin={[init]above:$\delta$}] (suma3) {$+$};
+                        \node [block, right of=suma3] (sistema) {$G(s) e^{-sh}$};
+                        \node [output, right of=sistema] (salida) {};
+                        \node [block, below of=sistema] (retro1) {$-1$};
+                        \node [block, above of=control] (retro2) {$\hat{G}(s) \left(1 - e^{-s\hat{h}} \right)$};
 
-                    \draw [->] (entrada) -- node[name=x] {$r(s)$} (suma1);
-                    \draw [->] (suma1) -- node[name=e1] {$e(s)$} (suma2);
-                    \draw [->] (suma2) -- node[name=e2] {} (control);
-                    \draw [->] (control) -- node[name=u1] {} (suma3);
-                    \draw [->] (suma3) -- node[name=u2] {$u(s)$} (sistema);
-                    \draw [->] (sistema) -- node[name=y] {$y(s)$} (salida);
-                    \draw [->] (y) |- (retro1);
-                    \draw [->] (retro1) -| (suma1);
-                    \draw [->] (u1) |- (retro2);
-                    \draw [->] (retro2) -| (suma2);
-                \end{tikzpicture}}
-        \end{figure}
+                        \draw [->] (entrada) -- node[name=x] {$r(s)$} (suma1);
+                        \draw [->] (suma1) -- node[name=e1] {$e(s)$} (suma2);
+                        \draw [->] (suma2) -- node[name=e2] {} (control);
+                        \draw [->] (control) -- node[name=u1] {} (suma3);
+                        \draw [->] (suma3) -- node[name=u2] {$u(s)$} (sistema);
+                        \draw [->] (sistema) -- node[name=y] {$y(s)$} (salida);
+                        \draw [->] (y) |- (retro1);
+                        \draw [->] (retro1) -| (suma1);
+                        \draw [->] (u1) |- (retro2);
+                        \draw [->] (retro2) -| (suma2);
+                    \end{tikzpicture}}
+            \end{figure}
 
-        en donde $\hat{G}(s)$ es una aproximación de $G(s)$, y $\hat{h}$ es una aproximación del retardo $h$.
+            en donde $\hat{G}(s)$ es una aproximación de $G(s)$, y $\hat{h}$ es una aproximación del retardo $h$.
 
-        Podemos obtener la función de transferencia de este sistema bajo el predictor de Smith:
+            Podemos obtener la función de transferencia de este sistema bajo el predictor de Smith:
 
-        \begin{align*}
-            \frac{y(s)}{r(s)} &= \frac{\frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}}{1 + \frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}} \\
-            &= \frac{\frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}}{1 + \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}} \\
-            &= \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right) + C(s)G(s)e^{-sh}} \\
-            &= \frac{C(s)G(s)e^{-sh}}{1 + C(s) \left[ \hat{G}(s) - \hat{G}(s)e^{-s\hat{h}} + G(s)e^{-sh} \right]}
-        \end{align*}
+            \begin{align*}
+                \frac{y(s)}{r(s)} &= \frac{\frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}}{1 + \frac{C(s)}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}G(s)e^{-sh}} \\
+                &= \frac{\frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}}{1 + \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right)}} \\
+                &= \frac{C(s)G(s)e^{-sh}}{1 + C(s)\hat{G}(s)\left( 1 - e^{-s\hat{h}} \right) + C(s)G(s)e^{-sh}} \\
+                &= \frac{C(s)G(s)e^{-sh}}{1 + C(s) \left[ \hat{G}(s) - \hat{G}(s)e^{-s\hat{h}} + G(s)e^{-sh} \right]}
+            \end{align*}
 
-        Si ahora asumimos que la aproximación $\hat{G}(s)$ es precisa:
+            Si ahora asumimos que la aproximación $\hat{G}(s)$ es precisa:
 
-        \begin{equation}
-            \frac{y(s)}{r(s)} = \frac{C(s)G(s)e^{-sh}}{1 + C(s) G(s) \left( 1 + e^{-sh} - e^{-s\hat{h}} \right)}
-        \end{equation}
+            \begin{equation}
+                \frac{y(s)}{r(s)} = \frac{C(s)G(s)e^{-sh}}{1 + C(s) G(s) \left( 1 + e^{-sh} - e^{-s\hat{h}} \right)}
+            \end{equation}
 
-        Cabe notar que si tambien asumimos una aproximación precisa de $\hat{h}$ tendremos la ecuación que ya teniamos:
+            Cabe notar que si tambien asumimos una aproximación precisa de $\hat{h}$ tendremos la ecuación que ya teniamos:
 
-        \begin{equation}
-            \frac{C(s)G(s)e^{-sh}}{1 + C(s)G(s)}
-        \end{equation}
+            \begin{equation}
+                \frac{C(s)G(s)e^{-sh}}{1 + C(s)G(s)}
+            \end{equation}
+
+        \subsection*{Desarrollo de señal de control para asignación de espectro finíto\cite{Manitius1979}.}
+
+            Dado el sistema:
+
+            \begin{equation}
+                \dot{x}(t) = A x(t) + B u(t - h)
+            \end{equation}
+
+            podemos premultiplicar por $e^{-At}$ esta ecuación y desarrollar para obtener:
+
+            \begin{align*}
+                e^{-At} \dot{x}(t) &= e^{-At} A x(t) + e^{-At} B u(t - h) \\
+                e^{-At} \dot{x}(t) - e^{-At} A x(t) &= e^{-At} B u(t - h) \\
+                \frac{d}{dt} \left( e^{-At} x(t) \right) &= e^{-At} B u(t - h)
+            \end{align*}
+
+            integrando desde $t$ hasta $t + h$, tenemos:
+
+            \begin{align} \label{eq:semipred}
+                \int_t^{t + h} \frac{d}{d \theta} \left( e^{-A \theta} x( \theta) \right) d\theta &= \int_t^{t + h} e^{-A \theta} B u(\theta - h) d \theta \nonumber \\
+                \left. e^{-A \theta} x(\theta) \right|_t^{t + h} &= \int_t^{t + h} e^{-A \theta} B u(\theta - h) d \theta \nonumber \\
+                e^{-A (t + h)} x(t + h) - e^{-A t} x(t) &= \int_t^{t + h} e^{-A \theta} B u(\theta - h) d \theta \nonumber \\
+                e^{-A (t + h)} x(t + h) &= e^{-A t} x(t) + \int_t^{t + h} e^{-A \theta} B u(\theta - h) d \theta \nonumber \\
+                x(t + h) &= e^{A h} x(t) + e^{A (t + h)} \int_t^{t + h} e^{-A \theta} B u(\theta - h) d \theta \nonumber \\
+                x(t + h) &= e^{A h} x(t) + \int_t^{t + h} e^{A (t + h - \theta)} B u(\theta - h) d \theta
+            \end{align}
+
+            Si ahora hacemos el cambio de variable $\delta = \theta - h$, el diferencial $d \delta$ será $d \delta = d \theta$ y los limites de integración cambiaran de $t \to t + h$ a $t - h \to t$, y la ecuación quedará:
+
+            \begin{equation} \label{eq:pred}
+                x(t + h) = e^{A h} x(t) + \int_{t - h}^t e^{A (t + \delta)} B u(\delta) d \delta
+            \end{equation}
+
+            lo cual nos indica que podemos obtener un estado futuro de nuestro sistema, a partir del pasado, es decir, un predictor.
+
+            Por otro lado, si en lugar de hacer el ultimo cambio de variable, sustituimos $t = 0$ y $h = t$ en la ecuación~\ref{eq:semipred} para obtener el estado del sistema en los tiempos en $[0, h]$, tendremos:
+
+            \begin{equation}
+                x(t) = e^{A t} x(0) + \int_0^t e^{A (t - \theta)} B u(\theta - t) d \theta
+            \end{equation}
 
     \bibliographystyle{ieeetr}
     \bibliography{bibliografia}

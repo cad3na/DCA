@@ -5,4 +5,9 @@ N.~Abe and K.~Yamanaka, ``Smith predictor control and internal model control -
   a tutorial,'' in {\em SICE 2003 Annual Conference}, vol.~2, pp.~1383--1387
   Vol.2, Aug 2003.
 
+\bibitem{Manitius1979}
+A.~Manitius and A.~Olbrot, ``Finite spectrum assignment problem for systems
+  with delays,'' {\em Automatic Control, IEEE Transactions on}, vol.~24,
+  pp.~541--552, Aug 1979.
+
 \end{thebibliography}
