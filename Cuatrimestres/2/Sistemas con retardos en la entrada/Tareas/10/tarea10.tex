@@ -1,0 +1,154 @@
+\input{../estilo.tex}
+
+\author{Roberto Cadena Vega}
+\title{Tarea 10 - Sistemas con retardos en la entrada}
+
+\begin{document}
+    \maketitle
+
+    \section*{Tarea 10 - Desarrollos para asignación de espectro finito.}
+
+        \subsection*{Revisión de equivalencia de condición de estabilidad para predictor por asignación de espectro.}
+
+        Dadas las expresiones para $x(t)$ y $u(t)$, demostrar que la estabilidad de una implica la otra.
+
+        \begin{equation} \label{eq:eq1}
+            x(t) = Bk \int_{-\tau}^0 e^{-A \delta} x(t + \delta) d\delta
+        \end{equation}
+
+        \begin{equation} \label{eq:eq2}
+            u(t) = k \int_{-\tau}^0 e^{-A \theta} B u(t + \theta) d\theta
+        \end{equation}
+
+        Empezaremos con la ecuación~\ref{eq:eq1}. Para obtener la transformada de Laplace, primero haremos el caso mas general.
+
+        \begin{equation*}
+            \mathcal{L} \left\{ \int_{-\tau}^0 G(\theta) B u(t + \theta) d\theta \right\} = \int_0^{\infty} e^{-st} \int_{-\tau}^0 G(\theta) B u(t + \theta) d\theta dt
+        \end{equation*}
+
+        Si hacemos el cambio de variable $\theta = -\delta$, el diferencial será $d\theta = -d\delta$ con los limites de integración $\tau \to 0$, por lo que la integral queda:
+
+        \begin{align*}
+            \mathcal{L} \left\{ \int_{-\tau}^0 G(\theta) B u(t + \theta) d\theta \right\} &= -\int_0^{\infty} e^{-st} \int_{\tau}^0 G(-\delta) B u(t - \delta) d\delta dt \\
+            &= \int_0^{\infty} e^{-st} \int_0^{\tau} G(-\delta) B u(t - \delta) d\delta dt \\
+            &= \int_0^{\infty} \int_0^{\tau} e^{-st} G(-\delta) B u(t - \delta) d\delta dt \\
+            &= \int_0^{\tau} \int_0^{\infty} e^{-st} G(-\delta) B u(t - \delta) dt d\delta \\
+            &= \int_0^{\tau} G(-\delta) \int_0^{\infty} e^{-st} B u(t - \delta) dt d\delta \\
+            &= \int_0^{\tau} G(-\delta) e^{-s\delta} B u(s) d\delta \\
+            &= \int_0^{\tau} G(-\delta) e^{-s\delta} d\delta B u(s)
+        \end{align*}
+
+        Si ahora regresamos a nuestra variable original, tendremos:
+
+        \begin{equation}
+            \mathcal{L} \left\{ \int_{-\tau}^0 G(\theta) B u(t + \theta) d\theta \right\} = \int_{-\tau}^0 G(\theta) e^{s\theta} d\theta B u(s)
+        \end{equation}
+
+        Regresando a la ecuación~\ref{eq:eq1} y aplicando esta identidad, tenemos que:
+
+        \begin{align*}
+            x(t) &= Bk \int_{-\tau}^0 e^{-A \delta} x(t + \delta) d\delta \\
+            x(s) &= Bk \int_{-\tau}^0 e^{-A \delta} e^{s \delta} d\delta x(s) \\
+            &= Bk \int_{-\tau}^0 e^{(sI-A) \delta} d\delta x(s) \\
+            &= Bk \left.(sI - A)^{-1} e^{(sI-A) \delta} \right|_{-\tau}^0 x(s) \\
+            x(s) &= Bk (sI - A)^{-1} \left[ I - e^{-(sI-A) \tau} \right] x(s)
+        \end{align*}
+
+        Por lo que al despejar todo a un lado de la ecuación, tenemos que el polinomio caracteristico es:
+
+        \begin{equation}
+            \det{\left\{ I - Bk (sI - A)^{-1} \left[ I - e^{-(sI-A) \tau} \right] \right\}}
+        \end{equation}
+
+        Por otro lado, si efectuamos el mismo procedimiento a la ecuación~\ref{eq:eq2}, obtendremos:
+
+        \begin{align*}
+            u(t) &= k \int_{-\tau}^0 e^{-A \theta} B u(t + \theta) d\theta \\
+            u(s) &= k \int_{-\tau}^0 e^{-A \theta} e^{s \theta} d\theta B u(s) \\
+            &= k \int_{-\tau}^0 e^{(sI-A) \theta} d\theta B u(s) \\
+            &= k \left.(sI-A)^{-1} e^{(sI-A) \theta} \right|_{-\tau}^0 B u(s) \\
+            u(s) &= k (sI-A)^{-1} \left[ I - e^{-(sI-A) \tau} \right] B u(s)
+        \end{align*}
+
+        Por lo que al despejar todo a un lado de la ecuación, tenemos que el polinomio caracteristico es:
+
+        \begin{equation}
+            \det{\left\{ I -  k (sI-A)^{-1} \left[ I - e^{-(sI-A) \tau} \right] B \right\}}
+        \end{equation}
+
+        Y si aplicamos la identidad $\det{(I - MN)} = \det{(I - NM)}$\cite{kailath1980linear}, tendremos que este ultimo polinomio caracteristico es equivalente al primero:
+
+        \begin{equation}
+            \det{\left\{ I -  Bk (sI-A)^{-1} \left[ I - e^{-(sI-A) \tau} \right] \right\}}
+        \end{equation}
+
+        por lo que la estabilidad de una expresión, implica la de la otra.
+
+        \subsection*{Balanceo de terminos en funcionales de tipo completo.}
+
+        Dada la funcional asociada al problema de robustez ante la incertidumbre del retardo, tenemos que su derivada cumple:
+
+        \begin{align}
+            \frac{d v(z_t)}{dt} \leq& - \alpha_1 \left|\left| z(t) \right|\right|^2 - \alpha_2 \left|\left| z(t - h) \right|\right|^2 - \alpha_3 \int_{-h}^0 \left|\left| z(t + \theta) \right|\right|^2 d\theta \nonumber \\
+            &+ \overbrace{\alpha_4 \int_{-h - \eta}^{-h} \left|\left| z(t + \theta) \right|\right|^2 + \alpha_5 \int_{-2h - 2\eta}^{-2h - \eta} \left|\left| z(t + \theta) \right|\right|^2}^{\text{terminos positivos a compensar}}
+        \end{align}
+
+        por lo que investigamos la manera de introducir terminos similares para compensarlos y obtener $\frac{d v(x_t)}{dt} \leq 0$. Propongamos una funcional de la forma:
+
+        \begin{equation}
+            \bar{v}(z_t) = \int_{\delta-\eta}^{\delta} \int_{t + \theta}^{t - h} z^T(s) R z(s) ds d\theta
+        \end{equation}
+
+        La cual tendrá una derivada de la forma:
+
+        \begin{align*}
+            \frac{d\bar{v}(z_t)}{dt} &= \int_{\delta-\eta}^{\delta} \frac{d}{dt} \int_{t + \theta}^{t - h} z^T(s) R z(s) ds d\theta \\
+            &= \int_{\delta-\eta}^{\delta} z^T(t-h) R z(t-h) d\theta - \int_{\delta-\eta}^{\delta} z^T(t+\theta) R z(t+\theta) d\theta \\
+            &= z^T(t-h) R z(t-h) \left[\delta - (\delta-\eta)\right] - \int_{\delta-\eta}^{\delta} z^T(t+\theta) R z(t+\theta) d\theta \\
+            &= \eta z^T(t-h) R z(t-h) - \int_{\delta-\eta}^{\delta} z^T(t+\theta) R z(t+\theta) d\theta \\
+            &\leq \eta \lambda_{max}(R) \left|\left| z(t - h) \right|\right|^2 - \lambda_{max}(R) \int_{\delta-\eta}^{\delta} \left|\left| z(t + \theta) \right|\right|^2 
+        \end{align*}
+
+        por lo que:
+
+        \begin{equation*}
+            \varepsilon \frac{d\bar{v}(z_t)}{dt} \leq \varepsilon \eta \lambda_{max}(R) \left|\left| z(t - h) \right|\right|^2 - \varepsilon \lambda_{max}(R) \int_{\delta-\eta}^{\delta} \left|\left| z(t + \theta) \right|\right|^2 
+        \end{equation*}
+
+        Si proponemos dos funcionales:
+
+        \begin{align*}
+            \bar{v}_4(z_t) &= \int_{-h-\eta}^{-h} \int_{t + \theta}^{t - h} z^T(s) R z(s) ds d\theta \\
+            \bar{v}_5(z_t) &= \int_{-2h-2\eta}^{-2h-\eta} \int_{t + \theta}^{t - h} z^T(s) R z(s) ds d\theta
+        \end{align*}
+        
+        tendremos que sus derivadas estarán acotadas por:
+
+        \begin{align*}
+            \varepsilon_4 \frac{d\bar{v}(z_t)}{dt} &\leq \varepsilon_4 \eta \lambda_{max}(R) \left|\left| z(t - h) \right|\right|^2 - \varepsilon_4 \lambda_{max}(R) \int_{-h-\eta}^{-h} \left|\left| z(t + \theta) \right|\right|^2 \\
+            \varepsilon_5 \frac{d\bar{v}(z_t)}{dt} &\leq \varepsilon_5 \eta \lambda_{max}(R) \left|\left| z(t - h) \right|\right|^2 - \varepsilon_5 \lambda_{max}(R) \int_{-2h-2\eta}^{-2h-\eta} \left|\left| z(t + \theta) \right|\right|^2 \\
+        \end{align*}
+
+        y al agregar estas funcionales a la original, tendremos:
+
+        \begin{align*}
+            \frac{d v(z_t)}{dt} \leq& - \alpha_1 \left|\left| z(t) \right|\right|^2 - \left[ \alpha_2 - \varepsilon_4 \eta \lambda_{max}(R) - \varepsilon_5 \eta \lambda_{max}(R) \right] \left|\left| z(t - h) \right|\right|^2 \\
+            &- \alpha_3 \int_{-h}^0 \left|\left| z(t + \theta) \right|\right|^2 d\theta
+            -\left[ \varepsilon_4 \lambda_{max}(R) - \alpha_4 \right] \int_{-h - \eta}^{-h} \left|\left| z(t + \theta) \right|\right|^2 \\
+            &-\left[ \varepsilon_5 \lambda_{max}(R) - \alpha_5 \right] \int_{-2h - 2\eta}^{-2h - \eta} \left|\left| z(t + \theta) \right|\right|^2
+        \end{align*}
+
+        Por lo que conlcuimos que para que esta funcional cumpla con la condición de negatividad de la derivada de Lyapunov-Krasovskii y estabilice al sistema, se deben cumplir:
+
+        \begin{align}
+            \alpha_1 &\geq 0 \\
+            \alpha_2 - \varepsilon_4 \eta \lambda_{max}(R) - \varepsilon_5 \eta \lambda_{max}(R) &\geq 0 \\
+            \alpha_3 &\geq 0 \\
+            \varepsilon_4 \lambda_{max}(R) - \alpha_4 &\geq 0 \\
+            \varepsilon_5 \lambda_{max}(R) - \alpha_5 &\geq 0
+        \end{align}
+
+    \bibliographystyle{ieeetr}
+    \bibliography{bibliografia}
+
+\end{document}
