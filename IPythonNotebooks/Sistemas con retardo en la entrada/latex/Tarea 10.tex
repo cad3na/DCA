@@ -1,0 +1,961 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{mathpazo}
+    \usepackage[spanish]{babel}
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Tarea 10 - Atrasada}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    \author{Roberto Cadena Vega}
+
+    \begin{document}
+    
+    
+    \maketitle
+
+    
+    
+    \section*{Análisis de estabilidad para sistema bajo realimentación
+integral}\label{anuxe1lisis-de-estabilidad-para-sistema-bajo-realimentaciuxf3n-integral}
+
+    \subsection*{Ejemplo 1}\label{ejemplo-1}
+
+    Dado el sistema:
+
+\[
+\dot{x}(t) = A x(t) + B u(t - h)
+\]
+
+con la ley de control:
+
+\[
+u(t) = k \left[ x(t) + \int_{-h}^0 e^{-A(\theta + h)} B u(t + \theta) d\theta \right]
+\]
+
+por lo que el sistema en lazo cerrado es:
+
+\[
+\dot{x}(t) = \left( A + e^{-Ah} B K \right) x(t)
+\]
+
+el sistema para el que haremos este desarrollo es:
+
+\[
+\dot{x}(t) =
+\begin{pmatrix}
+0 & 0 \\
+1 & 1
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix} u(t - h)
+\]
+
+con \(h = 1\).
+
+Calculando \(e^{-A (\theta + h)}\) tenemos:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display}
+        
+        \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k}{import} \PY{n}{var}\PY{p}{,} \PY{n}{sin}\PY{p}{,} \PY{n}{cos}\PY{p}{,} \PY{n}{Matrix}\PY{p}{,} \PY{n}{Integer}\PY{p}{,} \PY{n}{eye}\PY{p}{,} \PY{n}{Function}\PY{p}{,} \PY{n}{Rational}\PY{p}{,} \PY{n}{exp}\PY{p}{,} \PY{n}{Symbol}\PY{p}{,} \PY{n}{I}
+        \PY{k+kn}{from} \PY{n+nn}{sympy}\PY{n+nn}{.}\PY{n+nn}{physics}\PY{n+nn}{.}\PY{n+nn}{mechanics} \PY{k}{import} \PY{n}{mlatex}\PY{p}{,} \PY{n}{mechanics\PYZus{}printing}
+        \PY{k+kn}{from} \PY{n+nn}{sympy}\PY{n+nn}{.}\PY{n+nn}{integrals} \PY{k}{import} \PY{n}{laplace\PYZus{}transform}
+        \PY{n}{mechanics\PYZus{}printing}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{var}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{t h θ s ω}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}3}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left ( t, \quad h, \quad θ, \quad s, \quad ω\right )
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{A} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{A}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}4}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}0 & 0\\1 & 1\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A}\PY{o}{*}\PY{p}{(}\PY{n}{θ}\PY{o}{+} \PY{n}{h}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}5}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}1 & 0\\e^{- h - θ} - 1 & e^{- h - θ}\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    Sustituyendo \(A\), \(B\) y \(e^{-A(t + \theta)}\) en \(u(t)\), tenemos:
+
+\[
+\begin{align}
+u(t) &=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\int_{-h}^0 e^{-A(\theta + h)} B u(t + \theta) d\theta \\
+&=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\int_{-h}^0
+\begin{pmatrix}
+1 & 0 \\
+e^{-(\theta + h)} - 1 & e^{-(\theta + h)}
+\end{pmatrix}
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix}
+u(t + \theta) d\theta \\
+&=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\int_{-h}^0
+\begin{pmatrix}
+1 \\
+e^{-(\theta + h)} - 1
+\end{pmatrix}
+u(t + \theta) d\theta
+\end{align}
+\]
+
+Sustituyendo \(k_1 = 1 - 4 e^h\) y \(k_2 = -4e^h\) tenemos:
+
+\[
+u(t)=
+\begin{pmatrix}
+1 - 4 e^h & -4e^h
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+1 - 4 e^h & -4e^h
+\end{pmatrix}
+\int_{-h}^0
+\begin{pmatrix}
+1 \\
+e^{-(\theta + h)} - 1
+\end{pmatrix}
+u(t + \theta) d\theta
+\]
+
+y podemos meter estas ganancias a la integral, para obtener:
+
+\[
+\begin{align}
+u(t) &=
+\begin{pmatrix}
+1 - 4 e^h & -4e^h
+\end{pmatrix} x(t) +
+\int_{-h}^0
+\left( 1 - 4e^{-\theta} \right)
+u(t + \theta) d\theta \\
+&=
+\begin{pmatrix}
+1 - 4 e^h & -4e^h
+\end{pmatrix} x(t) +
+\int_{-h}^0 u(t + \theta) d\theta -
+\int_{-h}^0 4e^{-\theta} u(t + \theta) d\theta
+\end{align}
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{B} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{K} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{4}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{n}{h}\PY{p}{)}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{n}{h}\PY{p}{)}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{p}{(}\PY{n}{K}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A}\PY{o}{*}\PY{p}{(}\PY{n}{θ} \PY{o}{+} \PY{n}{h}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{B}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}7}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        1 - 4 e^{- θ}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{x1} \PY{o}{=} \PY{n}{Function}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{x1}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+        \PY{n}{x2} \PY{o}{=} \PY{n}{Function}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{x2}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+        
+        \PY{n}{X} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{x1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{x2}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{u} \PY{o}{=} \PY{n}{Function}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{u}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{t} \PY{o}{+} \PY{n}{θ}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{A}\PY{o}{*}\PY{n}{X}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}9}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}0\\x_{1} + x_{2}\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{p}{(}\PY{p}{(}\PY{n}{K}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A}\PY{o}{*}\PY{p}{(}\PY{n}{θ} \PY{o}{+} \PY{n}{h}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{B}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{u}\PY{p}{)}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}\PY{p}{(}\PY{n}{θ}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{h}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}10}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \int_{- h}^{0} \left(e^{θ} - 4\right) \operatorname{u}\left(t + θ\right) e^{- θ}\, dθ
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{p}{(}\PY{n}{K}\PY{o}{*}\PY{n}{X}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{p}{(}\PY{p}{(}\PY{n}{K}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A}\PY{o}{*}\PY{p}{(}\PY{n}{θ} \PY{o}{+} \PY{n}{h}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{B}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{u}\PY{p}{)}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}\PY{p}{(}\PY{n}{θ}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{h}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left(- 4 e^{h} + 1\right) x_{1} - 4 x_{2} e^{h} + \int_{- h}^{0} \left(e^{θ} - 4\right) \operatorname{u}\left(t + θ\right) e^{- θ}\, dθ
+        $}\end{equation*}
+
+    
+
+    Si aplicamos la transformada de Laplace a esto, obtendremos:
+
+\[
+\begin{align}
+u(t) - \int_{-h}^0 u(t + \theta) d\theta + \int_{-h}^0 4e^{-\theta} u(t + \theta) d\theta &=
+(1 - 4 e^h) x_1(t) - 4e^h x_2(t) \\
+\left[ 1 - \frac{1 - e^{-hs}}{s} + 4 \frac{1 - e^{-h(s-1)}}{s-1} \right] u(s) &=
+(1 - 4 e^h) x_1(s) - 4e^h x_2(s)
+\end{align}
+\]
+
+Por lo que el polinomio caracteristico del controlador del sistema es:
+
+\[
+1 - \frac{1 - e^{-hs}}{s} + 4\frac{1 - e^{-h(s-1)}}{s-1} = 0
+\]
+
+Si ahora introducimos los parametros \(\alpha_1 = k_1 - k_2 = 1\) y
+\(\alpha_2 = e^{-h} k_2 = -4\), este polinomio caracteristico queda de
+la forma:
+
+\[
+1 - \alpha_1 \frac{1 - e^{-hs}}{s} - \alpha_2 \frac{1 - e^{-h(s-1)}}{s-1} = 0
+\]
+
+Este polinomio caracteristico corresponde al controlador del sistema,
+por otro lado, tambien tenemos que analizar la estabilidad del sistema
+bajo esta realimentación, la ecuación para esto es:
+
+\[
+\dot{x}(t) = \left( A + e^{-Ah} B K \right) x(t)
+\]
+
+por lo que la función de transferencia del sistema realimentado será:
+
+\[
+\det{\left( sI - A - e^{-Ah} B K \right)}
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{A} \PY{o}{\PYZhy{}} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{h}\PY{o}{*}\PY{n}{A}\PY{p}{)}\PY{o}{*}\PY{n}{B}\PY{o}{*}\PY{n}{K}\PY{p}{)}\PY{o}{.}\PY{n}{det}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}12}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        s^{2} + 2 s + 1
+        $}\end{equation*}
+
+    
+
+    Por lo que observamos que esta realimentación coloca dos polos en
+\(-1\), sin embargo queremos analizar la estabilidad bajo los parametros
+que establecimos, por lo que notamos que este polinomio puede ser
+escrito como:
+
+\[
+s^2 - \left( 1 + \alpha_1 + \alpha_2 \right)s + \alpha_1
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{α1}\PY{p}{,} \PY{n}{α2} \PY{o}{=} \PY{n}{K}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{K}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{h}\PY{p}{)}\PY{o}{*}\PY{n}{K}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{n}{α1}\PY{p}{,} \PY{n}{α2}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}13}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left ( 1, \quad -4\right )
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{α1} \PY{o}{+} \PY{n}{α2}\PY{p}{)}\PY{o}{*}\PY{n}{s} \PY{o}{+} \PY{n}{α1}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}14}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        s^{2} + 2 s + 1
+        $}\end{equation*}
+
+    
+
+    Este polinomio caracteristico esta libre de retardos, por lo que podemos
+analizarlo con Routh-Hurwitz y obtener las siguientes condiciones:
+
+\[
+\begin{align}
+\alpha_1 &> 0 \\
+\alpha_1 &< -1 - \alpha_2
+\end{align}
+\]
+
+Por otro lado, si hacemos un analisis de D-particiones, al sustituir
+\(s = 0\) y \(s = j \omega\) obtenemos que:
+
+\[
+\begin{align}
+\alpha_1 &= 0 \\
+\alpha_1 &= -1 - \alpha_2
+\end{align}
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{var}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{α\PYZus{}1 α\PYZus{}2 ω}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}15}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left ( α_{1}, \quad α_{2}, \quad ω\right )
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{α\PYZus{}1} \PY{o}{+} \PY{n}{α\PYZus{}2}\PY{p}{)}\PY{o}{*}\PY{n}{s} \PY{o}{+} \PY{n}{α\PYZus{}1}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}16}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        α_{1}
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{+} \PY{n}{α\PYZus{}1} \PY{o}{+} \PY{n}{α\PYZus{}2}\PY{p}{)}\PY{o}{*}\PY{n}{s} \PY{o}{+} \PY{n}{α\PYZus{}1}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{ω}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{ω}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}17}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        α_{1} + α_{2} + 1
+        $}\end{equation*}
+
+    
+
+    Lo cual es consistente con los resultados de Routh-Hurwitz. Al graficar
+estas curvas limite de las D-particiones, obtenemos:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k}{import} \PY{n}{linspace}\PY{p}{,} \PY{n}{zeros}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{import} \PY{n}{plot}\PY{p}{,} \PY{n}{style}\PY{p}{,} \PY{n}{figure}\PY{p}{,} \PY{n}{legend}\PY{p}{,} \PY{n}{fill}
+         \PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{ggplot}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{alpha1} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{alpha2} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{alpha1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{f} \PY{o}{=} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{alpha1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{alpha1}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{alpha1}\PY{p}{,} \PY{n}{alpha2}\PY{p}{)}
+         
+         \PY{n}{ax} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{alpha2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{alpha1}\PY{p}{,} \PY{n}{where}\PY{o}{=}\PY{n}{alpha1}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{purple}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}α\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}α\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.5\linewidth}{0.9\paperheight}}{Tarea 10_files/Tarea 10_28_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{Ejemplo 2}\label{ejemplo-2}
+
+    Para el sistema:
+
+\[
+\dot{x}(t) =
+\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+x(t) +
+\begin{pmatrix}
+0 \\
+1
+\end{pmatrix}
+u(t - h)
+\]
+
+con \(h = 1\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{var}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{k1 k2}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}22}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left ( k_{1}, \quad k_{2}\right )
+        $}\end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{A1} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{B1} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{K1} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{k1}\PY{p}{,} \PY{n}{k2}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    Tiene un polinomio caracteristico:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{p}{(}\PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{A1} \PY{o}{\PYZhy{}} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A1}\PY{o}{*}\PY{n}{h}\PY{p}{)}\PY{o}{*}\PY{n}{B1}\PY{o}{*}\PY{n}{K1}\PY{p}{)}\PY{o}{.}\PY{n}{det}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}24}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        - k_{1} + s^{2} + s \left(h k_{1} - k_{2}\right)
+        $}\end{equation*}
+
+    
+
+    o bien:
+
+\[
+s^2 +  \left( h k_1 - k_2 \right) s - k_1
+\]
+
+Al cual podemos aplicar el criterio de estabilidad de Routh-Hurwitz y
+obtener:
+
+\[
+\begin{align}
+k_1 &< 0 \\
+k_2 &< h k_1
+\end{align}
+\]
+
+Por lo que la gráfica de D-particiones se verá:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{h} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{K\PYZus{}1} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{K\PYZus{}2} \PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{K\PYZus{}1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{f} \PY{o}{=} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{K\PYZus{}1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{K\PYZus{}1}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{K\PYZus{}1}\PY{p}{,} \PY{n}{K\PYZus{}2}\PY{p}{)}
+         
+         \PY{n}{ax} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{K\PYZus{}2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{K\PYZus{}1}\PY{p}{,} \PY{n}{where}\PY{o}{=}\PY{n}{K\PYZus{}1}\PY{o}{\PYZlt{}}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{green}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.5\linewidth}{0.9\paperheight}}{Tarea 10_files/Tarea 10_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Por otro lado, para analizar el comportamiento del controlador,
+sustituimos los datos en la ecuación del controlador:
+
+\[
+\begin{align}
+u(t) &=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix} x(t) +
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\int_{-h}^0 e^{-A(\theta + h)} B u(t + \theta) d\theta \\
+&=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} +
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\int_{-h}^0 e^{-A(\theta + h)} B u(t + \theta) d\theta \\
+\end{align}
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{A1}\PY{o}{*}\PY{p}{(}\PY{n}{θ} \PY{o}{+} \PY{n}{h}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}27}]:}
+    
+    
+        \begin{equation*}\adjustbox{max width=\hsize}{$
+        \left[\begin{matrix}1 & - θ - 1\\0 & 1\end{matrix}\right]
+        $}\end{equation*}
+
+    
+
+    \[
+\begin{align}
+u(t) &=
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\begin{pmatrix}
+x_1(t) \\
+x_2(t)
+\end{pmatrix} +
+\int_{-h}^0
+\begin{pmatrix}
+k_1 & k_2
+\end{pmatrix}
+\begin{pmatrix}
+1 & - (\theta  +h) \\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+0 \\
+1
+\end{pmatrix} u(t + \theta) d\theta \\
+&= k_1 x_1(t) + k_2 x_2(t) - \int_{-h}^0 k_1 \theta u(t + \theta) d\theta - \int_{-h}^0 k_1 h u(t + \theta) d\theta + \int_{-h}^0 k_2 u(t + \theta) d\theta \\
+\end{align}
+\]
+
+y al aplicar la transformada de Laplace, tenemos:
+
+\[
+u(s) = k_1 x_1(s) + k_2 x_2(s) - k_1 \left( 1 - e^{-hs} \right) u(s) - k_1 h \frac{1 - e^{-hs}}{s} u(s) + k_2 \frac{1 - e^{-hs}}{s} u(s)
+\]
+
+por lo que al pasar a un solo lado todos los terminos de \(u(s)\):
+
+\[
+\left[ 1 + k_1 \left( 1 - e^{-hs} \right) + k_1 h \frac{1 - e^{-hs}}{s} - k_2 \frac{1 - e^{-hs}}{s} \right] u(s) = k_1 x_1(s) + k_2 x_2(s)
+\]
+
+obtenemos el polinomio caracteristico de la ecuación de control:
+
+\[
+1 + k_1 \left( 1 - e^{-hs} \right) + k_1 h \frac{1 - e^{-hs}}{s} - k_2 \frac{1 - e^{-hs}}{s}
+\]
+
+y al sustituir \(s = j \omega\), obtendremos dos ecuaciones,
+correspondientes a la parte real e imaginaria:
+
+\[
+\begin{align}
+k_1 \left[ h (1 - \cos{(\omega h)}) - \omega \sin{(\omega h)} \right] - k_2 \left[ 1 - \cos{(\omega h)} \right] &= 0 \\
+\omega + k_1 \left[ \omega (1 - \cos{(\omega h)}) - h \sin{(\omega h)} \right] - k_2 \sin{(\omega h)} &= 0 \\
+\end{align}
+\]
+
+por lo que podemos despejar \(k_2\) de ambas ecuaciones y obtener:
+
+\[
+k_2 = \frac{k_1 \left[ h (1 - \cos{(\omega h)}) - \omega \sin{(\omega h)} \right]}{1 - \cos{(\omega h)}} = \frac{k_1 \left[ \omega (1 - \cos{(\omega h)}) - h \sin{(\omega h)} \right] + \omega}{\sin{(\omega h)}}
+\]
+
+y haciendo un poco de algebra, podemos obtener:
+
+\[
+\begin{align}
+\frac{k_1 \left[ h (1 - \cos{(\omega h)}) - \omega \sin{(\omega h)} \right] \sin{(\omega h)}}{1 - \cos{(\omega h)}} - k_1 \left[ \omega (1 - \cos{(\omega h)}) - h \sin{(\omega h)} \right] &= \omega \\
+\frac{k_1 h (1 - \cos{(\omega h)}) \sin{(\omega h)}}{1 - \cos{(\omega h)}} - \frac{k_1 \omega \sin^2{(\omega h)}}{1 - \cos{(\omega h)}} - k_1 \omega (1 - \cos{(\omega h)}) - k_1 h \sin{(\omega h)} &= \omega
+\end{align}
+\]
+
+\[
+\begin{align}
+- \frac{k_1 \omega \sin^2{(\omega h)}}{1 - \cos{(\omega h)}} - k_1 \omega (1 - \cos{(\omega h)}) &= \omega \\
+- k_1 \omega \frac{ \sin^2{(\omega h)} + (1 - \cos{(\omega h)})^2}{1 - \cos{(\omega h)}} &= \omega \\
+k_1 \frac{ \sin^2{(\omega h)} + (1 - \cos{(\omega h)})^2}{1 - \cos{(\omega h)}} &= -1 \\
+k_1 \frac{ \sin^2{(\omega h)} + 1 + \cos^2{(\omega h)} - 2\cos{(\omega h)}}{1 - \cos{(\omega h)}} &= -1 \\
+k_1 \frac{ 2 - 2\cos{(\omega h)}}{1 - \cos{(\omega h)}} &= -1 \\
+k_1 &= - \frac{1}{2}
+\end{align}
+\]
+
+por otro lado, podemos reducir aun mas la expresión para \(k_2\):
+
+\[
+k_2 = \frac{k_1 \left[ h (1 - \cos{(\omega h)}) - \omega \sin{(\omega h)} \right]}{1 - \cos{(\omega h)}} = k_1 \left[ h - \frac{\omega \sin{(\omega h)}}{1 - \cos{\omega h}} \right]
+\]
+
+Si sustituimos un punto a la derecha de esta curva,
+\((k_1, k_2) = (0, 0)\), podemos ver que el polinomio caracteristico es
+trivialmente estable por el criterio de Routh-Hurwitz:
+
+\[
+P(s) = 1
+\]
+
+por lo que la gráfica de D-particiones para el controlador queda:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{k}{def} \PY{n+nf}{par1}\PY{p}{(}\PY{n}{ω}\PY{p}{,} \PY{n}{h}\PY{p}{)}\PY{p}{:}
+             \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k}{import} \PY{n}{sin}\PY{p}{,} \PY{n}{cos}
+             \PY{n}{num} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.0}
+             \PY{n}{den} \PY{o}{=} \PY{l+m+mf}{2.0}
+             \PY{k}{return} \PY{n}{num}\PY{o}{/}\PY{n}{den}
+             
+         \PY{k}{def} \PY{n+nf}{par2}\PY{p}{(}\PY{n}{ω}\PY{p}{,} \PY{n}{h}\PY{p}{)}\PY{p}{:}
+             \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k}{import} \PY{n}{sin}\PY{p}{,} \PY{n}{cos}
+             \PY{n}{num} \PY{o}{=} \PY{n}{h} \PY{o}{\PYZhy{}} \PY{n}{ω}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{ω}\PY{o}{*}\PY{n}{h}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{cos}\PY{p}{(}\PY{n}{ω}\PY{o}{*}\PY{n}{h}\PY{p}{)}\PY{p}{)}
+             \PY{n}{den} \PY{o}{=} \PY{l+m+mf}{2.0}
+             \PY{k}{return} \PY{n}{num}\PY{o}{/}\PY{n}{den}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k}{import} \PY{n}{pi}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{τ} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}
+         \PY{n}{k\PYZus{}1} \PY{o}{=} \PY{p}{[}\PY{n}{par1}\PY{p}{(}\PY{n}{om}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{)} \PY{k}{for} \PY{n}{om} \PY{o+ow}{in} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{τ}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{τ}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{]}
+         \PY{n}{k\PYZus{}2} \PY{o}{=} \PY{p}{[}\PY{n}{par2}\PY{p}{(}\PY{n}{om}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{)} \PY{k}{for} \PY{n}{om} \PY{o+ow}{in} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{τ}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{τ}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/Users/roberto/miniconda3/lib/python3.4/site-packages/IPython/kernel/\_\_main\_\_.py:9: RuntimeWarning: divide by zero encountered in double\_scalars
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{f} \PY{o}{=} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{k\PYZus{}1}\PY{p}{,} \PY{n}{k\PYZus{}2}\PY{p}{)}
+         
+         \PY{n}{ax} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{axvspan}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{orange}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.5\linewidth}{0.9\paperheight}}{Tarea 10_files/Tarea 10_44_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Y el sistema con este controlador será estable para los valores de
+\(k_1\) y \(k_2\) escogidos tal que se encuentren en la intersección de
+estas dos regiones:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{f} \PY{o}{=} \PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{K\PYZus{}1}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{K\PYZus{}1}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{K\PYZus{}1}\PY{p}{,} \PY{n}{K\PYZus{}2}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{k\PYZus{}1}\PY{p}{,} \PY{n}{k\PYZus{}2}\PY{p}{)}
+         
+         \PY{n}{ax} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{K\PYZus{}2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{K\PYZus{}1}\PY{p}{,} \PY{n}{where}\PY{o}{=}\PY{n}{K\PYZus{}1}\PY{o}{\PYZlt{}}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{facecolor}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{green}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{axvspan}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{orange}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}k\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.5\linewidth}{0.9\paperheight}}{Tarea 10_files/Tarea 10_46_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Puedes acceder a este notebook a traves de la página
+
+http://bit.ly/1B705kd
+
+o escaneando el siguiente código:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.2\textwidth]{../codigos/codigo10.jpg}
+\end{figure}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
