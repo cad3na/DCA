@@ -1,0 +1,368 @@
+%-------------------------------------------------------------------------------
+%   PAQUETES Y OTRAS CONFIGURACIONES
+%-------------------------------------------------------------------------------
+
+\input{./estilo/handout.tex}
+
+%-------------------------------------------------------------------------------
+%   TITULO
+%-------------------------------------------------------------------------------
+
+\title{Modelado de robots manipuladores}
+\author{Roberto Cadena Vega}
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA EL DOCUMENTO
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+    \maketitle
+
+\begin{multicols*}{2}
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Introducción}
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Movimientos rigidos y transformaciones homogéneas}
+
+        Existen dos tipos básicos de movimientos rigidos que utilizaremos para describir el movimiento de un robot manipulador, las rotaciones y las traslaciones. Empezaremos describiendo las rotaciones básicas y generalizando a un método para obtener una rotación arbitraria a partir de estas.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Matrices básicas de rotación}
+
+            Las matrices básicas de rotación se definen con respecto al eje que rotan, y su inversa siempre es su transpuesta $R^{-1} = R^T$.
+
+            \begin{equation}
+                R_{x, \theta} = 
+                \begin{pmatrix}
+                    1 & 0 & 0 \\
+                    0 & \cos{\theta} & -\sin{\theta} \\
+                    0 & \sin{\theta} & \cos{\theta}
+                \end{pmatrix}
+            \end{equation}
+
+            \begin{equation}
+                R_{y, \theta} = 
+                \begin{pmatrix}
+                    \cos{\theta} & 0 & \sin{\theta} \\
+                    0 & 1 & 0 \\
+                    -\sin{\theta} & 0 & \cos{\theta}
+                \end{pmatrix}
+            \end{equation}
+
+            \begin{equation}
+                R_{z, \theta} =
+                \begin{pmatrix}
+                    \cos{\theta} & -\sin{\theta} & 0 \\
+                    \sin{\theta} & \cos{\theta} & 0 \\
+                    0 & 0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Composición de rotaciones}
+
+            Una rotación compuesta de un marco de referencia $o_0 x_0 y_0 z_0$ a un marco de referencia $o_1 x_1 y_1 z_1$ denotada por $R_0^1$ y de una del marco de referencia $o_1 x_1 y_1 z_1$ al marco $o_2 x_2 y_2 z_2$ denotada por $R_1^2$ y se compone:
+
+            \begin{equation}
+                R_0^2 = R_0^1 R_1^2
+            \end{equation}
+
+            Cabe notar que estas rotaciones son con respecto a marcos de referencia actuales, es decir, estas rotaciones son dadas con respecto al marco de referencia anterior, si ademas quisieramos dar una rotación extra, $R_f$, con respecto al marco de referencia fijo $o_0 x_0 y_0 z_0$, tendriamos que:
+
+            \begin{equation}
+                R = R_f R_0^1 R_1^2
+            \end{equation}
+
+            es decir, la matriz de rotación con respecto al marco de referencia fijo se premultiplica, mientras que las matrices de rotación con respecto a marcos de referencia actuales se postmultiplican.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Angulos de Euler}
+
+            Dado el formalismo de angulos de Euler, podemos definir una matriz de rotación compuesta que utilice estos angulos para su definición:
+
+            \begin{align}
+                R &= R_{z, \phi} R_{y, \theta} R_{z, \psi} \nonumber \\
+                &=
+                \begin{pmatrix}
+                    c_{\phi} c_{\theta} c_{\psi} - s_{\phi} s_{\psi} & - c_{\phi} c_{\theta} s_{\psi} - s_{\phi} c_{\psi} & c_{\phi} s_{\theta} \\
+                    s_{\phi} c_{\theta} c_{\psi} + c_{\phi} s_{\psi} & - s_{\phi} c_{\theta} s_{\psi} + c_{\phi} c_{\psi} & s_{\phi} s_{\theta} \\
+                    - s_{\theta} c_{\psi} & s_{\theta} s_{\psi} & c_{\theta}
+                \end{pmatrix}
+            \end{align}
+
+            De esta notación podemos derivar una manera de obtener $\phi$, $\theta$ y $\psi$ dada una matriz de rotación arbitraria, utilizando propiedades de las matrices de rotación, de manera que:
+
+            \begin{equation}
+                \theta =
+                \begin{cases}
+                    \atandos{\left( r_{33}, \sqrt{1 - r_{33}^2} \right)} \\
+                    \atandos{\left( r_{33}, -\sqrt{1 - r_{33}^2} \right)}
+                \end{cases}
+            \end{equation}
+
+            y $\phi$ y $\psi$ estarán dadas, dependiendo de como se escoja $\theta$:
+
+            \begin{equation}
+                \phi =
+                \begin{cases}
+                    \atandos{(r_{13}, r_{23})} \\
+                    \atandos{(-r_{13}, -r_{23})}
+                \end{cases}
+            \end{equation}
+
+            \begin{equation}
+                \phi =
+                \begin{cases}
+                    \atandos{(-r_{31}, r_{32})} \\
+                    \atandos{(r_{31}, -r_{32})}
+                \end{cases}
+            \end{equation}
+
+            Cabe mencionar que existen casos degenerados, en los que no existe solución única para $\phi$ y $\psi$, especificamente cuando $s_{\theta} = 0 \implies \theta = 0^o, 180^o, \dots$, por lo que la matriz de rotación tiene la forma:
+
+            \begin{equation*}
+                R =
+                \begin{pmatrix}
+                    c_{\phi} c_{\psi} - s_{\phi} s_{\psi} & - c_{\phi} s_{\psi} - s_{\phi} c_{\psi} & 0 \\
+                    s_{\phi} c_{\psi} + c_{\phi} s_{\psi} & - s_{\phi} s_{\psi} + c_{\phi} c_{\psi} & 0 \\
+                    0 & 0 & \pm 1
+                \end{pmatrix}
+            \end{equation*}
+
+            por lo que:
+
+            \begin{equation}
+                \phi - \psi = \atandos{(-r_{11}, -r_{12})}
+            \end{equation}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Angulos de roll, pitch y yaw}
+
+            Si por otro lado, queremos describir rotaciones con respecto a cada eje del marco de referencia fijo, podemos definir una matriz de rotación de la siguiente manera:
+
+            \begin{align}
+                R &= R_{z, \phi} R_{y, \theta} R_{x, \psi} \nonumber \\
+                &=
+                \begin{pmatrix}
+                    c_{\phi} c_{\theta} & -s_{\phi} c_{\psi} + c_{\phi} s_{\theta} s_{\psi} & s_{\phi} s_{\psi} + c_{\phi} s_{\theta} c_{\psi} \\
+                    s_{\phi} c_{\theta} & c_{\phi} c_{\psi} + s_{\phi} s_{\theta} s_{\psi} & -c_{\phi} s_{\psi} + s_{\phi} s_{\theta} c_{\psi} \\
+                    - s_{\theta} & c_{\theta} s_{\psi} & c_{\theta} c_{\psi}
+                \end{pmatrix}
+            \end{align}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Rotación alrededor de un eje arbitrario}
+
+            Podemos representar la rotación al rededor de un eje arbitrario conociendo las rotaciones necesarias para obtener este marco de referencia. Sea la rotación a transformar $R_{z, \theta}$, la cual esta expresada como una rotación al rededor del eje $z$ de nuestro nuevo marco de referencia, por lo que podemos aplicar una transformación de similitud para obtener esta rotación expresada en el marco de referencia actual:
+
+            \begin{align}
+                R_{k, \theta} &= R_0^1 R_{z, \theta} {R_0^1}^{-1} = R_0^1 R_{z, \theta} {R_0^1}^{T} \nonumber \\
+                &= R_{z, \alpha} R_{y, \beta} R_{z, \theta} R_{y, -\beta} R_{z, -\alpha}
+            \end{align}
+
+            en donde $\alpha$ es el angulo medido entre el eje $x$ actual y la proyección del eje de rotación en el plano $xy$ actual y $\beta$ es el angulo entre el eje de rotación y el eje $z$ actual.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Movimientos rígidos}
+
+            Un movimiento rigido lo definimos como un par ordenado $(d, R)$, en donde $d \in \mathbb{R}^3$ es un vector de traslación en $x$, $y$ y $z$ y $R \in SO(3)$ es una rotación con respecto al marco de referencia actual, de tal manera que si la rotación que relaciona a dos marcos de referencia $o_0 x_0 y_0 z_0$ y $o_1 x_1 y_1 z_1$ es $R_0^1$ y la distancia que separa los origenes de estos dos marcos de referencia es $d_0^1$; un punto $p^1$ que esta definido con respecto a $o_1 x_1 y_1 z_1$ se puede representar con respecto a $o_0 x_0 y_0 z_0$ al hacer:
+
+            \begin{equation}
+                p^0 = R_0^1 p^1 + d_0^1
+            \end{equation}
+
+            De manera similar, para un tercer marco de referencia $o_2 x_2 y_2 z_2$ relacionado con $o_1 x_1 y_1 z_1$ de tal manera que:
+
+            \begin{equation*}
+                p^1 = R_1^2 p^2 + d_1^2
+            \end{equation*}
+
+            podemos decir que $o_0 x_0 y_0 z_0$ esta relacionado con $o_2 x_2 y_2 z_2$ y podemos escribir a $p^2$ como:
+
+            \begin{align*}
+                p^0 &= R_0^1 p^1 + d_0^1 \\
+                &= R_0^1 R_1^2 p^2 + R_0^1 d_1^2 + d_0^1 \\
+                &= R_0^2 p^2 + d_0^2
+            \end{align*}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Transformaciones homogéneas}
+
+            Una matriz de transformación homogénea es una representación de estos movimientos rígidos que es mucho mas facil de operar en largas cadenas cinemáticas. Sea $H$ una matriz de transformación homogenea, compuesta por la rotación $R \in SO(3)$ y $d \in \mathbb{R}$ de tal manera que:
+
+            \begin{equation}
+                H =
+                \begin{pmatrix}
+                    R & d \\
+                    0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+            y la inversa de esta matriz $H$ es:
+
+            \begin{equation}
+                H^{-1} =
+                \begin{pmatrix}
+                    R^T & -R^T d \\
+                    0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+            y en donde el punto $p^1$ ahora lo representamos como:
+
+            \begin{equation}
+                P^1 =
+                \begin{pmatrix}
+                    p^1 \\
+                    1
+                \end{pmatrix}
+            \end{equation}
+
+            de tal manera que con respecto al marco de referencia $o_0 x_0 y_0 z_0$ se escribe:
+
+            \begin{equation}
+                P^0 = H_0^1 P^1
+            \end{equation}
+
+            Cabe hacer notar que $H_0^1$ puede ser visto como:
+
+            \begin{equation}
+                H_0^1 =
+                \begin{pmatrix}
+                    n & s & a & d \\
+                    0 & 0 & 0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+            en donde $n$ es un vector columna unitario, en la dirección de $x_1$ expresado en el marco de referencia $o_0 x_0 y_0 z_0$, $s$ en la dirección de $y_1$ y $a$ en la dirección de $z_1$, y $d$, como es de esperarse, es la distancia entre los dos marcos de referencia expresado con respecto a $o_0 x_0 y_0 z_0$.
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Cinemática directa e inversa}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Cadenas cinemáticas}
+
+        En este punto empezaremos a hablar de variables articulares las cuales se denotan por $q_i$ y se refieren a $\theta_i$ si la articulación $i$ es rotacional o a $d_i$ si la articulación es prismática, de tal manera que para cada matriz de transformación homogénea asignaremos una variable $q_i$ de la cual depende, es decir $A_i = A_i(q_i)$. En este sentido, una cadena cinemática será el conjunto de transformaciones homogéneas que describan el punto de estudio con respecto al marco de referencia fijo:
+
+        \begin{equation}
+            H = T_0^n = A_1(q_1) \dots A_n(q_n)
+        \end{equation}
+
+        en donde cada transformación homogénea es de la forma:
+
+        \begin{equation}
+            A_i =
+            \begin{pmatrix}
+                R_{i-1}^i & o_{i-1}^i \\
+                0 & 1
+            \end{pmatrix}
+        \end{equation}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Convención Denavit-Hartenberg}
+
+            La convención Denavit-Hartenberg se basa en hacer cada transformación homogénea compuesta de las siguientes transformaciones básicas, de tal manera que:
+
+            \begin{align}
+                A_i &= Rot_{z, \theta_i} Trans_{z, d_i} Trans_{x, a_i} Rot_{x, \alpha_i} \nonumber \\
+                &=
+                \begin{pmatrix}
+                    c_{\theta_i} & -s_{\theta_i} c_{\alpha_i} & s_{\theta_i} s_{\alpha_i} & a_i c_{\theta_i} \\
+                    s_{\theta_i} & c_{\theta_i} c_{\alpha_i} & -c_{\theta_i} s_{\alpha_i} & a_i s_{\theta_i} \\
+                    0 & s_{\alpha_i} & c_{\alpha_i} & d_i \\
+                    0 & 0 & 0 & 1
+                \end{pmatrix}
+            \end{align}
+
+            tomando un conjunto de reglas para que esta transformación compuesta pueda caracterizar perfectamente cualquier transformación arbitraria:
+
+            \begin{enumerate}
+                \item El eje $x_i$ es perpendicular a $z_{i-1}$
+                \item El eje $x_i$ intersecta al eje $z_{i-1}$
+            \end{enumerate}
+
+            por lo que queda por hacer es definir la metodología para asignar los marcos de referencia de cada articulación, de tal manera que estas reglas se cumplan:
+
+            \begin{enumerate}
+                \item Localizar los ejes $z_{i-1}$ de tal manera que coincidan con el eje de rotación o traslación de la articulación $i$.
+                \item Establecer el referencial fijo en un punto a lo largo del eje $z_0$, colocando los ejes $x_0$ y $y_0$ convenientemente.
+                \item Para las articulaciones $i = 1, 2, \dots, n-1$:
+                \begin{enumerate}
+                    \item Asignar $o_i$ al punto donde la normal común entre $z_i$ y $z_{i-1}$ intersectan a $z_i$. Notar que $o_i$ corresponde a la articulación $i+1$. En caso que $z_i$ y $z_{i-1}$ sean paralelas, se deberá localizar $o_i$ arbitrariamente en $z_i$.
+                    \item Establecer $x_i$ a lo largo de la normal común entre $z_i$ y $z_{i-1}$ que pasa por $o_i$, o bien en la dirección normal al plano $z_i$-$z_{i-1}$ en el caso que $z_i$ y $z_{i-1}$ se intersecten.
+                    \item Establecer $y_i$ de manera que este complete un marco de referencia derecho.
+                \end{enumerate}
+                \item Suponiendo que la ultima articulación es rotacional, hacer $z_n = a$, a lo largo de la dirección $z_{n-1}$. Establecer el referencial $o_n x_n y_n z_n$ convenientemente sobre $z_n$, preferentemente en el punto de interes de la herramienta final. Colocar $y_n$ en la dirección de cierre de la pinza.
+                \item Crear una tabla de parametros $a_i$, $d_i$, $\alpha_i$ y $\theta_i$, en donde estos corresponden a:
+                \begin{enumerate}
+                    \item $a_i$ es la distancia medida a lo largo del eje $x_i$ desde $o_i$ a la intersección de los ejes $z_{i-1}$ y $x_i$.
+                    \item $d_i$ es la distancia medida a lo largo del eje $z_{i-1}$ desde $o_{i-1}$ a la intersección de los ejes $z_{i-1}$ y $x_i$.
+                    \item $\alpha_i$ es el angulo entre los ejes $z_i$ y $z_{i-1}$, medido alrededor del eje $x_i$.
+                    \item $\theta_i$ es el angulo entre los ejes $x_i$ y $x_{i-1}$, medido alrededor del eje $z_{i-1}$.
+                \end{enumerate}
+                \item Calcular las transformaciones homogéneas $A_i$.
+                \item Calcular $T_0^n = A_1 \dots A_n$
+            \end{enumerate}
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Cinemática inversa}
+
+            El problema de la cinemática inversa es no trivial, ya que involucra la obtención de $n$ parametros, para un manipulador de $n$ grados de libertad, a partir de $6$ coordenadas de posición y orientación, y que en general estan distribuidas en $12$ ecuaciones no lineales. Para manipuladores con pocos grados de libertad, es posible reducir este problema a uno soluble, utilizando una muñeca esférica en los ultmos grados de libertad del manipulador y aprovechar el desacoplamiento cinemático que ocurre.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Desacoplamiento cinemático}
+
+            La muñeca esférica que queremos utilizar tiene como transformación homogénea:
+
+            \begin{equation}
+                T_{n-3}^n =
+                \begin{pmatrix}
+                    c_{\phi} c_{\theta} c_{\psi} - s_{\phi} s_{\psi} & - c_{\phi} c_{\theta} s_{\psi} - s_{\phi} c_{\psi} & c_{\phi} s_{\theta} & c_{\phi} s_{\theta} d_n \\
+                    s_{\phi} c_{\theta} c_{\psi} + c_{\phi} s_{\psi} & - s_{\phi} c_{\theta} s_{\psi} + c_{\phi} c_{\psi} & s_{\phi} s_{\theta} & s_{\phi} s_{\theta} d_n \\
+                    - s_{\theta} c_{\psi} & s_{\theta} s_{\psi} & c_{\theta} & c_{\theta} d_n \\
+                    0 & 0 & 0 & 1
+                \end{pmatrix}
+            \end{equation}
+
+            en donde $q_{n-2} = \phi$, $q_{n-1} = \theta$, $q_{n} = \psi$, ya que la configuración de la muñeca esférica corresponde perfectamente con los angulos de Euler.
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Cinemática de velocidad}
+
+%-------------------------------------------------------------------------------
+%   EMPIEZA SECCION
+%-------------------------------------------------------------------------------
+
+    \section{Dinámica}
+
+%-------------------------------------------------------------------------------
+%   FIN DEL DOCUMENTO
+%-------------------------------------------------------------------------------
+\end{multicols*}
+\end{document}

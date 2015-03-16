@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{mathpazo}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\usepackage[top=1cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+
+\usetikzlibrary{shapes, arrows, decorations.markings}
+
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+
+\DeclareMathOperator{\atandos}{atan2}
