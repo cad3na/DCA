@@ -1,0 +1,29 @@
+\input{../estilo.tex}
+
+\author{Roberto Cadena Vega}
+\title{Tarea 3}
+
+\begin{document}
+    \maketitle
+
+    \section{Resúmen de articulo Controllability, observability, pole allocation, and state reconstruction\cite{Willems1971}}
+
+        En este articulo se presentan formalmente los conceptos de controlabilidad y observabilidad, ayudandose de los conceptos de alcanzabilidad y reconstruccionabilidad. Luego se considera el problema de localización de polos en lazo cerrado, y se demuestra que esto es posible usando realimentación de estado, si y solo si el sistema es controlable en primer lugar. Luego se muestra que es posible hacer esto usando un reconstructor del estado (midiendo las entradas y salidas del sistema), si el sistema es observable. Despues se consideran las propiedades de estabilización y reconstruccionabilidad de los sistemas lineales variantes en el tiempo. Se consideran aspectos cualitativos de las funciones de transferencia contra las representaciones en espacio de estados y se concluye que la minimalidad del espacio de estado es equivalente a la controlabilidad y observabilidad. Finalmente se demuestra la equivalencia de la estabilidad interna en el sentido de Lyapunov y la estabilidad entrada salida en sistemas uniformemente controlables y observables.
+
+        \subsection{Sistemas dinámicos}
+
+        	\begin{definicion}
+        		Un sistema dinámico es una quintupla $\{ \mathcal{U}, \mathcal{Y}, X, \phi, r \}$ que satisface los siguientes axiomas para todo $u_1, u_2 \in \mathcal{U}$, $x_0 \in X$, $t_0, t_1, t_2 \in \mathbb{R}$ con $t_0 \leq t_1 \leq t_2$:
+
+        		\begin{description}
+        			\item[Causalidad] $\phi(t_1, t_0, x_0 u_1) = \phi(t_1, t_0 x_0 u_2)$ siempre y cuando $u_1(t) = u_2(t)$ para $t_0 \leq t \leq t_1$.
+        			\item[Consistencia]
+        			\item[Propiedad de semigrupo]
+        			\item[Suavidad]
+        		\end{description}
+        	\end{definicion}
+
+    \bibliographystyle{ieeetr}
+    \bibliography{bibliografia}
+
+\end{document}

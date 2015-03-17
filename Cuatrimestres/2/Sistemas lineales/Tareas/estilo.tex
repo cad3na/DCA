@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\usepackage{graphicx} % Used to insert images
+\usepackage{enumerate} % Needed for markdown enumerations to work
+\usepackage{geometry} % Used to adjust the document margins
+\usepackage{amsmath} % Equations
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{amssymb} % Equations
+\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+\usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+\usepackage{fancyvrb} % verbatim replacement that allows latex
+\usepackage{grffile} % extends the file name processing of package graphics 
+                     % to support a larger range 
+% The hyperref package gives us a pdf with properly built
+% internal navigation ('pdf bookmarks' for the table of contents,
+% internal cross-reference links, web links for URLs, etc.)
+\usepackage{hyperref}
+\usepackage{longtable} % longtable support required by pandoc >1.10
+\usepackage{booktabs}  % table support for pandoc > 1.12.2
+\usepackage{mathpazo}
+\usepackage[spanish, es-noquoting]{babel}
+\usepackage{tikz}           % Paquete para crear diagramas
+
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+% Subpaquete para diagramas de bloques
+\usetikzlibrary{shapes, arrows, decorations.markings, babel}
+% Estilos comunes de bloques para diagramas
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{init} = [pin edge={to-, thin, black}]
+\tikzstyle{sum} = [draw, circle]
+\tikzstyle{empty} = [coordinate]
+\tikzstyle{vecArrow} = [thick, decoration={markings, mark=at position
+    1 with {\arrow[semithick]{open triangle 60}}},
+    double distance=1.4pt, shorten >= 5.5pt,
+    preaction = {decorate},
+    postaction = {draw,line width=1.4pt, white, shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white, line width=1.4pt, shorten >= 4.5pt]
+% Definiciones de teoremas
+\theoremstyle{plain}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolario}
+\theoremstyle{remark}
+\newtheorem{nota}{Nota}
+\newtheorem{resultado}{Resultado}
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}
+\newtheorem{problema}{Problema}
