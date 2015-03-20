@@ -456,6 +456,46 @@
 
     \section{Dinámica}
 
+        La obtención de la dinámica de un manipulador se basa en el formalismo Euler-Lagrange el cual implica el calculo de la ecuación:
+
+        \begin{equation}
+            \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q_i}} \right) - \frac{\partial L}{\partial q_i} = - \tau_i
+        \end{equation}
+
+        para cada grado de libertad, en donde $L$ le denominamos Lagrangiano y se obtiene al restar las energias cinéticas y potenciales del sistema:
+
+        \begin{equation}
+            L = K - U
+        \end{equation}
+
+        Al hacer estos calculos, llegamos a una forma matricial para la dinámica del manipulador:
+
+        \begin{equation}
+            D(q) \ddot{q} + C(q, \dot{q}) \dot{q} + g(q) = \tau
+        \end{equation}
+
+        en donde $D(q)$ es la matriz de inercia generalizada, definida como:
+
+        \begin{equation}
+            D(q) = \sum_{i=1}^n \left[ m_i J_{v_i}(q)^T J_{v_i}(q) + J_{\omega_i}^T \bar{I}_i J_{\omega_i} \right]
+        \end{equation}
+
+        con $J_{v_i}$ y $J_{\omega_i}$ partes traslacional y rotacional del Jacobiano analítico y $\bar{I}_i$ la matriz de inercia del eslabon.
+
+        $C(q, \dot{q})$ es la matriz de Coriolis, con elementos $c_{kj}$, que se obtienen con:
+
+        \begin{equation}
+            c_{kj} = \sum_{i=1}^n c_{ijk}(q) \dot{q}_i
+        \end{equation}
+
+        a los elementos $c_{ijk}$ les llamamos simbolos de Christoffel y se obtienen haciendo:
+
+        \begin{equation}
+            c_{ijk} = \frac{1}{2} \left\{ \frac{\partial d_{kj}}{\partial q_i} + \frac{\partial d_{ki}}{\partial q_j} - \frac{\partial d_{ij}}{\partial q_k} \right\}
+        \end{equation}
+
+        y el vector $g(q)$ es la derivada de $U$ con respecto a cada grado de libertad.
+
 %-------------------------------------------------------------------------------
 %   FIN DEL DOCUMENTO
 %-------------------------------------------------------------------------------
