@@ -19,7 +19,7 @@
 
     \maketitle
 
-\begin{multicols*}{2}
+\begin{multicols*}{3}
 
 %-------------------------------------------------------------------------------
 %   EMPIEZA SECCION
@@ -250,7 +250,7 @@
                 \end{pmatrix}
             \end{equation}
 
-            en donde $n$ es un vector columna unitario, en la dirección de $x_1$ expresado en el marco de referencia $o_0 x_0 y_0 z_0$, $s$ en la dirección de $y_1$ y $a$ en la dirección de $z_1$, y $d$, como es de esperarse, es la distancia entre los dos marcos de referencia expresado con respecto a $o_0 x_0 y_0 z_0$.
+            en donde $n$ es un vector columna unitario, en la dirección de $x_1$ expresado en el marco de referencia $o_0 x_0 y_0 z_0$, $s$ en la dirección de $y_1$ y $a$ en la dirección de $z_1$ y $d$, como es de esperarse, es la distancia entre los dos marcos de referencia expresado con respecto a $o_0 x_0 y_0 z_0$.
 
 %-------------------------------------------------------------------------------
 %   EMPIEZA SECCION
@@ -349,11 +349,106 @@
 
             en donde $q_{n-2} = \phi$, $q_{n-1} = \theta$, $q_{n} = \psi$, ya que la configuración de la muñeca esférica corresponde perfectamente con los angulos de Euler.
 
+            Una vez que consideramos que la orientación final puede estar dada por una rotación arbitraria, tan solo tenemos que concentrarnos en la cinemática inversa de posición, tomando en cuenta que la posición debido al resto del robot manipulador será:
+
+            \begin{equation}
+                P_{me} = P_f - d_n R_0^n \hat{k}
+            \end{equation}
+
+            En donde $P_f$ se refiere a la posición final deseada, $R_0^n$ es la matriz de rotación asociada a la orientación final deseada, y $d_n$ es la distancia desde el centro de la muñeca esferica hasta el punto de estudio. Cabe notar que $R_0^n \hat{k}$ es tan solo la ultima columna de $R_0^n$, por lo que no hace falta ningún calculo extra de productos matriciales.
+
+            Ya que tenemos una posición para alcanzar con el robot manipulador antes de la muñeca esferica, tan solo queda calcular la orientación que esta debe tener para que al final tengamos la orientación deseada:
+
+            \begin{equation}
+                R_{n-3}^n = \left( R_0^{n-3} \right)^{-1} R_0^n = \left( R_0^{n-3} \right)^T R_0^n
+            \end{equation}
+
+            Por lo que solo queda calcular los angulos de Euler asociados a esta ultima rotación compuesta, lo cual puede hacerse con las formulas mencionadas anteriormente.
+
 %-------------------------------------------------------------------------------
 %   EMPIEZA SECCION
 %-------------------------------------------------------------------------------
 
     \section{Cinemática de velocidad}
+
+        Hasta el momento hemos estudiado la relación entre las variables en el espacio de trabajo $\mathbb{X}$, es decir las posiciones de las articulaciones, y las variables en el espacio articular $q$, es decir las rotaciones y traslaciones ocurridas en el marco del robot manipulador; sin embargo ahora queremos estudiar la relación entre la velocidad de las articulaciones del robot y las velocidades en los actuadores del robot.
+
+        \begin{equation}
+            \mathbb{X} = F(q) \implies \frac{d \mathbb{X}}{dt} = \frac{\partial F(q)}{\partial q} \dot{q}
+        \end{equation}
+
+        Al termino que relaciona estos dos conjuntos de variables le conocemos como Jacobiano analítico, sin embargo calcular la derivada parcial con respecto a cada variable articular resultaría inmensamente complicado (asumiendo que hemos podido encontrar una expresión analítica para cada una), por lo que utlizaremos un concepto intermedio llamado Jacobiano geométrico.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Jacobiano geométrico}
+
+            El jacobiano geométrico resulta de estudiar la relación:
+
+            \begin{equation}
+                \begin{pmatrix}
+                    V_0^n \\
+                    \omega_0^n
+                \end{pmatrix} = J_g(q) \dot{q}
+            \end{equation}
+
+            Y este Jacobiano geométrico tendrá la forma:
+
+            \begin{equation}
+                J_g =
+                \begin{pmatrix}
+                    J_1 & \dots & J_n
+                \end{pmatrix}
+            \end{equation}
+
+            en donde los terminos $J_i$ estan dados por:
+
+            \begin{equation}
+                J_i =
+                \begin{cases}
+                    \begin{pmatrix}
+                        z_{i-1} \\
+                        0
+                    \end{pmatrix} & \text{junta prismática} \\
+                    \begin{pmatrix}
+                        z_{i-1} \times \left( o_n - o_{i-1} \right) \\
+                        z_{i-1}
+                    \end{pmatrix} & \text{junta rotacional}
+                \end{cases}
+            \end{equation}
+
+            Cabe notar que ya tenemos toda la información necesaria, inspeccionando la matriz de transformación homogénea $T_0^{i-1}$, podemos notar que las ultimas dos columnas corresponden a $z_{i-1}$ y a $o_{i-1}$.
+
+%-------------------------------------------------------------------------------
+
+        \subsection{Jacobiano analítico}
+
+            El jacobiano analítico correspondiente a la relación:
+
+            \begin{equation}
+                \dot{\mathbb{X}} = J(q) \dot{q}
+            \end{equation}
+
+            es obtenido de derivar la rotación debida a los angulos de Euler, y obtener la siguiente relación entre este y el Jacobiano geométrico:
+
+            \begin{equation}
+                J =
+                \begin{pmatrix}
+                    I & 0 \\
+                    0 & B(\alpha)^{-1}
+                \end{pmatrix}
+            \end{equation}
+
+            en donde $B(\alpha)$ es:
+
+            \begin{equation}
+                B(\alpha) =
+                \begin{pmatrix}
+                    c_{\psi} s_{\theta} & -s_{\psi} & 0 \\
+                    s_{\psi} s_{\theta} & c_{\psi} & 0 \\
+                    c_{\theta} & 0 & 1
+                \end{pmatrix}
+            \end{equation}
 
 %-------------------------------------------------------------------------------
 %   EMPIEZA SECCION

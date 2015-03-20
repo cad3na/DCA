@@ -10,16 +10,15 @@
 \usepackage{tikz}
 \usepackage{mathpazo}
 \usepackage{multicol}
-\setlength{\columnsep}{1cm}
+\setlength{\columnsep}{0.8cm}
+\usepackage{microtype}
 
-\usepackage[top=1cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage[a3paper, top=1cm, bottom=1.5cm, left=0.8cm, right=0.8cm]{geometry}
 
 \usetikzlibrary{shapes, arrows, decorations.markings}
 
-\newenvironment{amatrix}[1]{%
-  \left(\begin{array}{@{}*{#1}{c}|c@{}}
-}{%
-  \end{array}\right)
-}
+\newenvironment{amatrix}[1]
+	{\left(\begin{array}{@{}*{#1}{c}|c@{}}}
+	{\end{array}\right)}
 
 \DeclareMathOperator{\atandos}{atan2}
