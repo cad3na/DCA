@@ -102,6 +102,10 @@
                 \end{pmatrix}
             \end{align}
 
+            \begin{center}
+                \tcbincludegraphics[blank, arc=0.5cm, width=0.8\linewidth]{imagenes/angulosEuler.JPG}
+            \end{center}
+
             De esta notación podemos derivar una manera de obtener $\phi$, $\theta$ y $\psi$ dada una matriz de rotación arbitraria, utilizando propiedades de las matrices de rotación, de manera que:
 
             \begin{equation}
@@ -163,9 +167,17 @@
                 \end{pmatrix}
             \end{align}
 
+            \begin{center}
+                \tcbincludegraphics[blank, arc=0.5cm, width=0.8\linewidth]{imagenes/angulosRPY.JPG}
+            \end{center}
+
 %-------------------------------------------------------------------------------
 
         \subsection{Rotación alrededor de un eje arbitrario}
+
+            \begin{center}
+                \tcbincludegraphics[blank, arc=0.5cm, width=0.8\linewidth]{imagenes/ejeArbitrario.JPG}
+            \end{center}
 
             Podemos representar la rotación al rededor de un eje arbitrario conociendo las rotaciones necesarias para obtener este marco de referencia. Sea la rotación a transformar $R_{z, \theta}$, la cual esta expresada como una rotación al rededor del eje $z$ de nuestro nuevo marco de referencia, por lo que podemos aplicar una transformación de similitud para obtener esta rotación expresada en el marco de referencia actual:
 
@@ -302,7 +314,11 @@
                 \item El eje $x_i$ intersecta al eje $z_{i-1}$
             \end{enumerate}
 
-            por lo que queda por hacer es definir la metodología para asignar los marcos de referencia de cada articulación, de tal manera que estas reglas se cumplan:
+            \begin{center}
+                \tcbincludegraphics[blank, arc=0.5cm, width=\linewidth]{imagenes/parametrosDH.JPG}
+            \end{center}
+
+            Por lo que queda por hacer es definir la metodología para asignar los marcos de referencia de cada articulación, de tal manera que estas reglas se cumplan:
 
             \begin{enumerate}
                 \item Localizar los ejes $z_{i-1}$ de tal manera que coincidan con el eje de rotación o traslación de la articulación $i$.
