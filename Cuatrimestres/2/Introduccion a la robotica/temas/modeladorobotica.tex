@@ -452,7 +452,7 @@
                 \begin{pmatrix}
                     I & 0 \\
                     0 & B(\alpha)^{-1}
-                \end{pmatrix}
+                \end{pmatrix} J_g
             \end{equation}
 
             en donde $B(\alpha)$ es:
@@ -496,7 +496,7 @@
             D(q) = \sum_{i=1}^n \left[ m_i J_{v_i}(q)^T J_{v_i}(q) + J_{\omega_i}^T \bar{I}_i J_{\omega_i} \right]
         \end{equation}
 
-        con $J_{v_i}$ y $J_{\omega_i}$ partes traslacional y rotacional del Jacobiano analítico y $\bar{I}_i$ la matriz de inercia del eslabon.
+        con $J_{v_i}$ y $J_{\omega_i}$ partes traslacional y rotacional del Jacobiano geométrico y $\bar{I}_i$ la matriz de inercia del eslabon.
 
         $C(q, \dot{q})$ es la matriz de Coriolis, con elementos $c_{kj}$, que se obtienen con:
 
@@ -511,6 +511,12 @@
         \end{equation}
 
         y el vector $g(q)$ es la derivada de $U$ con respecto a cada grado de libertad.
+
+        \begin{center}
+            \tcbincludegraphics[blank, arc=0.5cm, width=\linewidth]{imagenes/codigoqr.JPG}
+        \end{center}
+
+        http://bit.ly/1CTvpuf
 
 %-------------------------------------------------------------------------------
 %   FIN DEL DOCUMENTO
