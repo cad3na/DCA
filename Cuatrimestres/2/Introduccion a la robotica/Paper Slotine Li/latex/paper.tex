@@ -2,25 +2,7 @@
 \documentclass[journal]{IEEEtran}
 
 % Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
-
-% *** MISC UTILITY PACKAGES ***
-%
-%\usepackage{ifpdf}
-% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
-% compilation based on whether the output is pdf or dvi.
-% usage:
-% \ifpdf
-%   % pdf code
-% \else
-%   % dvi code
-% \fi
-% The latest version of ifpdf.sty can be obtained from:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
-% Also, note that IEEEtran.cls V1.7 and later provides a builtin
-% \ifCLASSINFOpdf conditional that works the same way.
-% When switching from latex to pdflatex and vice-versa, the compiler may
-% have to be run twice to clear warning/error messages.
+% (uncomment the ones you want to load
 
 % *** CITATION PACKAGES ***
 %
@@ -263,7 +245,7 @@
     bloque/.style={rectangle, minimum height=2.5em, minimum width=3em, draw=black},
     suma/.style={draw, circle, node distance=1cm},
     ganancia/.style={draw, shape border rotate=-90, regular polygon,
-        regular polygon sides=3, node distance=0.8cm,},
+        regular polygon sides=3, node distance=0.7cm,},
     input/.style={coordinate},
     output/.style={coordinate},
     conexion/.style={coordinate}}
@@ -283,38 +265,10 @@
 \title{A Working Example of an Adaptive Controller
     With the Slotine Li Algorithm}
 
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
-
 \author{Roberto~Cadena~Vega% <-this % stops a space
 \thanks{R. Cadena Vega is a student of the Department of Automatic Control,
     CINVESTAV-IPN, México, e-mail:(rcadena@ctrl.cinvestav.mx).}% <-this % stops a space
 \thanks{Manuscript delivered April 20, 2015}}
-
-% note the % following the last \IEEEmembership and also \thanks - 
-% these prevent an unwanted space from occurring between the last author name
-% and the end of the author line. i.e., if you had this:
-% 
-% \author{....lastname \thanks{...} \thanks{...} }
-%                     ^------------^------------^----Do not want these spaces!
-%
-% a space would be appended to the last name and could cause every name on that
-% line to be shifted left slightly. This is one of those "LaTeX things". For
-% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
-% "AB" then you have to do: "\textbf{A}\textbf{B}"
-% \thanks is no different in this regard, so shield the last } of each \thanks
-% that ends a line with a % and do not let a space in before the next \thanks.
-% Spaces after \IEEEmembership other than the last one are OK (and needed) as
-% you are supposed to have spaces between the names. For what it is worth,
-% this is a minor point as most people would not even notice if the said evil
-% space somehow managed to creep in.
 
 % The paper headers
 \markboth{Introduction to Robotics Paper}%
@@ -330,39 +284,13 @@
 % make the title area
 \maketitle
 
-% As a general rule, do not put math, special symbols or citations
-% in the abstract or keywords.
 \begin{abstract}
 The abstract goes here.
 \end{abstract}
 
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-% \IEEEpeerreviewmaketitle
-
 \section{Introduction}
-% The very first letter is a 2 line initial drop letter followed
-% by the rest of the first word in caps.
-% 
-% form to use if the first word consists of a single letter:
-% \IEEEPARstart{A}{demo} file is ....
-% 
-% form to use if you need the single drop letter followed by
-% normal text (unknown if ever used by IEEE):
-% \IEEEPARstart{A}{}demo file is ....
-% 
-% Some journals put the first two words in caps:
-% \IEEEPARstart{T}{his demo} file is ....
-% 
-% Here we have the typical use of a "T" for an initial drop letter
-% and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{he} intention of this paper is to provide a simple implementation of the Slotine Li Algorithm to control a robotic manipulator with an adaptive control law.
+
+    \IEEEPARstart{T}{he} intention of this paper is to provide a simple implementation of the Slotine Li Algorithm to control a robotic manipulator with an adaptive control law.
 
 \section{Preliminaries}
 
@@ -373,7 +301,7 @@ The abstract goes here.
         \begin{figure*}[!t]
             \centering
             \begin{tikzpicture}[thick]
-                \matrix[column sep=4mm, row sep=3mm]{
+                \matrix[column sep=4mm, row sep=2mm]{
                     % Primera fila
                     & \node (c1)[conexion]{}; & & \node(neg)[bloque]{$-K_C$}; & & & \node (c2)[conexion]{}; & & & & & \\
                     % Segunda fila
@@ -403,7 +331,7 @@ The abstract goes here.
 
         Where $\beta$ is the gain of the power amplifier because of the armature current feedback loop, $K_C$ is a pre amplification stage, $K$ is the current-torque relation, $Kb$ is related to the counter electromotive force. Let's consider a high gain in the power amplification stage due to the current feedback loop, we can simplify this model to a much more simpler one:
 
-        \begin{equation}
+        \begin{equation} \label{servolineal}
             \ddot{q}(t) + a \dot{q}(t) = b u(t)
         \end{equation}
 
@@ -483,33 +411,13 @@ The abstract goes here.
 
         the equation of the closed loop system will be as stated in~\ref{closedloopslotine}.
 
-    % \begin{center}
-    %     \begin{tikzpicture}[thick]
-    %         \matrix[row sep=4mm, column sep=4mm]{
-    %              & & \node (c1)[conexion]{}; & & \node (c2)[conexion]{}; & \\
-    %              & & & \node (s1)[conexion]{}; & \node (c3)[conexion]{}; & \\
-    %             \node (ent) {$u$}; &
-    %             \node (alpha) [ganancia] {$\alpha$}; &
-    %             \node (sum) [suma] {\tiny$+$}; &
-    %             \node (s2) [bloque] {Servomechanism}; &
-    %             \node (q) [conexion] {}; &
-    %             \node (sal) {$q$}; \\
-    %              & & & \node (s3)[conexion]{}; & & \\};
-
-    %         \graph{
-    %             (ent) -> (alpha) -> (sum) -> (s2);
-    %             (s2) -> (sal);
-    %             (s1) -- (c3) -- (c2) -- (c1) -> (sum);};
-    %     \end{tikzpicture}
-    % \end{center}
-
     \subsection{Trajectories Generation}
-        The algorithm needs not only the signal for the trajectory to track, but the derivative and the second derivative, both of them can be acheived with a second order filter like the one in the figure.
+        The algorithm needs not only the signal for the trajectory to track, but the derivative and the second derivative, both of them can be acheived with a second order filter like the one in the figure\ref{fig_seorfilter}.
 
         \begin{figure*}[!t]
             \centering
             \begin{tikzpicture}[thick]
-                \matrix[column sep=4mm, row sep=3mm]{
+                \matrix[column sep=4mm, row sep=2mm]{
                     % Primer fila
                     & & \node (c1)[conexion]{}; & \node(neg)[bloque]{$-1$}; & & & & & & & \node (c2)[conexion]{}; & \\
                     % Segunda fila
@@ -535,7 +443,7 @@ The abstract goes here.
                 \graph{
                     (qdi) -> (fil1) -> (sum1) -> (gan1) -> (sum2) -- (qdpp) -> (int1) -- (qdp1) -- (qdp2) -> (int2) -- (qd1) -> (qdo);
                     (qd1) -- (c2) -> (neg) -- (c1) -> (sum1);
-                    (qdp1)
+                    (qdp1) -- (c5) -> (gan2) -- (c6) -> (sum2);
                     (qdp2) -- (c4) -> (qdpo);
                     (qdpp) -- (c3) -> (qdppo);};
             \end{tikzpicture}
@@ -543,8 +451,110 @@ The abstract goes here.
             \label{fig_seorfilter}
         \end{figure*}
 
+\section{Control Law Derivation}
+    
+    Since our model is linear and the control law is designed for a non-linear system, it is necessary to derive a simplification for the control law. Rewriting~\ref{servolineal} to look like the non-linear manipulator model we have:
+
+    \begin{equation}
+        \frac{1}{b} \ddot{q} + \frac{a}{b} \dot{q} = u
+    \end{equation}
+
+    And the proposed control law then translates to:
+
+    \begin{equation*}
+        u = \frac{1}{\hat{b}} \ddot{q}_r + \frac{\hat{a}}{\hat{b}} \dot{q}_r - K_D s
+    \end{equation*}
+
+    Where we will define $\beta = \frac{1}{\hat{b}}$ and $\alpha = \frac{\hat{a}}{\hat{b}}$ to handle this values easier, so that we will have:
+
+    \begin{equation}
+        u = \beta \ddot{q}_r + \alpha \dot{q}_r - K_D \left( \dot{q} - \dot{q}_r \right)
+    \end{equation}
+
+    And the adaptation law remains:
+
+    \begin{equation*}
+        \dot{\hat{a}} = - \Gamma Y^T s
+    \end{equation*}
+
+    Where the vector of parameters to estimate will be:
+
+    \begin{equation}
+        \hat{a} =
+        \begin{pmatrix}
+            \alpha \\
+            \beta
+        \end{pmatrix}
+    \end{equation}
+
+    The vector of known signals is:
+
+    \begin{equation}
+        Y =
+        \begin{pmatrix}
+            \dot{q}_r \\
+            \ddot{q}_r
+        \end{pmatrix}
+    \end{equation}
+
+    The control and adaptation laws are implemented in the figures~\ref{fig_slotinealg}~and~\ref{fig_adaptation}.
+
+    \begin{figure}[!t]
+        \centering
+        \begin{tikzpicture}[thick]
+            \matrix[column sep=4mm, row sep=2mm]{
+                % Primer fila
+                \node(qd){$q_d$}; & \node(c1)[conexion]{}; & & & \\
+                % Segunda fila
+                & \node(neg1)[bloque]{$-1$}; & & & \\
+                % Tercer fila
+                \node(q){$q$}; & \node(sum1)[suma]{\tiny$+$}; & \node(lam1)[bloque]{$-\lambda$}; & \node(sum2)[suma]{\tiny$+$}; & \node(qrp){$\dot{q}_r$}; \\
+                % Cuarta fila
+                \node(qdp){$\dot{q}_d$}; & \node(c2)[conexion]{}; & & \node(c3)[conexion]{}; & \\
+                % Quinta fila
+                & \node(neg2)[bloque]{$-1$}; & & & \\
+                % Sexta fila
+                \node(qp){$\dot{q}$}; & \node(sum3)[suma]{\tiny$+$}; & \node(lam2)[bloque]{$-\lambda$}; & \node(sum4)[suma]{\tiny$+$}; & \node(qrpp){$\ddot{q}_r$}; \\
+                % Septima fila
+                \node(qdpp){$\ddot{q}_d$}; & & & \node(c4)[conexion]{}; & \\};
+
+            \graph{
+                (qd) -- (c1) -> (neg1) -> (sum1);
+                (q) -> (sum1) -> (lam1) -> (sum2) -> (qrp);
+                (qdp) -- (c3) -> (sum2);
+                (c2) -> (neg2) -> (sum3);
+                (qp) -> (sum3) -> (lam2) -> (sum4) -> (qrpp);
+                (qdpp) -- (c4) -> (sum4);};
+        \end{tikzpicture}
+        \caption{Slotine-Li algorithm implementation}
+        \label{fig_slotinealg}
+    \end{figure}
+
+    \begin{figure}[!t]
+        \centering
+        \begin{tikzpicture}[thick]
+            \matrix[column sep=4mm, row sep=2mm]{
+                % Primer fila
+                & \node(c1)[conexion]{}; & & & & \node(c2)[conexion]{}; & \\
+                % Segunda fila
+                \node(qr){$\dot{q}_r, \ddot{q}_r$}; & \node(c3)[conexion]{}; & \node(gam)[ganancia]{$-\Gamma$}; & \node(c4)[conexion]{}; & & & \\
+                % Tercer fila
+                \node(s){$s$}; & \node(c5)[conexion]{}; & & \node(pro1)[suma]{\tiny$\times$}; & \node(int)[bloque]{$\frac{1}{s}$}; & \node(pro2)[suma]{\tiny$\times$}; & \node(aqr){$\alpha \dot{q}_r, \beta \ddot{q}_r$}; \\
+                % Cuarta fila
+                & \node(c6)[conexion]{}; & & & & \node(gander)[bloque]{$-K_D$}; & \node(kds){$-K_D (\dot{q} - \dot{q}_r)$}; \\};
+
+            \graph{
+                (qr) -- (c3) -> (gam) -- (c4) -> (pro1);
+                (s) -> (pro1) -> (int) -> (pro2) -> (aqr);
+                (c5) -- (c6) -> (gander) -> (kds);};
+        \end{tikzpicture}
+        \caption{Adaptation law implementation}
+        \label{fig_adaptation}
+    \end{figure}
+
 \section{Experiment Parameters}
     
+
 
 \section{Experimental Results}
 Subsection text here.
@@ -648,7 +658,6 @@ Subsection text here.
 % subcaption is not desired, just leave its contents blank,
 % e.g., \subfloat[].
 
-
 % An example of a floating table. Note that, for IEEE style tables, the
 % \caption command should come BEFORE the table and, given that table
 % captions serve much like titles, are usually capitalized except for words
@@ -717,22 +726,6 @@ Appendix one text goes here.
 % \section*{Acknowledgment}
 % The authors would like to thank...
 
-% Can use something like this to put references on a page
-% by themselves when using endfloat and the captionsoff option.
-% \ifCLASSOPTIONcaptionsoff
-%   \newpage
-% \fi
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
 % can use a bibliography generated by BibTeX as a .bbl file
 % BibTeX documentation can be easily obtained at:
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
@@ -756,32 +749,4 @@ H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
 
 \end{thebibliography}
 
-% biography section
-% 
-% If you have an EPS/PDF photo (graphicx package needed) extra braces are
-% needed around the contents of the optional argument to biography to prevent
-% the LaTeX parser from getting confused when it sees the complicated
-% \includegraphics command within an optional argument. (You could create
-% your own custom macro containing the \includegraphics command to make things
-% simpler here.)
-%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
-% or if you just want to reserve a space for a photo:
-
-% insert where needed to balance the two columns on the last page with
-% biographies
-%\newpage
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-%\vfill
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-% that's all folks
 \end{document}
