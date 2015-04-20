@@ -30,7 +30,7 @@
   \graphicspath{{../imagenes/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  \DeclareGraphicsExtensions{.png}
+  \DeclareGraphicsExtensions{.pdf}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -285,12 +285,12 @@
 \maketitle
 
 \begin{abstract}
-The abstract goes here.
+    The intention of this paper is to provide a simple implementation of the Slotine-Li Algorithm to control non-linear robotic manipulators with an adaptive control law, in a servomechanism with a linear model.
 \end{abstract}
 
 \section{Introduction}
 
-    \IEEEPARstart{T}{he} intention of this paper is to provide a simple implementation of the Slotine Li Algorithm to control a robotic manipulator with an adaptive control law.
+    \IEEEPARstart{T}{he} intention of this paper is to provide a simple implementation of the Slotine-Li Algorithm to control non-linear robotic manipulators with an adaptive control law, in a servomechanism with a linear model. Since the implementation of the Slotine-Li algorithm is well known, this paper will focus in the simplifications made to this algorithm to make it work with the linear model.
 
 \section{Preliminaries}
 
@@ -329,13 +329,13 @@ The abstract goes here.
             \label{fig_servomodel}
         \end{figure*}
 
-        Where $\beta$ is the gain of the power amplifier because of the armature current feedback loop, $K_C$ is a pre amplification stage, $K$ is the current-torque relation, $Kb$ is related to the counter electromotive force. Let's consider a high gain in the power amplification stage due to the current feedback loop, we can simplify this model to a much more simpler one:
+        Where $\beta$ is the gain of the power amplifier because of the armature current feedback loop, $K_C$ is a pre amplification stage, $K$ is the current-torque relation, $K_B$ is related to the counter electromotive force. Let's consider a high gain in the power amplification stage due to the current feedback loop, we can simplify this model\cite{Ogata:2001:MCE:516039} to a much more simpler one:
 
         \begin{equation} \label{servolineal}
             \ddot{q}(t) + a \dot{q}(t) = b u(t)
         \end{equation}
 
-        \begin{figure}[!t]
+        \begin{figure}[h]
             \begin{center}
                 \begin{tikzpicture}[thick]
                     \matrix[column sep=5mm]{
@@ -362,7 +362,7 @@ The abstract goes here.
         
     \subsection{Parameter Identification}
 
-        In previous works it has been stablished that the values of the constants $a$ and $b$ are:
+        In previous works it has been stablished that the values of the constants $a$ and $b$\cite{Moctezuma2011} are:
 
         \begin{align}   
             a &= 0.45 \\
@@ -373,7 +373,7 @@ The abstract goes here.
 
     \subsection{Slotine Li Algorithm for Non-linear Robot Manipulators}
 
-        The Slotine-Li algorithm for robotic manipulator considers a dynamic equation for the robot like:
+        The Slotine-Li algorithm for robotic manipulator considers a dynamic equation for the robot\cite{Slotine1988} like:
 
         \begin{equation}
             H(q) \ddot{q} + C(q, \dot{q}) + g(q) = \tau
@@ -554,7 +554,7 @@ The abstract goes here.
 
 \section{Experiment Parameters}
     
-    The control law derived from the Slotine-Li algorithm was implemented in MATLAB-Simulink platform with WINCON from Quanser Consulting as the software link between MATLAB and the Copley Controls PWM power amplifier to feed the control signal to the servomechanism and the BEI optical encoder that is coupled to the servomenchanism shaft to retreive angular position measurements through A Servo To Go Inc. board that actually makes the data acquisition.
+    The control law derived from the Slotine-Li algorithm was implemented in MATLAB-Simulink platform with WINCON from Quanser Consulting as the software link between MATLAB and the Copley Controls PWM power amplifier to feed the control signal to the servomechanism and the BEI optical encoder that is coupled to the servomenchanism shaft to retreive angular position measurements through A Servo To Go Inc. board that actually makes the data acquisition\cite{Mondie2011}.
 
     The matrix $\Gamma$ was chosen to be:
 
@@ -571,167 +571,62 @@ The abstract goes here.
 \section{Experimental Results}
     The experimental results show that while the trajectory tracking was not good, as seen in the figure~\ref{fig_respuesta}, in the first seconds of the experiment, due to the adaptation law slow convergence of the model parameters, it still manages to reduce the error signal shown in figures~\ref{fig_error}~and~\ref{fig_iec}. It is noticeable too that the control signal has an initial impulse with a moderate magnitude (figure~\ref{fig_controlimpulse}), but afterwards goes on to be bounded to a small magnitude region (figure~\ref{fig_control}).
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=7cm]{respuestatrayectoria}
-    \caption{Servomechanism response against generated signal}
-    \label{fig_respuesta}
-\end{figure}
+    \begin{figure*}[!t]
+        \centering
+        \includegraphics[width=\textwidth]{respuestatrayectoria}
+        \caption{Servomechanism response against generated signal}
+        \label{fig_respuesta}
+    \end{figure*}
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=\textwidth]{error}
-    \caption{Error signal}
-    \label{fig_error}
-\end{figure*}
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{error}
+        \caption{Error signal}
+        \label{fig_error}
+    \end{figure}
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=7cm]{IEC}
-    \caption{Integrated square error}
-    \label{fig_iec}
-\end{figure}
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{IEC}
+        \caption{Integrated square error}
+        \label{fig_iec}
+    \end{figure}
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=\textwidth]{control}
-    \caption{Control law signal}
-    \label{fig_control}
-\end{figure*}
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{control}
+        \caption{Control law signal}
+        \label{fig_control}
+    \end{figure}
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=7cm]{controlimpulse}
-    \caption{Control signal first impulse}
-    \label{fig_controlimpulse}
-\end{figure}
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{controlimpulse}
+        \caption{Control signal first impulse}
+        \label{fig_controlimpulse}
+    \end{figure}
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=\textwidth]{parametroa}
-    \caption{Estimated signal of parameter a}
-    \label{fig_parametroa}
-\end{figure*}
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{parametroa}
+        \caption{Estimated signal of parameter a}
+        \label{fig_parametroa}
+    \end{figure}
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=\textwidth]{parametrob}
-    \caption{Estimated signal of parameter b}
-    \label{fig_parametrob}
-\end{figure*}
-
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-% \begin{figure*}[!t]
-%     \centering
-%     \includegraphics[width=\textwidth]{control}
-%     \caption{Control law signal}
-%     \label{fig_control}
-% \end{figure*}
-
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-% \begin{figure*}[!t]
-% \centering
-% \subfloat[Case I]{\includegraphics[width=2.5in]{control}%
-% \label{fig_first_case}}
-% \hfil
-% \subfloat[Case II]{\includegraphics[width=2.5in]{control}%
-% \label{fig_second_case}}
-% \caption{Simulation results for the network.}
-% \label{fig_sim}
-% \end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
+    \begin{figure}[!t]
+        \centering
+        \includegraphics[width=7cm]{parametrob}
+        \caption{Estimated signal of parameter b}
+        \label{fig_parametrob}
+    \end{figure}
 
 \section{Conclusion}
     While the implementation of this algorithm gives an efficient way of controlling a non-linear o linear system, it demands to be aware of the problems of the gradient descent algorithm which can be unstable for the initial time. It also requires the tuning of $\Gamma$ and $\Lambda$ positive definite matrices, which even simplifying to be diagonal matrices, can be difficult to work with if the model is not well known. The benefits of this algorithm is that you can track a signal rather than having a constant signal without knowing the parameters of the system, and this makes the implementation completely worth it.
 
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-
 \newpage
 
-\begin{thebibliography}{1}
+\bibliographystyle{IEEEtran}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
+\bibliography{IEEEabrv,paper}
 
 \end{document}
